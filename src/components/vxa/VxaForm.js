@@ -1,0 +1,61 @@
+import React from 'react';
+
+import Typography from '@material-ui/core/Typography';
+import { reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
+
+import Field from '../ui/Field';
+import FormSection from '../ui/FormSection';
+
+const queryParams = () => (
+  <React.Fragment>
+    <Field
+      name="uuid"
+      component={TextField}
+      fullWidth
+    />
+    <Field
+      name="vxaname"
+      label="Name"
+      component={TextField}
+      fullWidth
+    />
+    <Field
+      name="vsip"
+      label="API IP"
+      component={TextField}
+      fullWidth
+    />
+    <Field
+      name="vsport"
+      label="API Port"
+      component={TextField}
+      fullWidth
+    />
+    <Field
+      name="ws"
+      label="Websocket URI"
+      component={TextField}
+      fullWidth
+    />
+  </React.Fragment>
+);
+
+function VxaForm({
+  error,
+  handleSubmit,
+}) {
+  return (
+    <form onSubmit={handleSubmit}>
+      {error && <Typography color="error">{error}</Typography>}
+      <FormSection
+        name="queryParams"
+        component={queryParams}
+      />
+      <button type="submit" hidden />
+    </form>
+  );
+}
+
+
+export default reduxForm()(VxaForm);

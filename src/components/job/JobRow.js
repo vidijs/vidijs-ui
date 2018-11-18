@@ -1,0 +1,37 @@
+import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
+
+import UnstyledLink from '../ui/UnstyledLink';
+import TableCell from '../ui/TableCell';
+import TableRow from '../ui/TableRow';
+
+
+export default function JobListRow({
+  jobDocument,
+}) {
+  let durationHuman;
+  const startMoment = moment(jobDocument.started);
+  if (jobDocument.finished) {
+    const finishedMoment = moment(jobDocument.finished);
+    const durationMoment = moment.duration(finishedMoment.diff(startMoment));
+    durationHuman = durationMoment.humanize();
+  } else if (jobDocument.status === 'STARTED') {
+    const nowMoment = moment();
+    const durationMoment = moment.duration(nowMoment.diff(startMoment));
+    durationHuman = `${parseInt(durationMoment.asMinutes(), 10)} minutes`;
+  }
+  const JobLink = props => <UnstyledLink to={`/job/${jobDocument.jobId}/`} {...props} />;
+  return (
+    <TableRow to={`/job/${jobDocument.jobId}/`} hover>
+      <TableCell><JobLink>{jobDocument.jobId}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.user}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.started && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.started} />}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.finished && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.finished} />}</JobLink></TableCell>
+      <TableCell><JobLink>{durationHuman}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.status}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.type}</JobLink></TableCell>
+      <TableCell><JobLink>{jobDocument.priority}</JobLink></TableCell>
+    </TableRow>
+  );
+}

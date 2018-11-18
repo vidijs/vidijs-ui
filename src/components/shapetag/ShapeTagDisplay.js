@@ -1,0 +1,1159 @@
+import React from 'react';
+import CodeMirror from 'react-codemirror';
+
+import TextGrid from '../ui/TextGrid';
+import TypeSection from '../ui/TypeSection';
+import TypeArray from '../ui/TypeArray';
+
+const FastStartSettingType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="requireFastStart"
+      value={value.requireFastStart}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="analyzeDuration"
+      value={value.analyzeDuration}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const ResolutionType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="width"
+      value={value.width}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="height"
+      value={value.height}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const AspectRatioType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="horizontal"
+      value={value.horizontal}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="vertical"
+      value={value.vertical}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const KeyValuePairType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="key"
+      value={value.key}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="value"
+      value={value.value}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const RationalType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="numerator"
+      value={value.numerator}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="numerator"
+      value={value.numerator}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const TimeBaseType = RationalType;
+
+const TimeCodeType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="samples"
+      value={value.samples}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      component={TimeBaseType}
+      title="timeBase"
+      value={value.timeBase}
+    />
+  </React.Fragment>
+);
+
+const AudioTranscodePresetChannelMixType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="id"
+      value={value.id}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="stream"
+      value={value.stream}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="channel"
+      value={value.channel}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="gain"
+      value={value.gain}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const AudioTranscodePresetMixType = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeArray
+      title="input"
+      value={value.input}
+      component={AudioTranscodePresetChannelMixType}
+    />
+    <TextGrid
+      title="silence"
+      value={value.silence}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+
+const NameURIPairType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="name"
+      value={value.name}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="uri"
+      value={value.uri}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const OtifPresetType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="uuid"
+      value={value.uuid}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="versionMajor"
+      value={value.versionMajor}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="versionMinor"
+      value={value.versionMinor}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="versionPatch"
+      value={value.versionPatch}
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      title="configuration"
+      value={value.configuration}
+      component={KeyValuePairType}
+    />
+    <TypeArray
+      title="resource"
+      value={value.resource}
+      component={NameURIPairType}
+    />
+  </React.Fragment>
+);
+
+const AudioOutputType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="format"
+      value={value.format}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="codec"
+      value={value.codec}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="bitrate"
+      value={value.bitrate}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="framerate"
+      component={TimeBaseType}
+      value={value.framerate}
+    />
+    <TextGrid
+      title="channel"
+      value={value.channel}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="stream"
+      value={value.stream}
+      variant="list"
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+
+const AudioTranscodePresetType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="format"
+      value={value.format}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="codec"
+      value={value.codec}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="bitrate"
+      value={value.bitrate}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="framerate"
+      component={TimeBaseType}
+      value={value.framerate}
+    />
+    <TextGrid
+      title="channel"
+      value={value.channel}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="stream"
+      value={value.stream}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="preset"
+      value={value.preset}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="noAudio"
+      value={value.noAudio}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      title="setting"
+      value={value.setting}
+      component={KeyValuePairType}
+    />
+    <TypeArray
+      title="mix"
+      value={value.mix}
+      component={AudioTranscodePresetMixType}
+    />
+    <TypeSection
+      hideNoValue
+      title="otif"
+      component={OtifPresetType}
+      value={value.otif}
+    />
+    <TextGrid
+      title="monoFile"
+      value={value.monoFile}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="allChannel"
+      value={value.allChannel}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      title="output"
+      value={value.output}
+      component={AudioOutputType}
+    />
+  </React.Fragment>
+);
+
+const AudioTrackTranscodePresetType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="codec"
+      value={value.codec}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="bitrate"
+      value={value.bitrate}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="framerate"
+      component={TimeBaseType}
+      value={value.framerate}
+    />
+    <TextGrid
+      title="channel"
+      value={value.channel}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="preset"
+      value={value.preset}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      title="setting"
+      value={value.setting}
+      component={KeyValuePairType}
+    />
+    <TypeArray
+      title="mix"
+      value={value.mix}
+      component={AudioTranscodePresetMixType}
+    />
+  </React.Fragment>
+);
+
+
+export const VideoTranscodePresetType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="codec"
+      value={value.codec}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="bitrate"
+      value={value.bitrate}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="framerate"
+      component={TimeBaseType}
+      value={value.framerate}
+    />
+    <TypeSection
+      hideNoValue
+      title="resolution"
+      component={ResolutionType}
+      value={value.resolution}
+    />
+    <TypeSection
+      hideNoValue
+      title="displayWidth"
+      component={RationalType}
+      value={value.displayWidth}
+    />
+    <TypeSection
+      hideNoValue
+      title="displayHeight"
+      component={RationalType}
+      value={value.displayHeight}
+    />
+    <TypeSection
+      hideNoValue
+      title="displayXOffset"
+      component={RationalType}
+      value={value.displayXOffset}
+    />
+    <TypeSection
+      hideNoValue
+      title="displayYOffset"
+      component={RationalType}
+      value={value.displayYOffset}
+    />
+    <TypeSection
+      hideNoValue
+      title="containerSAR"
+      component={AspectRatioType}
+      value={value.containerSAR}
+    />
+    <TextGrid
+      title="forceCFR"
+      value={value.forceCFR}
+      hover
+      hideNoValue
+      variant="boolean"
+    />
+    <TextGrid
+      title="gopSize"
+      value={value.gopSize}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="maxBFrames"
+      value={value.maxBFrames}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="pixelFormat"
+      value={value.pixelFormat}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="preset"
+      value={value.preset}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="profile"
+      value={value.profile}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="noVideo"
+      value={value.noVideo}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="stripParameterSets"
+      value={value.stripParameterSets}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="addParameterSets"
+      value={value.addParameterSets}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="parameterSets"
+      value={value.parameterSets}
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      title="setting"
+      value={value.setting}
+      component={KeyValuePairType}
+    />
+    <TextGrid
+      title="burnTimecode"
+      value={value.burnTimecode}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="burnSubtitles"
+      value={value.burnSubtitles}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="imageQuality"
+      value={value.imageQuality}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="otif"
+      component={OtifPresetType}
+      value={value.otif}
+    />
+  </React.Fragment>
+);
+
+
+const SequenceRangeType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="start"
+      value={value.start}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="width"
+      value={value.width}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="count"
+      value={value.count}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="wildcard"
+      value={value.wildcard}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const TimeIntervalType = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeSection
+      hideNoValue
+      title="start"
+      component={TimeCodeType}
+      value={value.start}
+    />
+    <TypeSection
+      hideNoValue
+      title="end"
+      component={TimeCodeType}
+      value={value.end}
+    />
+  </React.Fragment>
+);
+
+const OverlayType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="uri"
+      value={value.uri}
+      variant="list"
+      hover
+    />
+    <TypeArray
+      name="range"
+      title="range"
+      component={SequenceRangeType}
+      value={value.range}
+    />
+    <TextGrid
+      title="id"
+      value={value.id}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="x"
+      value={value.x}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="y"
+      value={value.y}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      title="interval"
+      component={TimeIntervalType}
+      value={value.interval}
+    />
+    <TextGrid
+      title="opacity"
+      value={value.opacity}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const TextRenditionType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="line"
+      value={value.line}
+      variant="list"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="align"
+      value={value.align}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="x"
+      value={value.x}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="y"
+      value={value.y}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="xRel"
+      value={value.xRel}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="yRel"
+      value={value.yRel}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="horizontalBase"
+      value={value.horizontalBase}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="verticalBase"
+      value={value.verticalBase}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="font"
+      value={value.font}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="size"
+      value={value.size}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="sizeRel"
+      value={value.sizeRel}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="r"
+      value={value.r}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="g"
+      value={value.g}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="b"
+      value={value.b}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="a"
+      value={value.a}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outline"
+      value={value.outline}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outlineSize"
+      value={value.outlineSize}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outlineR"
+      value={value.outlineR}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outlineG"
+      value={value.outlineG}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outlineB"
+      value={value.outlineB}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="outlineA"
+      value={value.outlineA}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="language"
+      value={value.language}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const TextOverlayType = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeSection
+      hideNoValue
+      title="text"
+      component={TextRenditionType}
+      value={value.text}
+    />
+    <TypeSection
+      hideNoValue
+      title="interval"
+      component={TimeIntervalType}
+      value={value.interval}
+    />
+    <TextGrid
+      title="opacity"
+      value={value.opacity}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+const SequenceOutputType = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="start"
+      value={value.start}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="width"
+      value={value.width}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+export const ContainerSection = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="name"
+      value={value.name}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="description"
+      value={value.description}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="format"
+      value={value.format}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+export const AudioSection = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeSection
+      hideNoValue
+      component={AudioTranscodePresetType}
+      value={value.audio}
+    />
+    <TypeSection
+      hideNoValue
+      title="audioTrack"
+      component={AudioTrackTranscodePresetType}
+      value={value.audioTrack}
+    />
+  </React.Fragment>
+);
+
+
+export const VideoSection = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeSection
+      component={VideoTranscodePresetType}
+      value={value.video}
+    />
+  </React.Fragment>
+);
+
+export const OverlaySection = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeArray
+      hideNoValue
+      hover={false}
+      title="overlay"
+      component={OverlayType}
+      value={value.overlay}
+    />
+    <TypeArray
+      hideNoValue
+      hover={false}
+      title="textOverlay"
+      component={TextOverlayType}
+      value={value.textOverlay}
+    />
+  </React.Fragment>
+);
+
+export const AdvancedSection = ({ value = {} }) => (
+  <React.Fragment>
+    <TextGrid
+      title="startTimecode"
+      value={value.startTimecode}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      name="fastStartSetting"
+      title="fastStartSetting"
+      component={FastStartSettingType}
+      value={value.fastStartSetting}
+    />
+    <TextGrid
+      title="faceDetect"
+      value={value.faceDetect}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="preserveEDL"
+      value={value.preserveEDL}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="addClipName"
+      value={value.addClipName}
+      variant="boolean"
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="preferredSourceTag"
+      value={value.preferredSourceTag}
+      hover
+      hideNoValue
+    />
+    <TypeArray
+      name="shapeMetadata"
+      title="shapeMetadata"
+      component={KeyValuePairType}
+      value={value.shapeMetadata}
+    />
+    <TypeSection
+      hideNoValue
+      name="maxChunkDuration"
+      title="maxChunkDuration"
+      component={TimeCodeType}
+      value={value.maxChunkDuration}
+    />
+    <TypeArray
+      name="demuxerSetting"
+      title="demuxerSetting"
+      component={KeyValuePairType}
+      value={value.demuxerSetting}
+    />
+    <TypeArray
+      name="muxerSetting"
+      title="muxerSetting"
+      component={KeyValuePairType}
+      value={value.muxerSetting}
+    />
+    <TypeSection
+      hideNoValue
+      name="sequenceOutput"
+      title="sequenceOutput"
+      component={SequenceOutputType}
+      value={value.SequenceOutputType}
+    />
+  </React.Fragment>
+);
+
+export const ThumbnailSection = ({ value = {} }) => (
+  <React.Fragment>
+    <TypeSection
+      hideNoValue
+      name="thumbnailResolution"
+      title="thumbnailResolution"
+      component={ResolutionType}
+      value={value.thumbnailResolution}
+    />
+    <TextGrid
+      title="thumbnailBackground"
+      value={value.thumbnailBackground}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      name="thumbnailPeriod"
+      title="thumbnailPeriod"
+      component={TimeCodeType}
+      value={value.thumbnailPeriod}
+    />
+    <TextGrid
+      title="thumbnailPlugin"
+      value={value.thumbnailPlugin}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      hideNoValue
+      name="posterResolution"
+      title="posterResolution"
+      component={ResolutionType}
+      value={value.posterResolution}
+    />
+    <TextGrid
+      title="posterBackground"
+      value={value.posterBackground}
+      hover
+      hideNoValue
+    />
+  </React.Fragment>
+);
+
+export const ScriptSection = ({ value = {} }) => (
+  <React.Fragment>
+    <CodeMirror
+      value={value.script}
+      options={{
+        readOnly: true,
+        theme: 'material',
+        mode: 'application/json',
+        lineWrapping: true,
+        lineNumbers: true,
+       }}
+    />
+  </React.Fragment>
+);
+
+export function ShapeTagContainerDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={ContainerSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagAudioDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={AudioSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagVideoDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={VideoSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagThumbnailDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={ThumbnailSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagOverlayDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={OverlaySection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagAdvancedDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={AdvancedSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export function ShapeTagScriptDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={ScriptSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}
+
+export default function ShapeTagDisplay({
+  transcodePresetDocument,
+}) {
+  return (
+    <React.Fragment>
+      <TypeSection
+        component={ContainerSection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={AudioSection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={VideoSection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={ThumbnailSection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={OverlaySection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={AdvancedSection}
+        value={transcodePresetDocument}
+      />
+      <TypeSection
+        component={ScriptSection}
+        value={transcodePresetDocument}
+      />
+    </React.Fragment>
+  );
+}

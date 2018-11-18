@@ -1,0 +1,56 @@
+{
+  "name": "vidijs",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "3.0.1",
+    "@material-ui/icons": "3.0.1",
+    "@vidijs/vidijs-api": "^0.0.8",
+    "axios": "0.18.0",
+    "codemirror": "5.34.0",
+    "history": "4.7.2",
+    "http-proxy-middleware": "0.19.0",
+    "immutability-helper": "2.6.4",
+    "lodash.startcase": "4.4.0",
+    "material-ui-chip-input": "1.0.0-beta.5",
+    "moment": "2.20.1",
+    "prop-types": "15.6.1",
+    "react": "16.3.0",
+    "react-codemirror": "1.0.0",
+    "react-dom": "16.3.3",
+    "react-json-view": "^1.19.1",
+    "react-moment": "0.7.0",
+    "react-redux": "5.0.6",
+    "react-router-dom": "4.2.2",
+    "react-scripts": "2.0.4",
+    "react-select": "2.0.0-beta.7",
+    "redux": "3.7.2",
+    "redux-form": "7.4.2",
+    "redux-form-material-ui": "5.0.0-beta.3",
+    "redux-thunk": "2.2.0",
+    "typeface-roboto": "0.0.50"
+  },
+  "scripts": {
+    "start": "REACT_APP_VIDISPINE_URL=$VIDISPINE_URL REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts start",
+    "build": "REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-container": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && react-scripts build && docker build -t 'vidijs:latest' -t vidijs:$REACT_APP_GIT_COMMIT .",
+    "save-container": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && docker image save -o vidijs_${REACT_APP_GIT_COMMIT}.tar.gz vidijs:$REACT_APP_GIT_COMMIT && echo \"Exported vidijs_${REACT_APP_GIT_COMMIT}.tar.gz\""
+  },
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-runtime": "6.26.0",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-jsx-a11y": "6.1.1",
+    "eslint-plugin-react": "7.11.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

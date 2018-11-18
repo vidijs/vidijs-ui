@@ -1,0 +1,182 @@
+import React from 'react';
+import { compose } from 'redux';
+
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import StepContent from '@material-ui/core/StepContent';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+
+import ImportRawForm from './ImportRawForm';
+import ImportRawAdvancedForm from './ImportRawAdvancedForm';
+import MetadataForm from '../metadata/MetadataForm';
+import SquareCard from '../ui/SquareCard';
+import * as formActions from '../../formactions/import';
+import withFormActions from '../../hoc/withFormActions';
+import withFormSelectors from '../../hoc/withFormSelectors';
+import withUI from '../../hoc/withUI';
+import withStepper from '../../hoc/withStepper';
+
+export const EDIT_IMPORTRAW_FORM = 'EDIT_IMPORTRAW_FORM';
+
+
+function ImportRawWizard({
+  initialValues,
+  onSuccess,
+  onFail,
+  submitForm,
+  onNext,
+  onBack,
+  activeStep,
+  openSnackBar,
+  isFormSubmitting,
+}) {
+  const transferId = (
+    Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+  );
+  const defaultValues = {
+    queryParams: {
+      'no-transcode': false,
+      createThumbnails: true,
+      overrideFastStart: true,
+      requireFastStart: true,
+      growing: false,
+      priority: 'MEDIUM',
+      importTag: ['original'],
+      transferId,
+    },
+    metadataDocument: {},
+    ...initialValues,
+  };
+  const onSubmitSuccess = (response, dispatch, props) => {
+    const messageContent = 'Job Started';
+    openSnackBar({ messageContent });
+    if (onSuccess) { onSuccess(response, dispatch, props); }
+  };
+  const onSubmitFail = (error, dispatch, props) => {
+    const messageContent = 'Error Starting Job';
+    openSnackBar({ messageContent, messageColor: 'secondary' });
+    if (onFail) { onFail(error, dispatch, props); }
+  };
+  return (
+    <React.Fragment>
+      <Grid container justify="flex-end">
+        <Grid item>
+          <div style={{ position: 'relative' }}>
+            <Button
+              color="primary"
+              variant="raised"
+              size="large"
+              onClick={() => submitForm(EDIT_IMPORTRAW_FORM)}
+              disabled={isFormSubmitting}
+            >
+              Import
+            </Button>
+            {isFormSubmitting && (
+              <CircularProgress
+                size={24}
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  marginTop: -12,
+                  marginLeft: -12,
+                }}
+              />
+            )}
+          </div>
+        </Grid>
+      </Grid>
+      <Stepper activeStep={activeStep} orientation="vertical">
+        <Step>
+          <StepLabel>File</StepLabel>
+          <StepContent>
+            <SquareCard>
+              <CardContent>
+                <ImportRawForm
+                  onSubmit={formActions.onImportRawNoAuth}
+                  initialValues={defaultValues}
+                  onSubmitSuccess={onSubmitSuccess}
+                  onSubmitFail={onSubmitFail}
+                  form={EDIT_IMPORTRAW_FORM}
+                  destroyOnUnmount={false}
+                />
+              </CardContent>
+              <ExpansionPanelActions>
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={onNext}
+                >
+                  Next
+                </Button>
+              </ExpansionPanelActions>
+            </SquareCard>
+          </StepContent>
+        </Step>
+        <Step>
+          <StepLabel>Metadata</StepLabel>
+          <StepContent>
+            <SquareCard>
+              <CardContent>
+                <MetadataForm
+                  onSubmit={formActions.onImportRawNoAuth}
+                  initialValues={defaultValues}
+                  onSubmitSuccess={onSubmitSuccess}
+                  onSubmitFail={onSubmitFail}
+                  form={EDIT_IMPORTRAW_FORM}
+                  destroyOnUnmount={false}
+                />
+              </CardContent>
+              <ExpansionPanelActions>
+                <Button onClick={onBack}>
+                  Back
+                </Button>
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={onNext}
+                >
+                  Next
+                </Button>
+              </ExpansionPanelActions>
+            </SquareCard>
+          </StepContent>
+        </Step>
+        <Step>
+          <StepLabel>Advanced</StepLabel>
+          <StepContent>
+            <SquareCard>
+              <CardContent>
+                <ImportRawAdvancedForm
+                  onSubmit={formActions.onImportRawNoAuth}
+                  initialValues={defaultValues}
+                  onSubmitSuccess={onSubmitSuccess}
+                  onSubmitFail={onSubmitFail}
+                  form={EDIT_IMPORTRAW_FORM}
+                  destroyOnUnmount={false}
+                />
+              </CardContent>
+              <ExpansionPanelActions>
+                <Button onClick={onBack}>
+                  Back
+                </Button>
+              </ExpansionPanelActions>
+            </SquareCard>
+          </StepContent>
+        </Step>
+      </Stepper>
+    </React.Fragment>
+  );
+}
+
+export default compose(
+  withStepper,
+  withUI,
+  withFormActions,
+  withFormSelectors,
+)(ImportRawWizard, EDIT_IMPORTRAW_FORM);
