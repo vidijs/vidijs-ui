@@ -36,11 +36,13 @@ function TopAppBar({
   };
   const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
   const { VIDISPINE_SERVER_URL } = window;
-  let displayUrl = VIDISPINE_SERVER_URL;
+  let displayUrl = baseUrl;
   if (REACT_APP_USE_CORS) {
     displayUrl = baseUrl;
-  } else if (VIDISPINE_SERVER_URL === '$VIDISPINE_URL') {
+  } else if (REACT_APP_VIDISPINE_URL) {
     displayUrl = REACT_APP_VIDISPINE_URL;
+  } else if (VIDISPINE_SERVER_URL !== '$VIDISPINE_URL') {
+    displayUrl = VIDISPINE_SERVER_URL;
   }
   return (
     <AppBar elevation={0} classes={{ root: classes.root }} position="static">
