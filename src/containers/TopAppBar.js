@@ -29,13 +29,19 @@ function TopAppBar({
   classes,
 }) {
   const username = localStorage.getItem('vsUsername');
+  const baseUrl = localStorage.getItem('vsBaseUrl');
   const onLogout = () => {
     browserLogout();
     history.push('/login/');
   };
-  const { REACT_APP_VIDISPINE_URL } = process.env;
+  const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
   const { VIDISPINE_SERVER_URL } = window;
-  const displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
+  let displayUrl = VIDISPINE_SERVER_URL;
+  if (REACT_APP_USE_CORS) {
+    displayUrl = baseUrl;
+  } else if (VIDISPINE_SERVER_URL === '$VIDISPINE_URL') {
+    displayUrl = REACT_APP_VIDISPINE_URL;
+  }
   return (
     <AppBar elevation={0} classes={{ root: classes.root }} position="static">
       <Toolbar disableGutters variant="dense">

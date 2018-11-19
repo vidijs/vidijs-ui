@@ -45,7 +45,7 @@ export function onGetToken(form, dispatch, props) {
     queryParams,
     headers,
   })
-    .then(response => ({ ...response, userName }))
+    .then(response => ({ ...response, userName, baseUrl }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
