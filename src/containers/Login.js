@@ -84,7 +84,11 @@ class Login extends React.PureComponent {
   render() {
     const { selfTestDocument } = this.state;
     const { classes } = this.props;
-    const initialValues = { headers: { username: 'admin' }, baseUrl: this.displayUrl || this.baseUrl };
+    const initialValues = {
+      headers: { username: 'admin' },
+      queryParms: { autoRefresh: true, seconds: 604800 },
+      baseUrl: this.displayUrl || this.baseUrl,
+    };
     return (
       <div className={classes.main}>
         <Typography variant="display3" className={classes.headline}>vidi.js</Typography>
