@@ -34,10 +34,11 @@ class ItemThumbnail extends React.PureComponent {
   }
 
   onFetch(itemId) {
+    const baseUrl = localStorage.getItem('vsBaseUrl');
     const queryParams = {
       content: 'thumbnail',
       'noauth-url': true,
-      baseURI: '/APInoauth/',
+      baseURI: `${baseUrl}/APInoauth/`,
     };
     try {
       api.getItem({ itemId, queryParams })
