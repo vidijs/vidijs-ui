@@ -39,9 +39,9 @@
     "save-container": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && docker image save -o vidijs_${REACT_APP_GIT_COMMIT}.tar.gz vidijs:$REACT_APP_GIT_COMMIT && echo \"Exported vidijs_${REACT_APP_GIT_COMMIT}.tar.gz\"",
     "electron-react-start": "REACT_APP_USE_CORS=true PUBLIC_URL='./' REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts start",
     "electron-start": "REACT_APP_USE_CORS=true node src/electron-wait-react",
-    "electron-pack": "export PUBLIC_URL='./' && export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && export REACT_APP_USE_CORS=true && react-scripts build && build --dir",
-    "electron-dist": "export PUBLIC_URL='./' && export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && export REACT_APP_USE_CORS=true && react-scripts build && build",
-    "electron-dist-nobuild": "build -w"
+    "electron-build": "export PUBLIC_URL='./' && export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && export REACT_APP_USE_CORS=true && react-scripts build && build",
+    "electron-pkg-windows": "build ---macos",
+    "electron-pkg-mac": "build --windows",
   },
   "devDependencies": {
     "babel-core": "6.26.0",
