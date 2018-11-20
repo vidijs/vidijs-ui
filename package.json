@@ -59,6 +59,16 @@
     "appId": "com.vidijs.ui",
     "mac": {
       "category": "public.app-category.business"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     }
   },
   "browserslist": [
