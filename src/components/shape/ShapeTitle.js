@@ -31,10 +31,17 @@ export default function ShapeTitle({
   shapeId,
   ...props
 }) {
+  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const itemParams = new URLSearchParams({
+    content: 'metadata,thumbnail',
+    baseURI: `${baseUrl}/APInoauth/`,
+    terse: true,
+    'noauth-url': true,
+  });
   return (
     <TitleHeader
       grandParentTitle="Item"
-      grandParentTo="/item/?content=metadata%2Cthumbnail&baseURI=%2FAPInoauth%2F&terse=true&noauth-url=true"
+      grandParentTo={`/item/?${itemParams.toString()}`}
       parentTitle={itemId}
       parentTo={`/item/${itemId}`}
       title={(<ShapeHeading shapeId={shapeId} />)}

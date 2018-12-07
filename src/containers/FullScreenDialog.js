@@ -35,73 +35,6 @@ const styles = theme => ({
   },
 });
 
-export const linkOptions = [
-  { value: '/new-job/', label: 'New Job' },
-  { value: '/job', label: 'Job List' },
-  { value: '/jobtype/', label: 'Job Types' },
-  { value: '/search/', label: 'Search Items & Collections' },
-  { value: '/item/?content=metadata%2Cthumbnail&baseURI=%2FAPInoauth%2F&terse=true&noauth-url=true', label: 'Search Items' },
-  { value: '/collection/', label: 'Search Collections' },
-  { value: '/shape/', label: 'Search Shapes' },
-  { value: '/search/field-group/', label: 'Search Field Groups' },
-  { value: '/library/', label: 'Search Libraries' },
-  { value: '/storage/', label: 'Storages' },
-  { value: '/file/', label: 'Files' },
-  { value: '/storage-rule/', label: 'Storage Rules' },
-  { value: '/import/?tab=IMPORTPLACEHOLDER_TAB', label: 'Create Item' },
-  { value: '/import/?tab=IMPORTCOLLECTION_TAB', label: 'Create Collection' },
-  { value: '/import/?tab=IMPORTSHAPEPLACEHOLDER_TAB', label: 'Create Shape' },
-  { value: '/import/?tab=IMPORTFILE_TAB', label: 'Import File' },
-  { value: '/import/?tab=IMPORTRAW_TAB', label: 'Upload' },
-  { value: '/import/?tab=IMPORTURI_TAB', label: 'Import URIs' },
-  { value: '/import/?tab=IMPORTSHAPE_TAB', label: 'Import Shape' },
-  { value: '/import/?tab=IMPORTCOMPONENT_TAB', label: 'Import Component' },
-  { value: '/import/?tab=IMPORTIMP_TAB', label: 'Import IMP' },
-  { value: '/vxa/', label: 'VSA Server Agents' },
-  { value: '/resource/transcoder/', label: 'Transcoders' },
-  { value: '/resource/thumbnail/', label: 'Thumbnail Paths' },
-  { value: '/resource/vidinet/', label: 'Vidinet' },
-  { value: '/export-location', label: 'Export Locations' },
-  { value: '/user/', label: 'Users' },
-  { value: '/group/', label: 'Groups' },
-  { value: '/metadata-field/', label: 'Metadata Fields' },
-  { value: '/field-group/', label: 'Metadata Field Groups' },
-  { value: '/debug/echo/', label: 'XML Echo' },
-  { value: '/javascript/test/', label: 'Javascript Test' },
-  { value: '/wizard/', label: 'Wizard' },
-  { value: '/shape-tag/', label: 'Shape Tags' },
-  { value: '/version/', label: 'Version' },
-  { value: '/selftest/', label: 'Self Test' },
-  { value: '/log', label: 'Audit Log' },
-  { value: '/error/', label: 'Error Log' },
-  { value: '/reindex/', label: 'Re-Index' },
-  { value: '/service/', label: 'Services' },
-  { value: '/configuration/properties/', label: 'Configuration Properties' },
-  { value: '/configuration/job-pool/', label: 'Job Pools' },
-  { value: '/configuration/path-alias/', label: 'Path Alias' },
-  { value: '/external-id/', label: 'External Identifiers' },
-  { value: '/document/', label: 'Document' },
-  { value: '/conform/', label: 'Conform' },
-  { value: '/projection/', label: 'Projection' },
-  { value: '/notification/', label: 'Notification' },
-  { value: '/notification/item/', label: 'Item Notification' },
-  { value: '/notification/collection/', label: 'Collection Notification' },
-  { value: '/notification/job/', label: 'Job Notification' },
-  { value: '/notification/storage/', label: 'Storage Notification' },
-  { value: '/notification/file/', label: 'File Notification' },
-  { value: '/notification/quota/', label: 'Quota Notification' },
-  { value: '/notification/group/', label: 'Group Notification' },
-  { value: '/notification/document/', label: 'Document Notification' },
-  { value: '/import/settings/', label: 'Import Settings' },
-  { value: '/task-group/', label: 'Task Groups' },
-  { value: '/quota/', label: 'Quota' },
-  { value: '/storage-group/', label: 'Storage Groups' },
-  { value: '/auto-import/', label: 'Auto Import Rules' },
-  { value: '/service/stacktrace/', label: 'Stack Trace' },
-  { value: '/transfer/', label: 'Import Transfers' },
-  { value: '/configuration/', label: 'Configuration' },
-  { value: '/configuration/ftp-pool/', label: 'FTP Pool' },
-];
 
 
 function Transition(props) {
@@ -114,6 +47,80 @@ function FullScreenDialog({
   onClose,
   history,
 }) {
+  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const itemParams = new URLSearchParams({
+    content: 'metadata,thumbnail',
+    baseURI: `${baseUrl}/APInoauth/`,
+    terse: true,
+    'noauth-url': true,
+  });
+  const linkOptions = [
+    { value: '/new-job/', label: 'New Job' },
+    { value: '/job', label: 'Job List' },
+    { value: '/jobtype/', label: 'Job Types' },
+    { value: '/search/', label: 'Search Items & Collections' },
+    { value: `/item/?${itemParams.toString()}`, label: 'Search Items' },
+    { value: '/collection/', label: 'Search Collections' },
+    { value: '/shape/', label: 'Search Shapes' },
+    { value: '/search/field-group/', label: 'Search Field Groups' },
+    { value: '/library/', label: 'Search Libraries' },
+    { value: '/storage/', label: 'Storages' },
+    { value: '/file/', label: 'Files' },
+    { value: '/storage-rule/', label: 'Storage Rules' },
+    { value: '/import/?tab=IMPORTPLACEHOLDER_TAB', label: 'Create Item' },
+    { value: '/import/?tab=IMPORTCOLLECTION_TAB', label: 'Create Collection' },
+    { value: '/import/?tab=IMPORTSHAPEPLACEHOLDER_TAB', label: 'Create Shape' },
+    { value: '/import/?tab=IMPORTFILE_TAB', label: 'Import File' },
+    { value: '/import/?tab=IMPORTRAW_TAB', label: 'Upload' },
+    { value: '/import/?tab=IMPORTURI_TAB', label: 'Import URIs' },
+    { value: '/import/?tab=IMPORTSHAPE_TAB', label: 'Import Shape' },
+    { value: '/import/?tab=IMPORTCOMPONENT_TAB', label: 'Import Component' },
+    { value: '/import/?tab=IMPORTIMP_TAB', label: 'Import IMP' },
+    { value: '/vxa/', label: 'VSA Server Agents' },
+    { value: '/resource/transcoder/', label: 'Transcoders' },
+    { value: '/resource/thumbnail/', label: 'Thumbnail Paths' },
+    { value: '/resource/vidinet/', label: 'Vidinet' },
+    { value: '/export-location', label: 'Export Locations' },
+    { value: '/user/', label: 'Users' },
+    { value: '/group/', label: 'Groups' },
+    { value: '/metadata-field/', label: 'Metadata Fields' },
+    { value: '/field-group/', label: 'Metadata Field Groups' },
+    { value: '/debug/echo/', label: 'XML Echo' },
+    { value: '/javascript/test/', label: 'Javascript Test' },
+    { value: '/wizard/', label: 'Wizard' },
+    { value: '/shape-tag/', label: 'Shape Tags' },
+    { value: '/version/', label: 'Version' },
+    { value: '/selftest/', label: 'Self Test' },
+    { value: '/log', label: 'Audit Log' },
+    { value: '/error/', label: 'Error Log' },
+    { value: '/reindex/', label: 'Re-Index' },
+    { value: '/service/', label: 'Services' },
+    { value: '/configuration/properties/', label: 'Configuration Properties' },
+    { value: '/configuration/job-pool/', label: 'Job Pools' },
+    { value: '/configuration/path-alias/', label: 'Path Alias' },
+    { value: '/external-id/', label: 'External Identifiers' },
+    { value: '/document/', label: 'Document' },
+    { value: '/conform/', label: 'Conform' },
+    { value: '/projection/', label: 'Projection' },
+    { value: '/notification/', label: 'Notification' },
+    { value: '/notification/item/', label: 'Item Notification' },
+    { value: '/notification/collection/', label: 'Collection Notification' },
+    { value: '/notification/job/', label: 'Job Notification' },
+    { value: '/notification/storage/', label: 'Storage Notification' },
+    { value: '/notification/file/', label: 'File Notification' },
+    { value: '/notification/quota/', label: 'Quota Notification' },
+    { value: '/notification/group/', label: 'Group Notification' },
+    { value: '/notification/document/', label: 'Document Notification' },
+    { value: '/import/settings/', label: 'Import Settings' },
+    { value: '/task-group/', label: 'Task Groups' },
+    { value: '/quota/', label: 'Quota' },
+    { value: '/storage-group/', label: 'Storage Groups' },
+    { value: '/auto-import/', label: 'Auto Import Rules' },
+    { value: '/service/stacktrace/', label: 'Stack Trace' },
+    { value: '/transfer/', label: 'Import Transfers' },
+    { value: '/configuration/', label: 'Configuration' },
+    { value: '/configuration/ftp-pool/', label: 'FTP Pool' },
+  ];
   const ListLink = ({ to, primary }) => (
     <ListItem button to={to} component={Link} onClick={onClose}>
       <ListItemText secondary={primary} />
@@ -166,7 +173,7 @@ function FullScreenDialog({
       <DialogContent>
         <Grid container alignItems="flex-start">
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Workflow" >
+            <ListGroup subheader="Workflow">
               <ListLink to="/new-job/" primary="New Job" />
               <ListLink to="/job" primary="Job List" />
               <ListLink to="/jobtype/" primary="Job Types" />
@@ -174,9 +181,9 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Search" >
+            <ListGroup subheader="Search">
               <ListLink to="/search/" primary="Items & Collections" />
-              <ListLink to="/item/?content=metadata%2Cthumbnail&baseURI=%2FAPInoauth%2F&terse=true&noauth-url=true" primary="Items" />
+              <ListLink to={`/item/?${itemParams.toString()}`} primary="Items" />
               <ListLink to="/collection/" primary="Collections" />
               <ListLink to="/shape/" primary="Shapes" />
               <ListLink to="/library/" primary="Libraries" />
@@ -184,7 +191,7 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Storage" >
+            <ListGroup subheader="Storage">
               <ListLink to="/storage/" primary="Storages" />
               <ListLink to="/file/" primary="Files" />
               <ListLink to="/storage-rule/" primary="Storage Rules" />
@@ -194,14 +201,14 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Create" >
+            <ListGroup subheader="Create">
               <ListLink to="/import/?tab=IMPORTPLACEHOLDER_TAB" primary="Item" />
               <ListLink to="/import/?tab=IMPORTCOLLECTION_TAB" primary="Collection" />
               <ListLink to="/import/?tab=IMPORTSHAPEPLACEHOLDER_TAB" primary="Shape" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Import" >
+            <ListGroup subheader="Import">
               <ListLink to="/import/?tab=IMPORTFILE_TAB" primary="File" />
               <ListLink to="/import/?tab=IMPORTRAW_TAB" primary="Upload" />
               <ListLink to="/import/?tab=IMPORTURI_TAB" primary="URIs" />
@@ -212,7 +219,7 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Resources" >
+            <ListGroup subheader="Resources">
               <ListLink to="/vxa/" primary="Server Agents" />
               <ListLink to="/resource/transcoder/" primary="Transcoders" />
               <ListLink to="/resource/thumbnail/" primary="Thumbnail Paths" />
@@ -222,13 +229,13 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Authentication" >
+            <ListGroup subheader="Authentication">
               <ListLink to="/user/" primary="Users" />
               <ListLink to="/group/" primary="Groups" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Metadata" >
+            <ListGroup subheader="Metadata">
               <ListLink to="/metadata-field/" primary="Fields" />
               <ListLink to="/field-group/" primary="Field Groups" />
               <ListLink to="/document/" primary="Document" />
@@ -236,20 +243,20 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Utils" >
+            <ListGroup subheader="Utils">
               <ListLink to="/debug/echo/" primary="XML Echo" />
               <ListLink to="/javascript/test/" primary="Javascript Test" />
               <ListLink to="/wizard/" primary="Wizard" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Transcoding" >
+            <ListGroup subheader="Transcoding">
               <ListLink to="/shape-tag/" primary="Shape Tags" />
               <ListLink to="/conform/" primary="Conform Media" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Information" >
+            <ListGroup subheader="Information">
               <ListLink to="/version/" primary="Version" />
               <ListLink to="/selftest/" primary="Self Test" />
               <ListLink to="/log" primary="Audit Log" />
@@ -258,14 +265,14 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="System" >
+            <ListGroup subheader="System">
               <ListLink to="/reindex/" primary="Re-Index" />
               <ListLink to="/service/" primary="Services" />
               <ListLink to="/service/stacktrace/" primary="Stack Trace" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Configuration" >
+            <ListGroup subheader="Configuration">
               <ListLink to="/configuration/properties/" primary="Properties" />
               <ListLink to="/configuration/job-pool/" primary="Job Pool" />
               <ListLink to="/configuration/ftp-pool/" primary="FTP Pool" />
@@ -275,7 +282,7 @@ function FullScreenDialog({
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
-            <ListGroup subheader="Notification" >
+            <ListGroup subheader="Notification">
               <ListLink to="/notification/item/" primary="Item" />
               <ListLink to="/notification/collection/" primary="Collection" />
               <ListLink to="/notification/job/" primary="Job" />
