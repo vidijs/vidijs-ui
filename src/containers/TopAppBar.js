@@ -9,6 +9,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import HistoryIcon from '@material-ui/icons/History';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import ArrowLeft from '@material-ui/icons/ArrowLeft';
+import ArrowRight from '@material-ui/icons/ArrowRight';
+import OpenInNew from '@material-ui/icons/OpenInNew';
 
 import Menu, { MenuItem } from '../components/ui/Menu';
 import UnstyledLink from '../components/ui/UnstyledLink';
@@ -50,6 +53,19 @@ function TopAppBar({
         <IconButton onClick={toggleMainMenu} color="inherit">
           <MenuIcon />
         </IconButton>
+        {REACT_APP_USE_CORS && (
+          <React.Fragment>
+            <IconButton onClick={history.goBack} color="inherit">
+              <ArrowLeft />
+            </IconButton>
+            <IconButton onClick={history.goForward} color="inherit">
+              <ArrowRight />
+            </IconButton>
+            <IconButton onClick={() => window.open(window.location.pathname)} color="inherit">
+              <OpenInNew />
+            </IconButton>
+          </React.Fragment>
+        )}
         <IconButton onClick={toggleHistory} color="inherit">
           <HistoryIcon />
         </IconButton>
