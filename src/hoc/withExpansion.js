@@ -4,7 +4,7 @@ const withExpansion = WrappedComponent => class extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onChangeExpansion = this.onChangeExpansion.bind(this);
-    const { defaultExpanded = true } = props;
+    const { defaultExpanded = false } = props;
     this.state = {
       expanded: defaultExpanded,
     };

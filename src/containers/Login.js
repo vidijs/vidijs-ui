@@ -40,9 +40,10 @@ class Login extends React.PureComponent {
     this.onRefresh = this.onRefresh.bind(this);
     this.onRefreshError = this.onRefreshError.bind(this);
     this.onSuccess = this.onSuccess.bind(this);
-    const { REACT_APP_VIDISPINE_URL } = process.env;
+    const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
     const { VIDISPINE_SERVER_URL, location } = window;
-    this.baseUrl = location.origin;
+    const baseUrl = localStorage.getItem('vsBaseUrl');
+    this.baseUrl = REACT_APP_USE_CORS ? baseUrl : location.origin;
     this.displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
     this.state = {
       selfTestDocument: undefined,
@@ -51,7 +52,8 @@ class Login extends React.PureComponent {
 
   componentDidMount() {
     document.title = 'vidi.js';
-    this.onRefresh();
+    const baseUrl = localStorage.getItem('vsBaseUrl');
+    if (baseUrl) { this.onRefresh(); }
   }
 
   onRefresh() {
@@ -84,7 +86,11 @@ class Login extends React.PureComponent {
   render() {
     const { selfTestDocument } = this.state;
     const { classes } = this.props;
-    const initialValues = { headers: { username: 'admin' }, baseUrl: this.displayUrl || this.baseUrl };
+    const initialValues = {
+      headers: { username: 'admin' },
+      queryParams: { autoRefresh: true, seconds: 604800 },
+      baseUrl: this.displayUrl || this.baseUrl,
+    };
     return (
       <div className={classes.main}>
         <Typography variant="display3" className={classes.headline}>vidi.js</Typography>

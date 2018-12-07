@@ -2,8 +2,6 @@ import { utils as api } from '@vidijs/vidijs-api';
 
 export function browserLogout() {
   localStorage.removeItem('vsUserToken');
-  localStorage.removeItem('vsUsername');
-  localStorage.removeItem('vsBaseUrl');
   api.clientLogout();
 }
 

@@ -87,6 +87,7 @@ import FieldGroupSearch from './FieldGroupSearch';
 function Main() {
   return (
     <main style={{ backgroundColor: grey[200], marginLeft: '10px', marginRight: '10px' }}>
+      <Route exact path="/" component={JobList} />
       <Route exact path="/collection/" component={CollectionSearch} />
       <Route path="/collection/:collectionId/" component={Collection} />
       <Route exact path="/configuration/" component={Configuration} />

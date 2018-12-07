@@ -1,6 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import MenuItem from '@material-ui/core/MenuItem';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { TextField } from 'redux-form-material-ui';
 import update from 'immutability-helper';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import ChipInput from '../ui/ChipInput';
 import StatefulSelect from '../ui/StatefulSelect';
 import { getTriggerEntity, getJobAction } from './NotificationTrigger';
+import BoolCheckbox from '../ui/BoolCheckbox';
 
 function NotificationTriggerItemType(props) {
   const { initialValues = {}, valueSelector, dirty } = props;
@@ -675,6 +677,16 @@ function NotificationJobTriggerType(props) {
       <Field name="stop" type="hidden" component="input" />
       <Field name="create" type="hidden" component="input" />
       <Field name="finish" type="hidden" component="input" />
+      <FormControlLabel
+        control={(
+          <Field
+            name="placeholder"
+            component={BoolCheckbox}
+          />
+        )}
+        label="Placeholder"
+      />
+
     </React.Fragment>
   );
 }

@@ -5,6 +5,7 @@ import moment from 'moment';
 import UnstyledLink from '../ui/UnstyledLink';
 import TableCell from '../ui/TableCell';
 import TableRow from '../ui/TableRow';
+import JobStatus from './JobStatus';
 
 
 export default function JobListRow({
@@ -29,7 +30,7 @@ export default function JobListRow({
       <TableCell><JobLink>{jobDocument.started && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.started} />}</JobLink></TableCell>
       <TableCell><JobLink>{jobDocument.finished && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.finished} />}</JobLink></TableCell>
       <TableCell><JobLink>{durationHuman}</JobLink></TableCell>
-      <TableCell><JobLink>{jobDocument.status}</JobLink></TableCell>
+      <TableCell><JobLink><JobStatus jobDocument={jobDocument} /></JobLink></TableCell>
       <TableCell><JobLink>{jobDocument.type}</JobLink></TableCell>
       <TableCell><JobLink>{jobDocument.priority}</JobLink></TableCell>
     </TableRow>

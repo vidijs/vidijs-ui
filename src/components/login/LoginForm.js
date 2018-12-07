@@ -1,9 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { reduxForm, FormSection } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 
 import Field from '../ui/Field';
+import BoolCheckbox from '../ui/BoolCheckbox';
 
 const headers = () => (
   <React.Fragment>
@@ -24,6 +26,27 @@ const headers = () => (
   </React.Fragment>
 );
 
+const queryParams = () => (
+  <React.Fragment>
+    <Field
+      name="seconds"
+      label="Timeout "
+      component={TextField}
+      helperText="Seconds"
+      fullWidth
+    />
+    <FormControlLabel
+      control={(
+        <Field
+          name="autoRefresh"
+          component={BoolCheckbox}
+        />
+      )}
+      label="Remember Me"
+    />
+  </React.Fragment>
+);
+
 function LoginForm({
   error,
   handleSubmit,
@@ -35,12 +58,15 @@ function LoginForm({
         name="baseUrl"
         label="Vidspine Server"
         component={TextField}
-        disabled
         fullWidth
       />
       <FormSection
         name="headers"
         component={headers}
+      />
+      <FormSection
+        name="queryParams"
+        component={queryParams}
       />
       <button type="submit" hidden />
     </form>
