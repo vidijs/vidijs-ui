@@ -30,8 +30,10 @@ function CodeModal({
               src={code}
               theme="solarized"
               displayDataTypes={false}
-              collapsed={2}
+              collapsed={false}
+              displayObjectSize={false}
               name={false}
+              enableClipboard={copy => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
             />
           </DialogContent>
           <DialogActions>
