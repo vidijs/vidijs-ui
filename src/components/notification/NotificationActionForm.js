@@ -143,7 +143,7 @@ function ActionTypeSqs() {
   return (
     <React.Fragment>
       <Field
-        name="Queue"
+        name="queue"
         label="Queue"
         component={TextField}
         fullWidth
