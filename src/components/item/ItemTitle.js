@@ -49,10 +49,17 @@ function ItemTitle({
   startJobModal,
   ...props
 }) {
+  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const itemParams = new URLSearchParams({
+    content: 'metadata,thumbnail',
+    baseURI: `${baseUrl}/APInoauth/`,
+    terse: true,
+    'noauth-url': true,
+  });
   return (
     <TitleHeader
       parentTitle="Item"
-      parentTo="/item/?content=metadata%2Cthumbnail&baseURI=%2FAPInoauth%2F&terse=true&noauth-url=true"
+      parentTo={`/item/?${itemParams.toString()}`}
       title={itemId}
       helpTo="/ref/item/item.html"
       entityId={itemId}

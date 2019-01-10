@@ -38,7 +38,7 @@ function TitleHeader({
   code,
   titleChip,
 }) {
-  const baseUrl = localStorage.getItem('baseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl');
   const breadcrumb =
     (
       <Grid
