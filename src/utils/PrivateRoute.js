@@ -7,7 +7,9 @@ export default function PrivateRoute({
   loginPath,
   ...props
 }) {
-  const { location: { pathname: currentPath } } = window;
+  const { location: { pathname } } = window;
+  const { REACT_APP_BASENAME } = process.env;
+  const currentPath = REACT_APP_BASENAME ? `/${pathname.replace(REACT_APP_BASENAME, '')}` : pathname;
   if (currentPath === loginPath) {
     return null;
   }
