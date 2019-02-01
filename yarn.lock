@@ -977,10 +977,10 @@
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
   integrity sha512-42zEJkBpNfMEAvWR5WlwtTH22oDzcMjFsL9gDGExwF8X8WvAiw7Vwop7hPw03QT8TKfec83LwbHj6SvpqM4ELQ==
 
-"@vidijs/vidijs-api@^0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.0.8.tgz#833aaa466f50b31b8b4b0033ee513b3176734f28"
-  integrity sha512-4b96gCF+WKUBH9VBptoy7H/KtJjMfn8FnDsHghAf63hiEBEwR70jxdIp4MYskNKhWIPfwNoEztNy464/+gFEpw==
+"@vidijs/vidijs-api@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.2.tgz#d2feac14b6a3470e5edb840137fa2061b0bf897b"
+  integrity sha512-S5h3q5tlj4p8viyfo5nKVoBdyOVduh+fmHOqATg/XFTEpxBEydzx8bXpas7DWCN+xzVV+Mg8CTHcp23rxAHxdA==
 
 "@webassemblyjs/ast@1.7.6":
   version "1.7.6"

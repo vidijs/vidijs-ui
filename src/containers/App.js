@@ -21,7 +21,7 @@ const styles = {
   appFrame: {
     zIndex: 1,
     display: 'inline-block',
-    minWidth: '100vw',
+    minWidth: '100%',
   },
 };
 

@@ -1,12 +1,16 @@
 import React from 'react';
+import { shape as api } from '@vidijs/vidijs-api';
 
 import ShapeTitle from '../components/shape/ShapeTitle';
 import ShapeParams from '../components/shape/ShapeParams';
 import ShapeOverview from '../components/shape/ShapeOverview';
+import ShapeDelete from '../components/shape/ShapeDelete';
+import ShapeTranscode from '../components/shape/ShapeTranscode';
 
-import { shape as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
+const SHAPE_REMOVE_DIALOG = 'SHAPE_REMOVE_DIALOG';
+const SHAPE_TRANSCODE_DIALOG = 'SHAPE_TRANSCODE_DIALOG';
 
 class Shape extends React.PureComponent {
   constructor(props) {
@@ -58,7 +62,7 @@ class Shape extends React.PureComponent {
   }
 
   render() {
-    const { shapeId, itemId } = this.props;
+    const { shapeId, itemId, history } = this.props;
     const { shapeDocument } = this.state;
     return (
       <React.Fragment>
@@ -68,6 +72,8 @@ class Shape extends React.PureComponent {
           onRefresh={this.onRefresh}
           shapeId={shapeId}
           itemId={itemId}
+          removeModal={SHAPE_REMOVE_DIALOG}
+          transcodeModal={SHAPE_TRANSCODE_DIALOG}
         />
         <ShapeParams
           shapeId={shapeId}
@@ -79,6 +85,18 @@ class Shape extends React.PureComponent {
             shapeDocument={shapeDocument}
           />
         )}
+        <ShapeDelete
+          dialogName={SHAPE_REMOVE_DIALOG}
+          onSuccess={() => history.push(`/item/${itemId}`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeTranscode
+          dialogName={SHAPE_TRANSCODE_DIALOG}
+          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
       </React.Fragment>
     );
   }

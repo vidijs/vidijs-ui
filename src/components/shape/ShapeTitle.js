@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 import TitleHeader from '../ui/TitleHeader';
+import Menu, { MenuItem } from '../ui/Menu';
+import { withModalNoRouter } from '../../hoc/withModal';
 
 export const ShapeHeading = ({ shapeId }) => (
   <Grid container alignItems="center">
@@ -26,9 +28,12 @@ export const ShapeHeading = ({ shapeId }) => (
   </Grid>
 );
 
-export default function ShapeTitle({
+function ShapeTitle({
   itemId,
   shapeId,
+  onOpen,
+  transcodeModal,
+  removeModal,
   ...props
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl');
@@ -43,9 +48,21 @@ export default function ShapeTitle({
       grandParentTitle="Item"
       grandParentTo={`/item/?${itemParams.toString()}`}
       parentTitle={itemId}
-      parentTo={`/item/${itemId}`}
+      parentTo={`/item/${itemId}?tab=ITEM_SHAPE_TAB`}
       title={(<ShapeHeading shapeId={shapeId} />)}
+      actionComponent={(
+        <Menu>
+          <MenuItem onClick={() => onOpen({ modalName: transcodeModal })}>
+            <Typography>Transcode</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: removeModal })}>
+            <Typography color="secondary">Delete</Typography>
+          </MenuItem>
+        </Menu>
+      )}
       {...props}
     />
   );
 }
+
+export default withModalNoRouter(ShapeTitle);
