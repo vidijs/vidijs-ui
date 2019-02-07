@@ -50,6 +50,8 @@ const queryParams = () => (
 function LoginForm({
   error,
   handleSubmit,
+  onTestUrl,
+  canEditUrl,
 }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -58,6 +60,8 @@ function LoginForm({
         name="baseUrl"
         label="Vidspine Server"
         component={TextField}
+        onBlur={(event, baseUrl) => onTestUrl(baseUrl)}
+        disabled={!(canEditUrl)}
         fullWidth
       />
       <FormSection

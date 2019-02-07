@@ -8,8 +8,8 @@ import {
   LoadingIcon,
 } from '../ui/StatusIcon';
 
-const SelfTestStatus = ({ selfTestDocument, ...chipProps }) => {
-  if (selfTestDocument === undefined) {
+const SelfTestStatus = ({ selfTestDocument = {}, loading = false, ...chipProps }) => {
+  if (loading === true) {
     return (
       <Chip
         avatar={
