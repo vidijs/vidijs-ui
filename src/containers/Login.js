@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { selftest as api } from '@vidijs/vidijs-api';
+import { selftest as api, utils as apiUtils } from '@vidijs/vidijs-api';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -40,27 +40,32 @@ class Login extends React.PureComponent {
     this.onRefresh = this.onRefresh.bind(this);
     this.onRefreshError = this.onRefreshError.bind(this);
     this.onSuccess = this.onSuccess.bind(this);
+    this.onTestUrl = this.onTestUrl.bind(this);
     const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
     const { VIDISPINE_SERVER_URL, location } = window;
-    this.baseUrl = REACT_APP_USE_CORS ? undefined : location.origin;
+    this.baseUrl = REACT_APP_USE_CORS ? localStorage.getItem('vsBaseUrl') : location.origin;
     this.displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
     this.state = {
       selfTestDocument: undefined,
+      loading: false,
     };
   }
 
   componentDidMount() {
     document.title = 'vidi.js';
-    const baseUrl = localStorage.getItem('vsBaseUrl');
-    if (baseUrl) { this.onRefresh(); }
+    if (this.baseUrl) {
+      browserLogin({ baseUrl: this.baseUrl });
+      this.onRefresh();
+    }
   }
 
-  onRefresh() {
+  async onRefresh() {
     const { selfTestDocument } = this.state;
     if (selfTestDocument) { this.setState({ selfTestDocument: undefined }); }
+    await this.setState({ loading: true });
     try {
       api.listSelfTest({ noAuth: true })
-        .then(response => this.setState({ selfTestDocument: response.data }))
+        .then(response => this.setState({ selfTestDocument: response.data, loading: false }))
         .catch(error => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
@@ -69,6 +74,7 @@ class Login extends React.PureComponent {
 
   onRefreshError() {
     const { openSnackBar } = this.props;
+    this.setState({ loading: false, selfTestDocument: { status: 'failed' } });
     const messageContent = 'Error Contacting Server';
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
@@ -82,8 +88,13 @@ class Login extends React.PureComponent {
     history.push(onLogin);
   }
 
+  onTestUrl(baseUrl) {
+    browserLogin({ baseUrl });
+    this.onRefresh();
+  }
+
   render() {
-    const { selfTestDocument } = this.state;
+    const { selfTestDocument, loading } = this.state;
     const { classes } = this.props;
     const initialValues = {
       headers: { username: 'admin' },
@@ -99,12 +110,15 @@ class Login extends React.PureComponent {
         <Card elevation={0} square className={classes.card}>
           <CardHeader
             title={(
-              <Grid container alignItems="center" justify="center" direction="row">
-                <SelfTestStatus
-                  selfTestDocument={selfTestDocument}
-                  clickable
-                  onClick={this.onRefresh}
-                />
+              <Grid container alignItems="center" justify="center" direction="row" style={{ height: 35 }}>
+                {selfTestDocument && (
+                  <SelfTestStatus
+                    selfTestDocument={selfTestDocument}
+                    clickable
+                    onClick={this.onRefresh}
+                    loading={loading}
+                  />
+                )}
               </Grid>
             )}
             disableTypography
@@ -112,6 +126,8 @@ class Login extends React.PureComponent {
           <LoginCard
             initialValues={initialValues}
             onSuccess={this.onSuccess}
+            onTestUrl={this.onTestUrl}
+            canEditUrl={(process.env.REACT_APP_USE_CORS)}
           />
         </Card>
       </div>
