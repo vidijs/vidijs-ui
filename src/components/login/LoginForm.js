@@ -50,6 +50,7 @@ const queryParams = () => (
 function LoginForm({
   error,
   handleSubmit,
+  initialValues,
 }) {
   return (
     <form onSubmit={handleSubmit}>

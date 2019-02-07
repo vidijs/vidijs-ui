@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api, utils as apiUtils } from '@vidijs/vidijs-api';
 
 export function onCreate(form) {
   const { userDocument, queryParams } = form;
@@ -38,6 +38,8 @@ export function onUpdatePassword(form, dispatch, props) {
 export function onGetToken(form, dispatch, props) {
   const { headers = {}, queryParams } = form;
   const userName = props.userName || form.userName || headers.username;
+  const baseUrl = props.baseUrl || form.baseUrl;
+  if (baseUrl) { apiUtils.clientLogin({ baseUrl }); }
   return api.getToken({
     userName,
     queryParams,

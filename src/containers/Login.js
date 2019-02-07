@@ -42,8 +42,7 @@ class Login extends React.PureComponent {
     this.onSuccess = this.onSuccess.bind(this);
     const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
     const { VIDISPINE_SERVER_URL, location } = window;
-    const baseUrl = localStorage.getItem('vsBaseUrl');
-    this.baseUrl = REACT_APP_USE_CORS ? baseUrl : location.origin;
+    this.baseUrl = REACT_APP_USE_CORS ? undefined : location.origin;
     this.displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
     this.state = {
       selfTestDocument: undefined,
@@ -76,10 +75,10 @@ class Login extends React.PureComponent {
 
   onSuccess(response) {
     const { history, location } = this.props;
-    const { data: token, userName } = response;
+    const { data: token, userName, baseUrl } = response;
     const urlParams = new URLSearchParams(location.search);
     const onLogin = urlParams.get('onLogin') || '/job/';
-    browserLogin({ token, userName, baseUrl: this.baseUrl });
+    browserLogin({ token, userName, baseUrl: baseUrl || this.baseUrl });
     history.push(onLogin);
   }
 
