@@ -12,7 +12,6 @@ import ImportShapePlaceholder from './import/ImportShapePlaceholder';
 import ImportShape from './import/ImportShape';
 import ImportCollection from './import/ImportCollection';
 import ImportShapeEssence from './import/ImportShapeEssence';
-import ImportImp from './import/ImportImp';
 
 const IMPORTURI_TAB = 'IMPORTURI_TAB';
 const IMPORTPLACEHOLDER_TAB = 'IMPORTPLACEHOLDER_TAB';
@@ -23,7 +22,6 @@ const IMPORTSHAPEPLACEHOLDER_TAB = 'IMPORTSHAPEPLACEHOLDER_TAB';
 const IMPORTSHAPE_TAB = 'IMPORTSHAPE_TAB';
 const IMPORTCOLLECTION_TAB = 'IMPORTCOLLECTION_TAB';
 const IMPORTSHAPEESSENCE_TAB = 'IMPORTSHAPEESSENCE_TAB';
-const IMPORTIMP_TAB = 'IMPORTIMP_TAB';
 
 class Import extends React.PureComponent {
   render() {
@@ -46,7 +44,6 @@ class Import extends React.PureComponent {
           <Tab label="Placeholder Shape" value={IMPORTSHAPEPLACEHOLDER_TAB} />
           <Tab label="Collection" value={IMPORTCOLLECTION_TAB} />
           <Tab label="Essence" value={IMPORTSHAPEESSENCE_TAB} />
-          <Tab label="IMP" value={IMPORTIMP_TAB} />
         </Tabs>
         {tabValue === IMPORTURI_TAB && (
           <ImportUri {...tabProps} />
@@ -75,9 +72,6 @@ class Import extends React.PureComponent {
         )}
         {tabValue === IMPORTSHAPEESSENCE_TAB && (
           <ImportShapeEssence {...tabProps} />
-        )}
-        {tabValue === IMPORTIMP_TAB && (
-          <ImportImp {...tabProps} />
         )}
       </React.Fragment>
     );

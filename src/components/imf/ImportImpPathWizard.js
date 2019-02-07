@@ -12,16 +12,16 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import MetadataForm from '../metadata/MetadataForm';
 
 import SquareCard from '../ui/SquareCard';
-import ImportImpForm from './ImportImpForm';
-import ImportImpAdvancedForm from './ImportImpAdvancedForm';
-import * as formActions from '../../formactions/import';
+import ImportImpPathForm from './ImportImpPathForm';
+import ImportImpPathAdvancedForm from './ImportImpPathAdvancedForm';
+import * as formActions from '../../formactions/imf';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 import withStepper from '../../hoc/withStepper';
 
-export const EDIT_IMPORTIMP_FORM = 'EDIT_IMPORTIMP_FORM';
+export const EDIT_IMPORTIMPPATH_FORM = 'EDIT_IMPORTIMPPATH_FORM';
 
-function ImportImpWizard({
+function ImportImpPathWizard({
   initialValues,
   onSuccess,
   onFail,
@@ -49,7 +49,7 @@ function ImportImpWizard({
             color="primary"
             variant="raised"
             size="large"
-            onClick={() => submitForm(EDIT_IMPORTIMP_FORM)}
+            onClick={() => submitForm(EDIT_IMPORTIMPPATH_FORM)}
           >
             Import
           </Button>
@@ -57,16 +57,16 @@ function ImportImpWizard({
       </Grid>
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
-          <StepLabel>IMP</StepLabel>
+          <StepLabel>IMP Path</StepLabel>
           <StepContent>
             <SquareCard>
               <CardContent>
-                <ImportImpForm
-                  onSubmit={formActions.onImportImp}
+                <ImportImpPathForm
+                  onSubmit={formActions.onImportImpPath}
                   initialValues={initialValues}
                   onSubmitSuccess={onSubmitSuccess}
                   onSubmitFail={onSubmitFail}
-                  form={EDIT_IMPORTIMP_FORM}
+                  form={EDIT_IMPORTIMPPATH_FORM}
                   destroyOnUnmount={false}
                 />
               </CardContent>
@@ -88,9 +88,9 @@ function ImportImpWizard({
             <SquareCard>
               <CardContent>
                 <MetadataForm
-                  onSubmit={formActions.onImportImp}
+                  onSubmit={formActions.onImportImpPath}
                   initialValues={initialValues}
-                  form={EDIT_IMPORTIMP_FORM}
+                  form={EDIT_IMPORTIMPPATH_FORM}
                   onSubmitSuccess={onSubmitSuccess}
                   onSubmitFail={onSubmitFail}
                   destroyOnUnmount={false}
@@ -116,12 +116,12 @@ function ImportImpWizard({
           <StepContent>
             <SquareCard>
               <CardContent>
-                <ImportImpAdvancedForm
-                  onSubmit={formActions.onImportImp}
+                <ImportImpPathAdvancedForm
+                  onSubmit={formActions.onImportImpPath}
                   initialValues={initialValues}
                   onSubmitSuccess={onSubmitSuccess}
                   onSubmitFail={onSubmitFail}
-                  form={EDIT_IMPORTIMP_FORM}
+                  form={EDIT_IMPORTIMPPATH_FORM}
                   destroyOnUnmount={false}
                 />
               </CardContent>
@@ -138,4 +138,4 @@ function ImportImpWizard({
   );
 }
 
-export default compose(withStepper, withUI, withFormActions)(ImportImpWizard);
+export default compose(withStepper, withUI, withFormActions)(ImportImpPathWizard);

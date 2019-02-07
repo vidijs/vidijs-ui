@@ -11,16 +11,19 @@ import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 import JobPriority from '../../const/JobPriority';
+import FileStates from '../../const/FileStates';
 import { StatefulAsyncSelect } from '../ui/Select';
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
+import { loadStorageOptions } from '../storage/StorageSelect';
 
 
 const queryParams = () => (
   <React.Fragment>
     <Field
-      name="uri"
+      name="path"
       component={TextField}
       fullWidth
+      required
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
@@ -35,11 +38,20 @@ const queryParams = () => (
     <FormControlLabel
       control={(
         <Field
-          name="noCPLreimport"
+          name="allowReimport"
           component={BoolCheckbox}
         />
       )}
-      label="No CPL Reimport"
+      label="Allow Reimport"
+    />
+    <FormControlLabel
+      control={(
+        <Field
+          name="createOnly"
+          component={BoolCheckbox}
+        />
+      )}
+      label="Create Only"
     />
     <FormControlLabel
       control={(
@@ -69,17 +81,38 @@ const queryParams = () => (
       fullWidth
       isMulti
     />
+    <FormControl fullWidth>
+      <InputLabel htmlFor="state">State</InputLabel>
+      <Field name="state" component={Select}>
+        {FileStates.map(filestate => (
+          <MenuItem key={filestate} value={filestate}>
+            {filestate}
+          </MenuItem>
+        ))}
+      </Field>
+    </FormControl>
   </React.Fragment>
 );
 
 
-function ImportImpForm({
+function ImportImpPathForm({
   error,
   handleSubmit,
 }) {
   return (
     <form onSubmit={handleSubmit}>
       {error && <Typography color="error">{error}</Typography>}
+      <Field
+        name="storage"
+        label="Storage ID"
+        component={StatefulAsyncSelect}
+        loadOptions={loadStorageOptions}
+        cacheOptions
+        isClearable
+        required
+        fullWidth
+        disableInitial
+      />
       <FormSection
         name="queryParams"
         component={queryParams}
@@ -89,4 +122,4 @@ function ImportImpForm({
   );
 }
 
-export default reduxForm()(ImportImpForm);
+export default reduxForm()(ImportImpPathForm);

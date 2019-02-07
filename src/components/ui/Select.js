@@ -218,7 +218,11 @@ export class StatefulAsyncSelect extends React.Component {
   }
 
   render() {
-    const { input, meta, ...props } = this.props;
+    const {
+      input,
+      meta,
+      ...props
+    } = this.props;
     const {
       optionLabelKey = 'label',
       optionValueKey = 'value',
@@ -240,15 +244,15 @@ export class StatefulAsyncSelect extends React.Component {
     }
     return (
       <React.Fragment>
-        {valueOption &&
-        <Typography variant="caption">{props.label}</Typography>
-        }
+        {valueOption && (
+          <Typography variant="caption">{props.required ? `${props.label} *` : props.label}</Typography>
+        )}
         <ThisSelect
           {...props}
           {...input}
           id={input.name}
           styles={stylesOverride}
-          placeholder={props.label}
+          placeholder={props.required ? `${props.label} *` : props.label}
           getOptionLabel={getOptionLabel}
           getOptionValue={getOptionValue}
           value={valueOption}

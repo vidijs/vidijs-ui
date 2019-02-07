@@ -75,7 +75,9 @@ function FullScreenDialog({
     { value: '/import/?tab=IMPORTURI_TAB', label: 'Import URIs' },
     { value: '/import/?tab=IMPORTSHAPE_TAB', label: 'Import Shape' },
     { value: '/import/?tab=IMPORTCOMPONENT_TAB', label: 'Import Component' },
-    { value: '/import/?tab=IMPORTIMP_TAB', label: 'Import IMP' },
+    { value: '/import-imp/?tab=IMPORTIMP_URL_TAB', label: 'Import IMP URL' },
+    { value: '/import-imp/?tab=IMPORTIMP_PATH_TAB', label: 'Import IMP Path' },
+    { value: '/import-imp/?tab=IMPORTIMP_FILE_TAB', label: 'Import IMP File' },
     { value: '/vxa/', label: 'VSA Server Agents' },
     { value: '/resource/transcoder/', label: 'Transcoders' },
     { value: '/resource/thumbnail/', label: 'Thumbnail Paths' },
@@ -214,8 +216,14 @@ function FullScreenDialog({
               <ListLink to="/import/?tab=IMPORTURI_TAB" primary="URIs" />
               <ListLink to="/import/?tab=IMPORTSHAPE_TAB" primary="Shape" />
               <ListLink to="/import/?tab=IMPORTCOMPONENT_TAB" primary="Component" />
-              <ListLink to="/import/?tab=IMPORTIMP_TAB" primary="IMP" />
               <ListLink to="/import/settings/" primary="Settings" />
+            </ListGroup>
+          </Grid>
+          <Grid item {...breakPoints}>
+            <ListGroup subheader="IMF">
+              <ListLink to="/import-imp/?tab=IMPORTIMP_URL_TAB" primary="Import From URL" />
+              <ListLink to="/import-imp/?tab=IMPORTIMP_PATH_TAB" primary="Import From Path" />
+              <ListLink to="/import-imp/?tab=IMPORTIMP_File_TAB" primary="Import From File" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>

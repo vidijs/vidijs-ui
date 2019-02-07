@@ -48,21 +48,6 @@ export function onImportRawNoAuth(form) {
 }
 
 
-export function onImportImp(form) {
-  const { queryParams, metadataDocument } = form;
-  return api.createImportImp({
-    queryParams,
-    metadataDocument,
-  })
-    .catch((error) => {
-      let errorMessage = error.message;
-      if (error.response) {
-        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
-      }
-      throw new SubmissionError({ _error: errorMessage });
-    });
-}
-
 export function onImportPlaceholder(form) {
   const { queryParams, metadataDocument } = form;
   return api.createImportPlaceholder({

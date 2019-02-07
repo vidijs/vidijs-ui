@@ -5,6 +5,7 @@ import { Select } from 'redux-form-material-ui';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 
 import SimpleMetadataField from '../ui/SimpleMetadataField';
 import UploadButton from '../ui/UploadButton';
@@ -15,6 +16,12 @@ import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
   <React.Fragment>
+    <Field
+      name="filename"
+      label="Filename"
+      component={TextField}
+      fullWidth
+    />
     <Field
       name="tag"
       label="Shape Tag"

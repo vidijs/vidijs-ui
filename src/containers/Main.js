@@ -83,6 +83,7 @@ import CollectionSearch from './CollectionSearch';
 import ItemSearch from './ItemSearch';
 import ShapeSearch from './ShapeSearch';
 import FieldGroupSearch from './FieldGroupSearch';
+import ImportImp from './ImportImp';
 
 function Main() {
   return (
@@ -136,6 +137,7 @@ function Main() {
       <Route exact path="/field-group/" component={FieldGroupList} />
       <Route exact path="/field-group/:groupName" component={FieldGroup} />
       <Route exact path="/import" component={Import} />
+      <Route exact path="/import-imp" component={ImportImp} />
       <Route exact path="/file/" component={FileList} />
       <Route exact path="/file/:fileId/" component={File} />
       <Route exact path="/storage-rule/" component={StorageRuleList} />

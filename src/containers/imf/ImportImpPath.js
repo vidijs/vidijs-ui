@@ -1,22 +1,22 @@
 import React from 'react';
 
-import ImportImpCard, { EDIT_IMPORTIMP_FORM } from '../../components/import/ImportImpWizard';
+import ImportImpPathWizard, { EDIT_IMPORTIMPPATH_FORM } from '../../components/imf/ImportImpPathWizard';
 import withFormActions from '../../hoc/withFormActions';
 
-class ImportImp extends React.PureComponent {
+class ImportImpPath extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | IMP';
+    document.title = 'vidi.js | IMF | Import Path';
   }
 
   componentWillUnmount() {
     const { destroyForm } = this.props;
-    destroyForm(EDIT_IMPORTIMP_FORM);
+    destroyForm(EDIT_IMPORTIMPPATH_FORM);
   }
 
   render() {
     const { history } = this.props;
     return (
-      <ImportImpCard
+      <ImportImpPathWizard
         onSuccess={response => history.push(`/job/${response.data.jobId}`)}
       />
     );
@@ -24,4 +24,4 @@ class ImportImp extends React.PureComponent {
 }
 
 
-export default withFormActions(ImportImp);
+export default withFormActions(ImportImpPath);
