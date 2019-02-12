@@ -1,10 +1,13 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 
 import TitleHeader from '../ui/TitleHeader';
 import { OfflineIcon } from '../ui/StatusIcon';
-import { withModalNoRouter } from '../../hoc/withModal';
+import withModal from '../../hoc/withModal';
 import Menu, { MenuItem } from '../ui/Menu';
 
 const UserStatus = ({ userDocument }) => {
@@ -52,17 +55,24 @@ function UserTitle({
   realNameModal,
   tokenModal,
   passwordModal,
+  history,
   ...props
 }) {
+  const { code } = props;
   return (
     <TitleHeader
       helpTo="/ref/user.html"
       title={userName}
       parentTitle="User"
       parentTo="/user/"
-      iconList={
+      iconList={(
         <React.Fragment>
-          <UserStatus userDocument={props.code} />
+          <Tooltip title="Access Keys">
+            <IconButton onClick={() => history.push(`/user/${userName}/key`)}>
+              <VpnKeyIcon />
+            </IconButton>
+          </Tooltip>
+          <UserStatus userDocument={code} />
           <Menu>
             <MenuItem onClick={() => onOpen({ modalName: passwordModal })}>
               <Typography>Change Password</Typography>
@@ -73,19 +83,19 @@ function UserTitle({
             <MenuItem onClick={() => onOpen({ modalName: tokenModal })}>
               <Typography>Generate Token</Typography>
             </MenuItem>
-            {userName !== 'admin' &&
+            {userName !== 'admin' && (
             <DisableMenuItem
-              userDocument={props.code}
+              userDocument={code}
               onEnable={onEnable}
               onDisable={onDisable}
             />
-            }
+            )}
           </Menu>
         </React.Fragment>
-      }
+      )}
       {...props}
     />
   );
 }
 
-export default withModalNoRouter(UserTitle);
+export default withModal(UserTitle);

@@ -91,3 +91,37 @@ export function onUpdateRealName(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onCreateKey(form, dispatch, props) {
+  const { queryParams } = form;
+  const userName = props.userName || form.userName;
+  return api.createKey({
+    userName,
+    queryParams,
+  })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
+export function onUpdateKey(form, dispatch, props) {
+  const { accessKeyDocument } = form;
+  const userName = props.userName || form.userName;
+  const keyId = props.keyId || form.keyId;
+  return api.updateKey({
+    userName,
+    keyId,
+    accessKeyDocument,
+  })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
