@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { selftest as api, utils as apiUtils } from '@vidijs/vidijs-api';
+import { selftest as api } from '@vidijs/vidijs-api';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -10,9 +10,11 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
 import { browserLogin } from '../utils/browserLogin';
+import withModal from '../hoc/withModal';
 import withSnackbar from '../hoc/withSnackbar';
 import SelfTestStatus from '../components/selftest/SelfTestStatus';
 import LoginCard from '../components/login/Login';
+import InitDialog from '../components/login/InitDialog';
 import GitHubIcon from '../components/ui/GitHubIcon';
 
 const styles = {
@@ -33,6 +35,7 @@ const styles = {
   },
 };
 
+const INIT_DIALOG = 'INIT_DIALOG';
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -48,6 +51,7 @@ class Login extends React.PureComponent {
     this.state = {
       selfTestDocument: undefined,
       loading: false,
+      loadingInit: false,
     };
   }
 
@@ -60,12 +64,32 @@ class Login extends React.PureComponent {
   }
 
   async onRefresh() {
+    const { onOpen } = this.props;
     const { selfTestDocument } = this.state;
     if (selfTestDocument) { this.setState({ selfTestDocument: undefined }); }
     await this.setState({ loading: true });
     try {
       api.listSelfTest({ noAuth: true })
-        .then(response => this.setState({ selfTestDocument: response.data, loading: false }))
+        .then(({ data: selfTestDocument }) => {
+          this.setState({ selfTestDocument, loading: false });
+          const { status, test: testList = [] } = selfTestDocument;
+          let initTest;
+          if ( status === 'warning') {
+            initTest = testList.find(thisTest => {
+              const { name, test: subTestList = [] } = thisTest;
+              if (name === 'database') {
+                return subTestList.find(thisSubTest => {
+                  const { message: messageList = [] } = thisSubTest;
+                  return messageList.find(message => message.includes('did APIInit run?'))
+                })
+              }
+              return false;
+            })
+          }
+          if (initTest) {
+            onOpen({ modalName: INIT_DIALOG });
+          }
+        })
         .catch(error => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
@@ -94,7 +118,7 @@ class Login extends React.PureComponent {
   }
 
   render() {
-    const { selfTestDocument, loading } = this.state;
+    const { selfTestDocument, loading, loadingInit } = this.state;
     const { classes } = this.props;
     const initialValues = {
       headers: { username: 'admin' },
@@ -130,10 +154,16 @@ class Login extends React.PureComponent {
             canEditUrl={(process.env.REACT_APP_USE_CORS)}
           />
         </Card>
+        <InitDialog
+          dialogName={INIT_DIALOG}
+          onSuccess={this.onRefresh}
+          loadingInit={loadingInit}
+          setLoadingInit={newState => this.setState({ loadingInit: newState })}
+        />
       </div>
     );
   }
 }
 
 
-export default compose(withSnackbar, withStyles(styles))(Login);
+export default compose(withModal, withSnackbar, withStyles(styles))(Login);

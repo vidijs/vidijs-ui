@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import { metadatafield as api } from '@vidijs/vidijs-api';
 
 import Select from '../ui/Select';
-import { metadatafield as api } from '@vidijs/vidijs-api';
 
 const TRANSIENT_FIELDS = [
   { name: '__user' },
@@ -23,7 +23,8 @@ const TRANSIENT_FIELDS = [
   { name: '__sequence' },
   { name: '__sequence_size' },
   { name: '__metadata_last_modified' },
-  { name: '__external_id' },
+  { name: '____metadataFieldGroup' },
+  { name: '__externalId' },
   { name: '__child_collection' },
   { name: '__child_collection_size' },
   { name: '__parent_collection' },
