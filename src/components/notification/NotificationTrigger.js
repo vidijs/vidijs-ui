@@ -6,8 +6,9 @@ export function getJobAction(job = {}) {
   let jobTriggerAction;
   if (job === undefined) {
     return jobTriggerAction;
-  } else if ('update' in job) {
-    jobTriggerAction = 'Update';
+  }
+  if ('update' in job) {
+    jobTriggerAction = 'update';
   } else if ('stop' in job) {
     jobTriggerAction = 'stop';
   } else if ('finished' in job) {
@@ -24,7 +25,8 @@ export function getTriggerEntity(trigger) {
   let triggerEntity;
   if (trigger === undefined) {
     return triggerEntity;
-  } else if ('job' in trigger) {
+  }
+  if ('job' in trigger) {
     triggerEntity = 'job';
   } else if ('metadata' in trigger) {
     triggerEntity = 'metadata';

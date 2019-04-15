@@ -660,6 +660,7 @@ function NotificationJobTriggerType(props) {
         onChange={onChange}
         name={name}
       >
+        <MenuItem value="update">Update</MenuItem>
         <MenuItem value="create">Create</MenuItem>
         <MenuItem value="stop">Stop</MenuItem>
         <MenuItem value="finish">Finish</MenuItem>
