@@ -154,8 +154,7 @@ const MediaComponentType = ({ value = {}, title = 'Component', ...props }) => (
 
 const BaseMediaInfoType = ({ value = {} }) => (
   <React.Fragment>
-    <TypeSection
-      title="property"
+    <TypeArray
       component={KeyValuePairType}
       dense
       value={value.property}

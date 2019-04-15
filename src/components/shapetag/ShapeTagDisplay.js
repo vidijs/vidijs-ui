@@ -84,8 +84,8 @@ const RationalType = ({ value = {} }) => (
       hideNoValue
     />
     <TextGrid
-      title="numerator"
-      value={value.numerator}
+      title="denominator"
+      value={value.denominator}
       hover
       hideNoValue
     />
