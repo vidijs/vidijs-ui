@@ -18,7 +18,7 @@ const TaskDefinitionDependency = () => (
   <React.Fragment>
     <Field
       name="step"
-      variant="number"
+      type="number"
       component={TextField}
       fullWidth
     />

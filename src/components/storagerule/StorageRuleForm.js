@@ -69,7 +69,7 @@ const StorageRulePriorityType = () => (
   <React.Fragment>
     <Field
       name="level"
-      variant="number"
+      type="number"
       component={TextField}
       fullWidth
     />
@@ -96,7 +96,7 @@ const StorageRuleType = () => (
   <React.Fragment>
     <Field
       name="storageCount"
-      variant="number"
+      type="number"
       component={TextField}
       fullWidth
     />

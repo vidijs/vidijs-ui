@@ -28,7 +28,7 @@ const StorageFileSequenceType = () => (
       name="numGroup"
       label="numGroup"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
   </React.Fragment>
@@ -132,7 +132,7 @@ const StorageSection = () => (
       name="scanInterval"
       label="scanInterval"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <FormControlLabel
@@ -157,7 +157,7 @@ const StorageSection = () => (
       name="capacity"
       label="capacity"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
@@ -248,14 +248,14 @@ const AdvancedSection = () => (
       name="freeCapacity"
       label="freeCapacity"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="bandwidth"
       label="bandwidth"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
@@ -269,28 +269,28 @@ const AdvancedSection = () => (
       name="lowWatermark"
       label="lowWatermark"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="highWatermark"
       label="highWatermark"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="lowWatermarkPercentage"
       label="lowWatermarkPercentage"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="lowWatermarkPercentage"
       label="lowWatermarkPercentage"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
@@ -309,7 +309,7 @@ const AdvancedSection = () => (
       name="sequenceTimeout"
       label="sequenceTimeout"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <FieldTypeArray

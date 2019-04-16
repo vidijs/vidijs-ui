@@ -24,14 +24,14 @@ const TranscoderConfigurationType = () => (
       name="encoderThreads"
       label="encoderThreads"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="decoderOfferThreads"
       label="decoderOfferThreads"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field

@@ -24,14 +24,14 @@ export const MetadataFieldFloatType = () => (
       name="minInclusive"
       label="minInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="maxInclusive"
       label="maxInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
   </React.Fragment>
@@ -43,14 +43,14 @@ export const MetadataFieldIntegerType = () => (
       name="minInclusive"
       label="minInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="maxInclusive"
       label="maxInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
   </React.Fragment>
@@ -62,14 +62,14 @@ export const MetadataFieldLongType = () => (
       name="minInclusive"
       label="minInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="maxInclusive"
       label="maxInclusive"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
   </React.Fragment>
@@ -81,14 +81,14 @@ export const MetadataFieldStringType = () => (
       name="minLength"
       label="minLength"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="maxLength"
       label="maxLength"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
@@ -116,14 +116,14 @@ export const MetadataSchemaElementType = () => (
       name="min"
       label="min"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
       name="max"
       label="max"
       component={TextField}
-      variant="number"
+      type="number"
       fullWidth
     />
     <Field
