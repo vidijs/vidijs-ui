@@ -16,6 +16,7 @@ import LibraryTitle from '../components/library/LibraryTitle';
 import LibraryRemove from '../components/library/LibraryRemove';
 import LibraryUpdate from '../components/library/LibraryUpdate';
 import LibraryItemMetadata from '../components/library/LibraryItemMetadata';
+import AccessControlDialog from '../components/access/AccessControlDialog';
 
 const LIBRARY_SETTINGS_TAB = 'LIBRARY_SETTINGS_TAB';
 const LIBRARY_CONTENT_TAB = 'LIBRARY_CONTENT_TAB';
@@ -26,6 +27,7 @@ const STORAGERULE_TAB = 'STORAGERULE_TAB';
 const LIBRARY_REMOVE_DIALOG = 'LIBRARY_REMOVE_DIALOG';
 const LIBRARY_UPDATE_DIALOG = 'LIBRARY_UPDATE_DIALOG';
 const LIBRARY_ITEM_METADATA_DIALOG = 'LIBRARY_ITEM_METADATA_DIALOG';
+const LIBRARY_ACCESSCONTROL_ADD_DIALOG = 'LIBRARY_ACCESSCONTROL_ADD_DIALOG';
 
 class Library extends React.PureComponent {
   componentDidMount() {
@@ -46,6 +48,7 @@ class Library extends React.PureComponent {
         removeModal={LIBRARY_REMOVE_DIALOG}
         updateModal={LIBRARY_UPDATE_DIALOG}
         itemMetadataModal={LIBRARY_ITEM_METADATA_DIALOG}
+        addAccessControl={LIBRARY_ACCESSCONTROL_ADD_DIALOG}
         {...props}
       />
     );
@@ -116,6 +119,11 @@ class Library extends React.PureComponent {
         <LibraryItemMetadata
           dialogName={LIBRARY_ITEM_METADATA_DIALOG}
           libraryId={libraryId}
+        />
+        <AccessControlDialog
+          dialogName={LIBRARY_ACCESSCONTROL_ADD_DIALOG}
+          entityType="library"
+          entityId={libraryId}
         />
       </React.Fragment>
     );

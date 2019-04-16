@@ -15,6 +15,7 @@ import StorageRule from './StorageRule';
 
 import TitleHeader from '../components/ui/TitleHeader';
 import CollectionRemove from '../components/collection/CollectionRemove';
+import AccessControlDialog from '../components/access/AccessControlDialog';
 
 const COLLECTION_METADATA_TAB = 'COLLECTION_METADATA_TAB';
 const COLLECTION_COLLECTION_TAB = 'COLLECTION_COLLECTION_TAB';
@@ -23,6 +24,7 @@ const ACCESS_TAB = 'ACCESS_TAB';
 const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
 const COLLECTION_REMOVE_DIALOG = 'COLLECTION_REMOVE_DIALOG';
+const COLLECTION_ACCESSCONTROL_ADD_DIALOG = 'COLLECTION_ACCESSCONTROL_ADD_DIALOG';
 
 class Collection extends React.PureComponent {
   componentDidMount() {
@@ -46,6 +48,7 @@ class Collection extends React.PureComponent {
         helpTo="/ref/collection.html"
         entityId={collectionId}
         entityType="collection"
+        addAccessControl={COLLECTION_ACCESSCONTROL_ADD_DIALOG}
         {...props}
       />
     );
@@ -116,6 +119,11 @@ class Collection extends React.PureComponent {
           dialogName={COLLECTION_REMOVE_DIALOG}
           onSuccess={() => history.push('/collection/')}
           collectionId={collectionId}
+        />
+        <AccessControlDialog
+          dialogName={COLLECTION_ACCESSCONTROL_ADD_DIALOG}
+          entityType="collection"
+          entityId={collectionId}
         />
       </React.Fragment>
     );

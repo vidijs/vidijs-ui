@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteForever from '@material-ui/icons/DeleteForever';
+import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import ExternalIdLink from '../externalid/ExternalIdLink';
 
 import withUI from '../../hoc/withUI';
@@ -37,6 +38,7 @@ function TitleHeader({
   removeModal,
   code,
   titleChip,
+  addAccessControl,
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl');
   const breadcrumb =
@@ -163,6 +165,13 @@ function TitleHeader({
   const openExternalId = entityId && (
     <ExternalIdLink entityId={entityId} entityType={entityType} />
   );
+  const openAddAccess = addAccessControl && (
+    <Tooltip title="Add ACL">
+      <IconButton onClick={() => openModal({ modalName: addAccessControl })}>
+        <AccessibilityIcon />
+      </IconButton>
+    </Tooltip>
+  );
   const action = actionComponent || defaultAction;
   return (
     <React.Fragment>
@@ -184,6 +193,7 @@ function TitleHeader({
           >
             {openRemove}
             {openHelp}
+            {openAddAccess}
             {openExternalId}
             {openCodeComponent}
             {refeshAction}

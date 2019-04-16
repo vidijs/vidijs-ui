@@ -33,6 +33,7 @@ export const AccessControlShapeType = () => (
     label="Shape Tag"
     component={StatefulAsyncSelect}
     loadOptions={loadShapeTagOptions}
+    creatable
     cacheOptions
     isClearable
   />
@@ -54,11 +55,12 @@ const AccessControlType = () => (
       name="priority"
       component={TextField}
       label="Priority"
+      type="number"
       fullWidth
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="permission">Permission</InputLabel>
-      <Field name="permission" component={Select} >
+      <Field name="permission" component={Select}>
         <MenuItem value="READ">Read</MenuItem>
         <MenuItem value="WRITE">Write</MenuItem>
         <MenuItem value="ALL">All</MenuItem>
@@ -73,12 +75,12 @@ const AccessControlType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="recursive"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Recursive"
     />
   </React.Fragment>
@@ -86,12 +88,12 @@ const AccessControlType = () => (
 
 const AccessControlQueryParams = () => (
   <FormControlLabel
-    control={
+    control={(
       <Field
         name="allowDuplicate"
         component={BoolCheckbox}
       />
-    }
+    )}
     label="Allow Duplicate"
   />
 );
@@ -130,6 +132,36 @@ function AccessControlForm({
       >
         <MenuItem value="user">User</MenuItem>
         <MenuItem value="group">Group</MenuItem>
+      </Field>
+      <Field
+        name="accessControlDocument.operation"
+        component={DynamicSelect}
+        label="Operation"
+        fullWidth
+        choices={{
+          metadata: (
+            <FormSection
+              name="accessControlDocument.operation.metadata"
+              component={AccessControlMetadataType}
+            />
+          ),
+          shape: (
+            <FormSection
+              name="accessControlDocument.operation.shape"
+              component={AccessControlShapeType}
+            />
+          ),
+          uri: (
+            <FormSection
+              name="accessControlDocument.operation.uri"
+              component={AccessControlUriType}
+            />
+          ),
+        }}
+      >
+        <MenuItem value="metadata">Metadata</MenuItem>
+        <MenuItem value="shape">Shape</MenuItem>
+        <MenuItem value="uri">URI</MenuItem>
       </Field>
       <FormSection
         name="accessControlDocument"

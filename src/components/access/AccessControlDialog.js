@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { submit } from 'redux-form';
+import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,14 +9,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import AccessControlForm from './AccessControlForm';
 import * as formActions from '../../formactions/access';
-import * as actions from '../../actions';
+import withFormActions from '../../hoc/withFormActions';
+import withUI from '../../hoc/withUI';
 
 const EDIT_ACCESSCONTROL_FORM = 'EDIT_ACCESSCONTROL_FORM';
 
 function AccessControlDialog({
   submitForm,
-  closeModal,
-  isOpen,
+  onClose,
+  open,
   onRefresh,
   openSnackBar,
   entityType,
@@ -27,7 +27,7 @@ function AccessControlDialog({
     const messageContent = 'Access Control Created';
     openSnackBar({ messageContent });
     if (onRefresh) { onRefresh(); }
-    closeModal();
+    onClose();
   };
   const onSubmitFail = () => {
     const messageContent = 'Error Creating Access Control';
@@ -39,7 +39,7 @@ function AccessControlDialog({
     },
   };
   return (
-    <Dialog open={isOpen} onClose={closeModal} fullWidth maxWidth={false}>
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth={false}>
       <DialogTitle>Create Access Control</DialogTitle>
       <DialogContent>
         <AccessControlForm
@@ -57,7 +57,7 @@ function AccessControlDialog({
         <Button
           size="small"
           color="secondary"
-          onClick={closeModal}
+          onClick={onClose}
         >
           Close
         </Button>
@@ -73,9 +73,4 @@ function AccessControlDialog({
   );
 }
 
-const mapDispatchToProps = {
-  submitForm: submit,
-  openSnackBar: actions.ui.openSnackBar,
-};
-
-export default connect(null, mapDispatchToProps)(AccessControlDialog);
+export default compose(withUI, withFormActions)(AccessControlDialog);

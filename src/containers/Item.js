@@ -28,6 +28,7 @@ import ItemExport from '../components/item/ItemExport';
 import ItemImpExport from '../components/item/ItemImpExport';
 import CollectionEntityAdd from '../components/collection/CollectionEntityAdd';
 import JobCreate from '../components/job/JobCreate';
+import AccessControlDialog from '../components/access/AccessControlDialog';
 
 const ITEM_METADATA_TAB = 'ITEM_METADATA_TAB';
 const ITEM_COLLECTION_TAB = 'ITEM_COLLECTION_TAB';
@@ -50,6 +51,7 @@ const ITEM_EXPORT_DIALOG = 'ITEM_EXPORT_DIALOG';
 const ITEM_IMPEXPORT_DIALOG = 'ITEM_IMPEXPORT_DIALOG';
 const COLLECTION_ENTITY_ADD_DIALOG = 'COLLECTION_ENTITY_ADD_DIALOG';
 const JOB_CREATE_DIALOG = 'JOB_CREATE_DIALOG';
+const ITEM_ACCESSCONTROL_ADD_DIALOG = 'ITEM_ACCESSCONTROL_ADD_DIALOG';
 
 class Item extends React.PureComponent {
   componentDidMount() {
@@ -75,6 +77,7 @@ class Item extends React.PureComponent {
         exportImpModal={ITEM_IMPEXPORT_DIALOG}
         addToCollectionModal={COLLECTION_ENTITY_ADD_DIALOG}
         startJobModal={JOB_CREATE_DIALOG}
+        addAccessControl={ITEM_ACCESSCONTROL_ADD_DIALOG}
         {...props}
       />
     );
@@ -225,6 +228,11 @@ class Item extends React.PureComponent {
           dialogName={COLLECTION_ENTITY_ADD_DIALOG}
           entityId={itemId}
           entityType="item"
+        />
+        <AccessControlDialog
+          dialogName={ITEM_ACCESSCONTROL_ADD_DIALOG}
+          entityType="item"
+          entityId={itemId}
         />
         <JobCreate
           dialogName={JOB_CREATE_DIALOG}

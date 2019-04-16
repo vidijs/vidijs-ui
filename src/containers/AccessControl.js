@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { access as api } from '@vidijs/vidijs-api';
 
 import AccessControlList from '../components/access/AccessControlList';
 import AccessControlRemove from '../components/access/AccessControlRemove';
 import AccessControlDialog from '../components/access/AccessControlDialog';
 
 import * as actions from '../actions';
-import { access as api } from '@vidijs/vidijs-api';
 
 const ACCESSCONTROL_REMOVE_MODAL = 'ACCESSCONTROL_REMOVE_MODAL';
 const ACCESSCONTROL_CREATE_MODAL = 'ACCESSCONTROL_CREATE_MODAL';
