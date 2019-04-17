@@ -1,7 +1,6 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { compose } from 'redux';
+import List from '@material-ui/core/List';
 
 import withTabs from '../hoc/withTabs';
 import { withRouterProps } from '../hoc/withRouterProps';
@@ -17,6 +16,8 @@ import LibraryRemove from '../components/library/LibraryRemove';
 import LibraryUpdate from '../components/library/LibraryUpdate';
 import LibraryItemMetadata from '../components/library/LibraryItemMetadata';
 import AccessControlDialog from '../components/access/AccessControlDialog';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
 
 const LIBRARY_SETTINGS_TAB = 'LIBRARY_SETTINGS_TAB';
 const LIBRARY_CONTENT_TAB = 'LIBRARY_CONTENT_TAB';
@@ -28,6 +29,29 @@ const LIBRARY_REMOVE_DIALOG = 'LIBRARY_REMOVE_DIALOG';
 const LIBRARY_UPDATE_DIALOG = 'LIBRARY_UPDATE_DIALOG';
 const LIBRARY_ITEM_METADATA_DIALOG = 'LIBRARY_ITEM_METADATA_DIALOG';
 const LIBRARY_ACCESSCONTROL_ADD_DIALOG = 'LIBRARY_ACCESSCONTROL_ADD_DIALOG';
+
+const TAB_TITLE = [
+  { tab: LIBRARY_SETTINGS_TAB, listText: 'Settings', component: LibrarySettings },
+  { tab: LIBRARY_CONTENT_TAB, listText: 'Content', component: LibraryContent },
+  { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
+  { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
+  { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
+];
+
+const listComponent = ({ onChangeTab, tabValue }) => (
+  <List>
+    {TAB_TITLE.map(({ tab, listText }) => (
+      <DrawerListItem
+        listText={listText}
+        listItemProps={{
+          onClick: () => onChangeTab(null, tab),
+          selected: tabValue === tab || undefined,
+        }}
+      />
+    ))}
+  </List>
+);
+
 
 class Library extends React.PureComponent {
   componentDidMount() {
@@ -42,6 +66,8 @@ class Library extends React.PureComponent {
       libraryId,
       history,
     } = this.props;
+    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const { listText, component: mainComponent } = tabInfo;
     const titleComponent = props => (
       <LibraryTitle
         libraryId={libraryId}
@@ -49,64 +75,23 @@ class Library extends React.PureComponent {
         updateModal={LIBRARY_UPDATE_DIALOG}
         itemMetadataModal={LIBRARY_ITEM_METADATA_DIALOG}
         addAccessControl={LIBRARY_ACCESSCONTROL_ADD_DIALOG}
+        title={listText}
         {...props}
       />
     );
-    const tabComponent = () => (
-      <Tabs
-        value={tabValue}
-        onChange={onChangeTab}
-        indicatorColor="primary"
-        textColor="primary"
-        fullWidth
-      >
-        <Tab label="Settings" value={LIBRARY_SETTINGS_TAB} />
-        <Tab label="Content" value={LIBRARY_CONTENT_TAB} />
-        <Tab label="Direct Access" value={ACCESS_TAB} />
-        <Tab label="Merged Access" value={ACCESSMERGED_TAB} />
-        <Tab label="Storage Rules" value={STORAGERULE_TAB} />
-      </Tabs>
-    );
     return (
       <React.Fragment>
-        {tabValue === LIBRARY_SETTINGS_TAB && (
-          <LibrarySettings
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            libraryId={libraryId}
-          />
-        )}
-        {tabValue === LIBRARY_CONTENT_TAB && (
-          <LibraryContent
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            libraryId={libraryId}
-          />
-        )}
-        {tabValue === ACCESS_TAB && (
-          <AccessControl
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={libraryId}
-            entityType="library"
-          />
-        )}
-        {tabValue === ACCESSMERGED_TAB && (
-          <AccessControlMerged
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={libraryId}
-            entityType="library"
-          />
-        )}
-        {tabValue === STORAGERULE_TAB && (
-          <StorageRule
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={libraryId}
-            entityType="library"
-          />
-        )}
+        <DrawerContainer
+          mainComponent={mainComponent}
+          listComponent={listComponent}
+          defaultOpen
+          onChangeTab={onChangeTab}
+          tabValue={tabValue}
+          titleComponent={titleComponent}
+          libraryId={libraryId}
+          entityId={libraryId}
+          entityType="library"
+        />
         <LibraryUpdate
           dialogName={LIBRARY_UPDATE_DIALOG}
           libraryId={libraryId}

@@ -13,10 +13,11 @@ class ImportShape extends React.PureComponent {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, ...props } = this.props;
     return (
       <ImportShapeWizard
         onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        {...props}
       />
     );
   }

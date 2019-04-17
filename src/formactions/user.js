@@ -37,13 +37,14 @@ export function onUpdatePassword(form, dispatch, props) {
 
 export function onGetToken(form, dispatch, props) {
   const { headers = {}, queryParams } = form;
+  const { runAs, ...headerProps } = headers;
   const userName = props.userName || form.userName || headers.username;
   return api.getToken({
     userName,
     queryParams,
-    headers,
+    headers: headerProps,
   })
-    .then(response => ({ ...response, userName }))
+    .then(response => ({ ...response, userName, runAs }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

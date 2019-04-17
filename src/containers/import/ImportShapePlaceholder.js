@@ -14,7 +14,7 @@ class ImportShapePlaceholder extends React.PureComponent {
 
   render() {
     return (
-      <ImportShapePlaceholderWizard />
+      <ImportShapePlaceholderWizard {...this.props} />
     );
   }
 }

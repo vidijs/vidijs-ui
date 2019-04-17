@@ -88,7 +88,14 @@ import UserKey from './UserKey';
 
 function Main() {
   return (
-    <main style={{ backgroundColor: grey[200], marginLeft: '10px', marginRight: '10px' }}>
+    <main
+      style={{
+        backgroundColor: grey[200],
+        marginLeft: '10px',
+        marginRight: '10px',
+        marginTop: 48,
+      }}
+    >
       <Route exact path="/" component={JobList} />
       <Route exact path="/collection/" component={CollectionSearch} />
       <Route path="/collection/:collectionId/" component={Collection} />

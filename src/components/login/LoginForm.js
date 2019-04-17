@@ -13,6 +13,7 @@ const headers = () => (
       name="username"
       label="Username"
       component={TextField}
+      required
       fullWidth
     />
     <Field
@@ -20,8 +21,15 @@ const headers = () => (
       label="Password"
       type="password"
       component={TextField}
+      required
       fullWidth
       autoFocus
+    />
+    <Field
+      name="runAs"
+      label="Login As User"
+      component={TextField}
+      fullWidth
     />
   </React.Fragment>
 );

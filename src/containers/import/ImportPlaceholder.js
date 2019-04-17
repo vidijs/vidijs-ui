@@ -13,10 +13,11 @@ class ImportPlaceholder extends React.PureComponent {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, ...props } = this.props;
     return (
       <ImportPlaceholderWizard
         onSuccess={response => history.push(`/item/${response.data.id}`)}
+        {...props}
       />
     );
   }

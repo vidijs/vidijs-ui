@@ -19,6 +19,10 @@ const history = createHistory();
 const store = configureStore({ history });
 
 const token = localStorage.getItem('vsUserToken');
+const runAs = localStorage.getItem('vsRunAs');
+if (runAs) {
+  api.defaultClient.defaults.headers.RunAs = runAs;
+}
 const baseUrl = localStorage.getItem('vsBaseUrl');
 api.clientLogin({ token, baseUrl });
 browserLogoutOn401(() => history.push('/login/'));

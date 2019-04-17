@@ -3,7 +3,6 @@ import { compose } from 'redux';
 
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -18,6 +17,7 @@ import * as formActions from '../../formactions/imf';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 import withStepper from '../../hoc/withStepper';
+import TitleHeader from '../ui/TitleHeader';
 
 export const EDIT_IMPORTIMPFILE_FORM = 'EDIT_IMPORTIMPFILE_FORM';
 
@@ -43,18 +43,22 @@ function ImportImpFileWizard({
   };
   return (
     <React.Fragment>
-      <Grid container justify="flex-end">
-        <Grid item>
+      <TitleHeader
+        grandParentTitle="Import"
+        parentTitle="IMF"
+        title="File"
+        style={{ paddingTop: 10, paddingBottom: 10 }}
+        actionComponent={(
           <Button
             color="primary"
             variant="raised"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTIMPFILE_FORM)}
           >
-            Import
+            Start
           </Button>
-        </Grid>
-      </Grid>
+        )}
+      />
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
           <StepLabel>IMP File</StepLabel>

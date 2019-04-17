@@ -1,7 +1,6 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { compose } from 'redux';
+import List from '@material-ui/core/List';
 
 import withTabs from '../hoc/withTabs';
 import { withRouterProps } from '../hoc/withRouterProps';
@@ -29,6 +28,8 @@ import ItemImpExport from '../components/item/ItemImpExport';
 import CollectionEntityAdd from '../components/collection/CollectionEntityAdd';
 import JobCreate from '../components/job/JobCreate';
 import AccessControlDialog from '../components/access/AccessControlDialog';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
 
 const ITEM_METADATA_TAB = 'ITEM_METADATA_TAB';
 const ITEM_COLLECTION_TAB = 'ITEM_COLLECTION_TAB';
@@ -53,6 +54,36 @@ const COLLECTION_ENTITY_ADD_DIALOG = 'COLLECTION_ENTITY_ADD_DIALOG';
 const JOB_CREATE_DIALOG = 'JOB_CREATE_DIALOG';
 const ITEM_ACCESSCONTROL_ADD_DIALOG = 'ITEM_ACCESSCONTROL_ADD_DIALOG';
 
+const TAB_TITLE = [
+  { tab: ITEM_METADATA_TAB, listText: 'Metadata', component: ItemMetadata },
+  { tab: ITEM_CONTENT_TAB, listText: 'Content', component: ItemContent },
+  { tab: ITEM_COLLECTION_TAB, listText: 'Collection', component: ItemCollection },
+  { tab: ITEM_SHAPE_TAB, listText: 'Shape', component: ItemShape },
+  { tab: ITEM_URI_TAB, listText: 'URI', component: ItemUri },
+  { tab: ITEM_THUMBNAIL_TAB, listText: 'Thumbnail', component: ItemThumbnail },
+  { tab: ITEM_POSTER_TAB, listText: 'Poster', component: ItemPoster },
+  { tab: ITEM_JOB_TAB, listText: 'Job', component: ItemJob },
+  { tab: ITEM_PROJECTION_TAB, listText: 'Projection', component: ItemProjection },
+  { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
+  { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
+  { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
+];
+
+
+const listComponent = ({ onChangeTab, tabValue }) => (
+  <List>
+    {TAB_TITLE.map(({ tab, listText }) => (
+      <DrawerListItem
+        listText={listText}
+        listItemProps={{
+          onClick: () => onChangeTab(null, tab),
+          selected: tabValue === tab || undefined,
+        }}
+      />
+    ))}
+  </List>
+);
+
 class Item extends React.PureComponent {
   componentDidMount() {
     const { itemId } = this.props;
@@ -66,6 +97,8 @@ class Item extends React.PureComponent {
       itemId,
       history,
     } = this.props;
+    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const { listText, component: mainComponent } = tabInfo;
     const titleComponent = props => (
       <ItemTitle
         itemId={itemId}
@@ -78,120 +111,23 @@ class Item extends React.PureComponent {
         addToCollectionModal={COLLECTION_ENTITY_ADD_DIALOG}
         startJobModal={JOB_CREATE_DIALOG}
         addAccessControl={ITEM_ACCESSCONTROL_ADD_DIALOG}
+        title={listText}
         {...props}
       />
     );
-    const tabComponent = () => (
-      <Tabs
-        value={tabValue}
-        onChange={onChangeTab}
-        indicatorColor="primary"
-        textColor="primary"
-        fullWidth
-      >
-        <Tab label="Metadata" value={ITEM_METADATA_TAB} />
-        <Tab label="Content" value={ITEM_CONTENT_TAB} />
-        <Tab label="Collection" value={ITEM_COLLECTION_TAB} />
-        <Tab label="Shape" value={ITEM_SHAPE_TAB} />
-        <Tab label="URI" value={ITEM_URI_TAB} />
-        <Tab label="Thumbnail" value={ITEM_THUMBNAIL_TAB} />
-        <Tab label="Poster" value={ITEM_POSTER_TAB} />
-        <Tab label="Job" value={ITEM_JOB_TAB} />
-        <Tab label="Projection" value={ITEM_PROJECTION_TAB} />
-        <Tab label="Direct Access" value={ACCESS_TAB} />
-        <Tab label="Merged Access" value={ACCESSMERGED_TAB} />
-        <Tab label="Storage Rules" value={STORAGERULE_TAB} />
-      </Tabs>
-    );
     return (
       <React.Fragment>
-        {tabValue === ITEM_METADATA_TAB && (
-          <ItemMetadata
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_CONTENT_TAB && (
-          <ItemContent
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_COLLECTION_TAB && (
-          <ItemCollection
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_SHAPE_TAB && (
-          <ItemShape
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_URI_TAB && (
-          <ItemUri
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_JOB_TAB && (
-          <ItemJob
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_PROJECTION_TAB && (
-          <ItemProjection
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_THUMBNAIL_TAB && (
-          <ItemThumbnail
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ITEM_POSTER_TAB && (
-          <ItemPoster
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            itemId={itemId}
-          />
-        )}
-        {tabValue === ACCESS_TAB && (
-          <AccessControl
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={itemId}
-            entityType="item"
-          />
-        )}
-        {tabValue === ACCESSMERGED_TAB && (
-          <AccessControlMerged
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={itemId}
-            entityType="item"
-          />
-        )}
-        {tabValue === STORAGERULE_TAB && (
-          <StorageRule
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={itemId}
-            entityType="item"
-          />
-        )}
+        <DrawerContainer
+          mainComponent={mainComponent}
+          listComponent={listComponent}
+          defaultOpen
+          onChangeTab={onChangeTab}
+          tabValue={tabValue}
+          titleComponent={titleComponent}
+          itemId={itemId}
+          entityId={itemId}
+          entityType="item"
+        />
         <ItemDelete
           dialogName={ITEM_REMOVE_DIALOG}
           onSuccess={() => history.push('/item/?content=metadata%2Cthumbnail&baseURI=%2FAPInoauth%2F&terse=true&noauth-url=true')}

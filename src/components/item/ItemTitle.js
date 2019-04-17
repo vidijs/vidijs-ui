@@ -47,6 +47,7 @@ function ItemTitle({
   exportImpModal,
   addToCollectionModal,
   startJobModal,
+  title,
   ...props
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl');
@@ -58,9 +59,10 @@ function ItemTitle({
   });
   return (
     <TitleHeader
-      parentTitle="Item"
-      parentTo={`/item/?${itemParams.toString()}`}
-      title={itemId}
+      grandParentTitle="Item"
+      grandParentTo={`/item/?${itemParams.toString()}`}
+      parentTitle={itemId}
+      title={title}
       helpTo="/ref/item/item.html"
       entityId={itemId}
       entityType="item"

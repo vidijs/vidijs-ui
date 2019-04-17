@@ -3,7 +3,6 @@ import { compose } from 'redux';
 
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -18,6 +17,7 @@ import * as formActions from '../../formactions/shape';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 import withStepper from '../../hoc/withStepper';
+import TitleHeader from '../ui/TitleHeader';
 
 export const EDIT_IMPORTSHAPEPLACEHOLDER_FORM = 'EDIT_IMPORTSHAPEPLACEHOLDER_FORM';
 
@@ -50,18 +50,21 @@ function ImportShapePlaceholderWizard({
   };
   return (
     <React.Fragment>
-      <Grid container justify="flex-end">
-        <Grid item>
+      <TitleHeader
+        parentTitle="Import"
+        title="Placeholder Shape"
+        style={{ paddingTop: 10, paddingBottom: 10 }}
+        actionComponent={(
           <Button
             color="primary"
             variant="raised"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTSHAPEPLACEHOLDER_FORM)}
           >
-            Import
+            Create
           </Button>
-        </Grid>
-      </Grid>
+        )}
+      />
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
           <StepLabel>Placeholder Shape</StepLabel>

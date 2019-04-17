@@ -1,6 +1,5 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import List from '@material-ui/core/List';
 
 import withTabs from '../hoc/withTabs';
 import ImportUri from './import/ImportUri';
@@ -12,6 +11,8 @@ import ImportShapePlaceholder from './import/ImportShapePlaceholder';
 import ImportShape from './import/ImportShape';
 import ImportCollection from './import/ImportCollection';
 import ImportShapeEssence from './import/ImportShapeEssence';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
 
 const IMPORTURI_TAB = 'IMPORTURI_TAB';
 const IMPORTPLACEHOLDER_TAB = 'IMPORTPLACEHOLDER_TAB';
@@ -23,57 +24,47 @@ const IMPORTSHAPE_TAB = 'IMPORTSHAPE_TAB';
 const IMPORTCOLLECTION_TAB = 'IMPORTCOLLECTION_TAB';
 const IMPORTSHAPEESSENCE_TAB = 'IMPORTSHAPEESSENCE_TAB';
 
+const TAB_TITLE = [
+  { tab: IMPORTURI_TAB, listText: 'URI', component: ImportUri },
+  { tab: IMPORTPLACEHOLDER_TAB, listText: 'Placeholder Item', component: ImportPlaceholder },
+  { tab: IMPORTCOMPONENT_TAB, listText: 'Component', component: ImportComponent },
+  { tab: IMPORTRAW_TAB, listText: 'Upload', component: ImportRaw },
+  { tab: IMPORTFILE_TAB, listText: 'File', component: ImportFile },
+  { tab: IMPORTSHAPEPLACEHOLDER_TAB, listText: 'Placeholder Shape', component: ImportShapePlaceholder },
+  { tab: IMPORTSHAPE_TAB, listText: 'Shape', component: ImportShape },
+  { tab: IMPORTCOLLECTION_TAB, listText: 'Collection', component: ImportCollection },
+  { tab: IMPORTSHAPEESSENCE_TAB, listText: 'Essence', component: ImportShapeEssence },
+];
+
+const listComponent = ({ onChangeTab, tabValue }) => (
+  <List>
+    {TAB_TITLE.map(({ tab, listText }) => (
+      <DrawerListItem
+        listText={listText}
+        listItemProps={{
+          onClick: () => onChangeTab(null, tab),
+          selected: tabValue === tab || undefined,
+        }}
+      />
+    ))}
+  </List>
+);
+
 class Import extends React.PureComponent {
   render() {
     const { tabValue, onChangeTab, ...tabProps } = this.props;
+    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const { listText, component: mainComponent } = tabInfo;
     return (
-      <React.Fragment>
-        <Tabs
-          value={tabValue}
-          onChange={onChangeTab}
-          indicatorColor="primary"
-          textColor="primary"
-          scrollable
-        >
-          <Tab label="URI" value={IMPORTURI_TAB} />
-          <Tab label="Placeholder Item" value={IMPORTPLACEHOLDER_TAB} />
-          <Tab label="Shape" value={IMPORTSHAPE_TAB} />
-          <Tab label="Component" value={IMPORTCOMPONENT_TAB} />
-          <Tab label="Upload" value={IMPORTRAW_TAB} />
-          <Tab label="File" value={IMPORTFILE_TAB} />
-          <Tab label="Placeholder Shape" value={IMPORTSHAPEPLACEHOLDER_TAB} />
-          <Tab label="Collection" value={IMPORTCOLLECTION_TAB} />
-          <Tab label="Essence" value={IMPORTSHAPEESSENCE_TAB} />
-        </Tabs>
-        {tabValue === IMPORTURI_TAB && (
-          <ImportUri {...tabProps} />
-        )}
-        {tabValue === IMPORTPLACEHOLDER_TAB && (
-          <ImportPlaceholder {...tabProps} />
-        )}
-        {tabValue === IMPORTCOMPONENT_TAB && (
-          <ImportComponent {...tabProps} />
-        )}
-        {tabValue === IMPORTRAW_TAB && (
-          <ImportRaw {...tabProps} />
-        )}
-
-        {tabValue === IMPORTFILE_TAB && (
-          <ImportFile {...tabProps} />
-        )}
-        {tabValue === IMPORTSHAPEPLACEHOLDER_TAB && (
-          <ImportShapePlaceholder {...tabProps} />
-        )}
-        {tabValue === IMPORTSHAPE_TAB && (
-          <ImportShape {...tabProps} />
-        )}
-        {tabValue === IMPORTCOLLECTION_TAB && (
-          <ImportCollection {...tabProps} />
-        )}
-        {tabValue === IMPORTSHAPEESSENCE_TAB && (
-          <ImportShapeEssence {...tabProps} />
-        )}
-      </React.Fragment>
+      <DrawerContainer
+        mainComponent={mainComponent}
+        listComponent={listComponent}
+        defaultOpen
+        onChangeTab={onChangeTab}
+        tabValue={tabValue}
+        title={listText}
+        {...tabProps}
+      />
     );
   }
 }

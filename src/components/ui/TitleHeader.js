@@ -39,6 +39,7 @@ function TitleHeader({
   code,
   titleChip,
   addAccessControl,
+  style = {},
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl');
   const breadcrumb =
@@ -174,7 +175,7 @@ function TitleHeader({
   );
   const action = actionComponent || defaultAction;
   return (
-    <React.Fragment>
+    <div style={style}>
       <Grid
         container
         direction="row"
@@ -209,7 +210,7 @@ function TitleHeader({
         title={codeModal}
       />
     }
-    </React.Fragment>
+    </div>
   );
 }
 

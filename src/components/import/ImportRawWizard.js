@@ -3,7 +3,6 @@ import { compose } from 'redux';
 
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -20,6 +19,7 @@ import withFormActions from '../../hoc/withFormActions';
 import withFormSelectors from '../../hoc/withFormSelectors';
 import withUI from '../../hoc/withUI';
 import withStepper from '../../hoc/withStepper';
+import TitleHeader from '../ui/TitleHeader';
 
 export const EDIT_IMPORTRAW_FORM = 'EDIT_IMPORTRAW_FORM';
 
@@ -64,8 +64,11 @@ function ImportRawWizard({
   };
   return (
     <React.Fragment>
-      <Grid container justify="flex-end">
-        <Grid item>
+      <TitleHeader
+        parentTitle="Import"
+        title="Upload"
+        style={{ paddingTop: 10, paddingBottom: 10 }}
+        actionComponent={(
           <div style={{ position: 'relative' }}>
             <Button
               color="primary"
@@ -74,7 +77,7 @@ function ImportRawWizard({
               onClick={() => submitForm(EDIT_IMPORTRAW_FORM)}
               disabled={isFormSubmitting}
             >
-              Import
+              Start
             </Button>
             {isFormSubmitting && (
               <CircularProgress
@@ -89,8 +92,8 @@ function ImportRawWizard({
               />
             )}
           </div>
-        </Grid>
-      </Grid>
+        )}
+      />
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
           <StepLabel>File</StepLabel>

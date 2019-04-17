@@ -1,6 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { compose } from 'redux';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/javascript/javascript';
@@ -17,24 +15,14 @@ import '../css/CodeMirror.css';
 const HISTORY_DIALOG = 'HISTORY_DIALOG';
 const MAINMENU_DIALOG = 'MAINMENU_DIALOG';
 
-const styles = {
-  appFrame: {
-    zIndex: 1,
-    display: 'inline-block',
-    minWidth: '100%',
-  },
-};
-
-
 function App({
-  classes,
   history,
   onOpen,
 }) {
   const toggleHistory = () => onOpen({ modalName: HISTORY_DIALOG });
   const toggleMainMenu = () => onOpen({ modalName: MAINMENU_DIALOG });
   return (
-    <div className={classes.appFrame}>
+    <div style={{ zIndex: 1, minWidth: '100%' }}>
       <FullScreenDialog
         dialogName={MAINMENU_DIALOG}
       />
@@ -51,4 +39,4 @@ function App({
   );
 }
 
-export default compose(withModal, withStyles(styles))(App);
+export default withModal(App);

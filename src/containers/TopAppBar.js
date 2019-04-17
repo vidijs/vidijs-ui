@@ -15,12 +15,13 @@ import UnstyledLink from '../components/ui/UnstyledLink';
 import LoadingProgress from '../components/ui/LoadingProgress';
 import { browserLogout } from '../utils/browserLogout';
 
-const styles = {
+const styles = theme => ({
   root: {
     backgroundColor: grey[900],
     color: grey[100],
+    zIndex: theme.zIndex.drawer + 1,
   },
-};
+});
 
 function TopAppBar({
   history,
@@ -37,7 +38,7 @@ function TopAppBar({
   const { VIDISPINE_SERVER_URL } = window;
   const displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
   return (
-    <AppBar elevation={0} classes={{ root: classes.root }} position="static">
+    <AppBar elevation={0} classes={{ root: classes.root }} position="fixed">
       <Toolbar disableGutters variant="dense">
         <IconButton onClick={toggleMainMenu} color="inherit">
           <MenuIcon />

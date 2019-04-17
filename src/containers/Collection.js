@@ -1,7 +1,6 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { compose } from 'redux';
+import List from '@material-ui/core/List';
 
 import withTabs from '../hoc/withTabs';
 import { withRouterProps } from '../hoc/withRouterProps';
@@ -16,6 +15,8 @@ import StorageRule from './StorageRule';
 import TitleHeader from '../components/ui/TitleHeader';
 import CollectionRemove from '../components/collection/CollectionRemove';
 import AccessControlDialog from '../components/access/AccessControlDialog';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
 
 const COLLECTION_METADATA_TAB = 'COLLECTION_METADATA_TAB';
 const COLLECTION_COLLECTION_TAB = 'COLLECTION_COLLECTION_TAB';
@@ -25,6 +26,31 @@ const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
 const COLLECTION_REMOVE_DIALOG = 'COLLECTION_REMOVE_DIALOG';
 const COLLECTION_ACCESSCONTROL_ADD_DIALOG = 'COLLECTION_ACCESSCONTROL_ADD_DIALOG';
+
+const TAB_TITLE = [
+  { tab: COLLECTION_METADATA_TAB, listText: 'Metadata', component: CollectionMetadata },
+  { tab: COLLECTION_CONTENT_TAB, listText: 'Content', component: CollectionContent },
+  { tab: COLLECTION_COLLECTION_TAB, listText: 'Collection', component: CollectionCollection },
+  { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
+  { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
+  { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
+];
+
+
+const listComponent = ({ onChangeTab, tabValue }) => (
+  <List>
+    {TAB_TITLE.map(({ tab, listText }) => (
+      <DrawerListItem
+        listText={listText}
+        listItemProps={{
+          onClick: () => onChangeTab(null, tab),
+          selected: tabValue === tab || undefined,
+        }}
+      />
+    ))}
+  </List>
+);
+
 
 class Collection extends React.PureComponent {
   componentDidMount() {
@@ -39,11 +65,14 @@ class Collection extends React.PureComponent {
       collectionId,
       history,
     } = this.props;
+    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const { listText, component: mainComponent } = tabInfo;
     const titleComponent = props => (
       <TitleHeader
-        parentTitle="Collection"
-        parentTo="/collection/"
-        title={collectionId}
+        grandParentTitle="Collection"
+        grandParentTo="/collection/"
+        parentTitle={collectionId}
+        title={listText}
         removeModal={COLLECTION_REMOVE_DIALOG}
         helpTo="/ref/collection.html"
         entityId={collectionId}
@@ -52,69 +81,19 @@ class Collection extends React.PureComponent {
         {...props}
       />
     );
-    const tabComponent = () => (
-      <Tabs
-        value={tabValue}
-        onChange={onChangeTab}
-        indicatorColor="primary"
-        textColor="primary"
-        fullWidth
-      >
-        <Tab label="Content" value={COLLECTION_CONTENT_TAB} />
-        <Tab label="Metadata" value={COLLECTION_METADATA_TAB} />
-        <Tab label="Collection" value={COLLECTION_COLLECTION_TAB} />
-        <Tab label="Direct Access" value={ACCESS_TAB} />
-        <Tab label="Merged Access" value={ACCESSMERGED_TAB} />
-        <Tab label="Storage Rules" value={STORAGERULE_TAB} />
-      </Tabs>
-    );
     return (
       <React.Fragment>
-        {tabValue === COLLECTION_CONTENT_TAB && (
-          <CollectionContent
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            collectionId={collectionId}
-          />
-        )}
-        {tabValue === COLLECTION_METADATA_TAB && (
-          <CollectionMetadata
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            collectionId={collectionId}
-          />
-        )}
-        {tabValue === COLLECTION_COLLECTION_TAB && (
-          <CollectionCollection
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            collectionId={collectionId}
-          />
-        )}
-        {tabValue === ACCESS_TAB && (
-          <AccessControl
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={collectionId}
-            entityType="collection"
-          />
-        )}
-        {tabValue === ACCESSMERGED_TAB && (
-          <AccessControlMerged
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={collectionId}
-            entityType="collection"
-          />
-        )}
-        {tabValue === STORAGERULE_TAB && (
-          <StorageRule
-            titleComponent={titleComponent}
-            tabComponent={tabComponent}
-            entityId={collectionId}
-            entityType="collection"
-          />
-        )}
+        <DrawerContainer
+          mainComponent={mainComponent}
+          listComponent={listComponent}
+          defaultOpen
+          onChangeTab={onChangeTab}
+          tabValue={tabValue}
+          titleComponent={titleComponent}
+          collectionId={collectionId}
+          entityId={collectionId}
+          entityType="collection"
+        />
         <CollectionRemove
           dialogName={COLLECTION_REMOVE_DIALOG}
           onSuccess={() => history.push('/collection/')}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
 
-import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Stepper from '@material-ui/core/Stepper';
@@ -18,6 +17,7 @@ import * as formActions from '../../formactions/import';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 import withStepper from '../../hoc/withStepper';
+import TitleHeader from '../ui/TitleHeader';
 
 export const EDIT_IMPORTURI_FORM = 'EDIT_IMPORTURI_FORM';
 
@@ -56,18 +56,21 @@ function ImportUriWizard({
   };
   return (
     <React.Fragment>
-      <Grid container justify="flex-end">
-        <Grid item>
+      <TitleHeader
+        parentTitle="Import"
+        title="URI"
+        style={{ paddingTop: 10, paddingBottom: 10 }}
+        actionComponent={(
           <Button
             color="primary"
             variant="raised"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTURI_FORM)}
           >
-            Import
+            Start
           </Button>
-        </Grid>
-      </Grid>
+        )}
+      />
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
           <StepLabel>URI</StepLabel>

@@ -13,7 +13,7 @@ class ImportComponent extends React.PureComponent {
   }
 
   render() {
-    const { history, location } = this.props;
+    const { history, location, ...props } = this.props;
     const query = new URLSearchParams(location.search);
     const fileId = query.get('fileId');
     const itemId = query.get('itemId');
@@ -21,6 +21,7 @@ class ImportComponent extends React.PureComponent {
       <ImportComponentWizard
         onSuccess={response => history.push(`/job/${response.data.jobId}`)}
         initialValues={{ itemId, queryParams: { fileId } }}
+        {...props}
       />
     );
   }

@@ -14,10 +14,11 @@ class ImportCollection extends React.PureComponent {
   }
 
   render() {
-    const { history } = this.props;
+    const { history, ...props } = this.props;
     return (
       <ImportCollectionWizard
         onSuccess={response => history.push(`/collection/${response.data.id}`)}
+        {...props}
       />
     );
   }

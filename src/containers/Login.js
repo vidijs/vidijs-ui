@@ -105,10 +105,15 @@ class Login extends React.PureComponent {
 
   onSuccess(response) {
     const { history, location } = this.props;
-    const { data: token, userName } = response;
+    const { data: token, userName, runAs } = response;
     const urlParams = new URLSearchParams(location.search);
     const onLogin = urlParams.get('onLogin') || '/job/';
-    browserLogin({ token, userName, baseUrl: this.baseUrl });
+    browserLogin({
+      token,
+      userName,
+      baseUrl: this.baseUrl,
+      runAs,
+    });
     history.push(onLogin);
   }
 

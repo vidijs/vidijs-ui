@@ -12,13 +12,15 @@ function LibraryTitle({
   removeModal,
   updateModal,
   itemMetadataModal,
+  title,
   ...props
 }) {
   return (
     <TitleHeader
-      parentTitle="Library"
-      parentTo="/library/"
-      title={libraryId}
+      grandParentTitle="Library"
+      grandParentTo="/library/"
+      parentTitle={libraryId}
+      title={title}
       helpTo="/ref/library.html"
       entityId={libraryId}
       entityType="library"
