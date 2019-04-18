@@ -11,7 +11,6 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
 import { version as versionApi } from '@vidijs/vidijs-api';
-import { configuration as configurationApi } from '@vidijs/vidijs-api';
 
 import * as actions from '../actions';
 import LicenseForm from '../components/version/LicenseForm';
@@ -20,7 +19,7 @@ import { StorageBasicForm, StorageMethodListForm } from '../components/storage/S
 import ResourceForm from '../components/resource/ResourceForm';
 import UserPasswordForm from '../components/user/UserPasswordForm';
 
-import PropertiesEditor from '../components/configuration/properties/PropertiesEditor';
+import PropertiesForm from '../components/configuration/properties/PropertiesForm';
 import ShapeTagPresetForm, { EDIT_SHAPETAG_PRESET_FORM } from '../components/shapetag/ShapeTagPresetForm';
 
 
@@ -29,13 +28,45 @@ import * as resourceFormActions from '../formactions/resource';
 import * as shapetagFormActions from '../formactions/shapetag';
 import * as licenseFormActions from '../formactions/license';
 import * as storageFormActions from '../formactions/storage';
+import * as configurationFormActions from '../formactions/configuration';
 
 const EDIT_USER_PASSWORD_FORM = 'EDIT_USER_PASSWORD_FORM';
 const EDIT_STORAGE_DETAILS_FORM = 'EDIT_STORAGE_DETAILS_FORM';
 const EDIT_THUMBNAIL_RESOURCE_FORM = 'EDIT_THUMBNAIL_RESOURCE_FORM';
 const EDIT_TRANSCODER_RESOURCE_FORM = 'EDIT_TRANSCODER_RESOURCE_FORM';
 const EDIT_LICENSE_FORM = 'EDIT_LICENSE_FORM';
-const EDIT_CONFIGURATIONPROPERTIES_FORM = 'EDIT_CONFIGURATIONPROPERTIES_FORM';
+const EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM = 'EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM';
+const EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM = 'EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM';
+
+
+const storageInitialValues = {
+  storageDocument: {
+    type: 'LOCAL',
+    autoDetect: true,
+    showImportables: true,
+    method: [{
+      uri: 'file:///media/',
+      read: true,
+      write: true,
+      browse: true,
+    }],
+  },
+};
+const transcoderInitialValues = {
+  resourceDocument: {
+    transcoder: {
+      url: 'http://transcoder:8888/',
+    },
+  },
+};
+const thumbnailInitialValues = {
+  resourceDocument: {
+    thumbnail: {
+      path: 'file:///thumbnail/',
+    },
+  },
+};
+
 
 class Wizard extends React.PureComponent {
   constructor(props) {
@@ -45,18 +76,15 @@ class Wizard extends React.PureComponent {
     this.onSubmitSuccess = this.onSubmitSuccess.bind(this);
     this.onSubmitFail = this.onSubmitFail.bind(this);
     this.onRefreshVersion = this.onRefreshVersion.bind(this);
-    this.onRefreshConfigurationProperties = this.onRefreshConfigurationProperties.bind(this);
     this.state = {
       activeStep: 0,
       stepsCompleted: [],
       versionDocument: undefined,
-      configurationPropertyListDocument: undefined,
     };
   }
 
   componentDidMount() {
     this.onRefreshVersion();
-    this.onRefreshConfigurationProperties();
     document.title = 'vidi.js | Wizard';
   }
 
@@ -71,28 +99,19 @@ class Wizard extends React.PureComponent {
     }
   }
 
-  onRefreshConfigurationProperties() {
-    const { openSnackBar } = this.props;
-    try {
-      configurationApi.getPropertiesConfiguration()
-        .then(response => this.setState({ configurationPropertyListDocument: response.data }));
-    } catch (error) {
-      const messageContent = 'Error Getting Configuration Properties';
-      openSnackBar({ messageContent, messageColor: 'secondary' });
-    }
-  }
-
   onBack() {
-    if (this.state.activeStep !== 0) {
+    const { activeStep } = this.props;
+    if (activeStep !== 0) {
       this.setState({
-        activeStep: this.state.activeStep - 1,
+        activeStep: activeStep - 1,
       });
     }
   }
 
   onSkip() {
+    const { activeStep } = this.props;
     this.setState({
-      activeStep: this.state.activeStep + 1,
+      activeStep: activeStep + 1,
     });
   }
 
@@ -145,22 +164,8 @@ class Wizard extends React.PureComponent {
       activeStep,
       stepsCompleted,
       versionDocument,
-      configurationPropertyListDocument,
     } = this.state;
 
-    const storageInitialValues = {
-      storageDocument: {
-        type: 'LOCAL',
-        autoDetect: true,
-        showImportables: true,
-        method: [{
-          uri: 'file:///media/',
-          read: true,
-          write: true,
-          browse: true,
-        }],
-      },
-    };
     return (
       <Stepper activeStep={activeStep} orientation="vertical">
         <Step>
@@ -181,10 +186,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_USER_PASSWORD_FORM) ?
+              { stepsCompleted.includes(EDIT_USER_PASSWORD_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -192,20 +198,20 @@ class Wizard extends React.PureComponent {
                 >
                   Save
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
         <Step>
           <StepLabel>Upload License</StepLabel>
           <StepContent>
-            {versionDocument &&
+            {versionDocument && (
             <VersionLicenseInfoDisplay
               versionDocument={
                 update(versionDocument, { licenseInfo: { $unset: ['codecStatus'] } })
               }
             />
-            }
+            )}
             <LicenseForm
               form={EDIT_LICENSE_FORM}
               onSubmit={licenseFormActions.onUpdate}
@@ -221,10 +227,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_LICENSE_FORM) ?
+              { stepsCompleted.includes(EDIT_LICENSE_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -232,7 +239,7 @@ class Wizard extends React.PureComponent {
                 >
                   Upload
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
@@ -264,10 +271,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_STORAGE_DETAILS_FORM) ?
+              { stepsCompleted.includes(EDIT_STORAGE_DETAILS_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -275,7 +283,7 @@ class Wizard extends React.PureComponent {
                 >
                   Save
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
@@ -285,6 +293,7 @@ class Wizard extends React.PureComponent {
             <ResourceForm
               form={EDIT_TRANSCODER_RESOURCE_FORM}
               resourceType="transcoder"
+              initialValues={transcoderInitialValues}
               onSubmit={resourceFormActions.onCreate}
               onSubmitSuccess={() => this.onSubmitSuccess({ stepName: EDIT_TRANSCODER_RESOURCE_FORM, messageContent: 'Transcoder Added' })}
               onSubmitFail={() => this.onSubmitFail({ stepName: EDIT_TRANSCODER_RESOURCE_FORM, messageContent: 'Error Adding Transcoder' })}
@@ -298,10 +307,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_TRANSCODER_RESOURCE_FORM) ?
+              { stepsCompleted.includes(EDIT_TRANSCODER_RESOURCE_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -309,7 +319,7 @@ class Wizard extends React.PureComponent {
                 >
                   Save
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
@@ -319,9 +329,10 @@ class Wizard extends React.PureComponent {
             <ResourceForm
               form={EDIT_THUMBNAIL_RESOURCE_FORM}
               resourceType="thumbnail"
+              initialValues={thumbnailInitialValues}
               onSubmit={resourceFormActions.onCreate}
-              onSubmitSuccess={() => this.onSubmitSuccess({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Transcoder Added' })}
-              onSubmitFail={() => this.onSubmitFail({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Error Adding Transcoder' })}
+              onSubmitSuccess={() => this.onSubmitSuccess({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Thumbnail Store Added' })}
+              onSubmitFail={() => this.onSubmitFail({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Error Adding Thumbnail Store' })}
             />
             <ExpansionPanelActions>
               <Button onClick={this.onBack}>
@@ -332,10 +343,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_THUMBNAIL_RESOURCE_FORM) ?
+              { stepsCompleted.includes(EDIT_THUMBNAIL_RESOURCE_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -343,17 +355,26 @@ class Wizard extends React.PureComponent {
                 >
                   Save
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>Add Configuration Properties</StepLabel>
+          <StepLabel>Set API URL</StepLabel>
           <StepContent>
-            <PropertiesEditor
-              configurationPropertyListDocument={configurationPropertyListDocument}
-              onRefresh={this.onRefreshConfigurationProperties}
+            <Typography>
+              This is used by the transcoder to connect to the Vidispine API Server
+            </Typography>
+            <PropertiesForm
+              form={EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM}
+              onSubmit={configurationFormActions.onUpdatePropertiesConfiguration}
+              initialValues={{ configurationPropertyDocument: { key: 'apiUri', value: 'http://vidispineserver:8080/API' } }}
+              onSubmitSuccess={() => this.onSubmitSuccess({ stepName: EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM, messageContent: 'API URL Added' })}
+              onSubmitFail={() => this.onSubmitFail({ stepName: EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM, messageContent: 'Error Adding API URL' })}
+              destroyOnUnmount
+              enableReinitialize
             />
+
             <ExpansionPanelActions>
               <Button onClick={this.onBack}>
                 Back
@@ -363,10 +384,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_CONFIGURATIONPROPERTIES_FORM) ?
+              { stepsCompleted.includes(EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -374,7 +396,45 @@ class Wizard extends React.PureComponent {
                 >
                   Next
                 </Button>
-              }
+              )}
+            </ExpansionPanelActions>
+          </StepContent>
+        </Step>
+        <Step>
+          <StepLabel>Add Solr Server</StepLabel>
+          <StepContent>
+            <PropertiesForm
+              form={EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM}
+              onSubmit={configurationFormActions.onUpdatePropertiesConfiguration}
+              initialValues={{ configurationPropertyDocument: { key: 'solrPath', value: 'http://solr:8983/solr' } }}
+              onSubmitSuccess={() => this.onSubmitSuccess({ stepName: EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM, messageContent: 'Solr Server Added' })}
+              onSubmitFail={() => this.onSubmitFail({ stepName: EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM, messageContent: 'Error Adding Solr Server' })}
+              destroyOnUnmount
+              enableReinitialize
+            />
+
+            <ExpansionPanelActions>
+              <Button onClick={this.onBack}>
+                Back
+              </Button>
+              <Button
+                onClick={this.onSkip}
+              >
+                Skip
+              </Button>
+              { stepsCompleted.includes(EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM) ? (
+                <Typography variant="caption">
+                  Step completed
+                </Typography>
+              ) : (
+                <Button
+                  variant="raised"
+                  color="primary"
+                  onClick={this.onSkip}
+                >
+                  Next
+                </Button>
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
@@ -395,10 +455,11 @@ class Wizard extends React.PureComponent {
               >
                 Skip
               </Button>
-              { stepsCompleted.includes(EDIT_SHAPETAG_PRESET_FORM) ?
+              { stepsCompleted.includes(EDIT_SHAPETAG_PRESET_FORM) ? (
                 <Typography variant="caption">
                   Step completed
-                </Typography> :
+                </Typography>
+              ) : (
                 <Button
                   variant="raised"
                   color="primary"
@@ -406,7 +467,7 @@ class Wizard extends React.PureComponent {
                 >
                   Save
                 </Button>
-              }
+              )}
             </ExpansionPanelActions>
           </StepContent>
         </Step>
