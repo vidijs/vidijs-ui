@@ -1,10 +1,11 @@
 import React from 'react';
 
 import AccessControlMergedList from '../components/access/AccessControlMergedList';
-import { access as api } from '@vidijs/vidijs-api';
+import AccessControlMergedParams, { ACCESS_PARAMS_FORM } from '../components/access/AccessControlMergedParams';
+import withFormActions from '../hoc/withFormActions';
 
 
-export default class AccessControlMerged extends React.PureComponent {
+class AccessControlMerged extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onRefresh = this.onRefresh.bind(this);
@@ -18,18 +19,8 @@ export default class AccessControlMerged extends React.PureComponent {
   }
 
   onRefresh() {
-    const { openSnackBar, entityId, entityType } = this.props;
-    try {
-      api.getEntityAccessMerged({
-        entityType,
-        entityId,
-      })
-        .then(response => response.json())
-        .then(accessControlMergedDocument => this.setState({ accessControlMergedDocument }));
-    } catch (error) {
-      const messageContent = 'Error Loading Merged Access List';
-      openSnackBar({ messageContent, messageColor: 'secondary' });
-    }
+    const { submitForm } = this.props;
+    submitForm(ACCESS_PARAMS_FORM);
   }
 
   render() {
@@ -39,6 +30,8 @@ export default class AccessControlMerged extends React.PureComponent {
     const {
       titleComponent: TitleComponent,
       tabComponent: TabComponent,
+      entityId,
+      entityType,
     } = this.props;
     return (
       <React.Fragment>
@@ -52,6 +45,11 @@ export default class AccessControlMerged extends React.PureComponent {
         {TabComponent && (
           <TabComponent />
         )}
+        <AccessControlMergedParams
+          entityId={entityId}
+          entityType={entityType}
+          onSuccess={response => this.setState({ accessControlMergedDocument: response.data })}
+        />
         <AccessControlMergedList
           accessControlMergedDocument={accessControlMergedDocument}
         />
@@ -59,3 +57,5 @@ export default class AccessControlMerged extends React.PureComponent {
     );
   }
 }
+
+export default withFormActions(AccessControlMerged);
