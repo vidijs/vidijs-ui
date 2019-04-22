@@ -31,20 +31,20 @@ export default function FileListTable({
         <TableRow>
           <TableCell>
             <TableSortLabel
-              active={orderBy === 'fileId'}
-              direction={orderDirection}
-              onClick={onChangeOrder('fileId')}
-            >
-              ID
-            </TableSortLabel>
-          </TableCell>
-          <TableCell>
-            <TableSortLabel
               active={orderBy === 'filename'}
               direction={orderDirection}
               onClick={onChangeOrder('filename')}
             >
               Path
+            </TableSortLabel>
+          </TableCell>
+          <TableCell>
+            <TableSortLabel
+              active={orderBy === 'fileId'}
+              direction={orderDirection}
+              onClick={onChangeOrder('fileId')}
+            >
+              ID
             </TableSortLabel>
           </TableCell>
           <TableCell>

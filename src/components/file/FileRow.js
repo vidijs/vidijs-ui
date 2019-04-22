@@ -12,12 +12,12 @@ export default function FileRow({
 }) {
   return (
     <TableRow to={`/file/${fileDocument.id}/`} hover>
+      <TableCell>{fileDocument.path}</TableCell>
       <TableCell>
         <UnstyledLink to={`/file/${fileDocument.id}/`}>
           {fileDocument.id}
         </UnstyledLink>
       </TableCell>
-      <TableCell>{fileDocument.path}</TableCell>
       <TableCell><FileStatus fileDocument={fileDocument} /></TableCell>
       <TableCell>
         <UnstyledLink to={`/storage/${fileDocument.storage}/`}>

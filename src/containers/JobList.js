@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 
-import JobFilterCard from '../components/job/JobFilterCard';
+import JobFilter from '../components/job/JobFilter';
 import JobListCard from '../components/job/JobListCard';
 import JobCreate from '../components/job/JobCreate';
 
@@ -115,7 +115,7 @@ class JobList extends React.PureComponent {
           codeModal="JobListDocument"
           createModal={JOB_CREATE_DIALOG}
         />
-        <JobFilterCard
+        <JobFilter
           form={JOB_FILTER_FORM}
           onSuccess={this.onSuccess}
         />

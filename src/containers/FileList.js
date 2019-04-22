@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 
 import FileListTitle from '../components/file/FileListTitle';
-import FileFilterCard from '../components/file/FileFilterCard';
+import FileFilter from '../components/file/FileFilter';
 import FileListCard from '../components/file/FileListCard';
 import FilePrefixCard from '../components/file/FilePrefixCard';
 import FileEntity from '../components/file/FileEntity';
@@ -120,7 +120,7 @@ class FileList extends React.PureComponent {
           createModal={FILE_ENTITY_DIALOG}
           onRefresh={this.onRefresh}
         />
-        <FileFilterCard
+        <FileFilter
           form={FILE_FILTER_FORM}
           onSuccess={this.onSuccess}
         />

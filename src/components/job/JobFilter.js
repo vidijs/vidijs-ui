@@ -1,10 +1,14 @@
 import React from 'react';
-import CardContent from '@material-ui/core/CardContent';
+import { compose } from 'redux';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
-import DialogActions from '@material-ui/core/DialogActions';
-import { compose } from 'redux';
+import Typography from '@material-ui/core/Typography';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import ExpansionPanel from '../ui/ExpansionPanel';
 import * as formActions from '../../formactions/job';
 import JobFilterForm from './JobFilterForm';
 import withFormActions from '../../hoc/withFormActions';
@@ -39,8 +43,13 @@ function JobFilter({
     },
   };
   return (
-    <React.Fragment>
-      <CardContent>
+    <ExpansionPanel>
+      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        <Typography variant="body2" color="textSecondary">
+          Job List Options
+        </Typography>
+      </ExpansionPanelSummary>
+      <ExpansionPanelDetails>
         <JobFilterForm
           form={form}
           onSubmit={formActions.onJobList}
@@ -50,9 +59,9 @@ function JobFilter({
           destroyOnUnmount={false}
           initialValues={initialValues}
         />
-      </CardContent>
+      </ExpansionPanelDetails>
       <Divider />
-      <DialogActions>
+      <ExpansionPanelActions>
         <Button
           size="small"
           onClick={() => resetForm(form)}
@@ -66,8 +75,8 @@ function JobFilter({
         >
           Filter
         </Button>
-      </DialogActions>
-    </React.Fragment>
+      </ExpansionPanelActions>
+    </ExpansionPanel>
   );
 }
 
