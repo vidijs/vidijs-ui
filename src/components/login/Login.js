@@ -2,11 +2,17 @@ import React from 'react';
 import { compose } from 'redux';
 
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
+import Typography from '@material-ui/core/Typography';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import ExpansionPanel from '../ui/ExpansionPanel';
 
 import LoginForm from './LoginForm';
+import LoginFormAdvanced from './LoginFormAdvanced';
 import * as formActions from '../../formactions/user';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
@@ -40,13 +46,29 @@ function Login({
           onSubmitFail={onSubmitFail}
           {...formProps}
         />
+        <ExpansionPanel>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{ padding: 0 }}>
+            <Typography variant="body2" color="textSecondary">
+              Advanced
+            </Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails style={{ padding: 0 }}>
+            <LoginFormAdvanced
+              form={LOGIN_FORM}
+              onSubmit={formActions.onGetToken}
+              onSubmitSuccess={onSubmitSuccess}
+              onSubmitFail={onSubmitFail}
+              {...formProps}
+            />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
       </DialogContent>
-      <Divider />
       <DialogActions>
         <Button
-          variant="contained"
+          variant="outlined"
           color="primary"
           onClick={() => submitForm(LOGIN_FORM)}
+          fullWidth
         >
           Log In
         </Button>

@@ -2,10 +2,8 @@ import React from 'react';
 import { compose } from 'redux';
 import { selftest as api } from '@vidijs/vidijs-api';
 
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
@@ -16,24 +14,6 @@ import SelfTestStatus from '../components/selftest/SelfTestStatus';
 import LoginCard from '../components/login/Login';
 import InitDialog from '../components/login/InitDialog';
 import GitHubIcon from '../components/ui/GitHubIcon';
-
-const styles = {
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    background: 'linear-gradient(to bottom right, #C33764, #1D2671)',
-  },
-  headline: {
-    marginTop: '1em',
-  },
-  card: {
-    minWidth: 300,
-    marginTop: '5em',
-  },
-};
 
 const INIT_DIALOG = 'INIT_DIALOG';
 
@@ -65,8 +45,7 @@ class Login extends React.PureComponent {
 
   async onRefresh() {
     const { onOpen } = this.props;
-    const { selfTestDocument } = this.state;
-    if (selfTestDocument) { this.setState({ selfTestDocument: undefined }); }
+    this.setState({ selfTestDocument: undefined });
     await this.setState({ loading: true });
     try {
       api.listSelfTest({ noAuth: true })
@@ -74,17 +53,17 @@ class Login extends React.PureComponent {
           this.setState({ selfTestDocument, loading: false });
           const { status, test: testList = [] } = selfTestDocument;
           let initTest;
-          if ( status === 'warning') {
-            initTest = testList.find(thisTest => {
+          if (status === 'warning') {
+            initTest = testList.find((thisTest) => {
               const { name, test: subTestList = [] } = thisTest;
               if (name === 'database') {
-                return subTestList.find(thisSubTest => {
+                return subTestList.find((thisSubTest) => {
                   const { message: messageList = [] } = thisSubTest;
-                  return messageList.find(message => message.includes('did APIInit run?'))
-                })
+                  return messageList.find(message => message.includes('did APIInit run?'));
+                });
               }
               return false;
-            })
+            });
           }
           if (initTest) {
             onOpen({ modalName: INIT_DIALOG });
@@ -124,51 +103,67 @@ class Login extends React.PureComponent {
 
   render() {
     const { selfTestDocument, loading, loadingInit } = this.state;
-    const { classes } = this.props;
     const initialValues = {
       headers: { username: 'admin' },
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl: this.displayUrl || this.baseUrl,
     };
     return (
-      <div className={classes.main}>
-        <Typography variant="display3" className={classes.headline}>vidi.js</Typography>
-        <IconButton onClick={() => window.open('https://github.com/vidijs')}>
-          <GitHubIcon />
-        </IconButton>
-        <Card elevation={0} square className={classes.card}>
-          <CardHeader
-            title={(
-              <Grid container alignItems="center" justify="center" direction="row" style={{ height: 35 }}>
-                {selfTestDocument && (
-                  <SelfTestStatus
-                    selfTestDocument={selfTestDocument}
-                    clickable
-                    onClick={this.onRefresh}
-                    loading={loading}
+      <>
+        <Grid container>
+          <Grid item sm={4}>
+            <Card elevation={0} square style={{ height: '100vh' }}>
+              <Grid container direction="column" justify="center" alignItems="center" style={{ height: '100%' }}>
+                <Grid item>
+                  <Grid container alignItems="center" justify="center" direction="row" style={{ height: 35, marginBottom: 20 }}>
+                    {selfTestDocument && (
+                      <SelfTestStatus
+                        selfTestDocument={selfTestDocument}
+                        clickable
+                        onClick={this.onRefresh}
+                        loading={loading}
+                      />
+                    )}
+                  </Grid>
+                  <LoginCard
+                    initialValues={initialValues}
+                    onSuccess={this.onSuccess}
+                    onTestUrl={this.onTestUrl}
+                    canEditUrl={(process.env.REACT_APP_USE_CORS)}
                   />
-                )}
+                </Grid>
               </Grid>
-            )}
-            disableTypography
-          />
-          <LoginCard
-            initialValues={initialValues}
-            onSuccess={this.onSuccess}
-            onTestUrl={this.onTestUrl}
-            canEditUrl={(process.env.REACT_APP_USE_CORS)}
-          />
-        </Card>
+            </Card>
+          </Grid>
+          <Grid
+            item
+            sm={8}
+            style={{ background: 'linear-gradient(to bottom right, #C33764, #1D2671)' }}
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
+            <Grid item>
+              <Typography variant="display3">vidi.js</Typography>
+            </Grid>
+            <Grid item>
+              <IconButton onClick={() => window.open('https://github.com/vidijs')}>
+                <GitHubIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Grid>
         <InitDialog
           dialogName={INIT_DIALOG}
           onSuccess={this.onRefresh}
           loadingInit={loadingInit}
           setLoadingInit={newState => this.setState({ loadingInit: newState })}
         />
-      </div>
+      </>
     );
   }
 }
 
 
-export default compose(withModal, withSnackbar, withStyles(styles))(Login);
+export default compose(withModal, withSnackbar)(Login);

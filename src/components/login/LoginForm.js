@@ -25,24 +25,11 @@ const headers = () => (
       fullWidth
       autoFocus
     />
-    <Field
-      name="runAs"
-      label="Login As User"
-      component={TextField}
-      fullWidth
-    />
   </React.Fragment>
 );
 
 const queryParams = () => (
   <React.Fragment>
-    <Field
-      name="seconds"
-      label="Timeout "
-      component={TextField}
-      helperText="Seconds"
-      fullWidth
-    />
     <FormControlLabel
       control={(
         <Field
