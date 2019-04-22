@@ -17,8 +17,7 @@ import FileTypeTable from '../file/FileTypeTable';
 
 export const SimpleMetadataType = ({ value = {} }) => (
   <TypeArray
-    arrayTitle="Fields"
-    value={value.field}
+    value={value}
     component={({ value: v }) => (
       <TextGrid
         title={v.key}
