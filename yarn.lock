@@ -1385,10 +1385,10 @@
     "@types/unist" "*"
     "@types/vfile-message" "*"
 
-"@vidijs/vidijs-api@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.4.tgz#242a98dbded8877d02f0814aaf95aaa110b9567c"
-  integrity sha512-f1rToLDqY+zRtX3VyTFbz2mFH3/c3JPFuX4NNhzFB+BhsCsTADGkblexW8VbJbmKk8/LZ8x2wnCcmQ+zo1QyUQ==
+"@vidijs/vidijs-api@0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.8.tgz#d4185b23975b06db2ff591aa8a4145355c6e6174"
+  integrity sha512-12JLU+BqT7ZYqxwzfB8FMYNAPnA+DhqD2FwJZNV0E8HGIzW+9bAC0Z/WFjRC5qS92hADbb2MT6iE8Ndm8Rq1XQ==
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
