@@ -274,6 +274,7 @@ class HistoryDialog extends React.PureComponent {
                       theme="solarized"
                       displayDataTypes={false}
                       collapsed={2}
+                      enableClipboard={copy => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
                       name={false}
                     />
                   </React.Fragment>
