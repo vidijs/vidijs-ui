@@ -11,8 +11,8 @@ import Field from '../ui/Field';
 
 const queryParams = () => (
   <FormControl fullWidth>
-    <InputLabel htmlFor="passwordType">Password Type</InputLabel>
-    <Field name="passwordType" component={Select}>
+    <InputLabel htmlFor="type">Password Type</InputLabel>
+    <Field name="type" component={Select}>
       <MenuItem value="md5">MD5</MenuItem>
       <MenuItem value="raw">Raw</MenuItem>
     </Field>
