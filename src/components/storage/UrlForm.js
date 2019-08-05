@@ -570,7 +570,7 @@ export default class UrlForm extends React.PureComponent {
     const displayUrl = UrlForm.renderUrl(this.state);
     return (
       <React.Fragment>
-        <Typography variant="body2">
+        <Typography variant="subtitle2">
           URI: {displayUrl}
         </Typography>
         <FormHelperText>Protocol</FormHelperText>

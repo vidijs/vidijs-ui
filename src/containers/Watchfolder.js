@@ -45,7 +45,7 @@ function Watchfolder({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >
@@ -70,7 +70,7 @@ function Watchfolder({
                   Back
                 </Button>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >
@@ -95,7 +95,7 @@ function Watchfolder({
                   Back
                 </Button>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

@@ -14,7 +14,7 @@ export default function SelfTestCard(props) {
       <SquareCard>
         <CardHeader
           disableTypography
-          title={<Typography variant="subheading">{startCase(props.selfTestDocument.name)}</Typography>}
+          title={<Typography variant="subtitle1">{startCase(props.selfTestDocument.name)}</Typography>}
           action={
             <SelfTestStatus selfTestDocument={props.selfTestDocument} />
           }

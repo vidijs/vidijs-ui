@@ -1,5 +1,4 @@
 import React from 'react';
-import Moment from 'react-moment';
 import moment from 'moment';
 
 import UnstyledLink from '../ui/UnstyledLink';
@@ -27,8 +26,16 @@ export default function JobListRow({
     <TableRow to={`/job/${jobDocument.jobId}/`} hover>
       <TableCell><JobLink>{jobDocument.jobId}</JobLink></TableCell>
       <TableCell><JobLink>{jobDocument.user}</JobLink></TableCell>
-      <TableCell><JobLink>{jobDocument.started && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.started} />}</JobLink></TableCell>
-      <TableCell><JobLink>{jobDocument.finished && <Moment format="YYYY-MM-DD HH:mm" date={jobDocument.finished} />}</JobLink></TableCell>
+      <TableCell>
+        <JobLink>
+          {jobDocument.started ? moment(jobDocument.started).format('YYYY-MM-DD HH:mm') : ''}
+        </JobLink>
+      </TableCell>
+      <TableCell>
+        <JobLink>
+          {jobDocument.finished ? moment(jobDocument.finished).format('YYYY-MM-DD HH:mm') : ''}
+        </JobLink>
+      </TableCell>
       <TableCell><JobLink>{durationHuman}</JobLink></TableCell>
       <TableCell><JobLink><JobStatus jobDocument={jobDocument} /></JobLink></TableCell>
       <TableCell><JobLink>{jobDocument.type}</JobLink></TableCell>

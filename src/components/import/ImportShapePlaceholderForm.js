@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { StatefulAsyncSelect } from '../ui/Select';

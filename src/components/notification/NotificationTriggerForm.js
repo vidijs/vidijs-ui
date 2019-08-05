@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import update from 'immutability-helper';
 import Typography from '@material-ui/core/Typography';
 

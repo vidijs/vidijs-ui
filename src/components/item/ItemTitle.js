@@ -14,7 +14,7 @@ import { withModalNoRouter } from '../../hoc/withModal';
 export const ItemHeading = ({ itemId }) => (
   <Grid container alignItems="center">
     <Grid item>
-      <Typography variant="headline" color="textSecondary">
+      <Typography variant="h5" color="textSecondary">
         Item
       </Typography>
     </Grid>
@@ -25,7 +25,7 @@ export const ItemHeading = ({ itemId }) => (
     </Grid>
     <Grid item>
       <Typography
-        variant="headline"
+        variant="h5"
         component={Link}
         to={`/item/${itemId}/`}
         style={{ textDecoration: 'none' }}

@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { reduxForm, FormSection } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';

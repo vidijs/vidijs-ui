@@ -192,7 +192,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_USER_PASSWORD_FORM)}
                 >
@@ -233,7 +233,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_LICENSE_FORM)}
                 >
@@ -277,7 +277,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_STORAGE_DETAILS_FORM)}
                 >
@@ -313,7 +313,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_TRANSCODER_RESOURCE_FORM)}
                 >
@@ -349,7 +349,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_THUMBNAIL_RESOURCE_FORM)}
                 >
@@ -390,7 +390,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={this.onSkip}
                 >
@@ -428,7 +428,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={this.onSkip}
                 >
@@ -461,7 +461,7 @@ class Wizard extends React.PureComponent {
                 </Typography>
               ) : (
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_SHAPETAG_PRESET_FORM)}
                 >
@@ -482,7 +482,7 @@ class Wizard extends React.PureComponent {
               <Button
                 component={Link}
                 to="/selftest"
-                variant="raised"
+                variant="text"
                 color="primary"
               >
                 Self Test

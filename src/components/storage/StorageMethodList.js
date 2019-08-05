@@ -17,7 +17,7 @@ export default function StorageMethodList({ storageDocument, openMethodCreate })
     <React.Fragment>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">Methods</Typography>}
+        title={<Typography variant="subtitle1">Methods</Typography>}
         action={action}
       />
       <CardContent>

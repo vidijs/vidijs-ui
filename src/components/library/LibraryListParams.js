@@ -37,7 +37,7 @@ function LibraryListParams({
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           Library List Options
         </Typography>
       </ExpansionPanelSummary>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
 import InputLabel from '@material-ui/core/InputLabel';

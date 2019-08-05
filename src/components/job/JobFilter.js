@@ -45,7 +45,7 @@ function JobFilter({
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           Job List Options
         </Typography>
       </ExpansionPanelSummary>

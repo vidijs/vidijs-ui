@@ -188,7 +188,7 @@ class WizardForm extends React.PureComponent {
                 }
                 {isJSONFormDirty &&
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_JSON_FORM)}
                 >
@@ -197,7 +197,7 @@ class WizardForm extends React.PureComponent {
                 }
                 {!isJSONFormDirty && jsonDocument !== undefined &&
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_JSON_FORM)}
                 >
@@ -233,7 +233,7 @@ class WizardForm extends React.PureComponent {
                 </Button>
                 {isXMLFormDirty &&
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={() => submitForm(EDIT_XML_FORM)}
                 >
@@ -270,7 +270,7 @@ class WizardForm extends React.PureComponent {
                 Back
               </Button>
               <Button
-                variant="raised"
+                variant="text"
                 color="primary"
                 onClick={() => submitForm(EDIT_WIZARD_FORM)}
               >

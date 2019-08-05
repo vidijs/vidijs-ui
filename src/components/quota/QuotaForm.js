@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField, Select } from 'redux-form-material-ui';
+import { TextField, Select } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';

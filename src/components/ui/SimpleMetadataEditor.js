@@ -60,7 +60,7 @@ class SimpleMetadataEditor extends React.PureComponent {
     return (
       <React.Fragment>
         <CardHeader
-          title={<Typography variant="subheading">Metadata</Typography>}
+          title={<Typography variant="subtitle1">Metadata</Typography>}
           disableTypography
           action={
             <Grid container direction="row-reverse" alignItems="center">

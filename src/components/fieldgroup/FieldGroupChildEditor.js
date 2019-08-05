@@ -23,7 +23,7 @@ function FieldGroupChildEditor({
     <React.Fragment>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">Groups</Typography>}
+        title={<Typography variant="subtitle1">Groups</Typography>}
         action={
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>

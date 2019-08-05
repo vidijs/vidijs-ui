@@ -11,7 +11,7 @@ import { withModalNoRouter } from '../../hoc/withModal';
 export const ShapeHeading = ({ shapeId }) => (
   <Grid container alignItems="center">
     <Grid item>
-      <Typography variant="headline" color="textSecondary">
+      <Typography variant="h5" color="textSecondary">
         Shape
       </Typography>
     </Grid>
@@ -21,7 +21,7 @@ export const ShapeHeading = ({ shapeId }) => (
       </IconButton>
     </Grid>
     <Grid item>
-      <Typography variant="headline">
+      <Typography variant="h5">
         {shapeId}
       </Typography>
     </Grid>

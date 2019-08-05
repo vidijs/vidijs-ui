@@ -23,7 +23,7 @@ function StorageListStorageCard(props) {
       >
         <CardHeader
           disableTypography
-          title={<Typography variant="subheading">{storageId}</Typography>}
+          title={<Typography variant="subtitle1">{storageId}</Typography>}
           action={<StorageStatus storageDocument={storageDocument} />}
         />
         <CardContent>

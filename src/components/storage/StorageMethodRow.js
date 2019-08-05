@@ -32,7 +32,7 @@ export default function StorageMethodRow({
                 disabled
               />
             }
-            label={<Typography variant="body2">Read</Typography>}
+            label={<Typography variant="subtitle2">Read</Typography>}
           />
           <FormControlLabel
             control={
@@ -41,7 +41,7 @@ export default function StorageMethodRow({
                 disabled
               />
             }
-            label={<Typography variant="body2">Write</Typography>}
+            label={<Typography variant="subtitle2">Write</Typography>}
           />
           <FormControlLabel
             control={
@@ -50,7 +50,7 @@ export default function StorageMethodRow({
                 disabled
               />
             }
-            label={<Typography variant="body2">Browse</Typography>}
+            label={<Typography variant="subtitle2">Browse</Typography>}
           />
         </FormGroup>
       </TableCell>

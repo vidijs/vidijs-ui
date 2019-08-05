@@ -13,7 +13,7 @@ export default function ShapeVideoComponentCard({ videoComponent = {} }) {
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">{`Video Component - ${videoComponentId}`}</Typography>}
+        title={<Typography variant="subtitle1">{`Video Component - ${videoComponentId}`}</Typography>}
       />
       <CardContent>
         <VideoComponentType

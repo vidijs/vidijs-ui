@@ -5,7 +5,7 @@ import ExportLocationForm from './ExportLocationForm';
 import * as formActions from '../../formactions/exportlocation';
 import WizardForm from '../ui/WizardForm';
 import withUI from '../../hoc/withUI';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 function ExportLocationDialog({

@@ -50,7 +50,7 @@ function ImportShapeEssenceWizard({
         actionComponent={(
           <Button
             color="primary"
-            variant="raised"
+            variant="text"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTSHAPEESSENCE_FORM)}
           >
@@ -76,7 +76,7 @@ function ImportShapeEssenceWizard({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

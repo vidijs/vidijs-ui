@@ -55,7 +55,7 @@ class Editor extends React.PureComponent {
       <React.Fragment>
         <CardHeader
           disableTypography
-          title={<Typography variant="subheading">{title}</Typography>}
+          title={<Typography variant="subtitle1">{title}</Typography>}
           action={
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>

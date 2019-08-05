@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 import TableCell from '../ui/TableCell';
 import TableRow from '../ui/TableRow';
@@ -10,7 +10,7 @@ export default function ErrorLogRow({
   return (
     <TableRow hover>
       <TableCell>
-        <Moment format="YYYY-MM-DD HH:mm" date={errorLogDocument.timestamp} />
+        {errorLogDocument.timestamp ? moment(errorLogDocument.timestamp).format('YYYY-MM-DD HH:mm') : ''}
       </TableCell>
       <TableCell>{errorLogDocument.id}</TableCell>
       <TableCell>{errorLogDocument.type}</TableCell>

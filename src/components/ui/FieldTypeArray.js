@@ -65,7 +65,7 @@ function TypeArray({
   return (
     <div>
       { arrayHeader && (
-        <Typography variant="body2">{thisLabel}</Typography>
+        <Typography variant="subtitle2">{thisLabel}</Typography>
       )}
 
       {fields.map((thisField, index) => (
@@ -90,7 +90,7 @@ function TypeArray({
               )}
             </Grid>
             { withHeader && (
-              <Typography variant="body2">
+              <Typography variant="subtitle2">
                 {`${thisLabel} ${index + 1}`}
               </Typography>
             )}

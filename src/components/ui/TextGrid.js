@@ -18,7 +18,7 @@ import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 const hoverStyle = theme => ({
   FormControlLabel: {
-    height: theme.typography.body1.lineHeight,
+    height: theme.typography.subtitle1.lineHeight,
   },
   onHover: {
     minHeight: '32px',
@@ -50,7 +50,7 @@ function SetValueComponent({
   if (value === undefined || null) {
     return valueComponent;
   }
-  const StyledTypography = props => <Typography color="default" variant="body2" {...typographyProps} {...props} />;
+  const StyledTypography = props => <Typography color="textPrimary" variant="subtitle2" {...typographyProps} {...props} />;
   switch (variant) {
     case 'checkbox':
       valueComponent = (
@@ -347,7 +347,7 @@ function TextGrid({
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -373,7 +373,7 @@ function TextGrid({
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -399,7 +399,7 @@ function TextGrid({
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -435,7 +435,7 @@ function TextGrid({
             />
           }
           label={
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary">
               {titleStartCase ? startCase(title) : title}
             </Typography>
           }
@@ -462,6 +462,7 @@ function TextGrid({
       <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
         <Typography
           color="textSecondary"
+          variant="subtitle2"
           onClick={onTextClick}
           noWrap
         >

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { required } from '../../utils/FieldValidation';

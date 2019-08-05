@@ -7,8 +7,8 @@ import { compose } from 'redux';
 import { noauth as api } from '@vidijs/vidijs-api';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import withUI from '../../hoc/withUI';
-import Dialog from '../ui/Dialog';
+import { withSnackbarNoRouter } from '../../hoc/withSnackbar';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 function InitDialog({
@@ -28,13 +28,13 @@ function InitDialog({
             const messageContent = 'Init Success';
             openSnackBar({ messageContent });
             onClose();
-            if (onSuccess) { onSuccess(); }            
+            if (onSuccess) { onSuccess(); }
         })
         .catch((error) => {
             setLoadingInit(false);
             const messageContent = 'Error Running Init';
             openSnackBar({ messageContent, messageColor: 'secondary' });
-            if (onError) { onError(); }            
+            if (onError) { onError(); }
         })
 
     }
@@ -72,4 +72,4 @@ function InitDialog({
 }
 
 
-export default compose(withUI)(InitDialog);
+export default compose(withSnackbarNoRouter)(InitDialog);

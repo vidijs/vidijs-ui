@@ -22,7 +22,7 @@ function GroupParentEditor({
     <React.Fragment>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">Parent Groups</Typography>}
+        title={<Typography variant="subtitle1">Parent Groups</Typography>}
         action={
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>

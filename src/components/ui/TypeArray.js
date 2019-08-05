@@ -43,7 +43,7 @@ const TypeArray = ({
   return (
     <React.Fragment>
       {arrayTitle &&
-      <Typography variant="body2">
+      <Typography variant="subtitle2">
         {arrayStartCase ? startCase(arrayTitle) : arrayTitle}
       </Typography>
       }
@@ -54,7 +54,7 @@ const TypeArray = ({
           key={index} // eslint-disable-line react/no-array-index-key
         >
           { (title && !titleKey) &&
-          <Typography variant="body2">
+          <Typography variant="subtitle2">
             {titleStartCase ?
               startCase(`${title} ${index + 1}`)
               :
@@ -63,7 +63,7 @@ const TypeArray = ({
           </Typography>
           }
           { (titleKey && title) &&
-          <Typography variant="body2">
+          <Typography variant="subtitle2">
             {titleStartCase ?
               startCase(`${title} ${thisValue[titleKey]}`)
               :
@@ -72,7 +72,7 @@ const TypeArray = ({
           </Typography>
           }
           { (titleKey && !title) &&
-          <Typography variant="body2">
+          <Typography variant="subtitle2">
             {titleStartCase ? startCase(thisValue[titleKey]) : thisValue[titleKey]}
           </Typography>
           }

@@ -37,7 +37,7 @@ function ReindexCard({
       <CardContent>
         <CardHeader
           disableTypography
-          title={<Typography variant="subheading">{startCase(indexName)}</Typography>}
+          title={<Typography variant="subtitle1">{startCase(indexName)}</Typography>}
           action={<ReindexStatus reindexRequestDocument={reindexRequestDocument} />}
         />
         <CardContent>

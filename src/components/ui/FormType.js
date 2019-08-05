@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import Grid from '@material-ui/core/Grid';
 
 import FieldTypeArray from './FieldTypeArray';

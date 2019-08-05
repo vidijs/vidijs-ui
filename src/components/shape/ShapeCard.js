@@ -13,7 +13,7 @@ export default function ShapeCard({ shapeDocument = {} }) {
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">{`Shape - ${shapeId}`}</Typography>}
+        title={<Typography variant="subtitle1">{`Shape - ${shapeId}`}</Typography>}
       />
       <CardContent>
         <ShapeSection

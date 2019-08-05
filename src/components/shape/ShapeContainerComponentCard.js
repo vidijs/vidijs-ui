@@ -14,7 +14,7 @@ export default function ShapeContainerComponentCard({ shapeDocument = {} }) {
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">{`Container Component - ${containerComponentId}`}</Typography>}
+        title={<Typography variant="subtitle1">{`Container Component - ${containerComponentId}`}</Typography>}
       />
       <CardContent>
         <ContainerComponentType

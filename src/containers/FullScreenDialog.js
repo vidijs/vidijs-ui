@@ -12,14 +12,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 
 import { WrappedSelect } from '../components/ui/Select';
-import withUI from '../hoc/withUI';
+import { withModalNoRouter } from '../hoc/withModal';
 
 const styles = theme => ({
   appBar: {
@@ -29,17 +29,14 @@ const styles = theme => ({
   dialogRoot: {
     justifyContent: 'flex-start',
   },
-  paperFullScreen: {
+  scrollPaper: {
     width: '85%',
     backgroundColor: theme.palette.background.default,
   },
 });
 
+const Transition = React.forwardRef((props, ref) => <Slide direction="down" ref={ref} {...props} />);
 
-
-function Transition(props) {
-  return <Slide direction="down" {...props} />;
-}
 
 function FullScreenDialog({
   classes,
@@ -131,11 +128,11 @@ function FullScreenDialog({
   const ListGroup = ({ subheader, children }) => (
     <List
       component="nav"
-      subheader={
+      subheader={(
         <ListSubheader disableSticky>
           { subheader }
         </ListSubheader>
-      }
+      )}
     >
       { children }
     </List>
@@ -156,7 +153,7 @@ function FullScreenDialog({
       open={open}
       onClose={onClose}
       TransitionComponent={Transition}
-      classes={{ root: classes.dialogRoot, paperFullScreen: classes.paperFullScreen }}
+      classes={{ root: classes.dialogRoot, scrollPaper: classes.scrollPaper }}
     >
       <AppBar elevation={0} className={classes.appBar}>
         <Toolbar disableGutters variant="dense">
@@ -308,4 +305,4 @@ function FullScreenDialog({
   );
 }
 
-export default compose(withUI, withStyles(styles))(FullScreenDialog);
+export default compose(withRouter, withModalNoRouter, withStyles(styles))(FullScreenDialog);

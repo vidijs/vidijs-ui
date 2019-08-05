@@ -22,7 +22,7 @@ function GroupUserEditor({
     <React.Fragment>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">Users</Typography>}
+        title={<Typography variant="subtitle1">Users</Typography>}
         action={
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>

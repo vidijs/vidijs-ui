@@ -50,7 +50,7 @@ function NotificationCreate({
       <DialogTitle>New {entityType ? capitalizeString(entityType) : ''} Notification</DialogTitle>
       <DialogContent>
         <Typography
-          variant="headline"
+          variant="h5"
           color="textSecondary"
           style={{ textDecoration: 'none' }}
         >
@@ -66,7 +66,7 @@ function NotificationCreate({
           initialValues={initialValues}
         />
         <Typography
-          variant="headline"
+          variant="h5"
           color="textSecondary"
           style={{ textDecoration: 'none' }}
         >

@@ -7,9 +7,8 @@ import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
-import { browserLogin } from '../utils/browserLogin';
-import withModal from '../hoc/withModal';
-import withSnackbar from '../hoc/withSnackbar';
+import { withModalNoRouter } from '../hoc/withModal';
+import { withSnackbarNoRouter } from '../hoc/withSnackbar';
 import SelfTestStatus from '../components/selftest/SelfTestStatus';
 import LoginCard from '../components/login/Login';
 import InitDialog from '../components/login/InitDialog';
@@ -38,7 +37,6 @@ class Login extends React.PureComponent {
   componentDidMount() {
     document.title = 'vidi.js';
     if (this.baseUrl) {
-      browserLogin({ baseUrl: this.baseUrl });
       this.onRefresh();
     }
   }
@@ -82,29 +80,30 @@ class Login extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-  onSuccess(response) {
-    const { history, location } = this.props;
-    const { data: token, userName, runAs } = response;
-    const urlParams = new URLSearchParams(location.search);
-    const onLogin = urlParams.get('onLogin') || '/job/';
-    browserLogin({
-      token,
-      userName,
-      baseUrl: this.baseUrl,
-      runAs,
-    });
-    history.push(onLogin);
+  onSuccess({ data: token, userName: newUserName, runAs }) {
+    const {
+      setUserName,
+      setToken,
+      setRunAs,
+    } = this.props;
+    if (runAs) {
+      setRunAs(runAs);
+    }
+    setUserName(newUserName);
+    setToken(token);
   }
 
   onTestUrl(baseUrl) {
-    browserLogin({ baseUrl });
+    const { onSetBaseUrl } = this.props;
+    onSetBaseUrl({ baseUrl });
     this.onRefresh();
   }
 
   render() {
     const { selfTestDocument, loading, loadingInit } = this.state;
+    const { userName } = this.props;
     const initialValues = {
-      headers: { username: 'admin' },
+      headers: { username: userName },
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl: this.displayUrl || this.baseUrl,
     };
@@ -145,7 +144,7 @@ class Login extends React.PureComponent {
             justify="center"
           >
             <Grid item>
-              <Typography variant="display3">vidi.js</Typography>
+              <Typography variant="h2">vidi.js</Typography>
             </Grid>
             <Grid item>
               <IconButton onClick={() => window.open('https://github.com/vidijs')}>
@@ -166,4 +165,4 @@ class Login extends React.PureComponent {
 }
 
 
-export default compose(withModal, withSnackbar)(Login);
+export default compose(withModalNoRouter, withSnackbarNoRouter)(Login);

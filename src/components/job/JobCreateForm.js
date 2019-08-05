@@ -4,7 +4,6 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from 'redux-form-material-ui';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -13,6 +12,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadJobTypeOptions } from '../jobtype/JobTypeSelect';
 import JobPriority from '../../const/JobPriority';
 import { KeyValuePairType } from '../ui/FormType';
+import { TextField, Select } from '../form';
 
 const queryParams = () => (
   <React.Fragment>

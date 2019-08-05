@@ -13,7 +13,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu, { MenuItem } from '../components/ui/Menu';
 import UnstyledLink from '../components/ui/UnstyledLink';
 import LoadingProgress from '../components/ui/LoadingProgress';
-import { browserLogout } from '../utils/browserLogout';
 
 const styles = theme => ({
   root: {
@@ -24,16 +23,12 @@ const styles = theme => ({
 });
 
 function TopAppBar({
-  history,
   toggleMainMenu,
   toggleHistory,
   classes,
+  onLogout,
+  userName,
 }) {
-  const username = localStorage.getItem('vsUsername');
-  const onLogout = () => {
-    browserLogout();
-    history.push('/login/');
-  };
   const { REACT_APP_VIDISPINE_URL } = process.env;
   const { VIDISPINE_SERVER_URL } = window;
   const displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
@@ -46,19 +41,19 @@ function TopAppBar({
         <IconButton onClick={toggleHistory} color="inherit">
           <HistoryIcon />
         </IconButton>
-        <Typography variant="subheading" color="inherit" style={{ flex: 1 }}>
+        <Typography variant="subtitle1" color="inherit" style={{ flex: 1 }}>
           {displayUrl || window.location.origin}
         </Typography>
         <Menu icon={<AccountCircle />} iconProps={{ color: 'inherit' }}>
           <MenuItem disabled>
-            <Typography>{`User: ${username}`}</Typography>
+            <Typography>{`User: ${userName}`}</Typography>
           </MenuItem>
-          <UnstyledLink to={`/user/${username}`}>
+          <UnstyledLink to={`/user/${userName}`}>
             <MenuItem>
               <Typography color="inherit">Profile</Typography>
             </MenuItem>
           </UnstyledLink>
-          <UnstyledLink to={`/import/access/${username}`}>
+          <UnstyledLink to={`/import/access/${userName}`}>
             <MenuItem>
               <Typography color="inherit">Import Access</Typography>
             </MenuItem>

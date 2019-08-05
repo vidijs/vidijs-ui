@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 import UnstyledLink from '../ui/UnstyledLink';
 import TableCell from '../ui/TableCell';
@@ -10,7 +10,7 @@ export default function AuditLogRow({
 }) {
   return (
     <TableRow hover>
-      <TableCell><Moment>{entry.timestamp}</Moment></TableCell>
+      <TableCell>{entry.timestamp ? moment(entry.timestamp) : ''}</TableCell>
       <TableCell>
         <UnstyledLink to={`/username/${entry.username}/`}>
           {entry.username}
