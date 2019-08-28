@@ -10,7 +10,7 @@ export default function ErrorLogRow({
   return (
     <TableRow hover>
       <TableCell>
-        {errorLogDocument.timestamp ? moment(errorLogDocument.timestamp).format('YYYY-MM-DD HH:mm') : ''}
+        {errorLogDocument.timestamp ? moment(errorLogDocument.timestamp).format('YYYY-MM-DD HH:mm').toString() : ''}
       </TableCell>
       <TableCell>{errorLogDocument.id}</TableCell>
       <TableCell>{errorLogDocument.type}</TableCell>

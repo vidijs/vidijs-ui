@@ -28,12 +28,12 @@ export default function JobListRow({
       <TableCell><JobLink>{jobDocument.user}</JobLink></TableCell>
       <TableCell>
         <JobLink>
-          {jobDocument.started ? moment(jobDocument.started).format('YYYY-MM-DD HH:mm') : ''}
+          {jobDocument.started ? moment(jobDocument.started).format('YYYY-MM-DD HH:mm').toString() : ''}
         </JobLink>
       </TableCell>
       <TableCell>
         <JobLink>
-          {jobDocument.finished ? moment(jobDocument.finished).format('YYYY-MM-DD HH:mm') : ''}
+          {jobDocument.finished ? moment(jobDocument.finished).format('YYYY-MM-DD HH:mm').toString() : ''}
         </JobLink>
       </TableCell>
       <TableCell><JobLink>{durationHuman}</JobLink></TableCell>

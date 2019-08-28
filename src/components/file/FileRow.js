@@ -26,7 +26,7 @@ export default function FileRow({
       </TableCell>
       <TableCell>{bytesToSize(fileDocument.size)}</TableCell>
       <TableCell>
-        {fileDocument.timestamp ? moment(fileDocument.timestamp) : ''}
+        {fileDocument.timestamp ? moment(fileDocument.timestamp).toString() : ''}
       </TableCell>
     </TableRow>
   );

@@ -35,10 +35,10 @@ function ReindexTable({
             <TableCell>{reindex.priority}</TableCell>
             <TableCell>{reindex.status}</TableCell>
             <TableCell>
-              {reindex.start ? moment(reindex.start).fromNow() : ''}
+              {reindex.start ? moment(reindex.start).fromNow().toString() : ''}
             </TableCell>
             <TableCell>
-              {reindex.finish ? moment(reindex.finish).fromNow() : ''}
+              {reindex.finish ? moment(reindex.finish).fromNow().toString() : ''}
             </TableCell>
             <TableCell>{reindex.indexesDone}</TableCell>
             <TableCell>{reindex.indexesTotal}</TableCell>

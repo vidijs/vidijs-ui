@@ -10,7 +10,7 @@ export default function AuditLogRow({
 }) {
   return (
     <TableRow hover>
-      <TableCell>{entry.timestamp ? moment(entry.timestamp) : ''}</TableCell>
+      <TableCell>{entry.timestamp ? moment(entry.timestamp).toString() : ''}</TableCell>
       <TableCell>
         <UnstyledLink to={`/username/${entry.username}/`}>
           {entry.username}

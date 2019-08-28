@@ -24,7 +24,7 @@ export default function PropertiesRow({
           </Typography>
         </TableCell>
         <TableCell>
-          {configurationPropertyDocument.lastChange ? moment(configurationPropertyDocument.lastChange).fromNow() : ''}
+          {configurationPropertyDocument.lastChange ? moment(configurationPropertyDocument.lastChange).fromNow().toString() : ''}
         </TableCell>
         <TableCell disableOnClick>
           <IconButton onClick={() => onRemove({ propertyKey: configurationPropertyDocument.key })}>

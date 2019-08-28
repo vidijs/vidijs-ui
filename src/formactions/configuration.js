@@ -112,3 +112,15 @@ export function onUpdateCorsConfiguration(form) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onUpdateAuthConfiguration(form) {
+  const { oAuth2ConfigurationDocument } = form;
+  return api.updateAuthConfiguration({ oAuth2ConfigurationDocument })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

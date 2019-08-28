@@ -15,7 +15,7 @@ const FileTypeRow = ({ fileType }) => (
     <TableCell>{(fileType.size && fileType.size > -1) && bytesToSize(fileType.size)}</TableCell>
     <TableCell>{fileType.state}</TableCell>
     <TableCell>
-      {fileType.timestamp ? moment(fileType.timestamp).format('YYYY-MM-DD HH:mm') : ''}
+      {fileType.timestamp ? moment(fileType.timestamp).format('YYYY-MM-DD HH:mm').toString() : ''}
     </TableCell>
     <TableCell>{fileType.path}</TableCell>
     <TableCell>{fileType.hash}</TableCell>
