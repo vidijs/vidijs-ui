@@ -13,6 +13,7 @@ import Metrics from './configuration/Metrics';
 import LogReport from './configuration/LogReport';
 import PathAlias from './configuration/PathAlias';
 import Cors from './configuration/Cors';
+import OAuth2 from './configuration/OAuth2';
 import StorageList from './StorageList';
 import Storage from './Storage';
 import StorageMethod from './StorageMethod';
@@ -142,6 +143,7 @@ function Main({
         <Route exact path="/configuration/metrics/" component={Metrics} />
         <Route exact path="/configuration/logreport/" component={LogReport} />
         <Route exact path="/configuration/cors/" component={Cors} />
+        <Route exact path="/configuration/auth/" component={OAuth2} />
         <Route exact path="/resource/" component={ResourceTypeList} />
         <Route exact path="/resource/:resourceType/" component={ResourceList} />
         <Route exact path="/resource/:resourceType/:resourceId/" component={Resource} />
