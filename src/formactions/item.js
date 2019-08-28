@@ -184,3 +184,61 @@ export function onCreateThumbnail(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onListItemRelation(form, dispatch, props) {
+  const itemId = props.itemId || form.itemId;
+  const { queryParams: formQueryParams = {} } = form;
+  const { relationMetadata = [], ...queryParams } = formQueryParams;
+  relationMetadata.forEach((metadata) => { queryParams[metadata.key] = metadata.value; });
+  return api.listItemRelation({
+    itemId,
+    queryParams,
+  })
+    .then(response => ({ itemId, ...response }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
+export function onCreateItemRelation(form, dispatch, props) {
+  const itemId = props.itemId || form.itemId;
+  const relationItemId = props.relationItemId || form.relationItemId;
+  const { queryParams: formQueryParams = {} } = form;
+  const { relationMetadata = [], ...queryParams } = formQueryParams;
+  relationMetadata.forEach((metadata) => { queryParams[metadata.key] = metadata.value; });
+  return api.createItemRelation({
+    itemId,
+    relationItemId,
+    queryParams,
+  })
+    .then(response => ({ itemId, ...response }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
+export function onUpdateItemRelation(form, dispatch, props) {
+  const relationId = props.relationId || form.relationId;
+  const { queryParams: formQueryParams = {} } = form;
+  const { relationMetadata = [], ...queryParams } = formQueryParams;
+  relationMetadata.forEach((metadata) => { queryParams[metadata.key] = metadata.value; });
+  return api.updateRelation({
+    relationId,
+    queryParams,
+  })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

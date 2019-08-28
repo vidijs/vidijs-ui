@@ -41,6 +41,7 @@ function ItemTitle({
   onOpen,
   removeModal,
   transcodeModal,
+  relationModal,
   thumbnailModal,
   posterModal,
   exportModal,
@@ -76,6 +77,9 @@ function ItemTitle({
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: addToCollectionModal })}>
             <Typography>Add To Collection</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: relationModal })}>
+            <Typography>Add Relation</Typography>
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: startJobModal })}>
             <Typography>Start Job</Typography>

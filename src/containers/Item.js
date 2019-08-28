@@ -14,6 +14,7 @@ import ItemPoster from './item/ItemPoster';
 import ItemThumbnail from './item/ItemThumbnail';
 import ItemJob from './item/ItemJob';
 import ItemProjection from './item/ItemProjection';
+import ItemRelationList from './item/ItemRelationList';
 
 import AccessControl from './AccessControl';
 import AccessControlMerged from './AccessControlMerged';
@@ -23,6 +24,7 @@ import ItemTitle from '../components/item/ItemTitle';
 import ItemDelete from '../components/item/ItemDelete';
 import ItemTranscode from '../components/item/ItemTranscode';
 import ItemThumbnailDialog from '../components/item/ItemThumbnail';
+import ItemRelationDialog from '../components/item/ItemRelation';
 import ItemExport from '../components/item/ItemExport';
 import ItemImpExport from '../components/item/ItemImpExport';
 import CollectionEntityAdd from '../components/collection/CollectionEntityAdd';
@@ -40,12 +42,14 @@ const ITEM_THUMBNAIL_TAB = 'ITEM_THUMBNAIL_TAB';
 const ITEM_POSTER_TAB = 'ITEM_POSTER_TAB';
 const ITEM_JOB_TAB = 'ITEM_JOB_TAB';
 const ITEM_PROJECTION_TAB = 'ITEM_PROJECTION_TAB';
+const ITEM_RELATION_TAB = 'ITEM_RELATION_TAB';
 const ACCESS_TAB = 'ACCESS_TAB';
 const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
 
 const ITEM_REMOVE_DIALOG = 'ITEM_REMOVE_DIALOG';
 const ITEM_TRANSCODE_DIALOG = 'ITEM_TRANSCODE_DIALOG';
+const ITEM_RELATION_DIALOG = 'ITEM_RELATION_DIALOG';
 const ITEM_THUMBNAIL_DIALOG = 'ITEM_THUMBNAIL_DIALOG';
 const ITEM_POSTER_DIALOG = 'ITEM_POSTER_DIALOG';
 const ITEM_EXPORT_DIALOG = 'ITEM_EXPORT_DIALOG';
@@ -64,6 +68,7 @@ const TAB_TITLE = [
   { tab: ITEM_POSTER_TAB, listText: 'Poster', component: ItemPoster },
   { tab: ITEM_JOB_TAB, listText: 'Job', component: ItemJob },
   { tab: ITEM_PROJECTION_TAB, listText: 'Projection', component: ItemProjection },
+  { tab: ITEM_RELATION_TAB, listText: 'Relation', component: ItemRelationList },
   { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
   { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
   { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
@@ -86,9 +91,27 @@ const listComponent = ({ onChangeTab, tabValue }) => (
 );
 
 class Item extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onRefresh = this.onRefresh.bind(this);
+    this.setOnRefresh = this.setOnRefresh.bind(this);
+    this.state = {
+      onRefresh: undefined,
+    };
+  }
+
   componentDidMount() {
     const { itemId } = this.props;
     document.title = `vidi.js | Item | ${itemId}`;
+  }
+
+  onRefresh() {
+    const { onRefresh } = this.state;
+    if (onRefresh) { onRefresh(); }
+  }
+
+  setOnRefresh(onRefresh) {
+    this.setState({ onRefresh });
   }
 
   render() {
@@ -106,6 +129,7 @@ class Item extends React.PureComponent {
         removeModal={ITEM_REMOVE_DIALOG}
         transcodeModal={ITEM_TRANSCODE_DIALOG}
         thumbnailModal={ITEM_THUMBNAIL_DIALOG}
+        relationModal={ITEM_RELATION_DIALOG}
         posterModal={ITEM_POSTER_DIALOG}
         exportModal={ITEM_EXPORT_DIALOG}
         exportImpModal={ITEM_IMPEXPORT_DIALOG}
@@ -128,6 +152,7 @@ class Item extends React.PureComponent {
           itemId={itemId}
           entityId={itemId}
           entityType="item"
+          setOnRefresh={this.setOnRefresh}
         />
         <ItemDelete
           dialogName={ITEM_REMOVE_DIALOG}
@@ -150,6 +175,11 @@ class Item extends React.PureComponent {
           onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
           variant="poster"
+        />
+        <ItemRelationDialog
+          dialogName={ITEM_RELATION_DIALOG}
+          onSuccess={this.onRefresh}
+          itemId={itemId}
         />
         <ItemExport
           dialogName={ITEM_EXPORT_DIALOG}
