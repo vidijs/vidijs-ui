@@ -9,15 +9,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import HelpIcon from '@material-ui/icons/HelpOutline';
 
 import { withModalNoRouter } from '../hoc/withModal';
 import { withSnackbarNoRouter } from '../hoc/withSnackbar';
 import SelfTestStatus from '../components/selftest/SelfTestStatus';
 import LoginCard from '../components/login/Login';
 import InitDialog from '../components/login/InitDialog';
+import LoginHelpDialog from '../components/login/LoginHelpDialog';
 import GitHubIcon from '../components/ui/GitHubIcon';
 
 const INIT_DIALOG = 'INIT_DIALOG';
+const HELP_DIALOG = 'HELP_DIALOG';
+
 const {
   REACT_APP_UNSPLASH_DISABLE,
   REACT_APP_UNSPLASH_URL = 'https://source.unsplash.com/collection/8534454/800x600/daily',
@@ -106,7 +110,7 @@ class Login extends React.PureComponent {
 
   render() {
     const { selfTestDocument, loading, loadingInit } = this.state;
-    const { userName, baseUrl } = this.props;
+    const { userName, baseUrl, onOpen } = this.props;
     const initialValues = {
       headers: { username: userName },
       queryParams: { autoRefresh: true, seconds: 604800 },
@@ -174,6 +178,13 @@ class Login extends React.PureComponent {
                     >
                       <GitHubIcon />
                     </IconButton>
+                    <IconButton
+                      color="inherit"
+                      disableRipple
+                      onClick={() => onOpen({ modalName: HELP_DIALOG })}
+                    >
+                      <HelpIcon />
+                    </IconButton>
                   </Grid>
                 </Toolbar>
               </AppBar>
@@ -199,6 +210,9 @@ class Login extends React.PureComponent {
           onSuccess={this.onRefresh}
           loadingInit={loadingInit}
           setLoadingInit={newState => this.setState({ loadingInit: newState })}
+        />
+        <LoginHelpDialog
+          dialogName={HELP_DIALOG}
         />
       </>
     );
