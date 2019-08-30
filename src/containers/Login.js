@@ -4,8 +4,11 @@ import { selftest as api } from '@vidijs/vidijs-api';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
 
 import { withModalNoRouter } from '../hoc/withModal';
 import { withSnackbarNoRouter } from '../hoc/withSnackbar';
@@ -15,6 +18,11 @@ import InitDialog from '../components/login/InitDialog';
 import GitHubIcon from '../components/ui/GitHubIcon';
 
 const INIT_DIALOG = 'INIT_DIALOG';
+const {
+  REACT_APP_UNSPLASH_DISABLE,
+  REACT_APP_UNSPLASH_URL = 'https://source.unsplash.com/collection/8534454/800x600/daily',
+  REACT_APP_VERSION,
+} = process.env;
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -128,26 +136,63 @@ class Login extends React.PureComponent {
                   />
                 </Grid>
               </Grid>
+              <AppBar
+                color="inherit"
+                style={{
+                  top: 'auto',
+                  bottom: 0,
+                  backgroundColor: 'black',
+                  color: 'white',
+                }}
+                square
+                elevation={0}
+              >
+                <Toolbar variant="dense">
+                  <Grid container justify="flex-end" alignItems="center">
+                    <Link
+                      href="https://github.com/vidijs/vidijs-ui"
+                      variant="body2"
+                      color="inherit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginRight: 5 }}
+                    >
+                      {'vidijs-ui'}
+                    </Link>
+                    <Typography
+                      variant="body2"
+                      color="inherit"
+                    >
+                      {`v${REACT_APP_VERSION}`}
+                    </Typography>
+                    <IconButton
+                      color="inherit"
+                      href="https://github.com/vidijs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      disableRipple
+                    >
+                      <GitHubIcon />
+                    </IconButton>
+                  </Grid>
+                </Toolbar>
+              </AppBar>
             </Card>
           </Grid>
           <Grid
             item
             sm={8}
-            style={{ background: 'linear-gradient(to bottom right, #C33764, #1D2671)' }}
+            style={REACT_APP_UNSPLASH_DISABLE ? {
+              background: 'linear-gradient(to bottom right, #C33764, #1D2671)',
+            } : {
+              backgroundImage: `url("${REACT_APP_UNSPLASH_URL}")`,
+              backgroundSize: 'cover',
+            }}
             container
             direction="column"
             alignItems="center"
             justify="center"
-          >
-            <Grid item>
-              <Typography variant="h2">vidi.js</Typography>
-            </Grid>
-            <Grid item>
-              <IconButton onClick={() => window.open('https://github.com/vidijs')}>
-                <GitHubIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
+          />
         </Grid>
         <InitDialog
           dialogName={INIT_DIALOG}

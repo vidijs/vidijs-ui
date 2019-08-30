@@ -78,3 +78,8 @@ Note that only files/folders specified with `!` prefix in the `.dockerignore` wi
 ```
 yarn run build-container
 ```
+
+### Build Variables
+
+* **REACT_APP_UNSPLASH_URL**: Override the Unsplash collection URL with your own to change the login background.
+* **REACT_APP_UNSPLASH_DISABLE**: Set to `true` to disable loading images from Unsplash.
