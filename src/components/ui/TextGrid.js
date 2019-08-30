@@ -359,7 +359,6 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'application/json',
             lineWrapping: true,
             lineNumbers: true,
             ...codeProps,
@@ -385,7 +384,7 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'application/json',
+            mode: 'json',
             lineWrapping: true,
             lineNumbers: true,
             ...codeProps,
@@ -411,7 +410,7 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'application/xml',
+            mode: 'xml',
             lineWrapping: true,
             lineNumbers: true,
             ...codeProps,

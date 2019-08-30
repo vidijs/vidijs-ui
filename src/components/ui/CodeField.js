@@ -3,12 +3,8 @@ import CodeMirror from 'react-codemirror';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
-import 'codemirror/theme/material.css';
-import 'codemirror/theme/yeti.css';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
-
-import '../../css/CodeMirror.css';
 
 const CodeField = (p) => {
   const className = p.className || {};

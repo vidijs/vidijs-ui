@@ -1,5 +1,7 @@
 import React from 'react';
 import CodeMirror from 'react-codemirror';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/xml/xml';
 
 import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';

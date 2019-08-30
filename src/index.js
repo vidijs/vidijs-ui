@@ -5,7 +5,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createMemoryHistory as createHistory } from 'history';
 
+import 'codemirror/theme/material.css';
+import 'codemirror/lib/codemirror.css';
+import './css/CodeMirror.css';
 import './index.css';
+
 import { App, Login } from './containers';
 import Auth from './containers/Auth';
 import configureStore from './configureStore';
