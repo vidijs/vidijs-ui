@@ -23,10 +23,6 @@ class Login extends React.PureComponent {
     this.onRefreshError = this.onRefreshError.bind(this);
     this.onSuccess = this.onSuccess.bind(this);
     this.onTestUrl = this.onTestUrl.bind(this);
-    const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
-    const { VIDISPINE_SERVER_URL, location } = window;
-    this.baseUrl = REACT_APP_USE_CORS ? localStorage.getItem('vsBaseUrl') : location.origin;
-    this.displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
     this.state = {
       selfTestDocument: undefined,
       loading: false,
@@ -36,7 +32,8 @@ class Login extends React.PureComponent {
 
   componentDidMount() {
     document.title = 'vidi.js';
-    if (this.baseUrl) {
+    const { baseUrl } = this.props;
+    if (baseUrl) {
       this.onRefresh();
     }
   }
@@ -94,18 +91,18 @@ class Login extends React.PureComponent {
   }
 
   onTestUrl(baseUrl) {
-    const { onSetBaseUrl } = this.props;
-    onSetBaseUrl({ baseUrl });
+    const { setBaseUrl } = this.props;
+    setBaseUrl(baseUrl);
     this.onRefresh();
   }
 
   render() {
     const { selfTestDocument, loading, loadingInit } = this.state;
-    const { userName } = this.props;
+    const { userName, baseUrl } = this.props;
     const initialValues = {
       headers: { username: userName },
       queryParams: { autoRefresh: true, seconds: 604800 },
-      baseUrl: this.displayUrl || this.baseUrl,
+      baseUrl,
     };
     return (
       <>
@@ -128,7 +125,6 @@ class Login extends React.PureComponent {
                     initialValues={initialValues}
                     onSuccess={this.onSuccess}
                     onTestUrl={this.onTestUrl}
-                    canEditUrl={(process.env.REACT_APP_USE_CORS)}
                   />
                 </Grid>
               </Grid>

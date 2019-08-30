@@ -102,6 +102,7 @@ function Main({
   unsetToken,
   unsetRunAs,
   userName,
+  baseUrl,
 }) {
   const toggleHistory = () => onOpen({ modalName: HISTORY_DIALOG });
   const toggleMainMenu = () => onOpen({ modalName: MAINMENU_DIALOG });
@@ -122,6 +123,7 @@ function Main({
         userName={userName}
         toggleMainMenu={toggleMainMenu}
         toggleHistory={toggleHistory}
+        baseUrl={baseUrl}
       />
       <main
         style={{

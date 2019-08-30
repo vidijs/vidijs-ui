@@ -21,6 +21,7 @@ class Auth extends React.Component {
     this.unsetRunAs = this.unsetRunAs.bind(this);
     this.setBaseUrl = this.setBaseUrl.bind(this);
     this.unsetBaseUrl = this.unsetBaseUrl.bind(this);
+    if (process.env.NODE_ENV === 'development' || window.VIDISPINE_URL !== '$VIDISPINE_URL') this.windowBaseUrl = window.location.origin;
     const { cookies } = this.props;
     const token = cookies.get(AUTH_TOKEN, { path: '/' });
     const userName = cookies.get(AUTH_USERNAME, { path: '/' }); // This will return the string as "undefined"
@@ -65,6 +66,7 @@ class Auth extends React.Component {
 
   setBaseUrl(baseUrl) {
     const { cookies } = this.props;
+    localStorage.setItem('vsBaseUrl', baseUrl);
     cookies.set(AUTH_VIDISPINE_SERVER_URL, baseUrl, { path: '/' });
     api.defaultClient.defaults.baseURL = baseUrl;
     this.setState({ baseUrl });
@@ -120,7 +122,7 @@ class Auth extends React.Component {
         <Login
           userName={userName}
           runAs={runAs}
-          baseUrl={baseUrl}
+          baseUrl={this.windowBaseUrl || baseUrl}
           setUserName={this.setUserName}
           setToken={this.setToken}
           setBaseUrl={this.setBaseUrl}

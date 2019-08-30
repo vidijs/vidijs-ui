@@ -28,10 +28,8 @@ function TopAppBar({
   classes,
   onLogout,
   userName,
+  baseUrl,
 }) {
-  const { REACT_APP_VIDISPINE_URL } = process.env;
-  const { VIDISPINE_SERVER_URL } = window;
-  const displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
   return (
     <AppBar elevation={0} classes={{ root: classes.root }} position="fixed">
       <Toolbar disableGutters variant="dense">
@@ -42,7 +40,7 @@ function TopAppBar({
           <HistoryIcon />
         </IconButton>
         <Typography variant="subtitle1" color="inherit" style={{ flex: 1 }}>
-          {displayUrl || window.location.origin}
+          {baseUrl}
         </Typography>
         <Menu icon={<AccountCircle />} iconProps={{ color: 'inherit' }}>
           <MenuItem disabled>
