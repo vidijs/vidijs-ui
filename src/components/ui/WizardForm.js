@@ -51,7 +51,7 @@ function XMLDocumentForm({
         component={CodeField}
         options={{
           theme: 'material',
-          mode: 'application/xml',
+          mode: 'xml',
           lineWrapping: true,
           lineNumbers: true,
         }}

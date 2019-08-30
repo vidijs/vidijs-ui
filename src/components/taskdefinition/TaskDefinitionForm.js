@@ -111,9 +111,11 @@ const TaskDefinitionType = () => (
       component={CodeField}
       options={{
         theme: 'material',
-        mode: 'application/json',
+        mode: 'javascript',
         lineWrapping: true,
         lineNumbers: true,
+        foldGutter: true,
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
       }}
     />
     <Field

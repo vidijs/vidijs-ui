@@ -361,6 +361,8 @@ function TextGrid({
             theme: 'material',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />
@@ -384,9 +386,11 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'json',
+            mode: 'application/json',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />
@@ -413,6 +417,8 @@ function TextGrid({
             mode: 'xml',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />

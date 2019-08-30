@@ -1,7 +1,21 @@
 import React from 'react';
-import CM from 'react-codemirror';
+import ReactCodeMirror from 'react-codemirror';
+import CodeMirrorInstance from 'codemirror';
 import 'codemirror/mode/javascript/javascript';
 import 'codemirror/mode/xml/xml';
+
+import 'codemirror/addon/fold/foldcode';
+import 'codemirror/addon/fold/foldgutter';
+import 'codemirror/addon/fold/brace-fold';
+import 'codemirror/addon/fold/xml-fold';
+import 'codemirror/addon/fold/indent-fold';
+import 'codemirror/addon/fold/comment-fold';
+import 'codemirror/addon/fold/foldgutter.css';
+
+import 'codemirror/theme/material.css';
+import 'codemirror/lib/codemirror.css';
+import '../../css/CodeMirror.css';
+
 
 export default class CodeMirror extends React.Component {
   constructor(props) {
@@ -14,10 +28,12 @@ export default class CodeMirror extends React.Component {
   }
 
   render() {
-    if (this.jsonRef) { this.jsonRef.codeMirror.setValue(this.props.value); }
+    const { value } = this.props;
+    if (this.jsonRef) { this.jsonRef.codeMirror.setValue(value); }
     return (
       <React.Fragment>
-        <CM
+        <ReactCodeMirror
+          codeMirrorInstance={CodeMirrorInstance}
           ref={this.cmRef}
           {...this.props}
         />

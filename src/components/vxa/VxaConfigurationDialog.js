@@ -5,10 +5,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
-import CodeMirror from 'react-codemirror';
-import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/xml/xml';
 
+
+import TextGrid from '../ui/TextGrid';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
 
@@ -29,15 +28,9 @@ function VxaDialog({
         New Agent Configuration
       </DialogTitle>
       <DialogContent>
-        <CodeMirror
+        <TextGrid
           value={vxaConfiguration}
-          options={{
-            readOnly: true,
-            theme: 'material',
-            mode: 'text/plain',
-            lineWrapping: true,
-            lineNumbers: true,
-           }}
+          variant="code"
         />
       </DialogContent>
       <DialogActions>
