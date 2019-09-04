@@ -17,8 +17,8 @@ const corsConfigurationDocument = `<CORSConfigurationDocument xmlns="http://xml.
         </request>
         <response>
             <allowOrigin>${window.location.origin}</allowOrigin>
-            <allowMethods>*</allowMethods>
-            <allowHeaders>*</allowHeaders>
+            <allowMethods>OPTIONS,GET,HEAD,POST,PUT,DELETE</allowMethods>
+            <allowHeaders>accept,content-type,authorization</allowHeaders>
             <allowMaxAge>600</allowMaxAge>
         </response>
     </entry>
