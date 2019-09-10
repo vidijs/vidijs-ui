@@ -102,7 +102,11 @@ class HistoryDialog extends React.PureComponent {
           requestDataString = formatXML(requestData);
           break;
         case 'application/json':
-          requestDataString = JSON.parse(requestData);
+          if (typeof requestData === 'string') {
+            requestDataString = JSON.parse(requestData);
+          } else {
+            requestDataString = requestData;
+          }
           break;
         case 'application/javascript':
           requestDataString = requestData;

@@ -34,7 +34,7 @@ class ItemPoster extends React.PureComponent {
   }
 
   onFetch(itemId) {
-    const baseUrl = localStorage.getItem('vsBaseUrl');
+    const baseUrl = localStorage.getItem('vsBaseUrl') || '';
     const queryParams = {
       content: 'poster',
       'noauth-url': true,

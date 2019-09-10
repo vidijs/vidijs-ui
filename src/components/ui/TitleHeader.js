@@ -41,7 +41,7 @@ function TitleHeader({
   addAccessControl,
   style = {},
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const breadcrumb =
     (
       <Grid

@@ -44,7 +44,7 @@ function FullScreenDialog({
   onClose,
   history,
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const itemParams = new URLSearchParams({
     content: 'metadata,thumbnail',
     baseURI: `${baseUrl}/APInoauth/`,

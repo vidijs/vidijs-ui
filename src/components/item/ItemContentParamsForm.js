@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
+import { TextField, Select } from '../form';
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
@@ -15,6 +15,8 @@ import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { loadStorageOptions } from '../storage/StorageSelect';
 import { loadStorageGroupOptions } from '../storagegroup/StorageGroupSelect';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
+import { KeyValuePairType } from '../ui/FormType';
+import FieldTypeArray from '../ui/FieldTypeArray';
 
 export const queryParams = () => (
   <React.Fragment>
@@ -126,10 +128,10 @@ export const queryParams = () => (
         <MenuItem value="AZURE_SAS">AZURE_SAS</MenuItem>
       </Field>
     </FormControl>
-    <Field
+    <FieldTypeArray
       name="methodMetadata"
-      component={TextField}
-      fullWidth
+      label="Method Metadata"
+      component={KeyValuePairType}
     />
     <Field
       name="tag"
