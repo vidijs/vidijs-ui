@@ -202,7 +202,7 @@ const NameURIPairType = () => (
   </React.Fragment>
 );
 
-const OtifPresetType = () => (
+export const OtifPresetType = () => (
   <React.Fragment>
     <Field
       name="uuid"

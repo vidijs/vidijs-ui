@@ -34,9 +34,12 @@ function ShapeTitle({
   onOpen,
   transcodeModal,
   removeModal,
+  addTagModal,
+  removeTagModal,
+  analyzeTagModal,
   ...props
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const itemParams = new URLSearchParams({
     content: 'metadata,thumbnail',
     baseURI: `${baseUrl}/APInoauth/`,
@@ -54,6 +57,15 @@ function ShapeTitle({
         <Menu>
           <MenuItem onClick={() => onOpen({ modalName: transcodeModal })}>
             <Typography>Transcode</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: analyzeTagModal })}>
+            <Typography>Analyze</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: addTagModal })}>
+            <Typography>Add Tag</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: removeTagModal })}>
+            <Typography color="secondary">Remove Tag</Typography>
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: removeModal })}>
             <Typography color="secondary">Delete</Typography>

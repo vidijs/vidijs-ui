@@ -6,11 +6,17 @@ import ShapeParams from '../components/shape/ShapeParams';
 import ShapeOverview from '../components/shape/ShapeOverview';
 import ShapeDelete from '../components/shape/ShapeDelete';
 import ShapeTranscode from '../components/shape/ShapeTranscode';
+import ShapeAnalyze from '../components/shape/ShapeAnalyze';
+import ShapeAddTag from '../components/shape/ShapeAddTag';
+import ShapeRemoveTag from '../components/shape/ShapeRemoveTag';
 
 import withSnackbar from '../hoc/withSnackbar';
 
 const SHAPE_REMOVE_DIALOG = 'SHAPE_REMOVE_DIALOG';
 const SHAPE_TRANSCODE_DIALOG = 'SHAPE_TRANSCODE_DIALOG';
+const SHAPE_ANALYZE_DIALOG = 'SHAPE_ANALYZE_DIALOG';
+const SHAPE_ADD_TAG_DIALOG = 'SHAPE_ADD_TAG_DIALOG';
+const SHAPE_REMOVE_TAG_DIALOG = 'SHAPE_REMOVE_TAG_DIALOG';
 
 class Shape extends React.PureComponent {
   constructor(props) {
@@ -74,6 +80,9 @@ class Shape extends React.PureComponent {
           itemId={itemId}
           removeModal={SHAPE_REMOVE_DIALOG}
           transcodeModal={SHAPE_TRANSCODE_DIALOG}
+          analyzeTagModal={SHAPE_ANALYZE_DIALOG}
+          addTagModal={SHAPE_ADD_TAG_DIALOG}
+          removeTagModal={SHAPE_REMOVE_TAG_DIALOG}
         />
         <ShapeParams
           shapeId={shapeId}
@@ -94,6 +103,24 @@ class Shape extends React.PureComponent {
         <ShapeTranscode
           dialogName={SHAPE_TRANSCODE_DIALOG}
           onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeAnalyze
+          dialogName={SHAPE_ANALYZE_DIALOG}
+          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeAddTag
+          dialogName={SHAPE_ADD_TAG_DIALOG}
+          onSuccess={this.onRefresh}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeRemoveTag
+          dialogName={SHAPE_REMOVE_TAG_DIALOG}
+          onSuccess={this.onRefresh}
           itemId={itemId}
           shapeId={shapeId}
         />
