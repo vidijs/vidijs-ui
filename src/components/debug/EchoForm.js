@@ -33,6 +33,8 @@ function EchoForm({
           mode: 'application/xml',
           lineWrapping: true,
           lineNumbers: true,
+          foldGutter: true,
+          gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         }}
         className={{ root: classes.scriptFieldRoot, input: classes.scriptFieldInput }}
       />
@@ -45,6 +47,9 @@ function EchoForm({
           mode: 'application/json',
           readOnly: true,
           lineWrapping: true,
+          lineNumbers: true,
+          foldGutter: true,
+          gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
         }}
         cmRef={cmRef}
       />
