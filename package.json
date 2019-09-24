@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.3.0",
     "@material-ui/icons": "^4.2.1",
-    "@vidijs/vidijs-api": "^0.1.11",
+    "@vidijs/vidijs-api": "^0.1.12",
     "axios": "0.18.1",
     "classnames": "^2.2.6",
     "codemirror": "^5.48.2",

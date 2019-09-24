@@ -88,6 +88,7 @@ import ShapeSearch from './ShapeSearch';
 import FieldGroupSearch from './FieldGroupSearch';
 import ImportImp from './ImportImp';
 import UserKey from './UserKey';
+import ScheduledRequestList from './ScheduledRequestList';
 
 import TopAppBar from './TopAppBar';
 import FullScreenDialog from './FullScreenDialog';
@@ -216,6 +217,7 @@ function Main({
         <Route exact path="/auto-import/:storageId/" component={AutoImportRule} />
         <Route exact path="/service/stacktrace/" component={StackTrace} />
         <Route exact path="/transfer/" component={Transfer} />
+        <Route exact path="/scheduled-request/" component={ScheduledRequestList} />
         <Route exact path="/external-id/:entityType/:entityId" component={ExternalId} />
         <Route exact path="/external-id/:entityType/:entitySubType/:entityId" component={ExternalId} />
       </main>

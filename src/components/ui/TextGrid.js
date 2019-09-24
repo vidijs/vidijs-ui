@@ -342,7 +342,7 @@ function TextGrid({
       return null;
     }
   }
-  if (variant === 'code') {
+  if (variant === 'code' || variant === 'text/plain') {
     return (
       <div>
         {title !== undefined &&
@@ -369,7 +369,7 @@ function TextGrid({
       </div>
     );
   }
-  if (variant === 'json') {
+  if (variant === 'json' || variant === 'application/json') {
     return (
       <div>
         {title !== undefined &&
@@ -397,7 +397,7 @@ function TextGrid({
       </div>
     );
   }
-  if (variant === 'xml') {
+  if (variant === 'xml' || variant === 'application/xml') {
     return (
       <div>
         {title !== undefined &&

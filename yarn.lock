@@ -1694,10 +1694,10 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
-"@vidijs/vidijs-api@^0.1.11":
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.11.tgz#3dc7ff961b24dfd1a01efd57f6c1ff8e52f2950a"
-  integrity sha512-/KeapfycKE8rzqv3onMQC5EVx5VtSJuC2IQWGE+1NrZ4EBk5AWlNTwvjdGKze9KZtGH7Jy6oquVeuZwGQ8gZ4Q==
+"@vidijs/vidijs-api@^0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.12.tgz#5137bec61dd6c2e4042803c4b56a7ec17adab938"
+  integrity sha512-M4OwMrXB9lldylSm5xRYUpG1RfTe50KEEc04OSB5qHC+JHA1Hiv0R0LOfhDdSvqNqQgoaO9tRGDTuPOwUj5CpQ==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
