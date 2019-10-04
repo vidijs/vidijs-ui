@@ -89,6 +89,7 @@ import FieldGroupSearch from './FieldGroupSearch';
 import ImportImp from './ImportImp';
 import UserKey from './UserKey';
 import ScheduledRequestList from './ScheduledRequestList';
+import Stitch from './Stitch';
 
 import TopAppBar from './TopAppBar';
 import FullScreenDialog from './FullScreenDialog';
@@ -218,6 +219,7 @@ function Main({
         <Route exact path="/service/stacktrace/" component={StackTrace} />
         <Route exact path="/transfer/" component={Transfer} />
         <Route exact path="/scheduled-request/" component={ScheduledRequestList} />
+        <Route exact path="/stitch/" component={Stitch} />
         <Route exact path="/external-id/:entityType/:entityId" component={ExternalId} />
         <Route exact path="/external-id/:entityType/:entitySubType/:entityId" component={ExternalId} />
       </main>

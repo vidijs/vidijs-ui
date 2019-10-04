@@ -120,6 +120,7 @@ function FullScreenDialog({
     { value: '/configuration/', label: 'Configuration' },
     { value: '/configuration/ftp-pool/', label: 'FTP Pool' },
     { value: '/scheduled-request/', label: 'Scheduled Requests' },
+    { value: '/stitch/', label: 'Stitch' },
   ];
   const ListLink = ({ to, primary }) => (
     <ListItem button to={to} component={Link} onClick={onClose}>
@@ -252,6 +253,7 @@ function FullScreenDialog({
             <ListGroup subheader="Utils">
               <ListLink to="/debug/echo/" primary="XML Echo" />
               <ListLink to="/javascript/test/" primary="Javascript Test" />
+              <ListLink to="/stitch/" primary="Stitch" />
               <ListLink to="/wizard/" primary="Wizard" />
             </ListGroup>
           </Grid>
