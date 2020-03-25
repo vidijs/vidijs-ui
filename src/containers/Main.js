@@ -179,7 +179,7 @@ function Main({
         <Route exact path="/item/" component={ItemSearch} />
         <Route exact path="/shape" component={ShapeSearch} />
         <Route exact path="/item/:itemId/" component={Item} />
-        <Route exact path="/item/:itemId/shape/:shapeId/" component={Shape} />
+        <Route path="/item/:itemId/shape/:shapeId/" component={Shape} />
         <Route exact path="/reindex/" component={ReindexList} />
         <Route exact path="/wizard/" component={Wizard} />
         <Route exact path="/metadata-field/" component={MetadataFieldList} />

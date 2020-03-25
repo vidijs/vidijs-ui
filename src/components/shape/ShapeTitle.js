@@ -8,7 +8,7 @@ import TitleHeader from '../ui/TitleHeader';
 import Menu, { MenuItem } from '../ui/Menu';
 import { withModalNoRouter } from '../../hoc/withModal';
 
-export const ShapeHeading = ({ shapeId }) => (
+export const ShapeHeading = ({ shapeId, title }) => (
   <Grid container alignItems="center">
     <Grid item>
       <Typography variant="h5" color="textSecondary">
@@ -25,10 +25,25 @@ export const ShapeHeading = ({ shapeId }) => (
         {shapeId}
       </Typography>
     </Grid>
+    {title && (
+      <>
+        <Grid item>
+          <IconButton disabled>
+            <ArrowForwardIos />
+          </IconButton>
+        </Grid>
+        <Grid item>
+          <Typography variant="h5">
+            {title}
+          </Typography>
+        </Grid>
+      </>
+    )}
   </Grid>
 );
 
 function ShapeTitle({
+  title,
   itemId,
   shapeId,
   onOpen,
@@ -52,7 +67,7 @@ function ShapeTitle({
       grandParentTo={`/item/?${itemParams.toString()}`}
       parentTitle={itemId}
       parentTo={`/item/${itemId}?tab=ITEM_SHAPE_TAB`}
-      title={(<ShapeHeading shapeId={shapeId} />)}
+      title={(<ShapeHeading shapeId={shapeId} title={title} />)}
       actionComponent={(
         <Menu>
           <MenuItem onClick={() => onOpen({ modalName: transcodeModal })}>

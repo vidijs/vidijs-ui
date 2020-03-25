@@ -15,6 +15,7 @@ import ItemThumbnail from './item/ItemThumbnail';
 import ItemJob from './item/ItemJob';
 import ItemProjection from './item/ItemProjection';
 import ItemRelationList from './item/ItemRelationList';
+import ItemBulkyMetadataList from './item/ItemBulkyMetadataList';
 
 import AccessControl from './AccessControl';
 import AccessControlMerged from './AccessControlMerged';
@@ -46,6 +47,7 @@ const ITEM_RELATION_TAB = 'ITEM_RELATION_TAB';
 const ACCESS_TAB = 'ACCESS_TAB';
 const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
+const BULKYMETADATA_TAB = 'BULKYMETADATA_TAB';
 
 const ITEM_REMOVE_DIALOG = 'ITEM_REMOVE_DIALOG';
 const ITEM_TRANSCODE_DIALOG = 'ITEM_TRANSCODE_DIALOG';
@@ -72,6 +74,7 @@ const TAB_TITLE = [
   { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
   { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
   { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
+  { tab: BULKYMETADATA_TAB, listText: 'Bulky Metadata', component: ItemBulkyMetadataList },
 ];
 
 
