@@ -41,7 +41,7 @@ function Login({
       <DialogContent>
         <LoginForm
           form={LOGIN_FORM}
-          onSubmit={formActions.onGetToken}
+          onSubmit={formActions.onGetUserToken}
           onSubmitSuccess={onSubmitSuccess}
           onSubmitFail={onSubmitFail}
           {...formProps}

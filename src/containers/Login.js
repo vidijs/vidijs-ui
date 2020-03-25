@@ -112,7 +112,7 @@ class Login extends React.PureComponent {
     const { selfTestDocument, loading, loadingInit } = this.state;
     const { userName, baseUrl, onOpen } = this.props;
     const initialValues = {
-      headers: { username: userName },
+      headers: { username: userName, accept: 'text/plain', },
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl,
     };
