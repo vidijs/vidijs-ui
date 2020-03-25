@@ -324,6 +324,7 @@ function TextGrid({
   capitalize = false,
   titleGridProps,
   valueGridProps,
+  titleTypographyProps,
   classes,
   hover = false,
   hideNoValue = false,
@@ -470,6 +471,7 @@ function TextGrid({
           variant="subtitle2"
           onClick={onTextClick}
           noWrap
+          {...titleTypographyProps}
         >
           {titleStartCase ? startCase(title) : title}
         </Typography>

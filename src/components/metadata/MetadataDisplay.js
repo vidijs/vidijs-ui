@@ -13,6 +13,7 @@ export const MetadataFieldValueType = ({ value = {} }) => {
     <TextGridArray
       title={value.name}
       value={valueListValues}
+      titleStartCase={false}
       hover
     />
   );
@@ -24,16 +25,19 @@ export const MetadataGroupValueType = ({ value = {} }) => (
       title="Group Name"
       value={value.name}
       variant="group"
+      titleStartCase={false}
     />
     <TypeArray
       arrayTitle="Fields"
       value={value.field}
       component={MetadataFieldValueType}
+      titleStartCase={false}
     />
     <TypeArray
       arrayTitle="Groups"
       value={value.group}
       component={MetadataGroupValueType}
+      titleStartCase={false}
     />
   </React.Fragment>
 );
@@ -54,12 +58,14 @@ export const MetadataType = ({ value = {} }) => (
             arrayTitle="Fields"
             value={v.field}
             component={MetadataFieldValueType}
+            titleStartCase={false}
             hideNoValue
           />
           <TypeArray
             arrayTitle="Groups"
             value={v.group}
             component={MetadataGroupValueType}
+            titleStartCase={false}
             hideNoValue
           />
         </React.Fragment>
