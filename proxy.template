@@ -2,6 +2,14 @@ server {
     listen       80;
     server_name  localhost;
     client_max_body_size 2000M;
+    server_tokens off;
+
+    # Enable gzip
+    gzip on;
+    gzip_comp_level 2;
+    gzip_proxied any;
+    gzip_vary on;
+    gzip_types text/plain text/css application/json application/javascript application/x-javascript text/javascript application/xml;
 
     location /API/ {
         proxy_pass   ${VIDISPINE_URL}/API/;
@@ -21,6 +29,9 @@ server {
     }
     location /static/ {
       root   /usr/share/nginx/html/;
+      add_header "Cache-Control" "public";
+  		expires 30d;
+  		add_header "Pragma" "cache";
     }
     location / {
         root   /usr/share/nginx/html;

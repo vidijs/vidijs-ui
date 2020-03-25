@@ -9,7 +9,7 @@ import * as formActions from '../../formactions/group';
 import { GroupUserForm } from './GroupForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const GROUP_USER_FORM = 'GROUP_USER_FORM';

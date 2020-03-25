@@ -55,7 +55,7 @@ const FieldArrayComponent = ({
             </IconButton>
           </Grid>
           { label &&
-            <Typography variant="body2">
+            <Typography variant="subtitle2">
               {labelStartCase ?
                 startCase(`${label} ${index + 1}`)
                 :

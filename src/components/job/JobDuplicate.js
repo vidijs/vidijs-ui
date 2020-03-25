@@ -9,7 +9,7 @@ import * as formActions from '../../formactions/job';
 import JobPriorityForm from './JobPriorityForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const JOB_DUPLICATE_FORM = 'JOB_DUPLICATE_FORM';

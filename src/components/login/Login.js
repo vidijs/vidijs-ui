@@ -14,7 +14,7 @@ import ExpansionPanel from '../ui/ExpansionPanel';
 import LoginForm from './LoginForm';
 import LoginFormAdvanced from './LoginFormAdvanced';
 import * as formActions from '../../formactions/user';
-import withUI from '../../hoc/withUI';
+import { withSnackbarNoRouter } from '../../hoc/withSnackbar';
 import withFormActions from '../../hoc/withFormActions';
 
 const LOGIN_FORM = 'LOGIN_FORM';
@@ -41,14 +41,14 @@ function Login({
       <DialogContent>
         <LoginForm
           form={LOGIN_FORM}
-          onSubmit={formActions.onGetToken}
+          onSubmit={formActions.onGetUserToken}
           onSubmitSuccess={onSubmitSuccess}
           onSubmitFail={onSubmitFail}
           {...formProps}
         />
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={{ padding: 0 }}>
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary">
               Advanced
             </Typography>
           </ExpansionPanelSummary>
@@ -77,4 +77,4 @@ function Login({
   );
 }
 
-export default compose(withUI, withFormActions)(Login);
+export default compose(withSnackbarNoRouter, withFormActions)(Login);

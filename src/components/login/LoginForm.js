@@ -2,8 +2,9 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { reduxForm, FormSection } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
 
+import { TextField } from '../form';
+import { required } from '../../utils/FieldValidation';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
@@ -15,6 +16,7 @@ const headers = () => (
       component={TextField}
       required
       fullWidth
+      validate={[required]}
     />
     <Field
       name="password"
@@ -24,6 +26,7 @@ const headers = () => (
       required
       fullWidth
       autoFocus
+      validate={[required]}
     />
   </React.Fragment>
 );
@@ -46,7 +49,6 @@ function LoginForm({
   error,
   handleSubmit,
   onTestUrl,
-  canEditUrl,
 }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -55,9 +57,10 @@ function LoginForm({
         name="baseUrl"
         label="Vidspine Server"
         component={TextField}
+        required
         onBlur={(event, baseUrl) => onTestUrl(baseUrl)}
-        disabled={!(canEditUrl)}
         fullWidth
+        validate={[required]}
       />
       <FormSection
         name="headers"

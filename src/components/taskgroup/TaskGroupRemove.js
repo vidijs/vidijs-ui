@@ -27,7 +27,7 @@ export default function TaskGroupRemove({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={() => onRemove({ groupName })}
           color="secondary"
           autoFocus

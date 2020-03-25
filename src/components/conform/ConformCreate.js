@@ -31,7 +31,7 @@ function ConformCreate({
     <React.Fragment>
       <Grid container justify="space-between">
         <Typography
-          variant="headline"
+          variant="h5"
           color="textSecondary"
           style={{ textDecoration: 'none' }}
         >
@@ -51,7 +51,7 @@ function ConformCreate({
         onSubmitFail={formActions.onCreateSubmitFail}
       />
       <Typography
-        variant="headline"
+        variant="h5"
         color="textSecondary"
         style={{ textDecoration: 'none' }}
       >
@@ -69,7 +69,7 @@ function ConformCreate({
         </CardContent>
       </SquareCard>
       <Typography
-        variant="headline"
+        variant="h5"
         color="textSecondary"
         style={{ textDecoration: 'none' }}
       >

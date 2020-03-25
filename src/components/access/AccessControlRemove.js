@@ -27,7 +27,7 @@ export default function AccessControlRemove({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={onRemove(accessId)}
           color="secondary"
           autoFocus

@@ -33,7 +33,7 @@ const WrappedFormSection = ({
     className={hover ? classes.onHover : classes.noHover}
   >
     { label &&
-      <Typography variant="body2">{labelStartCase ? startCase(label) : label}</Typography>
+      <Typography variant="subtitle2">{labelStartCase ? startCase(label) : label}</Typography>
     }
     <div className={label ? classes.marginLeft : undefined}>
       <FormSection

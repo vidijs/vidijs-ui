@@ -41,7 +41,7 @@ const TypeSection = ({
       className={hover ? classes.onHover : classes.noHover}
     >
       {title &&
-      <Typography variant="body2">{titleStartCase ? startCase(title) : title}</Typography>
+      <Typography variant="subtitle2">{titleStartCase ? startCase(title) : title}</Typography>
       }
       { typeof value === 'object' &&
       <div className={dense ? undefined : classes.marginLeft}>

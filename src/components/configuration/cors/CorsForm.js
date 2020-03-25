@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../../form';
 
 import FormSection from '../../ui/FormSection';
 import FieldTypeArray from '../../ui/FieldTypeArray';

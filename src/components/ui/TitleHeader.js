@@ -41,7 +41,7 @@ function TitleHeader({
   addAccessControl,
   style = {},
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const breadcrumb =
     (
       <Grid
@@ -52,7 +52,7 @@ function TitleHeader({
           <Grid item>
               {grandParentTo ?
                 <Typography
-                  variant="headline"
+                  variant="h5"
                   color="textSecondary"
                   component={Link}
                   to={grandParentTo}
@@ -60,7 +60,7 @@ function TitleHeader({
                 >
                   {grandParentTitle}
                 </Typography> :
-                <Typography variant="headline" color="textSecondary">
+                <Typography variant="h5" color="textSecondary">
                   {grandParentTitle}
                 </Typography>
               }
@@ -77,7 +77,7 @@ function TitleHeader({
           <Grid item>
               {parentTo ?
                 <Typography
-                  variant="headline"
+                  variant="h5"
                   color="textSecondary"
                   component={Link}
                   to={parentTo}
@@ -85,7 +85,7 @@ function TitleHeader({
                 >
                   {parentTitle}
                 </Typography> :
-                <Typography variant="headline" color="textSecondary">
+                <Typography variant="h5" color="textSecondary">
                   {parentTitle}
                 </Typography>
               }
@@ -99,7 +99,7 @@ function TitleHeader({
           </Grid>
         }
         <Grid item>
-          <Typography variant="headline">
+          <Typography variant="h5">
             {title}
           </Typography>
         </Grid>

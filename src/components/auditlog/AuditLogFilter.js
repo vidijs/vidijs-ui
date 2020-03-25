@@ -40,7 +40,7 @@ function AuditLogFilter({
           onSubmitSuccess={onSubmitSuccess}
           onSubmitFail={onSubmitFail}
           onCancel={onClose}
-          initialValues={{ queryParams: { performCount: true } }}
+          initialValues={{ queryParams: { performCount: false } }}
         />
       </CardContent>
       <Divider />

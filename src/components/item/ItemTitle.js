@@ -14,7 +14,7 @@ import { withModalNoRouter } from '../../hoc/withModal';
 export const ItemHeading = ({ itemId }) => (
   <Grid container alignItems="center">
     <Grid item>
-      <Typography variant="headline" color="textSecondary">
+      <Typography variant="h5" color="textSecondary">
         Item
       </Typography>
     </Grid>
@@ -25,7 +25,7 @@ export const ItemHeading = ({ itemId }) => (
     </Grid>
     <Grid item>
       <Typography
-        variant="headline"
+        variant="h5"
         component={Link}
         to={`/item/${itemId}/`}
         style={{ textDecoration: 'none' }}
@@ -41,6 +41,7 @@ function ItemTitle({
   onOpen,
   removeModal,
   transcodeModal,
+  relationModal,
   thumbnailModal,
   posterModal,
   exportModal,
@@ -50,7 +51,7 @@ function ItemTitle({
   title,
   ...props
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const itemParams = new URLSearchParams({
     content: 'metadata,thumbnail',
     baseURI: `${baseUrl}/APInoauth/`,
@@ -76,6 +77,9 @@ function ItemTitle({
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: addToCollectionModal })}>
             <Typography>Add To Collection</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: relationModal })}>
+            <Typography>Add Relation</Typography>
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: startJobModal })}>
             <Typography>Start Job</Typography>

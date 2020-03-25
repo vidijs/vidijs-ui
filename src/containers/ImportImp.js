@@ -22,6 +22,7 @@ const listComponent = ({ onChangeTab, tabValue }) => (
   <List>
     {TAB_TITLE.map(({ tab, listText }) => (
       <DrawerListItem
+        key={listText}
         listText={listText}
         listItemProps={{
           onClick: () => onChangeTab(null, tab),

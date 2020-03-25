@@ -1,5 +1,5 @@
 import React from 'react';
-import Moment from 'react-moment';
+import moment from 'moment';
 
 import UnstyledLink from '../ui/UnstyledLink';
 import TableCell from '../ui/TableCell';
@@ -25,7 +25,9 @@ export default function FileRow({
         </UnstyledLink>
       </TableCell>
       <TableCell>{bytesToSize(fileDocument.size)}</TableCell>
-      <TableCell><Moment>{fileDocument.timestamp}</Moment></TableCell>
+      <TableCell>
+        {fileDocument.timestamp ? moment(fileDocument.timestamp).toString() : ''}
+      </TableCell>
     </TableRow>
   );
 }

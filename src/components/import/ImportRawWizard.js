@@ -72,7 +72,7 @@ function ImportRawWizard({
           <div style={{ position: 'relative' }}>
             <Button
               color="primary"
-              variant="raised"
+              variant="text"
               size="large"
               onClick={() => submitForm(EDIT_IMPORTRAW_FORM)}
               disabled={isFormSubmitting}
@@ -111,7 +111,7 @@ function ImportRawWizard({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >
@@ -140,7 +140,7 @@ function ImportRawWizard({
                   Back
                 </Button>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

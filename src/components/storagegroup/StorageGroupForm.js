@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 
 
 export const StorageGroupDocumentForm = () => (

@@ -21,14 +21,14 @@ import TextGrid from '../components/ui/TextGrid';
 import TypeArray from '../components/ui/TypeArray';
 import formatXML from '../utils/formatXML';
 
-import withUI from '../hoc/withUI';
+import { withModalNoRouter } from '../hoc/withModal';
 
 const styles = theme => ({
   appBar: {
     position: 'relative',
     backgroundColor: theme.palette.background.default,
   },
-  paperFullScreen: {
+  scrollPaper: {
     width: '85%',
     backgroundColor: theme.palette.background.default,
   },
@@ -102,7 +102,11 @@ class HistoryDialog extends React.PureComponent {
           requestDataString = formatXML(requestData);
           break;
         case 'application/json':
-          requestDataString = JSON.parse(requestData);
+          if (typeof requestData === 'string') {
+            requestDataString = JSON.parse(requestData);
+          } else {
+            requestDataString = requestData;
+          }
           break;
         case 'application/javascript':
           requestDataString = requestData;
@@ -203,7 +207,7 @@ class HistoryDialog extends React.PureComponent {
         onClose={this.onClose}
         classes={{
           root: classes.dialogRoot,
-          paperFullScreen: classes.paperFullScreen,
+          scrollPaper: classes.scrollPaper,
         }}
       >
         <AppBar elevation={0} className={classes.appBar}>
@@ -235,7 +239,7 @@ class HistoryDialog extends React.PureComponent {
             />
             { displayResponse.requestContentType === 'application/json' ? (
               <React.Fragment>
-                <Typography variant="body2">Request Data</Typography>
+                <Typography variant="subtitle2">Request Data</Typography>
                 <ReactJson
                   src={displayResponse.requestData}
                   theme="solarized"
@@ -268,7 +272,7 @@ class HistoryDialog extends React.PureComponent {
               <React.Fragment>
                 { displayResponse.responseContentType === 'application/json' ? (
                   <React.Fragment>
-                    <Typography variant="body2">Response Data</Typography>
+                    <Typography variant="subtitle2">Response Data</Typography>
                     <ReactJson
                       src={displayResponse.responseData}
                       theme="solarized"
@@ -318,4 +322,4 @@ class HistoryDialog extends React.PureComponent {
   }
 }
 
-export default compose(withUI, withStyles(styles))(HistoryDialog);
+export default compose(withModalNoRouter, withStyles(styles))(HistoryDialog);

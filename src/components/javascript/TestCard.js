@@ -37,7 +37,7 @@ function TestCard({
         title="Javascript Test"
         action={(
           <Button
-            variant="raised"
+            variant="text"
             color="primary"
             onClick={() => submitForm(TEST_FORM)}
           >

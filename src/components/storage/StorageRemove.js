@@ -36,7 +36,7 @@ export default function StorageRemove({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={onRemove}
           color="secondary"
           autoFocus

@@ -1,90 +1,137 @@
 import React from 'react';
-import { shape as api } from '@vidijs/vidijs-api';
+import { compose } from 'redux';
+import List from '@material-ui/core/List';
+import { Route, Link } from 'react-router-dom';
+
+import { withRouterProps } from '../hoc/withRouterProps';
+
+import ShapeOverview from './shape/ShapeOverview';
+import ShapeBulkyMetadata from './shape/ShapeBulkyMetadata';
+import ShapeBulkyMetadataList from './shape/ShapeBulkyMetadataList';
 
 import ShapeTitle from '../components/shape/ShapeTitle';
-import ShapeParams from '../components/shape/ShapeParams';
-import ShapeOverview from '../components/shape/ShapeOverview';
 import ShapeDelete from '../components/shape/ShapeDelete';
 import ShapeTranscode from '../components/shape/ShapeTranscode';
+import ShapeAnalyze from '../components/shape/ShapeAnalyze';
+import ShapeAddTag from '../components/shape/ShapeAddTag';
+import ShapeRemoveTag from '../components/shape/ShapeRemoveTag';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
 
-import withSnackbar from '../hoc/withSnackbar';
 
 const SHAPE_REMOVE_DIALOG = 'SHAPE_REMOVE_DIALOG';
 const SHAPE_TRANSCODE_DIALOG = 'SHAPE_TRANSCODE_DIALOG';
+const SHAPE_ANALYZE_DIALOG = 'SHAPE_ANALYZE_DIALOG';
+const SHAPE_ADD_TAG_DIALOG = 'SHAPE_ADD_TAG_DIALOG';
+const SHAPE_REMOVE_TAG_DIALOG = 'SHAPE_REMOVE_TAG_DIALOG';
+
+const shapeOverviewLink = ({ itemId = ':itemId', shapeId = ':shapeId' } = {}) => `/item/${itemId}/shape/${shapeId}/`;
+const shapeBulkyListLink = props => `${shapeOverviewLink(props)}bulky-metadata/`;
+const shapeBulkyLink = ({ bulkyMetadataKey = ':bulkyMetadataKey', ...props } = {}) => `${shapeBulkyListLink(props)}${bulkyMetadataKey}`;
+
+const TAB_TITLE = [
+  {
+    listText: 'Overview',
+    link: shapeOverviewLink,
+  },
+  {
+    listText: 'Bulky Metadata',
+    link: shapeBulkyListLink,
+  },
+];
+
+const listComponent = ({ itemId, shapeId }) => (
+  <List>
+    {TAB_TITLE.map(({ link, listText }) => (
+      <DrawerListItem
+        key={listText}
+        listText={listText}
+        listItemProps={{
+          component: Link,
+          to: link({ itemId, shapeId }),
+        }}
+      />
+    ))}
+  </List>
+);
+
+const mainComponent = props => (
+  <>
+    <Route
+      exact
+      path={shapeOverviewLink()}
+      render={() => <ShapeOverview {...props} />}
+    />
+    <Route
+      exact
+      path={shapeBulkyListLink()}
+      render={() => <ShapeBulkyMetadataList {...props} />}
+      {...props}
+    />
+    <Route
+      exact
+      path={shapeBulkyLink()}
+      render={() => <ShapeBulkyMetadata {...props} />}
+      {...props}
+    />
+  </>
+);
 
 class Shape extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.onFetch = this.onFetch.bind(this);
     this.onRefresh = this.onRefresh.bind(this);
-    this.onRefreshError = this.onRefreshError.bind(this);
+    this.setOnRefresh = this.setOnRefresh.bind(this);
     this.state = {
-      shapeDocument: undefined,
+      onRefresh: undefined,
     };
   }
 
   componentDidMount() {
     const { shapeId } = this.props;
     document.title = `vidi.js | Shape | ${shapeId}`;
-    this.onRefresh();
   }
 
-  componentWillReceiveProps({ shapeId, itemId }) {
-    const { shapeId: prevItemId } = this.props;
-    if (prevItemId !== shapeId) {
-      this.onFetch(itemId, shapeId);
-      document.title = `vidi.js | Shape | ${shapeId}`;
-    }
-  }
 
   onRefresh() {
-    const { itemId, shapeId } = this.props;
-    this.onFetch(itemId, shapeId);
+    const { onRefresh } = this.state;
+    if (onRefresh) { onRefresh(); }
   }
 
-  onRefreshError() {
-    const { openSnackBar } = this.props;
-    const messageContent = 'Error Loading Shape';
-    openSnackBar({ messageContent, messageColor: 'secondary' });
-  }
-
-  onFetch(itemId, shapeId) {
-    try {
-      api.getShape({
-        itemId,
-        shapeId,
-      })
-        .then(response => this.setState({ shapeDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
-    } catch (error) {
-      this.onRefreshError(error);
-    }
+  setOnRefresh(onRefresh) {
+    this.setState({ onRefresh });
   }
 
   render() {
-    const { shapeId, itemId, history } = this.props;
-    const { shapeDocument } = this.state;
+    const {
+      itemId,
+      shapeId,
+      history,
+    } = this.props;
+    const titleComponent = props => (
+      <ShapeTitle
+        onRefresh={this.onRefresh}
+        shapeId={shapeId}
+        itemId={itemId}
+        removeModal={SHAPE_REMOVE_DIALOG}
+        transcodeModal={SHAPE_TRANSCODE_DIALOG}
+        analyzeTagModal={SHAPE_ANALYZE_DIALOG}
+        addTagModal={SHAPE_ADD_TAG_DIALOG}
+        removeTagModal={SHAPE_REMOVE_TAG_DIALOG}
+        {...props}
+      />
+    );
     return (
       <React.Fragment>
-        <ShapeTitle
-          code={shapeDocument}
-          codeModal="shapeDocument"
-          onRefresh={this.onRefresh}
+        <DrawerContainer
           shapeId={shapeId}
           itemId={itemId}
-          removeModal={SHAPE_REMOVE_DIALOG}
-          transcodeModal={SHAPE_TRANSCODE_DIALOG}
+          mainComponent={mainComponent}
+          listComponent={listComponent}
+          defaultOpen
+          titleComponent={titleComponent}
+          setOnRefresh={this.setOnRefresh}
         />
-        <ShapeParams
-          shapeId={shapeId}
-          itemId={itemId}
-          onSuccess={this.onRefresh}
-        />
-        {shapeDocument && (
-          <ShapeOverview
-            shapeDocument={shapeDocument}
-          />
-        )}
         <ShapeDelete
           dialogName={SHAPE_REMOVE_DIALOG}
           onSuccess={() => history.push(`/item/${itemId}`)}
@@ -97,9 +144,27 @@ class Shape extends React.PureComponent {
           itemId={itemId}
           shapeId={shapeId}
         />
+        <ShapeAnalyze
+          dialogName={SHAPE_ANALYZE_DIALOG}
+          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeAddTag
+          dialogName={SHAPE_ADD_TAG_DIALOG}
+          onSuccess={this.onRefresh}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeRemoveTag
+          dialogName={SHAPE_REMOVE_TAG_DIALOG}
+          onSuccess={this.onRefresh}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
       </React.Fragment>
     );
   }
 }
 
-export default withSnackbar(Shape);
+export default compose(withRouterProps)(Shape);

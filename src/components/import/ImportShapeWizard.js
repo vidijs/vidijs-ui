@@ -55,7 +55,7 @@ function ImportShapeWizard({
         actionComponent={(
           <Button
             color="primary"
-            variant="raised"
+            variant="text"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTSHAPE_FORM)}
           >
@@ -80,7 +80,7 @@ function ImportShapeWizard({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

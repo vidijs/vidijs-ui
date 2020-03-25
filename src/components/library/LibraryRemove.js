@@ -10,7 +10,7 @@ import * as formActions from '../../formactions/library';
 import LibraryRemoveForm from './LibraryRemoveForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const LIBRARY_REMOVE_FORM = 'LIBRARY_REMOVE_FORM';

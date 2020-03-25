@@ -18,7 +18,7 @@ import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 const hoverStyle = theme => ({
   FormControlLabel: {
-    height: theme.typography.body1.lineHeight,
+    height: theme.typography.subtitle1.lineHeight,
   },
   onHover: {
     minHeight: '32px',
@@ -50,7 +50,7 @@ function SetValueComponent({
   if (value === undefined || null) {
     return valueComponent;
   }
-  const StyledTypography = props => <Typography color="default" variant="body2" {...typographyProps} {...props} />;
+  const StyledTypography = props => <Typography color="textPrimary" variant="subtitle2" {...typographyProps} {...props} />;
   switch (variant) {
     case 'checkbox':
       valueComponent = (
@@ -324,6 +324,7 @@ function TextGrid({
   capitalize = false,
   titleGridProps,
   valueGridProps,
+  titleTypographyProps,
   classes,
   hover = false,
   hideNoValue = false,
@@ -342,12 +343,12 @@ function TextGrid({
       return null;
     }
   }
-  if (variant === 'code') {
+  if (variant === 'code' || variant === 'text/plain') {
     return (
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -359,21 +360,22 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'application/json',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />
       </div>
     );
   }
-  if (variant === 'json') {
+  if (variant === 'json' || variant === 'application/json') {
     return (
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -388,18 +390,20 @@ function TextGrid({
             mode: 'application/json',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />
       </div>
     );
   }
-  if (variant === 'xml') {
+  if (variant === 'xml' || variant === 'application/xml') {
     return (
       <div>
         {title !== undefined &&
         <Typography
-          variant="body2"
+          variant="subtitle2"
           onClick={onTextClick}
         >
           {titleStartCase ? startCase(title) : title}
@@ -411,9 +415,11 @@ function TextGrid({
           options={{
             readOnly: true,
             theme: 'material',
-            mode: 'application/xml',
+            mode: 'xml',
             lineWrapping: true,
             lineNumbers: true,
+            foldGutter: true,
+            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
             ...codeProps,
            }}
         />
@@ -435,7 +441,7 @@ function TextGrid({
             />
           }
           label={
-            <Typography variant="body2" color="textSecondary">
+            <Typography variant="subtitle2" color="textSecondary">
               {titleStartCase ? startCase(title) : title}
             </Typography>
           }
@@ -462,8 +468,10 @@ function TextGrid({
       <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
         <Typography
           color="textSecondary"
+          variant="subtitle2"
           onClick={onTextClick}
           noWrap
+          {...titleTypographyProps}
         >
           {titleStartCase ? startCase(title) : title}
         </Typography>

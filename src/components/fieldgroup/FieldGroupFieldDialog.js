@@ -9,7 +9,7 @@ import * as formActions from '../../formactions/fieldgroup';
 import FieldGroupFieldForm from './FieldGroupFieldForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const FIELDGROUP_FIELD_FORM = 'FIELDGROUP_FIELD_FORM';

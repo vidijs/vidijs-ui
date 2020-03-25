@@ -1,5 +1,4 @@
 import React from 'react';
-import CodeMirror from 'react-codemirror';
 
 import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
@@ -1017,15 +1016,9 @@ export const ThumbnailSection = ({ value = {} }) => (
 
 export const ScriptSection = ({ value = {} }) => (
   <React.Fragment>
-    <CodeMirror
+    <TextGrid
       value={value.script}
-      options={{
-        readOnly: true,
-        theme: 'material',
-        mode: 'application/json',
-        lineWrapping: true,
-        lineNumbers: true,
-       }}
+      variant="json"
     />
   </React.Fragment>
 );

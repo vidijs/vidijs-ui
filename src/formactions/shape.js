@@ -123,3 +123,61 @@ export function onCreateTranscode(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onUpdateShapeTag(form, dispatch, props) {
+  const itemId = props.itemId || form.itemId;
+  const shapeId = props.shapeId || form.shapeId;
+  const tagName = props.tagName || form.tagName;
+  return api.updateShapeTag({
+    itemId,
+    shapeId,
+    tagName,
+  })
+    .then(response => ({ itemId, ...response }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
+export function onRemoveShapeTag(form, dispatch, props) {
+  const itemId = props.itemId || form.itemId;
+  const shapeId = props.shapeId || form.shapeId;
+  const tagName = props.tagName || form.tagName;
+  return api.removeShapeTag({
+    itemId,
+    shapeId,
+    tagName,
+  })
+    .then(response => ({ itemId, ...response }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
+export function onCreateShapeAnalyze(form, dispatch, props) {
+  const { analyzeJobDocument = {}, queryParams } = form;
+  const itemId = props.itemId || form.itemId;
+  const shapeId = props.shapeId || form.shapeId;
+  return api.createShapeAnalyze({
+    itemId,
+    shapeId,
+    queryParams,
+    analyzeJobDocument,
+  })
+    .then(response => ({ itemId, ...response }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

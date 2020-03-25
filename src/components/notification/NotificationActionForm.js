@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
 import MenuItem from '@material-ui/core/MenuItem';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import Typography from '@material-ui/core/Typography';
 import update from 'immutability-helper';
 

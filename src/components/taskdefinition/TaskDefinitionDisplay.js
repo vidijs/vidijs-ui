@@ -47,7 +47,17 @@ export default function TaskDefinitionDisplay({
           />
         </Grid>
       </Grid>
-      <TextGrid title="Script" value={taskDefinitionDocument.script} variant="code" codeProps={{ mode: 'javascript' }} hideNoValue />
+      <TextGrid
+        title="Script"
+        value={taskDefinitionDocument.script}
+        variant="code"
+        codeProps={{
+          mode: 'javascript',
+          foldGutter: true,
+          gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+        }}
+        hideNoValue
+      />
     </React.Fragment>
   );
 }

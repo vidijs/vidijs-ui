@@ -4,18 +4,29 @@ import { selftest as api } from '@vidijs/vidijs-api';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import HelpIcon from '@material-ui/icons/HelpOutline';
 
-import { browserLogin } from '../utils/browserLogin';
-import withModal from '../hoc/withModal';
-import withSnackbar from '../hoc/withSnackbar';
+import { withModalNoRouter } from '../hoc/withModal';
+import { withSnackbarNoRouter } from '../hoc/withSnackbar';
 import SelfTestStatus from '../components/selftest/SelfTestStatus';
 import LoginCard from '../components/login/Login';
 import InitDialog from '../components/login/InitDialog';
+import LoginHelpDialog from '../components/login/LoginHelpDialog';
 import GitHubIcon from '../components/ui/GitHubIcon';
 
 const INIT_DIALOG = 'INIT_DIALOG';
+const HELP_DIALOG = 'HELP_DIALOG';
+
+const {
+  REACT_APP_UNSPLASH_DISABLE,
+  REACT_APP_UNSPLASH_URL = 'https://source.unsplash.com/collection/8534454/800x600/daily',
+  REACT_APP_VERSION,
+} = process.env;
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -24,10 +35,6 @@ class Login extends React.PureComponent {
     this.onRefreshError = this.onRefreshError.bind(this);
     this.onSuccess = this.onSuccess.bind(this);
     this.onTestUrl = this.onTestUrl.bind(this);
-    const { REACT_APP_VIDISPINE_URL, REACT_APP_USE_CORS } = process.env;
-    const { VIDISPINE_SERVER_URL, location } = window;
-    this.baseUrl = REACT_APP_USE_CORS ? localStorage.getItem('vsBaseUrl') : location.origin;
-    this.displayUrl = VIDISPINE_SERVER_URL === '$VIDISPINE_URL' ? REACT_APP_VIDISPINE_URL : VIDISPINE_SERVER_URL;
     this.state = {
       selfTestDocument: undefined,
       loading: false,
@@ -37,8 +44,8 @@ class Login extends React.PureComponent {
 
   componentDidMount() {
     document.title = 'vidi.js';
-    if (this.baseUrl) {
-      browserLogin({ baseUrl: this.baseUrl });
+    const { baseUrl } = this.props;
+    if (baseUrl) {
       this.onRefresh();
     }
   }
@@ -82,31 +89,32 @@ class Login extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-  onSuccess(response) {
-    const { history, location } = this.props;
-    const { data: token, userName, runAs } = response;
-    const urlParams = new URLSearchParams(location.search);
-    const onLogin = urlParams.get('onLogin') || '/job/';
-    browserLogin({
-      token,
-      userName,
-      baseUrl: this.baseUrl,
-      runAs,
-    });
-    history.push(onLogin);
+  onSuccess({ data: token, userName: newUserName, runAs }) {
+    const {
+      setUserName,
+      setToken,
+      setRunAs,
+    } = this.props;
+    if (runAs) {
+      setRunAs(runAs);
+    }
+    setUserName(newUserName);
+    setToken(token);
   }
 
   onTestUrl(baseUrl) {
-    browserLogin({ baseUrl });
+    const { setBaseUrl } = this.props;
+    setBaseUrl(baseUrl);
     this.onRefresh();
   }
 
   render() {
     const { selfTestDocument, loading, loadingInit } = this.state;
+    const { userName, baseUrl, onOpen } = this.props;
     const initialValues = {
-      headers: { username: 'admin' },
+      headers: { username: userName, accept: 'text/plain', },
       queryParams: { autoRefresh: true, seconds: 604800 },
-      baseUrl: this.displayUrl || this.baseUrl,
+      baseUrl,
     };
     return (
       <>
@@ -129,30 +137,73 @@ class Login extends React.PureComponent {
                     initialValues={initialValues}
                     onSuccess={this.onSuccess}
                     onTestUrl={this.onTestUrl}
-                    canEditUrl={(process.env.REACT_APP_USE_CORS)}
                   />
                 </Grid>
               </Grid>
+              <AppBar
+                color="inherit"
+                style={{
+                  top: 'auto',
+                  bottom: 0,
+                  backgroundColor: 'black',
+                  color: 'white',
+                }}
+                square
+                elevation={0}
+              >
+                <Toolbar variant="dense">
+                  <Grid container justify="flex-end" alignItems="center">
+                    <Link
+                      href="https://github.com/vidijs/vidijs-ui"
+                      variant="body2"
+                      color="inherit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ marginRight: 5 }}
+                    >
+                      {'vidijs-ui'}
+                    </Link>
+                    <Typography
+                      variant="body2"
+                      color="inherit"
+                    >
+                      {`v${REACT_APP_VERSION}`}
+                    </Typography>
+                    <IconButton
+                      color="inherit"
+                      href="https://github.com/vidijs"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      disableRipple
+                    >
+                      <GitHubIcon />
+                    </IconButton>
+                    <IconButton
+                      color="inherit"
+                      disableRipple
+                      onClick={() => onOpen({ modalName: HELP_DIALOG })}
+                    >
+                      <HelpIcon />
+                    </IconButton>
+                  </Grid>
+                </Toolbar>
+              </AppBar>
             </Card>
           </Grid>
           <Grid
             item
             sm={8}
-            style={{ background: 'linear-gradient(to bottom right, #C33764, #1D2671)' }}
+            style={REACT_APP_UNSPLASH_DISABLE ? {
+              background: 'linear-gradient(to bottom right, #C33764, #1D2671)',
+            } : {
+              backgroundImage: `url("${REACT_APP_UNSPLASH_URL}")`,
+              backgroundSize: 'cover',
+            }}
             container
             direction="column"
             alignItems="center"
             justify="center"
-          >
-            <Grid item>
-              <Typography variant="display3">vidi.js</Typography>
-            </Grid>
-            <Grid item>
-              <IconButton onClick={() => window.open('https://github.com/vidijs')}>
-                <GitHubIcon />
-              </IconButton>
-            </Grid>
-          </Grid>
+          />
         </Grid>
         <InitDialog
           dialogName={INIT_DIALOG}
@@ -160,10 +211,13 @@ class Login extends React.PureComponent {
           loadingInit={loadingInit}
           setLoadingInit={newState => this.setState({ loadingInit: newState })}
         />
+        <LoginHelpDialog
+          dialogName={HELP_DIALOG}
+        />
       </>
     );
   }
 }
 
 
-export default compose(withModal, withSnackbar)(Login);
+export default compose(withModalNoRouter, withSnackbarNoRouter)(Login);

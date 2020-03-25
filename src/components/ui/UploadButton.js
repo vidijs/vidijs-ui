@@ -18,7 +18,7 @@ export default function UploadButton({
         </FormHelperText>
       )}
       <Button
-        variant="raised"
+        variant="text"
         component="label"
         color="primary"
         disableRipple

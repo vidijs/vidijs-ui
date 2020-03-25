@@ -51,7 +51,7 @@ function ImportImpUrlWizard({
         actionComponent={(
           <Button
             color="primary"
-            variant="raised"
+            variant="text"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTIMPURL_FORM)}
           >
@@ -76,7 +76,7 @@ function ImportImpUrlWizard({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >
@@ -105,7 +105,7 @@ function ImportImpUrlWizard({
                   Back
                 </Button>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

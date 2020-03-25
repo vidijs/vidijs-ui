@@ -57,7 +57,7 @@ function ImportShapePlaceholderWizard({
         actionComponent={(
           <Button
             color="primary"
-            variant="raised"
+            variant="text"
             size="large"
             onClick={() => submitForm(EDIT_IMPORTSHAPEPLACEHOLDER_FORM)}
           >
@@ -82,7 +82,7 @@ function ImportShapePlaceholderWizard({
               </CardContent>
               <ExpansionPanelActions>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >
@@ -111,7 +111,7 @@ function ImportShapePlaceholderWizard({
                   Back
                 </Button>
                 <Button
-                  variant="raised"
+                  variant="text"
                   color="primary"
                   onClick={onNext}
                 >

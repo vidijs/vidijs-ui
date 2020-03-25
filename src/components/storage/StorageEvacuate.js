@@ -37,7 +37,7 @@ function StorageEvacuate({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={onAbandon}
           color="secondary"
           autoFocus

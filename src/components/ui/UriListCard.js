@@ -14,7 +14,7 @@ export default function UriListCard({ title, uriListDocument, ...props }) {
         <CardHeader
           disableTypography
           title={(
-            <Typography variant="subheading">{title}</Typography>
+            <Typography variant="subtitle1">{title}</Typography>
           )}
         />
       )}

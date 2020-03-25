@@ -6,7 +6,7 @@ import StorageRuleForm from './StorageRuleForm';
 import * as formActions from '../../formactions/storagerule';
 import WizardForm from '../ui/WizardForm';
 import withUI from '../../hoc/withUI';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 
 function StorageRuleDialog({
   open,

@@ -24,7 +24,7 @@ function ServiceListServiceCard({
         <CardHeader
           disableTypography
           title={
-            <Typography variant="subheading">
+            <Typography variant="subtitle1">
               {startCase(vidispineServiceDocument.name)}
             </Typography>
           }

@@ -40,7 +40,7 @@ function ShapeParams({
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           Shape Display Options
         </Typography>
       </ExpansionPanelSummary>

@@ -9,7 +9,7 @@ import * as formActions from '../../formactions/user';
 import UserRealNameForm from './UserRealNameForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const USER_REALNAME_FORM = 'USER_PASSWORD_FORM';

@@ -27,7 +27,7 @@ export default function ImportSettingsRemove({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={onRemove(groupName)}
           color="secondary"
           autoFocus

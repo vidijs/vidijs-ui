@@ -45,7 +45,7 @@ function ShapeSearchParams({
       onChange={onChangeExpansion}
     >
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           Shape Search Params
         </Typography>
       </ExpansionPanelSummary>

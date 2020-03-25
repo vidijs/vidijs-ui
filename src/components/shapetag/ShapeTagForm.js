@@ -2,7 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 
 import Field from '../ui/Field';
 import ChipInput from '../ui/ChipInput';
@@ -202,7 +202,7 @@ const NameURIPairType = () => (
   </React.Fragment>
 );
 
-const OtifPresetType = () => (
+export const OtifPresetType = () => (
   <React.Fragment>
     <Field
       name="uuid"

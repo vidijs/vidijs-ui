@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import Moment from 'react-moment';
+import moment from 'moment';
 import UnstyledLink from '../ui/UnstyledLink';
 import { bytesToSize } from '../../utils';
 
@@ -14,7 +14,9 @@ const FileTypeRow = ({ fileType }) => (
     <TableCell><UnstyledLink to={`/file/${fileType.id}/`}>{fileType.id}</UnstyledLink></TableCell>
     <TableCell>{(fileType.size && fileType.size > -1) && bytesToSize(fileType.size)}</TableCell>
     <TableCell>{fileType.state}</TableCell>
-    <TableCell><Moment format="YYYY-MM-DD HH:mm" date={fileType.timestamp} /></TableCell>
+    <TableCell>
+      {fileType.timestamp ? moment(fileType.timestamp).format('YYYY-MM-DD HH:mm').toString() : ''}
+    </TableCell>
     <TableCell>{fileType.path}</TableCell>
     <TableCell>{fileType.hash}</TableCell>
     <TableCell><UnstyledLink to={`/storage/${fileType.storage}/`}>{fileType.storage}</UnstyledLink></TableCell>
@@ -29,7 +31,7 @@ export default function FileTypeTable({
   if (hideNoValue && value === undefined) { return null; }
   return (
     <React.Fragment>
-      <Typography variant="body2">{title}</Typography>
+      <Typography variant="subtitle2">{title}</Typography>
       <Table>
         <TableHead>
           <TableRow>

@@ -52,7 +52,7 @@ export const ShapeTypeRow = ({ shapeType }) => {
       to={linkTo}
       hover
     >
-      <TableCell>{itemIds}</TableCell>
+      <TableCell>{shapeId}</TableCell>
       <TableCell>
         <ChipArray labels={itemIds} />
       </TableCell>

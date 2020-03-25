@@ -37,7 +37,7 @@ function MetadataDisplayParams({
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           Metadata Display Options
         </Typography>
       </ExpansionPanelSummary>

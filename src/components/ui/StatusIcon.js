@@ -57,9 +57,34 @@ export const OnlineIcon = withStyles(styles)(({
 
 export const LoadingIcon = withStyles(styles)(({
   classes,
+  children,
+  isLoading = true,
 }) => (
   <Avatar className={classes.baseAvatar}>
-    <CircularProgress className={classes.icon} />
+    {isLoading ? (
+      <div style={{ position: 'relative' }}>
+        <CircularProgress
+          className={classes.icon}
+          style={{
+            zIndex: 1,
+            position: 'absolute',
+            left: -20,
+            top: -20,
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            left: -20,
+            top: -30,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    ) : (
+      children
+    )}
   </Avatar>
 ));
 

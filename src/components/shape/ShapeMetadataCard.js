@@ -13,7 +13,7 @@ export default function ShapeMetadataCard({ shapeDocument = {} }) {
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subheading">Metadata</Typography>}
+        title={<Typography variant="subtitle1">Metadata</Typography>}
       />
       <CardContent>
         <SimpleMetadataType

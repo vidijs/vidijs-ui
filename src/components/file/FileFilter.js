@@ -47,7 +47,7 @@ function FileFilter({
   return (
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="subtitle2" color="textSecondary">
           File List Options
         </Typography>
       </ExpansionPanelSummary>

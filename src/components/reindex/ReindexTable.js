@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import Moment from 'react-moment';
+import moment from 'moment';
 import startCase from 'lodash.startcase';
 
 import Menu, { MenuItem } from '../ui/Menu';
@@ -34,8 +34,12 @@ function ReindexTable({
             <TableCell>{startCase(reindex.index)}</TableCell>
             <TableCell>{reindex.priority}</TableCell>
             <TableCell>{reindex.status}</TableCell>
-            <TableCell>{reindex.start && <Moment fromNow date={reindex.start} />}</TableCell>
-            <TableCell>{reindex.finish && <Moment fromNow date={reindex.finish} />}</TableCell>
+            <TableCell>
+              {reindex.start ? moment(reindex.start).fromNow().toString() : ''}
+            </TableCell>
+            <TableCell>
+              {reindex.finish ? moment(reindex.finish).fromNow().toString() : ''}
+            </TableCell>
             <TableCell>{reindex.indexesDone}</TableCell>
             <TableCell>{reindex.indexesTotal}</TableCell>
             <TableCell numeric>

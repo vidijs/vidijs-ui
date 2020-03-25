@@ -37,7 +37,7 @@ function ServiceEnable({
           Cancel
         </Button>
         <Button
-          variant="raised"
+          variant="text"
           onClick={onRemove}
           color="primary"
           autoFocus

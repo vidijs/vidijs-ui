@@ -10,7 +10,7 @@ import DocumentMetadataForm from './DocumentMetadataForm';
 import * as formActions from '../../formactions/documentmetadata';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 export const EDIT_DOCUMENT_FORM = 'EDIT_DOCUMENT_FORM';

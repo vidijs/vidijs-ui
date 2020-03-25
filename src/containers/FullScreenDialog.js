@@ -12,14 +12,14 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 
 import { WrappedSelect } from '../components/ui/Select';
-import withUI from '../hoc/withUI';
+import { withModalNoRouter } from '../hoc/withModal';
 
 const styles = theme => ({
   appBar: {
@@ -29,17 +29,14 @@ const styles = theme => ({
   dialogRoot: {
     justifyContent: 'flex-start',
   },
-  paperFullScreen: {
+  scrollPaper: {
     width: '85%',
     backgroundColor: theme.palette.background.default,
   },
 });
 
+const Transition = React.forwardRef((props, ref) => <Slide direction="down" ref={ref} {...props} />);
 
-
-function Transition(props) {
-  return <Slide direction="down" {...props} />;
-}
 
 function FullScreenDialog({
   classes,
@@ -47,7 +44,7 @@ function FullScreenDialog({
   onClose,
   history,
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl');
+  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
   const itemParams = new URLSearchParams({
     content: 'metadata,thumbnail',
     baseURI: `${baseUrl}/APInoauth/`,
@@ -122,6 +119,8 @@ function FullScreenDialog({
     { value: '/transfer/', label: 'Import Transfers' },
     { value: '/configuration/', label: 'Configuration' },
     { value: '/configuration/ftp-pool/', label: 'FTP Pool' },
+    { value: '/scheduled-request/', label: 'Scheduled Requests' },
+    { value: '/stitch/', label: 'Stitch' },
   ];
   const ListLink = ({ to, primary }) => (
     <ListItem button to={to} component={Link} onClick={onClose}>
@@ -131,11 +130,11 @@ function FullScreenDialog({
   const ListGroup = ({ subheader, children }) => (
     <List
       component="nav"
-      subheader={
+      subheader={(
         <ListSubheader disableSticky>
           { subheader }
         </ListSubheader>
-      }
+      )}
     >
       { children }
     </List>
@@ -156,7 +155,7 @@ function FullScreenDialog({
       open={open}
       onClose={onClose}
       TransitionComponent={Transition}
-      classes={{ root: classes.dialogRoot, paperFullScreen: classes.paperFullScreen }}
+      classes={{ root: classes.dialogRoot, scrollPaper: classes.scrollPaper }}
     >
       <AppBar elevation={0} className={classes.appBar}>
         <Toolbar disableGutters variant="dense">
@@ -254,6 +253,7 @@ function FullScreenDialog({
             <ListGroup subheader="Utils">
               <ListLink to="/debug/echo/" primary="XML Echo" />
               <ListLink to="/javascript/test/" primary="Javascript Test" />
+              <ListLink to="/stitch/" primary="Stitch" />
               <ListLink to="/wizard/" primary="Wizard" />
             </ListGroup>
           </Grid>
@@ -270,6 +270,7 @@ function FullScreenDialog({
               <ListLink to="/log" primary="Audit Log" />
               <ListLink to="/error/" primary="Error Log" />
               <ListLink to="/transfer/" primary="Import Transfers" />
+              <ListLink to="/scheduled-request/" primary="Scheduled Requests" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>
@@ -308,4 +309,4 @@ function FullScreenDialog({
   );
 }
 
-export default compose(withUI, withStyles(styles))(FullScreenDialog);
+export default compose(withRouter, withModalNoRouter, withStyles(styles))(FullScreenDialog);

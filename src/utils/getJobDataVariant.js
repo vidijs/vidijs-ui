@@ -1,4 +1,5 @@
 export default function JobMetadataVariant(key) {
+  if (key.startsWith('transcodeShapeDocument')) return 'xml';
   switch (key) {
     case 'item':
       return 'itemId';
@@ -22,7 +23,7 @@ export default function JobMetadataVariant(key) {
       return 'storageId';
     case 'shapeDocument':
       return 'xml';
-    case 'transcodeShapeDocument':
+    case 'result':
       return 'xml';
     case 'jobDocument':
       return 'xml';

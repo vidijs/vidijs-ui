@@ -12,7 +12,7 @@ export function onSubmit(form, dispatch, props) {
   const queryParams = {
     first,
     rows,
-    performCount: true,
+    performCount: false,
     sort: orderDirection,
     ...form,
   };

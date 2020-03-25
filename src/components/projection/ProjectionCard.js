@@ -35,7 +35,7 @@ function ProjectionCard({
     <React.Fragment>
       <SquareCard>
         <CardHeader
-          title={<Typography variant="subheading">Incoming</Typography>}
+          title={<Typography variant="subtitle1">Incoming</Typography>}
           disableTypography
           action={(
             <Button
@@ -62,7 +62,7 @@ function ProjectionCard({
       </SquareCard>
       <SquareCard>
         <CardHeader
-          title={<Typography variant="subheading">Outgoing</Typography>}
+          title={<Typography variant="subtitle1">Outgoing</Typography>}
           disableTypography
           action={(
             <Button

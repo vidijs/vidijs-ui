@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField } from 'redux-form-material-ui';
+import { TextField } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 

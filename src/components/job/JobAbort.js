@@ -9,7 +9,7 @@ import * as formActions from '../../formactions/job';
 import JobAbortForm from './JobAbortForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '../ui/Dialog';
+import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const JOB_ABORT_FORM = 'JOB_ABORT_FORM';

@@ -47,7 +47,7 @@ function NotificationCard({
       <Grid container direction="row" alignItems="center" >
         <Grid item xs={10}>
           <Typography
-            variant="headline"
+            variant="h5"
             color="textSecondary"
             style={{ textDecoration: 'none' }}
           >
@@ -101,7 +101,7 @@ function NotificationCard({
         </CardContent>
       </SquareCard>
       <Typography
-        variant="headline"
+        variant="h5"
         color="textSecondary"
         style={{ textDecoration: 'none' }}
       >
