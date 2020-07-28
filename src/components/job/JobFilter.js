@@ -40,6 +40,7 @@ function JobFilter({
       first: 0,
       number: 10,
       sort: ['jobId desc'],
+      user: false,
     },
   };
   return (

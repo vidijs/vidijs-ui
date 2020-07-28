@@ -142,7 +142,7 @@ const matrixParams = () => (
           component={BoolCheckbox}
         />
       )}
-      label="Restrict By User"
+      label="Only My User"
     />
   </React.Fragment>
 );
