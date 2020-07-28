@@ -14,6 +14,21 @@ export const MetadataFieldValueType = ({ value = {} }) => {
       title={value.name}
       value={valueListValues}
       titleStartCase={false}
+      titleGridProps={{
+        xl: 2,
+      }}
+      titleTypographyProps={{
+        style: {
+          wordWrap: 'break-word',
+        },
+        noWrap: false,
+      }}
+      valueTypographyProps={{
+        style: {
+          wordWrap: 'break-word',
+        },
+        noWrap: false,
+      }}
       hover
     />
   );

@@ -324,7 +324,8 @@ function TextGrid({
   capitalize = false,
   titleGridProps,
   valueGridProps,
-  titleTypographyProps,
+  titleTypographyProps = {},
+  valueTypographyProps = {},
   classes,
   hover = false,
   hideNoValue = false,
@@ -456,6 +457,7 @@ function TextGrid({
     onClick: onTextClick,
     classes,
     noWrap,
+    ...valueTypographyProps,
   });
   return (
     <Grid
