@@ -31,16 +31,17 @@
   },
   "scripts": {
     "start": "REACT_APP_VIDISPINE_URL=$VIDISPINE_URL REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts start",
-    "build": "REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts build",
+    "build": "REACT_APP_GIT_COMMIT=$npm_package_version react-scripts build",
+    "build-dev": "REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` react-scripts build",
     "docker-build": "docker build -t ${npm_package_name}:${npm_package_version} .",
     "docker-build-latest": "docker build -t ${npm_package_name}:latest .",
     "docker-run": "docker run --name ${npm_package_name} --rm -dti -e VIDISPINE_URL=$VIDISPINE_URL -p 80:80 $npm_package_name:$npm_package_version",
     "docker-run-latest": "docker run --name ${npm_package_name} --rm -dti -e VIDISPINE_URL=$VIDISPINE_URL -p 80:80 $npm_package_name:latest",
     "docker-stop": "docker stop ${npm_package_name}",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "build-container": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && react-scripts build && docker build -t 'vidijs:latest' -t vidijs:$REACT_APP_GIT_COMMIT .",
-    "save-container": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && docker image save -o vidijs_${REACT_APP_GIT_COMMIT}.tar.gz vidijs:$REACT_APP_GIT_COMMIT && echo \"Exported vidijs_${REACT_APP_GIT_COMMIT}.tar.gz\""
+    "build-container": "export REACT_APP_GIT_COMMIT=$npm_package_version && react-scripts build && docker build -t \"${npm_package_name}:latest\" -t \"${npm_package_name}:${REACT_APP_GIT_COMMIT}\" .",
+    "build-container-dev": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && react-scripts build && docker build -t \"${npm_package_name}:latest\" -t \"${npm_package_name}:${REACT_APP_GIT_COMMIT}\" .",
+    "save-container": "export REACT_APP_GIT_COMMIT=$npm_package_version && docker image save -o vidijs_${REACT_APP_GIT_COMMIT}.tar.gz vidijs:$REACT_APP_GIT_COMMIT && echo \"Exported vidijs_${REACT_APP_GIT_COMMIT}.tar.gz\"",
+    "save-container-dev": "export REACT_APP_GIT_COMMIT=`git rev-parse --short HEAD` && docker image save -o vidijs_${REACT_APP_GIT_COMMIT}.tar.gz vidijs:$REACT_APP_GIT_COMMIT && echo \"Exported vidijs_${REACT_APP_GIT_COMMIT}.tar.gz\""
   },
   "devDependencies": {
     "eslint": "^5.16.0",
