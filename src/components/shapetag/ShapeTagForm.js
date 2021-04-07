@@ -12,33 +12,32 @@ import FieldTypeArray from '../ui/FieldTypeArray';
 import FormSection from '../ui/FormSection';
 import CodeField from '../ui/CodeField';
 
-
 // Figure out fastStartDuration field
 const FastStartSettingType = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="requireFastStart"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="requireFastStart"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="analyzeDuration"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="analyzeDuration"
     />
-  </React.Fragment>
+  </>
 );
 
 const ResolutionType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="width"
       label="width"
@@ -53,11 +52,11 @@ const ResolutionType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const AspectRatioType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="horizontal"
       label="horizontal"
@@ -72,11 +71,11 @@ const AspectRatioType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const KeyValuePairType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="key"
       label="key"
@@ -89,11 +88,11 @@ const KeyValuePairType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const RationalType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="numerator"
       label="numerator"
@@ -108,13 +107,13 @@ const RationalType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const TimeBaseType = RationalType;
 
 const TimeCodeType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="samples"
       label="samples"
@@ -128,11 +127,11 @@ const TimeCodeType = () => (
       type="number"
       component={TimeBaseType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTranscodePresetChannelMixType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="id"
       label="id"
@@ -161,30 +160,30 @@ const AudioTranscodePresetChannelMixType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTranscodePresetMixType = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="input"
       label="input"
       component={AudioTranscodePresetChannelMixType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="silence"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="silence"
     />
-  </React.Fragment>
+  </>
 );
 
 const NameURIPairType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="name"
@@ -199,11 +198,11 @@ const NameURIPairType = () => (
       fullWidth
       required
     />
-  </React.Fragment>
+  </>
 );
 
 export const OtifPresetType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uuid"
       label="uuid"
@@ -245,11 +244,11 @@ export const OtifPresetType = () => (
       label="resource"
       component={NameURIPairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioOutputType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="format"
       label="format"
@@ -288,11 +287,11 @@ const AudioOutputType = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTranscodePresetType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="codec"
       label="codec"
@@ -333,12 +332,12 @@ const AudioTranscodePresetType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="noAudio"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="noAudio"
     />
     <FieldTypeArray
@@ -357,21 +356,21 @@ const AudioTranscodePresetType = () => (
       component={OtifPresetType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="monoFile"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="monoFile"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="allChannel"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="allChannel"
     />
     <FieldTypeArray
@@ -379,12 +378,11 @@ const AudioTranscodePresetType = () => (
       label="output"
       component={AudioOutputType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const AudioTrackTranscodePresetType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="codec"
       label="codec"
@@ -427,12 +425,11 @@ const AudioTrackTranscodePresetType = () => (
       label="mix"
       component={AudioTranscodePresetMixType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const VideoTranscodePresetType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="codec"
       label="codec"
@@ -482,12 +479,12 @@ const VideoTranscodePresetType = () => (
       component={AspectRatioType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="forceCFR"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="forceCFR"
     />
     <Field
@@ -525,30 +522,30 @@ const VideoTranscodePresetType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="noVideo"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="noVideo"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="stripParameterSets"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="stripParameterSets"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="addParameterSets"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="addParameterSets"
     />
     <Field
@@ -563,21 +560,21 @@ const VideoTranscodePresetType = () => (
       component={KeyValuePairType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="burnTimecode"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="burnTimecode"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="burnSubtitles"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="burnSubtitles"
     />
     <Field
@@ -592,11 +589,11 @@ const VideoTranscodePresetType = () => (
       label="otif"
       component={OtifPresetType}
     />
-  </React.Fragment>
+  </>
 );
 
 const SequenceRangeType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="start"
       label="start"
@@ -626,11 +623,11 @@ const SequenceRangeType = () => (
       required
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const TimeIntervalType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="start"
       label="start"
@@ -641,11 +638,11 @@ const TimeIntervalType = () => (
       label="end"
       component={TimeCodeType}
     />
-  </React.Fragment>
+  </>
 );
 
 const OverlayType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uri"
       label="uri"
@@ -690,11 +687,11 @@ const OverlayType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const TextRenditionType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="line"
       label="line"
@@ -835,12 +832,12 @@ const TextRenditionType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 
 );
 
 const TextOverlayType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="text"
       label="text"
@@ -858,11 +855,11 @@ const TextOverlayType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const SequenceOutputType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="start"
       label="start"
@@ -878,12 +875,11 @@ const SequenceOutputType = () => (
       fullWidth
 
     />
-  </React.Fragment>
+  </>
 );
 
-
 const ContainerSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="Name"
@@ -903,7 +899,7 @@ const ContainerSection = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const ContainerForm = ({ error, handleSubmit }) => (
@@ -920,7 +916,7 @@ const ContainerForm = ({ error, handleSubmit }) => (
 export const ShapeTagContainerForm = reduxForm()(ContainerForm);
 
 const AudioSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="audio"
       label="audio"
@@ -931,7 +927,7 @@ const AudioSection = () => (
       label="audioTrack"
       component={AudioTrackTranscodePresetType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioForm = ({ error, handleSubmit }) => (
@@ -947,15 +943,14 @@ const AudioForm = ({ error, handleSubmit }) => (
 
 export const ShapeTagAudioForm = reduxForm()(AudioForm);
 
-
 const VideoSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="video"
       label="video"
       component={VideoTranscodePresetType}
     />
-  </React.Fragment>
+  </>
 );
 
 const VideoForm = ({ error, handleSubmit }) => (
@@ -971,9 +966,8 @@ const VideoForm = ({ error, handleSubmit }) => (
 
 export const ShapeTagVideoForm = reduxForm()(VideoForm);
 
-
 const OverlaySection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="overlay"
       label="overlay"
@@ -984,7 +978,7 @@ const OverlaySection = () => (
       label="textOverlay"
       component={TextOverlayType}
     />
-  </React.Fragment>
+  </>
 );
 
 const OverlayForm = ({ error, handleSubmit }) => (
@@ -1000,9 +994,8 @@ const OverlayForm = ({ error, handleSubmit }) => (
 
 export const ShapeTagOverlayForm = reduxForm()(OverlayForm);
 
-
 const AdvancedSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="startTimecode"
       label="startTimecode"
@@ -1015,30 +1008,30 @@ const AdvancedSection = () => (
       component={FastStartSettingType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="faceDetect"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="faceDetect"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="preserveEDL"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="preserveEDL"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="addClipName"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="addClipName"
     />
     <Field
@@ -1072,7 +1065,7 @@ const AdvancedSection = () => (
       label="sequenceOutput"
       component={SequenceOutputType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AdvancedForm = ({ error, handleSubmit }) => (
@@ -1089,7 +1082,7 @@ const AdvancedForm = ({ error, handleSubmit }) => (
 export const ShapeTagAdvancedForm = reduxForm()(AdvancedForm);
 
 const ThumbnailSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="thumbnailResolution"
       label="thumbnailResolution"
@@ -1123,7 +1116,7 @@ const ThumbnailSection = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const ThumbnailForm = ({ error, handleSubmit }) => (
@@ -1140,7 +1133,7 @@ const ThumbnailForm = ({ error, handleSubmit }) => (
 export const ShapeTagThumbnailForm = reduxForm()(ThumbnailForm);
 
 const ScriptSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="script"
       component={CodeField}
@@ -1151,7 +1144,7 @@ const ScriptSection = () => (
         lineNumbers: true,
       }}
     />
-  </React.Fragment>
+  </>
 );
 
 const ScriptForm = ({ error, handleSubmit }) => (

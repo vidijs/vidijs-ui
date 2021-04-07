@@ -27,7 +27,6 @@ const VxaStatus = ({ vxaDocument }) => {
   );
 };
 
-
 export default function VxaTitle({ vxaUuid, ...props }) {
   return (
     <TitleHeader

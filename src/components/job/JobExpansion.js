@@ -2,9 +2,9 @@ import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import grey from '@material-ui/core/colors/grey';
 
+import { job as api } from '@vidijs/vidijs-api';
 import JobCard from './JobCard';
 
-import { job as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
 
 function JobExpansion(WrappedComponent) {
@@ -24,14 +24,13 @@ function JobExpansion(WrappedComponent) {
       const queryParams = { metadata: true };
       try {
         api.getJob({ jobId, queryParams })
-          .then(response => response.json())
-          .then(jobDocument => this.setState({ jobDocument }));
+          .then((response) => response.json())
+          .then((jobDocument) => this.setState({ jobDocument }));
       } catch (error) {
         const messageContent = 'Error Loading Job';
         this.props.openSnackBar({ messageContent, messageColor: 'secondary' });
       }
     }
-
 
     onExpand() {
       const { expanded: currentExpanded } = this.state;
@@ -44,8 +43,8 @@ function JobExpansion(WrappedComponent) {
       const { jobId } = job;
       const queryParams = { metadata: true };
       api.getJob({ jobId, queryParams })
-        .then(response => response.json())
-        .then(jobDocument => this.setState({ jobDocument, expanded: !currentExpanded }))
+        .then((response) => response.json())
+        .then((jobDocument) => this.setState({ jobDocument, expanded: !currentExpanded }))
         .catch(() => {
           const messageContent = 'Error Loading Job';
           this.props.openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -54,22 +53,24 @@ function JobExpansion(WrappedComponent) {
 
     render() {
       return (
-        <React.Fragment>
+        <>
           <WrappedComponent
             onExpand={this.onExpand}
             expanded={this.state.expanded}
             {...this.props}
           />
-          {this.state.expanded &&
+          {this.state.expanded
+            && (
             <TableRow component="div">
-              { this.state.jobDocument &&
+              { this.state.jobDocument
+              && (
               <div style={{ width: '800%', backgroundColor: grey[100], padding: '10px' }}>
                 <JobCard jobDocument={this.state.jobDocument} />
               </div>
-              }
+              )}
             </TableRow>
-          }
-        </React.Fragment>
+            )}
+        </>
       );
     }
   };

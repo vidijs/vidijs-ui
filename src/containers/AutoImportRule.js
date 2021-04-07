@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { autoimport as api } from '@vidijs/vidijs-api';
 import AutoImportRuleTitle from '../components/autoimport/AutoImportRuleTitle';
 import AutoImportRuleCard from '../components/autoimport/AutoImportRuleCard';
 import AutoImportRuleRemove from '../components/autoimport/AutoImportRuleRemove';
 import withSnackbar from '../hoc/withSnackbar';
-
-import { autoimport as api } from '@vidijs/vidijs-api';
 
 const AUTOIMPORTRULE_REMOVE_MODAL = 'AUTOIMPORTRULE_REMOVE_MODAL';
 
@@ -28,7 +27,7 @@ class AutoImportRule extends React.PureComponent {
     const { openSnackBar, storageId } = this.props;
     try {
       api.getAutoImport({ storageId })
-        .then(response => this.setState({ autoImportRuleDocument: response.data }));
+        .then((response) => this.setState({ autoImportRuleDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Auto Import Rule';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -43,7 +42,7 @@ class AutoImportRule extends React.PureComponent {
       autoImportRuleDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <AutoImportRuleTitle
           removeModal={AUTOIMPORTRULE_REMOVE_MODAL}
           onRefresh={this.onRefresh}
@@ -51,21 +50,21 @@ class AutoImportRule extends React.PureComponent {
           code={autoImportRuleDocument}
           codeModal="AutoImportRuleDocument"
         />
-        {autoImportRuleDocument &&
+        {autoImportRuleDocument
+        && (
         <AutoImportRuleCard
           onRefresh={this.onRefresh}
           storageId={storageId}
           autoImportRuleDocument={autoImportRuleDocument}
         />
-        }
+        )}
         <AutoImportRuleRemove
           dialogName={AUTOIMPORTRULE_REMOVE_MODAL}
           storageId={storageId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(AutoImportRule);

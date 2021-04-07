@@ -1,19 +1,20 @@
 import React from 'react';
-import { reduxForm, Field, FieldArray, FormSection } from 'redux-form';
+import {
+  reduxForm, Field, FieldArray, FormSection,
+} from 'redux-form';
 import Typography from '@material-ui/core/Typography';
-import { TextField } from '../form';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import { TextField } from '../form';
 
 import TextButton from '../ui/TextButton';
 import SquareCard from '../ui/SquareCard';
 
-
 export function TimeBaseType({ label }) {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="numerator"
         component={TextField}
@@ -26,13 +27,13 @@ export function TimeBaseType({ label }) {
         label={label ? `${label} Denominator` : 'Denominator'}
         type="number"
       />
-    </React.Fragment>
+    </>
   );
 }
 
 export function ConformTimePointType({ label }) {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="samples"
         component={TextField}
@@ -44,7 +45,7 @@ export function ConformTimePointType({ label }) {
         component={TimeBaseType}
         label={label}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -56,18 +57,24 @@ export function SegmentArray({
 }) {
   const addField = () => fields.push({});
   return (
-    <React.Fragment>
+    <>
       {fields.map((thisField, index) => (
         <SquareCard key={thisField}>
           <CardContent>
             <Grid container direction="row" justify="space-between">
               <Grid item sm={2}>
-                { label &&
-                  <InputLabel shrink>{label} {index + 1}</InputLabel>
-                }
+                { label
+                  && (
+                  <InputLabel shrink>
+                    {label}
+                    {' '}
+                    {index + 1}
+                  </InputLabel>
+                  )}
               </Grid>
               <Grid item sm={2}>
-                { minFields < fields.length &&
+                { minFields < fields.length
+                && (
                 <Button
                   size="small"
                   color="secondary"
@@ -75,7 +82,7 @@ export function SegmentArray({
                 >
                   Remove Segment
                 </Button>
-                }
+                )}
               </Grid>
             </Grid>
             <Grid container direction="row" key={thisField} alignItems="flex-end" spacing={16}>
@@ -105,17 +112,17 @@ export function SegmentArray({
           </CardContent>
         </SquareCard>
       ))}
-      { maxFields > fields.length &&
+      { maxFields > fields.length
+        && (
         <Grid container direction="column" justify="flex-start" alignItems="stretch">
           <TextButton onClick={addField} color="primary">
             Add Segment
           </TextButton>
         </Grid>
-      }
-    </React.Fragment>
+        )}
+    </>
   );
 }
-
 
 function ConformForm({
   error,
@@ -133,6 +140,5 @@ function ConformForm({
     </form>
   );
 }
-
 
 export default reduxForm()(ConformForm);

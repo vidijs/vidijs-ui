@@ -4,20 +4,19 @@ const mapError = ({
   input,
   ...props
 }) => {
-  const errorProps =
-    touched && (error || warning)
-      ? {
-          ...props,
-          ...input,
-          error: Boolean(error || warning)
-        }
-      : { ...input, ...props }
+  const errorProps = touched && (error || warning)
+    ? {
+      ...props,
+      ...input,
+      error: Boolean(error || warning),
+    }
+    : { ...input, ...props };
 
   if (touched && hasHelperText && (error || warning)) {
-    errorProps.helperText = error || warning
+    errorProps.helperText = error || warning;
   }
 
-  return errorProps
-}
+  return errorProps;
+};
 
-export default mapError
+export default mapError;

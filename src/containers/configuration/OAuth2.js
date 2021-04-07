@@ -27,8 +27,8 @@ class OAuth2 extends React.PureComponent {
   onRefresh() {
     try {
       api.getAuthConfiguration()
-        .then(response => this.setState({ oAuth2ConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ oAuth2ConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -43,7 +43,7 @@ class OAuth2 extends React.PureComponent {
   render() {
     const { oAuth2ConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Configuration"
           parentTo="/configuration/"
@@ -64,7 +64,7 @@ class OAuth2 extends React.PureComponent {
           dialogName={AUTH_REMOVE_DIALOG}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

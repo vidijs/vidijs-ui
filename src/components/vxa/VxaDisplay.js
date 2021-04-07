@@ -181,7 +181,7 @@ import TypeArray from '../ui/TypeArray';
 // );
 
 const TranscoderType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="type"
       value={value.type}
@@ -254,21 +254,21 @@ const TranscoderType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const s3CredentialType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="s3CredentialType"
       value={value}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const VXAVSInstanceType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="vsClusterAddress"
       value={value.vsClusterAddress}
@@ -294,11 +294,11 @@ const VXAVSInstanceType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const VXAStorageType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -326,12 +326,11 @@ const VXAStorageType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
-
 const VXAType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="uuid"
       value={value.uuid}
@@ -446,18 +445,18 @@ const VXAType = ({ value = {} }) => (
       component={TranscoderType}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export default function VxaDisplay({
   vxaDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={VXAType}
         value={vxaDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

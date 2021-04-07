@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import UriListCard from '../components/ui/UriListCard';
 
 import withUI from '../hoc/withUI';
-import { configuration as api } from '@vidijs/vidijs-api';
 
 class Configuration extends React.PureComponent {
   constructor(props) {
@@ -23,8 +23,8 @@ class Configuration extends React.PureComponent {
   onRefresh() {
     try {
       api.getConfiguration()
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -39,7 +39,7 @@ class Configuration extends React.PureComponent {
   render() {
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Configuration"
           helpTo="/ref/property.html"
@@ -47,17 +47,17 @@ class Configuration extends React.PureComponent {
           code={uriListDocument}
           codeModal="URIListDocument"
         />
-        { uriListDocument &&
+        { uriListDocument
+        && (
         <UriListCard
           uriListDocument={uriListDocument}
-          linkTo={uri => `/configuration/${uri}/`}
+          linkTo={(uri) => `/configuration/${uri}/`}
           titleCase
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }
-
 
 export default withUI(Configuration);

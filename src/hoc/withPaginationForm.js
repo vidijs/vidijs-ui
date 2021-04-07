@@ -5,7 +5,7 @@ import { withRouterProps } from './withRouterProps';
 import withFormActions from './withFormActions';
 import withPagination from './withPagination';
 
-const withPaginationForm = WrappedComponent => class extends React.PureComponent {
+const withPaginationForm = (WrappedComponent) => class extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this);
@@ -86,7 +86,6 @@ const withPaginationForm = WrappedComponent => class extends React.PureComponent
     submitForm(form);
   }
 
-
   async onChangeOrder({ orderBy, orderDirection }) {
     const {
       changeForm,
@@ -128,6 +127,5 @@ const withPaginationForm = WrappedComponent => class extends React.PureComponent
     );
   }
 };
-
 
 export default compose(withRouterProps, withFormActions, withPaginationForm, withPagination);

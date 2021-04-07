@@ -16,7 +16,7 @@ class ImportPlaceholder extends React.PureComponent {
     const { history, ...props } = this.props;
     return (
       <ImportPlaceholderWizard
-        onSuccess={response => history.push(`/item/${response.data.id}`)}
+        onSuccess={(response) => history.push(`/item/${response.data.id}`)}
         {...props}
       />
     );

@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { fieldgroup as api } from '@vidijs/vidijs-api';
 import FieldGroupListCard from '../components/fieldgroup/FieldGroupListCard';
 import FieldGroupDialog from '../components/fieldgroup/FieldGroupDialog';
 import FieldGroupListTitle from '../components/fieldgroup/FieldGroupListTitle';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { fieldgroup as api } from '@vidijs/vidijs-api';
 
 const FIELDGROUPLIST_CREATE_MODAL = 'FIELDGROUPLIST_CREATE_MODAL';
 
@@ -27,34 +27,34 @@ class FieldGroupList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listFieldGroup()
-        .then(response => this.setState({ metadataFieldGroupListDocument: response.data }));
+        .then((response) => this.setState({ metadataFieldGroupListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Field Group List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
     }
   }
 
-
   render() {
     const { metadataFieldGroupListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <FieldGroupListTitle
           createModal={FIELDGROUPLIST_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={metadataFieldGroupListDocument}
           codeModal="FieldGroupListDocument"
         />
-        {metadataFieldGroupListDocument &&
+        {metadataFieldGroupListDocument
+        && (
         <FieldGroupListCard
           metadataFieldGroupListDocument={metadataFieldGroupListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <FieldGroupDialog
           dialogName={FIELDGROUPLIST_CREATE_MODAL}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

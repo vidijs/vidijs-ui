@@ -18,17 +18,17 @@ export default class Stitch extends React.PureComponent {
   render() {
     const { url } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Stitch Images"
           helpTo="/ref/misc/stitching.html"
         />
         <StitchCard
           url={url}
-          onSuccess={newUrl => this.setState({ url: newUrl })}
+          onSuccess={(newUrl) => this.setState({ url: newUrl })}
           onFail={() => this.setState({ url: undefined })}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

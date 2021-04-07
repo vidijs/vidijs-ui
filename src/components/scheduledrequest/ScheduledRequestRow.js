@@ -7,14 +7,13 @@ import RemoveRedEyeIcon from '@material-ui/icons/RemoveRedEye';
 import TableCell from '../ui/TableCell';
 import TableRow from '../ui/TableRow';
 
-
 export default function ScheduledRequestRow({
   scheduledRequestType = {},
   onOpen,
   onRemove,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TableRow hover>
         <TableCell>{scheduledRequestType.id}</TableCell>
         <TableCell>{scheduledRequestType.user}</TableCell>
@@ -31,6 +30,6 @@ export default function ScheduledRequestRow({
           </IconButton>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }

@@ -19,7 +19,7 @@ export default function ExportLocationListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {exportLocationList.map(exportLocationDocument => (
+        {exportLocationList.map((exportLocationDocument) => (
           <ExportLocationRow
             key={exportLocationDocument.name}
             exportLocationDocument={exportLocationDocument}

@@ -18,7 +18,7 @@ import { loadStorageOptions } from '../storage/StorageSelect';
 import { OtifPresetType } from '../shapetag/ShapeTagForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="resourceId"
       label="Transcoder ID"
@@ -49,7 +49,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -64,11 +64,11 @@ const queryParams = () => (
       arrayHeader
       dense
     />
-  </React.Fragment>
+  </>
 );
 
 const AnalyzeAudioChannelType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="tone"
       label="tone"
@@ -94,16 +94,16 @@ const AnalyzeAudioChannelType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const analyzeJobDocument = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="black"
       label="Black"
       component={() => (
-        <React.Fragment>
+        <>
           <Field
             name="threshold"
             component={TextField}
@@ -116,14 +116,14 @@ const analyzeJobDocument = () => (
             type="number"
             fullWidth
           />
-        </React.Fragment>
+        </>
       )}
     />
     <FormSection
       name="bars"
       label="Bars"
       component={() => (
-        <React.Fragment>
+        <>
           <Field
             name="threshold"
             component={TextField}
@@ -136,14 +136,14 @@ const analyzeJobDocument = () => (
             type="number"
             fullWidth
           />
-        </React.Fragment>
+        </>
       )}
     />
     <FormSection
       name="freeze"
       label="Freeze"
       component={() => (
-        <React.Fragment>
+        <>
           <Field
             name="threshold"
             component={TextField}
@@ -156,7 +156,7 @@ const analyzeJobDocument = () => (
             type="number"
             fullWidth
           />
-        </React.Fragment>
+        </>
       )}
     />
     <FieldTypeArray
@@ -186,7 +186,7 @@ const analyzeJobDocument = () => (
         />
       )}
     />
-  </React.Fragment>
+  </>
 );
 
 function ShapeAnalyzeForm({

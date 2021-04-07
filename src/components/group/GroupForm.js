@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FieldTypeArray from '../ui/FieldTypeArray';
 import FormSection from '../ui/FormSection';
@@ -10,13 +10,12 @@ import InitialDisabledTextField from '../ui/InitialDisabledTextField';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 import { SimpleMetadataType } from '../ui/SimpleMetadataForm';
-import { loadGroupOptions } from '../group/GroupSelect';
+import { loadGroupOptions } from './GroupSelect';
 import { loadUserOptions } from '../user/UserSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
 
-
 const GroupLookup = () => (
-  <React.Fragment>
+  <>
     <Field
       name="groupName"
       label="Group"
@@ -25,11 +24,11 @@ const GroupLookup = () => (
       cacheOptions
       isClearable
     />
-  </React.Fragment>
+  </>
 );
 
 const UserLookup = () => (
-  <React.Fragment>
+  <>
     <Field
       name="userName"
       label="User"
@@ -38,7 +37,7 @@ const UserLookup = () => (
       cacheOptions
       isClearable
     />
-  </React.Fragment>
+  </>
 );
 
 const GroupListType = () => (
@@ -57,7 +56,7 @@ const UserListType = () => (
 );
 
 const GroupType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="groupName"
       component={InitialDisabledTextField}
@@ -69,13 +68,13 @@ const GroupType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="role"
           component={BoolCheckbox}
           disabled
         />
-      }
+      )}
       label="Role"
     />
     <FormSection
@@ -97,30 +96,28 @@ const GroupType = () => (
       label="Users"
       component={UserListType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 const queryParams = () => (
   <FormControlLabel
-    control={
+    control={(
       <Field
         name="clear"
         component={BoolCheckbox}
       />
-    }
+    )}
     label="Clear Existing Users/Groups"
   />
 );
 
-
 const UserSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="userList"
       component={UserListType}
     />
-  </React.Fragment>
+  </>
 );
 
 const UserForm = ({ error, handleSubmit }) => (
@@ -141,12 +138,12 @@ const UserForm = ({ error, handleSubmit }) => (
 export const GroupUserForm = reduxForm()(UserForm);
 
 const ChildSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="childGroupList"
       component={GroupListType}
     />
-  </React.Fragment>
+  </>
 );
 
 const ChildForm = ({ error, handleSubmit }) => (
@@ -167,12 +164,12 @@ const ChildForm = ({ error, handleSubmit }) => (
 export const GroupChildForm = reduxForm()(ChildForm);
 
 const ParentSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="parentGroupList"
       component={GroupListType}
     />
-  </React.Fragment>
+  </>
 );
 
 const ParentForm = ({ error, handleSubmit }) => (
@@ -191,7 +188,6 @@ const ParentForm = ({ error, handleSubmit }) => (
 );
 
 export const GroupParentForm = reduxForm()(ParentForm);
-
 
 function GroupForm({
   error,

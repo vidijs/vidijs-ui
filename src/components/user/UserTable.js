@@ -14,7 +14,6 @@ import withDialogProps from '../../hoc/withDialogProps';
 
 const REMOVE_USER_DIALOG = 'REMOVE_USER_DIALOG';
 
-
 function UserTable({
   userListDocument = {},
   count,
@@ -32,7 +31,7 @@ function UserTable({
   const rowsPerPageOptions = [100, 250, 500];
   if (!rowsPerPageOptions.includes(rowsPerPage)) { rowsPerPageOptions.push(rowsPerPage); }
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -43,7 +42,7 @@ function UserTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {userList.map(userDocument => (
+          {userList.map((userDocument) => (
             <UserRow
               key={userDocument.userName}
               userDocument={userDocument}
@@ -51,7 +50,8 @@ function UserTable({
             />
           ))}
         </TableBody>
-        {count &&
+        {count
+        && (
         <TableFooter>
           <TableRow>
             <TablePagination
@@ -65,17 +65,18 @@ function UserTable({
             />
           </TableRow>
         </TableFooter>
-        }
+        )}
       </Table>
-      {groupName &&
+      {groupName
+        && (
         <UserGroupRemove
           {...dialogProps}
           dialogName={REMOVE_USER_DIALOG}
           groupName={groupName}
           onSuccess={onSuccess}
         />
-      }
-    </React.Fragment>
+        )}
+    </>
   );
 }
 

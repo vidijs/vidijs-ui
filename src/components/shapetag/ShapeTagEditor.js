@@ -4,7 +4,6 @@ import * as formActions from '../../formactions/shapetag';
 import * as actions from '../../actions';
 import Editor from '../ui/Editor';
 
-
 function ShapeTagEditor({
   transcodePresetDocument,
   tagName,

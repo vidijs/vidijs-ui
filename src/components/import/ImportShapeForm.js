@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FieldArray } from 'redux-form';
-import { TextField, Select } from '../form';
 import Grid from '@material-ui/core/Grid';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
@@ -19,11 +19,12 @@ function ImportShapeForm({
   return (
     <form onSubmit={handleSubmit} style={{ padding: '10px' }}>
       <Grid container direction="row" alignItems="center">
-        {error &&
+        {error
+          && (
           <Grid item xs={12}>
             <Typography color="error">{error}</Typography>
           </Grid>
-        }
+          )}
         <Grid item xs={12}>
           <Field
             name="itemId"
@@ -67,7 +68,7 @@ function ImportShapeForm({
         <Grid item xs={12}>
           <FormControl fullWidth>
             <InputLabel htmlFor="priority">Priority</InputLabel>
-            <Field name="queryParams.priority" component={Select} >
+            <Field name="queryParams.priority" component={Select}>
               <MenuItem value="HIGHEST">HIGHEST</MenuItem>
               <MenuItem value="HIGH">HIGH</MenuItem>
               <MenuItem value="MEDIUM">MEDIUM</MenuItem>
@@ -88,6 +89,5 @@ function ImportShapeForm({
     </form>
   );
 }
-
 
 export default reduxForm()(ImportShapeForm);

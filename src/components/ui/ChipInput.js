@@ -53,5 +53,4 @@ function WrappedChipInput({
   );
 }
 
-
 export default withStyles(styles)(WrappedChipInput);

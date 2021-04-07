@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { storage as api } from '@vidijs/vidijs-api';
 import StorageTitle from '../components/storage/StorageTitle';
 import StorageCard from '../components/storage/StorageCard';
 import StorageRemove from '../components/storage/StorageRemove';
@@ -10,7 +11,6 @@ import StorageEvacuate from '../components/storage/StorageEvacuate';
 import StorageEvacuateCancel from '../components/storage/StorageEvacuateCancel';
 
 import * as actions from '../actions';
-import { storage as api } from '@vidijs/vidijs-api';
 
 const STORAGE_REMOVE_MODAL = 'STORAGE_REMOVE_MODAL';
 const STORAGEMETHOD_CREATE_MODAL = 'STORAGEMETHOD_CREATE_MODAL';
@@ -51,8 +51,8 @@ class Storage extends React.PureComponent {
   onFetch(storageId) {
     try {
       api.getStorage({ storageId })
-        .then(response => this.setState({ storageDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ storageDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -67,7 +67,7 @@ class Storage extends React.PureComponent {
           openSnackBar({ messageContent });
           this.onRefresh();
         })
-        .catch(error => this.onRescanError(error));
+        .catch((error) => this.onRescanError(error));
     } catch (error) {
       this.onRescanError(error);
     }
@@ -92,7 +92,7 @@ class Storage extends React.PureComponent {
       storageDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <StorageTitle
           removeModal={STORAGE_REMOVE_MODAL}
           typeModal={STORAGE_TYPE_DIALOG}
@@ -140,7 +140,7 @@ class Storage extends React.PureComponent {
           storageDocument={storageDocument}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

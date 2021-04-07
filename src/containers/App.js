@@ -4,7 +4,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Main from './Main';
 
-
 export default function App(props) {
   return (
     <BrowserRouter basename={process.env.REACT_APP_BASENAME}>

@@ -10,7 +10,7 @@ import SelfTestStatus from './SelfTestStatus';
 
 export default function SelfTestCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <CardHeader
           disableTypography
@@ -25,6 +25,6 @@ export default function SelfTestCard(props) {
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

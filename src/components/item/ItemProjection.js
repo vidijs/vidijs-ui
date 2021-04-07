@@ -29,7 +29,7 @@ function ItemProjection({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <ItemProjectionForm
         form={ITEM_PROJECTION_FORM}
         onSubmit={formActions.onGetMetadata}
@@ -58,9 +58,8 @@ function ItemProjection({
           hideNoValue
         />
       )}
-    </React.Fragment>
+    </>
   );
 }
-
 
 export default compose(withUI, withFormActions)(ItemProjection);

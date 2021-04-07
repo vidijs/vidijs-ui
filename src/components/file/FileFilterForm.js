@@ -1,13 +1,13 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select, RadioGroup } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import Radio from '@material-ui/core/Radio';
+import { TextField, Select, RadioGroup } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -21,7 +21,7 @@ import FileStates from '../../const/FileStates';
 import { KeyValuePairType } from '../ui/FormType';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="id"
       label="File IDs"
@@ -94,7 +94,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="state">State</InputLabel>
       <Field name="state" component={Select}>
-        {FileStates.map(fileState => (
+        {FileStates.map((fileState) => (
           <MenuItem key={fileState} value={fileState}>
             {fileState}
           </MenuItem>
@@ -121,12 +121,11 @@ const queryParams = () => (
       label="Method Metadata"
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="first"
       component={TextField}
@@ -218,9 +217,8 @@ const matrixParams = () => (
       )}
       label="Include Item"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function FileFilterForm({
   error,

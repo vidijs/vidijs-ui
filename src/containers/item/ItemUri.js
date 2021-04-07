@@ -1,10 +1,9 @@
 import React from 'react';
+import { item as api } from '@vidijs/vidijs-api';
 import ItemUriParams from '../../components/item/ItemUriParams';
 import UriListCard from '../../components/ui/UriListCard';
 
-import { item as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class ItemUri extends React.PureComponent {
   constructor(props) {
@@ -21,7 +20,7 @@ class ItemUri extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -37,8 +36,8 @@ class ItemUri extends React.PureComponent {
   onFetch(itemId) {
     try {
       api.getItemUri({ itemId })
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -50,7 +49,6 @@ class ItemUri extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       itemId,
@@ -59,7 +57,7 @@ class ItemUri extends React.PureComponent {
     } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={uriListDocument}
@@ -72,14 +70,14 @@ class ItemUri extends React.PureComponent {
         )}
         <ItemUriParams
           itemId={itemId}
-          onSuccess={response => this.setState({ uriListDocument: response.data })}
+          onSuccess={(response) => this.setState({ uriListDocument: response.data })}
         />
         {uriListDocument && (
           <UriListCard
             uriListDocument={uriListDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -21,8 +21,7 @@ const mapDispatchToProps = {
   onOpen: actions.ui.openModal,
 };
 
-
-export const withModalNoRouter = WrappedComponent => connect(
+export const withModalNoRouter = (WrappedComponent) => connect(
   mapStateToProps,
   mapDispatchToProps,
 )(WrappedComponent);

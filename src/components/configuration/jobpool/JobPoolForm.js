@@ -12,11 +12,11 @@ import Field from '../../ui/Field';
 import JobPriority from '../../../const/JobPriority';
 
 const JobPoolType = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="priorityThreshold">Priority Threshold</InputLabel>
       <Field name="priorityThreshold" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -29,11 +29,11 @@ const JobPoolType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const JobPoolListType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="concurrentJobs"
       component={TextField}
@@ -45,9 +45,8 @@ const JobPoolListType = () => (
       label="Pool"
       component={JobPoolType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function JobPoolForm({
   error,

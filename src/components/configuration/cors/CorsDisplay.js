@@ -6,7 +6,7 @@ import TypeArray from '../../ui/TypeArray';
 import { KeyValuePairType } from '../../ui/DisplayType';
 
 const CORSConfigurationEntryRequest = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="method"
       value={value.method}
@@ -36,11 +36,11 @@ const CORSConfigurationEntryRequest = ({ value = {} }) => (
       value={value.headerRegex}
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const CORSConfigurationEntryResponse = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="allowOrigin"
       value={value.allowOrigin}
@@ -68,11 +68,11 @@ const CORSConfigurationEntryResponse = ({ value = {} }) => (
       value={value.allowOtherHeader}
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const CORSConfigurationEntry = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title="request"
       value={value.request}
@@ -83,28 +83,28 @@ const CORSConfigurationEntry = ({ value = {} }) => (
       value={value.response}
       component={CORSConfigurationEntryResponse}
     />
-  </React.Fragment>
+  </>
 );
 
 const CORSConfigurationType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title="entry"
       value={value.entry}
       component={CORSConfigurationEntry}
     />
-  </React.Fragment>
+  </>
 );
 
 export default function CorsDisplay({
   corsConfigurationDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={corsConfigurationDocument}
         component={CORSConfigurationType}
       />
-    </React.Fragment>
+    </>
   );
 }

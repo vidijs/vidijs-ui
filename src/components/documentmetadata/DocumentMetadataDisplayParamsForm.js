@@ -1,15 +1,15 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="interval"
       component={TextField}
@@ -63,9 +63,8 @@ const matrixParams = () => (
       )}
       label="Default Value"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function DocumentMetadataDisplayParamsForm({
   error,

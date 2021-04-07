@@ -19,13 +19,13 @@ export default function MetadataCollectionTable({
 }) {
   const itemCollection = [];
   const { timespan: metadataTimespanList = [] } = metadataDocument;
-  const infTimeSpan = metadataTimespanList.find(thisTimespan => (thisTimespan.start === '-INF' && thisTimespan.end === '+INF'));
+  const infTimeSpan = metadataTimespanList.find((thisTimespan) => (thisTimespan.start === '-INF' && thisTimespan.end === '+INF'));
   if (infTimeSpan) {
     const { field: fieldList = [] } = infTimeSpan;
     fieldList.forEach((thisField) => {
       if (COLLECTION_TRANSIENT_FIELDS.includes(thisField.name)) {
         const { value: allValues = [] } = thisField;
-        const firstValue = allValues.find(thisValue => (thisValue.value));
+        const firstValue = allValues.find((thisValue) => (thisValue.value));
         if (firstValue) {
           const relation = (thisField.name === '__collection' || thisField.name === '__parent_collection') ? 'Parent' : 'Ancestor';
           itemCollection.push({
@@ -46,7 +46,7 @@ export default function MetadataCollectionTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {itemCollection.map(collection => (
+        {itemCollection.map((collection) => (
           <TableRowLink
             key={`${collection.relation}_${collection.id}`}
             to={`/collection/${collection.id}/`}

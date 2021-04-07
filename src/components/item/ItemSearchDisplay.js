@@ -1,13 +1,12 @@
 import React from 'react';
 
-
 import TextGrid from '../ui/TextGrid';
 import TextGridArray from '../ui/TextGridArray';
 import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
 const ItemSearchTextValueType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="value"
       value={value.value}
@@ -19,11 +18,11 @@ const ItemSearchTextValueType = ({ value }) => (
       variant="boolean"
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const ItemSearchValueType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="value"
       value={value.value}
@@ -47,11 +46,11 @@ const ItemSearchValueType = ({ value }) => (
       variant="boolean"
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const ItemSearchRangeType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       value={value.value[0]}
       title="start"
@@ -74,11 +73,11 @@ const ItemSearchRangeType = ({ value }) => (
       variant="boolean"
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchFieldType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Field Name"
       value={value.name}
@@ -99,11 +98,11 @@ const SearchFieldType = ({ value }) => (
       value={value.target}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchGroupType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Group Name"
       value={value.name}
@@ -124,11 +123,11 @@ const SearchGroupType = ({ value }) => (
       value={value.reference}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchOperatorType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Operation"
       value={value.operation}
@@ -159,11 +158,11 @@ const SearchOperatorType = ({ value }) => (
       value={value.reference}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const SearchFilterType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Filter Name"
       value={value.name}
@@ -194,11 +193,11 @@ export const SearchFilterType = ({ value }) => (
       value={value.reference}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const CriterionType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       value={value.field}
       arrayTitle="Field"
@@ -213,11 +212,11 @@ const CriterionType = ({ value }) => (
       value={value.operator}
       component={SearchOperatorType}
     />
-  </React.Fragment>
+  </>
 );
 
 const ShapeCriterionType = ({ value }) => (
-  <React.Fragment>
+  <>
     <CriterionType
       value={value}
     />
@@ -226,11 +225,11 @@ const ShapeCriterionType = ({ value }) => (
       component={CriterionType}
       title="File"
     />
-  </React.Fragment>
+  </>
 );
 
 const ItemCriterionType = ({ value }) => (
-  <React.Fragment>
+  <>
     <CriterionType
       value={value}
     />
@@ -244,12 +243,11 @@ const ItemCriterionType = ({ value }) => (
       component={CriterionType}
       title="File"
     />
-  </React.Fragment>
+  </>
 );
 
-
 const FacetRangeType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="start"
       value={value.start}
@@ -260,11 +258,11 @@ const FacetRangeType = ({ value }) => (
       value={value.end}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchFacetFilterType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Field Name"
       value={value.name}
@@ -280,11 +278,11 @@ const SearchFacetFilterType = ({ value }) => (
       arrayTitle="Field Range"
       component={FacetRangeType}
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchFacetType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Field"
       value={value.field}
@@ -321,11 +319,11 @@ const SearchFacetType = ({ value }) => (
       value={value.name}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchSortType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="field"
       value={value.field}
@@ -336,11 +334,11 @@ const SearchSortType = ({ value }) => (
       value={value.order}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchHighlightType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="field"
       value={value.field}
@@ -362,11 +360,11 @@ const SearchHighlightType = ({ value }) => (
       value={value.suffix}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SuggestionSearchType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="maximumSuggestions"
       value={value.maximumSuggestions}
@@ -377,11 +375,11 @@ const SuggestionSearchType = ({ value }) => (
       value={value.accuracy}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const AutocompleteRequestType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="text"
       value={value.text}
@@ -397,11 +395,11 @@ const AutocompleteRequestType = ({ value }) => (
       value={value.accuracy}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const ItemSearchType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       value={value.operator}
       component={SearchOperatorType}
@@ -496,18 +494,18 @@ export const ItemSearchType = ({ value }) => (
       value={value.version}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export default function ItemSearchDisplay({
   itemSearchDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={itemSearchDocument}
         component={ItemSearchType}
       />
-    </React.Fragment>
+    </>
   );
 }

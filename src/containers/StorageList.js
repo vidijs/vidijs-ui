@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { storage as api } from '@vidijs/vidijs-api';
 import StorageListTitle from '../components/storage/StorageListTitle';
 import StorageListCard from '../components/storage/StorageListCard';
 import StorageDialog from '../components/storage/StorageDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { storage as api } from '@vidijs/vidijs-api';
 
 const STORAGE_LIST_CODE_MODAL = 'STORAGE_LIST_CODE_MODAL';
 const STORAGE_CREATE_MODAL = 'STORAGE_CREATE_MODAL';
@@ -30,7 +30,7 @@ class StorageList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listStorage()
-        .then(response => this.setState({ storageListDocument: response.data }));
+        .then((response) => this.setState({ storageListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Storage List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -48,17 +48,18 @@ class StorageList extends React.PureComponent {
       storageListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <StorageListTitle
           openCode={() => openModal({ modalName: STORAGE_LIST_CODE_MODAL })}
           openCreate={() => openModal({ modalName: STORAGE_CREATE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        { storageListDocument &&
+        { storageListDocument
+        && (
         <StorageListCard
           storageListDocument={storageListDocument}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === STORAGE_LIST_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -70,7 +71,7 @@ class StorageList extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

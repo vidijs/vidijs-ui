@@ -43,7 +43,7 @@ function VersionTitle({
     <TitleHeader
       title="Version"
       iconList={(
-        <React.Fragment>
+        <>
           { uploadModal && (
           <Tooltip title="Upload License">
             <IconButton onClick={() => onOpen({ modalName: uploadModal })}>
@@ -52,7 +52,7 @@ function VersionTitle({
           </Tooltip>
           )}
           {StatusIcon}
-        </React.Fragment>
+        </>
       )}
       {...props}
     />

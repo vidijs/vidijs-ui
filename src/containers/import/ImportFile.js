@@ -18,7 +18,7 @@ class ImportFile extends React.PureComponent {
     const fileId = query.get('fileId');
     return (
       <ImportFileWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         initialValues={{ fileId }}
         {...props}
       />

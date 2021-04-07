@@ -57,13 +57,12 @@ export const RelationItemId = () => (
 );
 
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <DirectionQueryParam />
     <AllowDuplicateQueryParam />
     <RelationMetadataQueryParam />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemRelationForm({
   error,

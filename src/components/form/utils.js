@@ -1,1 +1,1 @@
-export const isStateLess = Component => !Component.render
+export const isStateLess = (Component) => !Component.render;

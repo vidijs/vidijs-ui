@@ -22,5 +22,4 @@ const TextGridArray = ({
   );
 };
 
-
 export default withErrorBoundary(TextGridArray);

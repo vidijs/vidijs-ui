@@ -2,11 +2,11 @@ import React from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Select } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import Field from '../ui/Field';
@@ -18,7 +18,6 @@ import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 
 import FieldTypeArray from '../ui/FieldTypeArray';
 
-
 const StorageCriteriaType = () => (
   <FormControl fullWidth>
     <InputLabel htmlFor="value">Criteria</InputLabel>
@@ -29,9 +28,8 @@ const StorageCriteriaType = () => (
   </FormControl>
 );
 
-
 const StorageRuleStorageType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="storage"
       component={StatefulAsyncSelect}
@@ -51,22 +49,22 @@ const StorageRuleStorageType = () => (
       fullWidth
       isMulti
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageRuleNotType = () => (
-  <React.Fragment>
+  <>
     <StorageRuleStorageType />
     <Field
       name="any"
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageRulePriorityType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="level"
       type="number"
@@ -74,11 +72,11 @@ const StorageRulePriorityType = () => (
       fullWidth
     />
     <StorageCriteriaType />
-  </React.Fragment>
+  </>
 );
 
 const StorageRuleAppliesType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="id"
       component={TextField}
@@ -89,11 +87,11 @@ const StorageRuleAppliesType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageRuleType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="storageCount"
       type="number"
@@ -158,7 +156,7 @@ const StorageRuleType = () => (
         <MenuItem value="LOWEST">LOWEST</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
 
 const EntityForm = ({ error, handleSubmit }) => (
@@ -224,6 +222,5 @@ function StorageRuleForm({
     </form>
   );
 }
-
 
 export default reduxForm()(StorageRuleForm);

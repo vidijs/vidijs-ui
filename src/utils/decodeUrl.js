@@ -38,7 +38,7 @@ const decodeUrl = (urlString = '') => {
 
   let queryParams = {};
   if (queryString) {
-    queryParams = queryString.split('&').map(p => p.split('=')).reduce((i, e) => ({ ...i, [e[0]]: e[1] }), {});
+    queryParams = queryString.split('&').map((p) => p.split('=')).reduce((i, e) => ({ ...i, [e[0]]: e[1] }), {});
   }
   const fullPath = `${path || ''}${(file && file !== '/') ? file : ''}`;
   return {

@@ -18,7 +18,6 @@ const AbandonMenuItem = ({ fileDocument, abandonModal, onOpen }) => {
   );
 };
 
-
 function FileTitle({
   fileId,
   onOpen,
@@ -37,8 +36,8 @@ function FileTitle({
       title={fileId}
       parentTitle="File"
       parentTo="/file/"
-      iconList={
-        <React.Fragment>
+      iconList={(
+        <>
           <FileStatus fileDocument={props.code} />
           <FileDownload fileDocument={props.code} />
           <Menu>
@@ -76,8 +75,8 @@ function FileTitle({
               <Typography color="secondary">Delete File</Typography>
             </MenuItem>
           </Menu>
-        </React.Fragment>
-      }
+        </>
+      )}
       {...props}
     />
   );

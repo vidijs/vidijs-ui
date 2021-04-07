@@ -47,5 +47,4 @@ function FieldGroupDialog({
   );
 }
 
-
 export default withUI(FieldGroupDialog);

@@ -15,7 +15,6 @@ const queryParams = () => (
   />
 );
 
-
 function TransferPriorityForm({
   error,
   handleSubmit,

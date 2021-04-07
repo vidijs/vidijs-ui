@@ -3,13 +3,12 @@ import MUITableCell from '@material-ui/core/TableCell';
 
 import withDivComponent from '../../hoc/withDivComponent';
 
-
 function TableCell({
   disableOnClick,
   onClick,
   ...props
 }) {
-  const onThisClick = disableOnClick ? event => event.stopPropagation() : onClick;
+  const onThisClick = disableOnClick ? (event) => event.stopPropagation() : onClick;
   return (
     <MUITableCell
       onClick={onThisClick}
@@ -17,6 +16,5 @@ function TableCell({
     />
   );
 }
-
 
 export default withDivComponent(TableCell);

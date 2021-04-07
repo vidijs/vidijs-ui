@@ -1,13 +1,12 @@
 import React from 'react';
 
+import { version as api } from '@vidijs/vidijs-api';
 import VersionCard from '../components/version/VersionCard';
 import VersionDialog from '../components/version/VersionDialog';
 import VersionTitle from '../components/version/VersionTitle';
-import { version as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
 const VERSION_UPDATE_MODAL = 'VERSION_UPDATE_MODAL';
-
 
 class Version extends React.PureComponent {
   constructor(props) {
@@ -27,7 +26,7 @@ class Version extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.getVersion()
-        .then(response => this.setState({ versionDocument: response.data }));
+        .then((response) => this.setState({ versionDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Version Information';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -39,7 +38,7 @@ class Version extends React.PureComponent {
       versionDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <VersionTitle
           onRefresh={this.onRefresh}
           uploadModal={VERSION_UPDATE_MODAL}
@@ -55,10 +54,9 @@ class Version extends React.PureComponent {
           dialogName={VERSION_UPDATE_MODAL}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(Version);

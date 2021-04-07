@@ -21,7 +21,7 @@ function UserKeyTable({
   if (!accessKeyListDocument) { return null; }
   const { key: accessKeyList = [] } = accessKeyListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -33,7 +33,7 @@ function UserKeyTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {accessKeyList.map(accessKeyDocument => (
+          {accessKeyList.map((accessKeyDocument) => (
             <UserKeyRow
               key={accessKeyDocument.id}
               accessKeyDocument={accessKeyDocument}
@@ -48,7 +48,7 @@ function UserKeyTable({
         userName={userName}
         onSuccess={onRemoveSuccess}
       />
-    </React.Fragment>
+    </>
   );
 }
 

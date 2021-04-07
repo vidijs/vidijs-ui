@@ -19,7 +19,7 @@ export default function VxaListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {vxaList.map(vxaDocument => (
+        {vxaList.map((vxaDocument) => (
           <VxaRow
             key={vxaDocument.uuid}
             vxaDocument={vxaDocument}

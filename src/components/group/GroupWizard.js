@@ -8,7 +8,6 @@ import WizardForm from '../ui/WizardForm';
 import * as formActions from '../../formactions/group';
 import withUI from '../../hoc/withUI';
 
-
 function GroupWizard({
   open,
   onClose,

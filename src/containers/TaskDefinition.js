@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { taskdefinition as api } from '@vidijs/vidijs-api';
 import TaskDefinitionTitle from '../components/taskdefinition/TaskDefinitionTitle';
 import TaskDefinitionListCard from '../components/taskdefinition/TaskDefinitionListCard';
 import TaskDefinitionDialog from '../components/taskdefinition/TaskDefinitionDialog';
 import JobTypeRemove from '../components/jobtype/JobTypeRemove';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { taskdefinition as api } from '@vidijs/vidijs-api';
 
 const JOBTYPE_REMOVE_MODAL = 'JOBTYPE_REMOVE_MODAL';
 const TASKDEFINITION_DIALOG = 'TASKDEFINITION_DIALOG';
@@ -19,6 +19,7 @@ class TaskDefinition extends React.PureComponent {
       taskDefinitionListDocument: undefined,
     };
   }
+
   componentDidMount() {
     const { taskDefinitionType } = this.props;
     this.onRefresh();
@@ -29,7 +30,7 @@ class TaskDefinition extends React.PureComponent {
     const { openSnackBar, taskDefinitionType } = this.props;
     try {
       api.getTaskDefinitionType({ taskDefinitionType })
-        .then(response => this.setState({ taskDefinitionListDocument: response.data }));
+        .then((response) => this.setState({ taskDefinitionListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Getting Job Type';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -40,7 +41,7 @@ class TaskDefinition extends React.PureComponent {
     const { taskDefinitionType, history } = this.props;
     const { taskDefinitionListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TaskDefinitionTitle
           onRefresh={this.onRefresh}
           taskDefinitionType={taskDefinitionType}
@@ -49,12 +50,13 @@ class TaskDefinition extends React.PureComponent {
           removeModal={JOBTYPE_REMOVE_MODAL}
           createModal={TASKDEFINITION_DIALOG}
         />
-        { taskDefinitionListDocument &&
+        { taskDefinitionListDocument
+          && (
           <TaskDefinitionListCard
             onRefresh={this.onRefresh}
             taskDefinitionListDocument={taskDefinitionListDocument}
           />
-        }
+          )}
         <JobTypeRemove
           dialogName={JOBTYPE_REMOVE_MODAL}
           jobType={taskDefinitionType}
@@ -65,10 +67,9 @@ class TaskDefinition extends React.PureComponent {
           jobType={taskDefinitionType}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(TaskDefinition);

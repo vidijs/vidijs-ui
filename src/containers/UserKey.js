@@ -27,7 +27,7 @@ class UserKey extends React.PureComponent {
     document.title = `vidi.js | User | ${userName} | Keys`;
   }
 
-  componentWillReceiveProps({ userName }) {
+  UNSAFE_componentWillReceiveProps({ userName }) {
     const { userName: prevUserName } = this.props;
     if (prevUserName !== userName) {
       this.onFetch(userName);
@@ -43,8 +43,8 @@ class UserKey extends React.PureComponent {
   onFetch(userName) {
     try {
       api.listKey({ userName })
-        .then(response => this.setState({ accessKeyListDocument: response.data }))
-        .catch(error => this.onFetchError(error));
+        .then((response) => this.setState({ accessKeyListDocument: response.data }))
+        .catch((error) => this.onFetchError(error));
     } catch (error) {
       this.onFetchError(error);
     }
@@ -64,7 +64,7 @@ class UserKey extends React.PureComponent {
     const { accessKeyListDocument, accessKeyDocument } = this.state;
     const { userName } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           helpTo="/ref/user.html"
           title="Keys"
@@ -89,7 +89,7 @@ class UserKey extends React.PureComponent {
           onSetAccessKey={this.onSetAccessKey}
           userName={userName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

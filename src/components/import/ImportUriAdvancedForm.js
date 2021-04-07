@@ -1,15 +1,15 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextField } from '../form';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import ChipInput from '../ui/ChipInput';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="original"
       label="Original Shape Tag"
@@ -131,9 +131,8 @@ const queryParams = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportUriAdvancedForm({
   error,

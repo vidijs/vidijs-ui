@@ -10,7 +10,6 @@ import withDialogProps from '../../hoc/withDialogProps';
 import TransferRow from './TransferRow';
 import TransferPriority from './TransferPriority';
 
-
 const TRANSFER_PRIORITY_DIALOG = 'TRANSFER_PRIORITY_DIALOG';
 
 function TransferTable({
@@ -21,7 +20,7 @@ function TransferTable({
 }) {
   const { transfer: transferList = [] } = transferListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -34,7 +33,7 @@ function TransferTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {transferList.map(transferDocument => (
+          {transferList.map((transferDocument) => (
             <TransferRow
               key={transferDocument.name}
               transferDocument={transferDocument}
@@ -48,7 +47,7 @@ function TransferTable({
         dialogName={TRANSFER_PRIORITY_DIALOG}
         onSuccess={onSuccess}
       />
-    </React.Fragment>
+    </>
   );
 }
 

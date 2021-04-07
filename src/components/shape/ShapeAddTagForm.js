@@ -8,7 +8,6 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { required } from '../../utils/FieldValidation';
 
-
 function ShapeTagAddForm({
   error,
   handleSubmit,

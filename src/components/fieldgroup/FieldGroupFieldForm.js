@@ -6,7 +6,6 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import Field from '../ui/Field';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
 
-
 const FieldGroupFieldForm = ({ error, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     {error && <Typography color="error">{error}</Typography>}

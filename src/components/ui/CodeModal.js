@@ -23,7 +23,7 @@ function CodeModal({
       maxWidth={false}
     >
       {open && (
-        <React.Fragment>
+        <>
           <DialogTitle>{title || ''}</DialogTitle>
           <DialogContent>
             <ReactJson
@@ -33,7 +33,7 @@ function CodeModal({
               collapsed={false}
               displayObjectSize={false}
               name={false}
-              enableClipboard={copy => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
+              enableClipboard={(copy) => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
             />
           </DialogContent>
           <DialogActions>
@@ -41,7 +41,7 @@ function CodeModal({
               Close
             </Button>
           </DialogActions>
-        </React.Fragment>
+        </>
       )}
     </Dialog>
   );

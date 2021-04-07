@@ -7,10 +7,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 
-
 const drawerWidth = 200;
 
-const styles = theme => ({
+const styles = (theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,

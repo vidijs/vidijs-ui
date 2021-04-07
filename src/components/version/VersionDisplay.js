@@ -5,81 +5,86 @@ import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
 const LicenseErrorType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="licenseError"
       value={value.licenseError}
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const LicenseNumberType = ({ value = {}, dense = true }) => (
-  dense ?
-    <TextGrid
-      title={`Current: ${value.current}`}
-      value={`Allowed: ${value.allowed === '-1' ? 'Unlimited' : value.allowed}`}
-      hover
-      hideNoValue
-      titleStartCase={false}
-    />
-    :
-    <React.Fragment>
+  dense
+    ? (
       <TextGrid
-        title="allowed"
-        value={value.allowed}
+        title={`Current: ${value.current}`}
+        value={`Allowed: ${value.allowed === '-1' ? 'Unlimited' : value.allowed}`}
         hover
         hideNoValue
+        titleStartCase={false}
       />
-      <TextGrid
-        title="current"
-        value={value.current}
-        hover
-        hideNoValue
-      />
-    </React.Fragment>
+    )
+    : (
+      <>
+        <TextGrid
+          title="allowed"
+          value={value.allowed}
+          hover
+          hideNoValue
+        />
+        <TextGrid
+          title="current"
+          value={value.current}
+          hover
+          hideNoValue
+        />
+      </>
+    )
 );
 
 const CodecType = ({ value = {}, dense = true }) => (
-  dense ?
-    <TextGrid
-      title={value.name}
-      value={
+  dense
+    ? (
+      <TextGrid
+        title={value.name}
+        value={
         `${value.encode ? 'Encode' : ''}${(value.decode && !value.encode) ? 'Decode' : ''}`
       }
-      hover
-      hideNoValue
-      titleStartCase={false}
-    />
-    :
-    <React.Fragment>
-      <TextGrid
-        title="name"
-        value={value.name}
         hover
         hideNoValue
+        titleStartCase={false}
       />
-      <TextGrid
-        title="encode"
-        value={value.encode}
-        variant="boolean"
-        hover
-        hideNoValue
-      />
-      <TextGrid
-        title="decode"
-        value={value.decode}
-        variant="boolean"
-        hover
-        hideNoValue
-      />
-    </React.Fragment>
+    )
+    : (
+      <>
+        <TextGrid
+          title="name"
+          value={value.name}
+          hover
+          hideNoValue
+        />
+        <TextGrid
+          title="encode"
+          value={value.encode}
+          variant="boolean"
+          hover
+          hideNoValue
+        />
+        <TextGrid
+          title="decode"
+          value={value.decode}
+          variant="boolean"
+          hover
+          hideNoValue
+        />
+      </>
+    )
 );
 
-
 const CodecStatusType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       value={value.codec}
       component={CodecType}
@@ -90,11 +95,11 @@ const CodecStatusType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SystemInfoType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="macaddress"
       value={value.macaddress}
@@ -108,43 +113,46 @@ const SystemInfoType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const CompType = ({ value = {}, dense = true }) => (
-  dense ?
-    <TextGrid
-      title={value.siteId ? `${value.siteId} ${value.name}` : value.name}
-      value={value.version}
-      hover
-      hideNoValue
-      titleStartCase={false}
-    />
-    :
-    <React.Fragment>
+  dense
+    ? (
       <TextGrid
-        title={value.name}
+        title={value.siteId ? `${value.siteId} ${value.name}` : value.name}
         value={value.version}
         hover
         hideNoValue
+        titleStartCase={false}
       />
-      <TextGrid
-        title="siteId"
-        value={value.siteId}
-        hover
-        hideNoValue
-      />
-      <TextGrid
-        title="version"
-        value={value.version}
-        hover
-        hideNoValue
-      />
-    </React.Fragment>
+    )
+    : (
+      <>
+        <TextGrid
+          title={value.name}
+          value={value.version}
+          hover
+          hideNoValue
+        />
+        <TextGrid
+          title="siteId"
+          value={value.siteId}
+          hover
+          hideNoValue
+        />
+        <TextGrid
+          title="version"
+          value={value.version}
+          hover
+          hideNoValue
+        />
+      </>
+    )
 );
 
 const LicenseType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="expiryDate"
       value={value.expiryDate}
@@ -235,21 +243,20 @@ const LicenseType = ({ value = {} }) => (
       component={CodecStatusType}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
-
 
 export function VersionSystemInfoDisplay({
   versionDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         title="systemInfo"
         value={versionDocument.systemInfo}
         component={SystemInfoType}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -257,13 +264,13 @@ export function VersionLicenseInfoDisplay({
   versionDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         title="licenseInfo"
         value={versionDocument.licenseInfo}
         component={LicenseType}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -271,12 +278,12 @@ export function VersionComponentDisplay({
   versionDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeArray
         value={versionDocument.component}
         component={CompType}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -284,7 +291,7 @@ export default function VersionDisplay({
   versionDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         title="systemInfo"
         value={versionDocument.systemInfo}
@@ -300,6 +307,6 @@ export default function VersionDisplay({
         value={versionDocument.component}
         component={CompType}
       />
-    </React.Fragment>
+    </>
   );
 }

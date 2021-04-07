@@ -18,10 +18,10 @@ function ItemListCard({
   const { item: itemList = [] } = itemListDocument;
   const { terse, content = [] } = queryParams;
   const hasThumbnail = content.includes('thumbnail');
-  const onClick = itemId => () => history.push(`/item/${itemId}/`);
+  const onClick = (itemId) => () => history.push(`/item/${itemId}/`);
   return (
-    <React.Fragment>
-      {itemList.map(itemType => (
+    <>
+      {itemList.map((itemType) => (
         <SquareCard onClick={onClick(itemType.id)} key={itemType.id}>
           <CardHeader subheader={`Item ${itemType.id}`} />
           <CardContent>
@@ -36,7 +36,7 @@ function ItemListCard({
               <Grid item xs={12} sm>
                 <TextGrid title="itemId" value={itemType.id} />
                 {(terse && itemType.terse) && (
-                  Object.keys(itemType.terse).map(fieldName => (
+                  Object.keys(itemType.terse).map((fieldName) => (
                     <TextGrid
                       key={fieldName}
                       title={fieldName}
@@ -49,7 +49,7 @@ function ItemListCard({
           </CardContent>
         </SquareCard>
       ))}
-    </React.Fragment>
+    </>
   );
 }
 

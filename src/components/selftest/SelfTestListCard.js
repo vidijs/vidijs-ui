@@ -7,7 +7,7 @@ export default function SelfTestListCard({
 }) {
   const { test: selfTestList = [] } = selfTestListDocument;
   return (
-    selfTestList.map(selfTestDocument => (
+    selfTestList.map((selfTestDocument) => (
       <SelfTestCard
         key={selfTestDocument.name}
         selfTestDocument={selfTestDocument}

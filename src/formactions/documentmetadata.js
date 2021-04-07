@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { documentmetadata as api } from '@vidijs/vidijs-api';
 
-
 export function onUpdate(form, dispatch, props) {
   const { metadataDocument = {}, queryParams } = form;
   const documentMetadataName = props.documentMetadataName || form.documentMetadataName;
@@ -11,7 +10,7 @@ export function onUpdate(form, dispatch, props) {
     metadataDocument,
     queryParams,
   })
-    .then(response => ({ documentMetadataName, ...response }))
+    .then((response) => ({ documentMetadataName, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -28,7 +27,7 @@ export function onGet(form, dispatch, props) {
     documentMetadataName,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({ documentMetadataName, ...response }))
+    .then((response) => ({ documentMetadataName, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

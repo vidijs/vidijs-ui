@@ -5,7 +5,6 @@ import AuthForm from './AuthForm';
 import AuthDisplay from './AuthDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function AuthEditor({
   oAuth2ConfigurationDocument,
   openSnackBar,
@@ -34,6 +33,5 @@ function AuthEditor({
     />
   );
 }
-
 
 export default withSnackbar(AuthEditor);

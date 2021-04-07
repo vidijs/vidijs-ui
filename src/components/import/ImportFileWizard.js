@@ -55,7 +55,7 @@ function ImportFileWizard({
     ...initialValues,
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="File"
@@ -150,7 +150,7 @@ function ImportFileWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

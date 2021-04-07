@@ -42,7 +42,7 @@ function ImportShapeEssenceWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Essence"
@@ -110,7 +110,7 @@ function ImportShapeEssenceWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

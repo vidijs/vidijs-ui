@@ -2,10 +2,10 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { TextField, Select } from '../form';
 
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
@@ -17,7 +17,7 @@ import StorageTypes from '../../const/StorageTypes';
 import { SimpleMetadataType } from '../ui/FormType';
 
 const StorageFileSequenceType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="regex"
       label="regex"
@@ -31,36 +31,36 @@ const StorageFileSequenceType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageMethodType = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="read"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Read"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="write"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Write"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="browse"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Browse"
     />
     <Field
@@ -113,15 +113,15 @@ const StorageMethodType = () => (
       label="metadata"
       component={SimpleMetadataType}
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageSection = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="type">Type</InputLabel>
       <Field name="type" component={Select}>
-        {StorageTypes.map(storageType => (
+        {StorageTypes.map((storageType) => (
           <MenuItem key={storageType} value={storageType}>
             {storageType}
           </MenuItem>
@@ -136,21 +136,21 @@ const StorageSection = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="autoDetect"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Auto Detect"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="showImportables"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Show Importables"
     />
     <Field
@@ -167,7 +167,7 @@ const StorageSection = () => (
       fullWidth
       disabled
     />
-  </React.Fragment>
+  </>
 );
 
 const BasicForm = ({ error, handleSubmit }) => (
@@ -184,13 +184,13 @@ const BasicForm = ({ error, handleSubmit }) => (
 export const StorageBasicForm = reduxForm()(BasicForm);
 
 const MetadataSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="metadata"
       label="metadata"
       component={SimpleMetadataType}
     />
-  </React.Fragment>
+  </>
 );
 
 const MetadataForm = ({ error, handleSubmit }) => (
@@ -207,13 +207,13 @@ const MetadataForm = ({ error, handleSubmit }) => (
 export const StorageMetadataForm = reduxForm()(MetadataForm);
 
 const MethodSection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="method"
       label="method"
       component={StorageMethodType}
     />
-  </React.Fragment>
+  </>
 );
 
 const MethodListForm = ({ error, handleSubmit }) => (
@@ -243,7 +243,7 @@ const MethodForm = ({ error, handleSubmit }) => (
 export const StorageMethodForm = reduxForm()(MethodForm);
 
 const AdvancedSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="freeCapacity"
       label="freeCapacity"
@@ -317,7 +317,7 @@ const AdvancedSection = () => (
       label="sequence"
       component={StorageFileSequenceType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AdvancedForm = ({ error, handleSubmit }) => (
@@ -334,7 +334,7 @@ const AdvancedForm = ({ error, handleSubmit }) => (
 export const StorageAdvancedForm = reduxForm()(AdvancedForm);
 
 const ScriptSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="archiveScript"
       label="archiveScript"
@@ -346,7 +346,7 @@ const ScriptSection = () => (
         lineNumbers: true,
       }}
     />
-  </React.Fragment>
+  </>
 );
 
 const ScriptForm = ({ error, handleSubmit }) => (

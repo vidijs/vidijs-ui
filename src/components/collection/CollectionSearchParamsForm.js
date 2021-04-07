@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -10,7 +10,7 @@ import BoolCheckbox from '../ui/BoolCheckbox';
 import { queryParams as contentQueryParams } from './CollectionContentParamsForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -20,11 +20,11 @@ const queryParams = () => (
       )}
       label="Count"
     />
-  </React.Fragment>
+  </>
 );
 
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="first"
       component={TextField}
@@ -37,9 +37,8 @@ const matrixParams = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function CollectionSearchParamsForm({
   error,

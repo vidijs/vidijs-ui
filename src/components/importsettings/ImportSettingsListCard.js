@@ -7,7 +7,7 @@ import UriListTable from '../ui/UriListTable';
 export default function ImportSettingsListCard({
   uriListDocument,
 }) {
-  const linkTo = uri => `/import/settings/${uri}/`;
+  const linkTo = (uri) => `/import/settings/${uri}/`;
   return (
     <SquareCard>
       <CardContent>

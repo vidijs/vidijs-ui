@@ -18,7 +18,7 @@ export default function StorageGroupTitle({
       title={groupName}
       onRefresh={onRefresh}
       openCode={openCode}
-      actionComponent={
+      actionComponent={(
         <Menu>
           <MenuItem onClick={openAddStorage}>
             <Typography>Add Storage</Typography>
@@ -27,7 +27,7 @@ export default function StorageGroupTitle({
             <Typography color="error">Remove Storage Group</Typography>
           </MenuItem>
         </Menu>
-      }
+      )}
     />
   );
 }

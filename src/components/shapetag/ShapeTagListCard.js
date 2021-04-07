@@ -7,7 +7,7 @@ import UriListTable from '../ui/UriListTable';
 export default function ShapeTagListCard({
   uriListDocument,
 }) {
-  const linkTo = uri => `/shape-tag/${uri}/`;
+  const linkTo = (uri) => `/shape-tag/${uri}/`;
   return (
     <SquareCard>
       <CardContent>

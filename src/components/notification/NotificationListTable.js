@@ -20,7 +20,7 @@ export default function NotificationListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {notificationList.map(notification => (
+        {notificationList.map((notification) => (
           <NotificationListRow
             key={notification}
             notification={notification}

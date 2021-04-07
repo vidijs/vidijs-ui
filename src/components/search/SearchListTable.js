@@ -93,14 +93,14 @@ function ItemListTable({
   let fieldList = field;
   if (!Array.isArray(field)) { fieldList = field.split(','); }
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
             <TableHeadCell name="type" />
             <TableHeadCell name="id" />
             {terse && (
-              fieldList.map(fieldName => (
+              fieldList.map((fieldName) => (
                 <TableHeadCell
                   key={fieldName}
                   name={fieldName}
@@ -113,7 +113,7 @@ function ItemListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {entryList.map(searchResultEntryType => (
+          {entryList.map((searchResultEntryType) => (
             <SearchResultEntryTypeRow
               key={searchResultEntryType.id}
               searchResultEntryType={searchResultEntryType}
@@ -138,7 +138,7 @@ function ItemListTable({
           </TableFooter>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
-import Checkbox from '@material-ui/core/Checkbox'
-import createComponent from './createComponent'
+import Checkbox from '@material-ui/core/Checkbox';
+import createComponent from './createComponent';
 
 export default createComponent(Checkbox, ({
   input: { onChange, value, ...inputProps },
@@ -10,8 +10,8 @@ export default createComponent(Checkbox, ({
 }) => ({
   ...inputProps,
   ...props,
-  checked: value ? true : false,
+  checked: !!value,
   onChange: (event, isInputChecked) => {
-    onChange(isInputChecked)
-  }
-}))
+    onChange(isInputChecked);
+  },
+}));

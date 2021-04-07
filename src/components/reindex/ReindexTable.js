@@ -29,7 +29,7 @@ function ReindexTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {reindexList.map(reindex => (
+        {reindexList.map((reindex) => (
           <TableRow key={reindex.index} hover>
             <TableCell>{startCase(reindex.index)}</TableCell>
             <TableCell>{reindex.priority}</TableCell>

@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { taskdefinition as api } from '@vidijs/vidijs-api';
 import JobTypeDialog from '../components/jobtype/JobTypeDialog';
 import JobTypeListCard from '../components/jobtype/JobTypeListCard';
 import JobTypeListTitle from '../components/jobtype/JobTypeListTitle';
 
-import { taskdefinition as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
 const JOBTYPE_CREATE_MODAL = 'JOBTYPE_CREATE_MODAL';
@@ -27,7 +27,7 @@ class JobTypeList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listJobType()
-        .then(response => this.setState({ uriListDocument: response.data }));
+        .then((response) => this.setState({ uriListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Job Type List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -38,26 +38,26 @@ class JobTypeList extends React.PureComponent {
     const { history } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <JobTypeListTitle
           createModal={JOBTYPE_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={uriListDocument}
           codeModal="URIListDocument"
         />
-        { uriListDocument &&
+        { uriListDocument
+        && (
         <JobTypeListCard
           uriListDocument={uriListDocument}
         />
-        }
+        )}
         <JobTypeDialog
           dialogName={JOBTYPE_CREATE_MODAL}
           onSuccess={({ jobType }) => history.push(`/task-definition/jobtype/${jobType}/`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(JobTypeList);

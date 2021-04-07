@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { projection as api } from '@vidijs/vidijs-api';
 import ProjectionCreateOutgoing from '../components/projection/ProjectionCreateOutgoing';
 import ProjectionCreateIncoming from '../components/projection/ProjectionCreateIncoming';
 import ProjectionListTitle from '../components/projection/ProjectionListTitle';
 import UriListCard from '../components/ui/UriListCard';
 
-import { projection as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
 const PROJECTION_OUTGOING_CREATE_MODAL = 'PROJECTION_OUTGOING_CREATE_MODAL';
@@ -25,12 +25,11 @@ class ProjectionList extends React.PureComponent {
     this.onRefresh();
   }
 
-
   onRefresh() {
     try {
       api.listProjection()
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -42,12 +41,11 @@ class ProjectionList extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { uriListDocument } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <ProjectionListTitle
           title="Projection"
           helpTo="/ref/metadata/projection.html"
@@ -61,18 +59,18 @@ class ProjectionList extends React.PureComponent {
 
         <UriListCard
           uriListDocument={uriListDocument}
-          linkTo={uri => `/projection/${uri}/`}
+          linkTo={(uri) => `/projection/${uri}/`}
           titleCase
         />
         <ProjectionCreateIncoming
-          onSuccess={response => history.push(`/projection/${response.projectionId}`)}
+          onSuccess={(response) => history.push(`/projection/${response.projectionId}`)}
           dialogName={PROJECTION_INCOMING_CREATE_MODAL}
         />
         <ProjectionCreateOutgoing
-          onSuccess={response => history.push(`/projection/${response.projectionId}`)}
+          onSuccess={(response) => history.push(`/projection/${response.projectionId}`)}
           dialogName={PROJECTION_OUTGOING_CREATE_MODAL}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

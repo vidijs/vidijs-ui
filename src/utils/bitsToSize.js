@@ -12,7 +12,6 @@ export default function bitsToSize(bitRate) {
   return unitToSize(bitRate, sizes);
 }
 
-
 export function bitRateToSize(bitRate) {
   const sizes = ['bps', 'Kbps', 'Mbps', 'Gbps', 'Tbps'];
   return unitToSize(bitRate, sizes);

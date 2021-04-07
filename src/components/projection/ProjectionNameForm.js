@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextField } from '../form';
 import Grid from '@material-ui/core/Grid';
+import { TextField } from '../form';
 
 function ProjectionNameForm({
   handleSubmit,

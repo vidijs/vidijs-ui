@@ -6,7 +6,7 @@ export default function ShapeBinaryComponentList({ shapeDocument = {} }) {
   const { binaryComponent: binaryComponentList } = shapeDocument;
   if (binaryComponentList === undefined || !Array.isArray(binaryComponentList)) { return null; }
   return (
-    binaryComponentList.map(binaryComponent => (
+    binaryComponentList.map((binaryComponent) => (
       <ShapeBinaryComponentCard
         key={binaryComponent.id}
         binaryComponent={binaryComponent}

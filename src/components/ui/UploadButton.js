@@ -11,7 +11,7 @@ export default function UploadButton({
   const { value } = input;
   const fileName = value && value[0].name;
   return (
-    <React.Fragment>
+    <>
       {Boolean(meta.touched && meta.error) && (
         <FormHelperText error>
           {meta.error}
@@ -32,6 +32,6 @@ export default function UploadButton({
           onChange={input.onChange}
         />
       </Button>
-    </React.Fragment>
+    </>
   );
 }

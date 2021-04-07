@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { shapetag as api } from '@vidijs/vidijs-api';
 import ShapeTagListTitle from '../components/shapetag/ShapeTagListTitle';
 import ShapeTagListCard from '../components/shapetag/ShapeTagListCard';
 import ShapeTagDialog from '../components/shapetag/ShapeTagDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { shapetag as api } from '@vidijs/vidijs-api';
 
 const SHAPETAG_LIST_CODE_MODAL = 'SHAPETAG_LIST_CODE_MODAL';
 const SHAPETAG_CREATE_MODAL = 'SHAPETAG_CREATE_MODAL';
@@ -30,7 +30,7 @@ class ShapeTagList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listShapeTag()
-        .then(response => this.setState({ uriListDocument: response.data }));
+        .then((response) => this.setState({ uriListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Shape Tag List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -48,17 +48,18 @@ class ShapeTagList extends React.PureComponent {
       uriListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ShapeTagListTitle
           openCode={() => openModal({ modalName: SHAPETAG_LIST_CODE_MODAL })}
           openCreate={() => openModal({ modalName: SHAPETAG_CREATE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        { uriListDocument &&
+        { uriListDocument
+        && (
         <ShapeTagListCard
           uriListDocument={uriListDocument}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === SHAPETAG_LIST_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -70,7 +71,7 @@ class ShapeTagList extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

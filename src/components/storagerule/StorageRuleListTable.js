@@ -19,7 +19,7 @@ function StorageRuleListTable({
 }) {
   const { tag: storageRuleList = [] } = storageRulesDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -34,7 +34,7 @@ function StorageRuleListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {storageRuleList.map(storageRuleDocument => (
+          {storageRuleList.map((storageRuleDocument) => (
             <StorageRuleRow
               key={`${storageRuleDocument.appliesTo.id}_${storageRuleDocument.appliesTo.type}_${storageRuleDocument.id}`}
               storageRuleDocument={storageRuleDocument}
@@ -48,7 +48,7 @@ function StorageRuleListTable({
         dialogName={REMOVE_STORAGERULE_DIALOG}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 export default withDialogProps(StorageRuleListTable);

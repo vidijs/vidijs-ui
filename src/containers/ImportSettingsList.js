@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { importsettings as api } from '@vidijs/vidijs-api';
 import ImportSettingsListTitle from '../components/importsettings/ImportSettingsListTitle';
 import ImportSettingsListCard from '../components/importsettings/ImportSettingsListCard';
 import ImportSettingsDialog from '../components/importsettings/ImportSettingsDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { importsettings as api } from '@vidijs/vidijs-api';
 
 const IMPORTSETTINGSLIST_CODE_MODAL = 'IMPORTSETTINGSLIST_CODE_MODAL';
 const IMPORTSETTINGS_CREATE_MODAL = 'IMPORTSETTINGS_CREATE_MODAL';
@@ -30,8 +30,8 @@ class ImportSettingsList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listImportSettings()
-        .then(response => response.json())
-        .then(uriListDocument => this.setState({ uriListDocument }));
+        .then((response) => response.json())
+        .then((uriListDocument) => this.setState({ uriListDocument }));
     } catch (error) {
       const messageContent = 'Error Loading Import Settings';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -49,17 +49,18 @@ class ImportSettingsList extends React.PureComponent {
       uriListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ImportSettingsListTitle
           openCode={() => openModal({ modalName: IMPORTSETTINGSLIST_CODE_MODAL })}
           openCreate={() => openModal({ modalName: IMPORTSETTINGS_CREATE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        {uriListDocument &&
+        {uriListDocument
+          && (
           <ImportSettingsListCard
             uriListDocument={uriListDocument}
           />
-        }
+          )}
         <CodeModal
           isOpen={(modalName === IMPORTSETTINGSLIST_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -71,7 +72,7 @@ class ImportSettingsList extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

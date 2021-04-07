@@ -8,7 +8,7 @@ import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -27,9 +27,8 @@ const queryParams = () => (
       )}
       label="updateMetadata"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ShapeDeleteForm({
   error,

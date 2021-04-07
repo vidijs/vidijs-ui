@@ -4,7 +4,6 @@ import TitleHeader from '../components/ui/TitleHeader';
 import UriListCard from '../components/ui/UriListCard';
 import NotificationCreate from '../components/notification/NotificationCreate';
 
-
 const NOTIFICATION_ENTITY = [
   'item',
   'collection',
@@ -22,7 +21,7 @@ export default function NotificationType({
   history,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         title="Notification"
         helpTo="/ref/notification/notification.html"
@@ -30,7 +29,7 @@ export default function NotificationType({
       />
       <UriListCard
         uriListDocument={{ uri: NOTIFICATION_ENTITY }}
-        linkTo={uri => `/notification/${uri}/`}
+        linkTo={(uri) => `/notification/${uri}/`}
         titleCase
       />
       <NotificationCreate
@@ -42,6 +41,6 @@ export default function NotificationType({
           history.push(`/notification/${entityType}/${notificationId}`);
         }}
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -6,9 +6,8 @@ import TypeArray from '../ui/TypeArray';
 import TextGridArray from '../ui/TextGridArray';
 import { SimpleMetadataType } from '../ui/SimpleMetadataDisplay';
 
-
 const BasicSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -79,7 +78,7 @@ const BasicSection = ({ value = {} }) => (
     <TypeArray
       value={value.item}
       component={({ value: v }) => (
-        <React.Fragment>
+        <>
           <TextGrid
             title="item"
             value={v.id}
@@ -88,7 +87,7 @@ const BasicSection = ({ value = {} }) => (
           <TypeArray
             value={v.shape}
             component={({ value: x }) => (
-              <React.Fragment>
+              <>
                 <TextGrid
                   title="shape"
                   value={x.id}
@@ -96,21 +95,21 @@ const BasicSection = ({ value = {} }) => (
                 <TypeArray
                   value={x.component}
                   component={({ value: y }) => (
-                    <React.Fragment>
+                    <>
                       <TextGrid
                         title="component"
                         value={y.id}
                         hideNoValue
                       />
-                    </React.Fragment>
+                    </>
                   )}
                   hideNoValue
                 />
-              </React.Fragment>
+              </>
             )}
             hideNoValue
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
       hover
@@ -120,7 +119,7 @@ const BasicSection = ({ value = {} }) => (
       title="range"
       value={value.range}
       component={({ value: v }) => (
-        <React.Fragment>
+        <>
           <TextGrid
             title="start"
             value={v.start}
@@ -129,7 +128,7 @@ const BasicSection = ({ value = {} }) => (
             title="count"
             value={v.count}
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
       hover
@@ -140,11 +139,11 @@ const BasicSection = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const FileType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={BasicSection}
       value={value}
@@ -155,27 +154,27 @@ const FileType = ({ value = {} }) => (
       component={SimpleMetadataType}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const FileBasicDisplay = ({ fileDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={BasicSection}
       value={fileDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export default function FileDisplay({
   fileDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={FileType}
         value={fileDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

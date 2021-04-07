@@ -9,7 +9,7 @@ function ProjectionLookupForm({
   handleSubmit,
 }) {
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit}>
       <Grid container direction="column" justify="flex-start" alignItems="stretch">
         <Grid item>
           <Typography variant="caption">

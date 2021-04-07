@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -17,9 +17,8 @@ import ChipInput from '../ui/ChipInput';
 import JobStates from '../../const/JobStates';
 import { KeyValuePairType } from '../ui/FormType';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="jobmetadata"
       label="Job Metadata"
@@ -88,17 +87,16 @@ const queryParams = () => (
       }}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
-
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="state">State</InputLabel>
       <Field name="state" component={Select}>
         <MenuItem value="all">All</MenuItem>
-        {JobStates.map(jobState => (
+        {JobStates.map((jobState) => (
           <MenuItem key={jobState} value={jobState}>
             {jobState}
           </MenuItem>
@@ -144,9 +142,8 @@ const matrixParams = () => (
       )}
       label="Only My User"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function JobFilterForm({
   error,

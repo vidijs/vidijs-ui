@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import LogReportCard from '../../components/configuration/logreport/LogReportCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
-
 
 class LogReport extends React.PureComponent {
   constructor(props) {
@@ -25,8 +24,8 @@ class LogReport extends React.PureComponent {
   onRefresh() {
     try {
       api.getLogReportConfiguration()
-        .then(response => this.setState({ logReportConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ logReportConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -41,7 +40,7 @@ class LogReport extends React.PureComponent {
   render() {
     const { logReportConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Log Report"
           parentTitle="Configuration"
@@ -51,13 +50,14 @@ class LogReport extends React.PureComponent {
           code={logReportConfigurationDocument}
           codeModal="LogReportConfigurationDocument"
         />
-        { logReportConfigurationDocument &&
+        { logReportConfigurationDocument
+        && (
         <LogReportCard
           logReportConfigurationDocument={logReportConfigurationDocument}
           onSuccess={this.onRefresh}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

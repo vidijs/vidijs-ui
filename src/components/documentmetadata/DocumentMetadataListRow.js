@@ -9,7 +9,7 @@ export default function DocumentMetadataListRow({
   return (
     <TableRowLink hover to={`/document/${documentMetadata.name}/`}>
       <TableCell>
-        <UnstyledLink to={`/document/${documentMetadata.name}/`} >
+        <UnstyledLink to={`/document/${documentMetadata.name}/`}>
           {documentMetadata.name}
         </UnstyledLink>
       </TableCell>

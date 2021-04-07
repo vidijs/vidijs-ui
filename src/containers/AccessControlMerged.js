@@ -4,7 +4,6 @@ import AccessControlMergedList from '../components/access/AccessControlMergedLis
 import AccessControlMergedParams, { ACCESS_PARAMS_FORM } from '../components/access/AccessControlMergedParams';
 import withFormActions from '../hoc/withFormActions';
 
-
 class AccessControlMerged extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ class AccessControlMerged extends React.PureComponent {
       entityType,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             onRefresh={this.onRefresh}
@@ -48,12 +47,12 @@ class AccessControlMerged extends React.PureComponent {
         <AccessControlMergedParams
           entityId={entityId}
           entityType={entityType}
-          onSuccess={response => this.setState({ accessControlMergedDocument: response.data })}
+          onSuccess={(response) => this.setState({ accessControlMergedDocument: response.data })}
         />
         <AccessControlMergedList
           accessControlMergedDocument={accessControlMergedDocument}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

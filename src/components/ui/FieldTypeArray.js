@@ -11,7 +11,7 @@ import startCase from 'lodash.startcase';
 import withErrorBoundary from '../../hoc/withErrorBoundary';
 import TextButton from './TextButton';
 
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
       backgroundColor: theme.palette.grey[200],
@@ -23,7 +23,6 @@ const hoverStyle = theme => ({
     marginLeft: '10px',
   },
 });
-
 
 const RemoveAction = ({
   removeLabel,
@@ -45,7 +44,6 @@ const RemoveAction = ({
     </IconButton>
   )
 );
-
 
 function TypeArray({
   fields,
@@ -132,7 +130,6 @@ function TypeArray({
     </div>
   );
 }
-
 
 const FieldTypeArray = ({ component, ...props }) => (
   <FieldArray

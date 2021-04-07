@@ -30,7 +30,7 @@ class ExportLocation extends React.PureComponent {
     const { openSnackBar, locationName } = this.props;
     try {
       api.getExportLocation({ locationName })
-        .then(response => this.setState({
+        .then((response) => this.setState({
           exportLocationDocument: update(response.data, { $unset: ['uri'] }),
         }));
     } catch (error) {
@@ -45,7 +45,7 @@ class ExportLocation extends React.PureComponent {
     } = this.props;
     const { exportLocationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ExportLocationTitle
           removeModal={EXPORTLOCATION_REMOVE_MODAL}
           onRefresh={this.onRefresh}
@@ -53,17 +53,18 @@ class ExportLocation extends React.PureComponent {
           code={exportLocationDocument}
           codeModal="ExportLocationDocument"
         />
-        {exportLocationDocument &&
+        {exportLocationDocument
+        && (
         <ExportLocationCard
           exportLocationDocument={exportLocationDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <ExportLocationRemove
           dialogName={EXPORTLOCATION_REMOVE_MODAL}
           locationName={locationName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { projection as api } from '@vidijs/vidijs-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import ProjectionCard from '../components/projection/ProjectionCard';
 import ProjectionRemove from '../components/projection/ProjectionRemove';
 
-import { projection as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 import formatXML from '../utils/formatXML';
 
@@ -33,8 +33,8 @@ class Projection extends React.PureComponent {
     const { projectionId } = this.props;
     try {
       Promise.all([
-        api.getProjectionIncoming({ projectionId }).then(response => formatXML(response.text())),
-        api.getProjectionOutgoing({ projectionId }).then(response => formatXML(response.text())),
+        api.getProjectionIncoming({ projectionId }).then((response) => formatXML(response.text())),
+        api.getProjectionOutgoing({ projectionId }).then((response) => formatXML(response.text())),
       ])
         .then(([incomingProjectionDocument, outgoingProjectionDocument]) => {
           this.setState({
@@ -43,7 +43,7 @@ class Projection extends React.PureComponent {
             isRefreshing: false,
           });
         })
-        .catch(error => this.onRefreshError(error));
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -59,7 +59,6 @@ class Projection extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       projectionId,
@@ -71,7 +70,7 @@ class Projection extends React.PureComponent {
       isRefreshing,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title={projectionId}
           parentTitle="Projection"
@@ -87,17 +86,15 @@ class Projection extends React.PureComponent {
             incomingProjectionDocument={incomingProjectionDocument}
             outgoingProjectionDocument={outgoingProjectionDocument}
           />
-        )
-        }
+        )}
         <ProjectionRemove
           dialogName={PROJECTION_REMOVE_MODAL}
           projectionId={projectionId}
           onSuccess={() => history.push('/projection/')}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(Projection);

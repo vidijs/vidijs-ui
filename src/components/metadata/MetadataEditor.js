@@ -42,5 +42,4 @@ function MetadataEditor({
   );
 }
 
-
 export default withSnackbar(MetadataEditor);

@@ -10,7 +10,7 @@ import ChipInput from '../../ui/ChipInput';
 import { KeyValuePairType } from '../../ui/FormType';
 
 const CORSConfigurationEntryRequest = () => (
-  <React.Fragment>
+  <>
     <Field
       name="method"
       component={ChipInput}
@@ -41,11 +41,11 @@ const CORSConfigurationEntryRequest = () => (
       component={KeyValuePairType}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const CORSConfigurationEntryResponse = () => (
-  <React.Fragment>
+  <>
     <Field
       name="allowOrigin"
       component={TextField}
@@ -74,12 +74,11 @@ const CORSConfigurationEntryResponse = () => (
       component={KeyValuePairType}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
-
 const CORSConfigurationEntry = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="request"
       label="request"
@@ -90,20 +89,18 @@ const CORSConfigurationEntry = () => (
       label="response"
       component={CORSConfigurationEntryResponse}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const CORSConfigurationType = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="entry"
       label="entry"
       component={CORSConfigurationEntry}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function CorsForm({
   error,

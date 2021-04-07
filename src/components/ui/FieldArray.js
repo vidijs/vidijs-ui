@@ -10,7 +10,7 @@ import startCase from 'lodash.startcase';
 import withErrorBoundary from '../../hoc/withErrorBoundary';
 import TextButton from './TextButton';
 
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     paddingTop: '10px',
     paddingBottom: '10px',
@@ -26,7 +26,6 @@ const hoverStyle = theme => ({
     marginLeft: '10px',
   },
 });
-
 
 const FieldArrayComponent = ({
   fields,
@@ -54,15 +53,14 @@ const FieldArrayComponent = ({
               <Delete />
             </IconButton>
           </Grid>
-          { label &&
+          { label
+            && (
             <Typography variant="subtitle2">
-              {labelStartCase ?
-                startCase(`${label} ${index + 1}`)
-                :
-                `${label} ${index + 1}`
-              }
+              {labelStartCase
+                ? startCase(`${label} ${index + 1}`)
+                : `${label} ${index + 1}`}
             </Typography>
-          }
+            )}
         </Grid>
         <div className={classes.marginLeft}>
           <Field
@@ -78,7 +76,6 @@ const FieldArrayComponent = ({
     </TextButton>
   </div>
 );
-
 
 const FieldArray = ({ component, ...props }) => {
   const StyledFieldArrayComponent = withStyles(hoverStyle)(FieldArrayComponent);

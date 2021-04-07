@@ -1,7 +1,7 @@
 import React from 'react';
 
-import withSnackbar from '../../hoc/withSnackbar';
 import { configuration as api } from '@vidijs/vidijs-api';
+import withSnackbar from '../../hoc/withSnackbar';
 import TitleHeader from '../../components/ui/TitleHeader';
 import PathAliasCard from '../../components/configuration/pathalias/PathAliasCard';
 
@@ -22,8 +22,8 @@ class PathAlias extends React.PureComponent {
   onRefresh() {
     try {
       api.getPathAliasConfiguration()
-        .then(response => this.setState({ pathAliasConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ pathAliasConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -38,7 +38,7 @@ class PathAlias extends React.PureComponent {
   render() {
     const { pathAliasConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Path Alias"
           parentTitle="Configuration"
@@ -48,13 +48,14 @@ class PathAlias extends React.PureComponent {
           code={pathAliasConfigurationDocument}
           codeModal="PathAliasConfigurationDocument"
         />
-        {pathAliasConfigurationDocument &&
+        {pathAliasConfigurationDocument
+        && (
         <PathAliasCard
           pathAliasConfigurationDocument={pathAliasConfigurationDocument}
           onSuccess={this.onRefresh}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

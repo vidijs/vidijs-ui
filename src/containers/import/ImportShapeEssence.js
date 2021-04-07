@@ -17,12 +17,11 @@ class ImportShapeEssence extends React.PureComponent {
     const { history, ...props } = this.props;
     return (
       <ImportShapeEssenceWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         {...props}
       />
     );
   }
 }
-
 
 export default withFormActions(ImportShapeEssence);

@@ -6,7 +6,7 @@ import TypeSection from '../ui/TypeSection';
 import { SimpleMetadataType, KeyValuePairType } from '../ui/DisplayType';
 
 export const MetadataFieldFloatType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="minInclusive"
       value={value.minInclusive}
@@ -15,11 +15,11 @@ export const MetadataFieldFloatType = ({ value = {} }) => (
       title="maxInclusive"
       value={value.maxInclusive}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldIntegerType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="minInclusive"
       value={value.minInclusive}
@@ -28,11 +28,11 @@ export const MetadataFieldIntegerType = ({ value = {} }) => (
       title="maxInclusive"
       value={value.maxInclusive}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldLongType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="minInclusive"
       value={value.minInclusive}
@@ -41,11 +41,11 @@ export const MetadataFieldLongType = ({ value = {} }) => (
       title="maxInclusive"
       value={value.maxInclusive}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldStringType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="pattern"
       value={value.pattern}
@@ -58,11 +58,11 @@ export const MetadataFieldStringType = ({ value = {} }) => (
       title="maxLength"
       value={value.maxLength}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataSchemaElementType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -83,14 +83,14 @@ export const MetadataSchemaElementType = ({ value = {} }) => (
       value={value.max}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export function MetadataFieldType({
   value,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextGrid
         title="name"
         value={value.name}
@@ -180,7 +180,7 @@ export function MetadataFieldType({
       <TypeSection
         value={value.constraint}
         component={({ value: v = {} }) => (
-          <React.Fragment>
+          <>
             <TextGrid
               title="dataset"
               value={v.dataset}
@@ -201,10 +201,10 @@ export function MetadataFieldType({
               title="validationGroup"
               value={v.validationGroup}
             />
-          </React.Fragment>
+          </>
         )}
       />
-    </React.Fragment>
+    </>
   );
 }
 

@@ -11,10 +11,10 @@ export const GRID_VIEW = 'GRID_VIEW';
 export const ROW_VIEW = 'ROW_VIEW';
 
 export default function ViewSelect({ isActive = ROW_VIEW, onChange }) {
-  const handleChange = newActive => () => onChange(newActive);
+  const handleChange = (newActive) => () => onChange(newActive);
   return (
     <Grid container>
-      <Grid item >
+      <Grid item>
         <Tooltip title="Row">
           <IconButton onClick={handleChange(ROW_VIEW)}>
             <ViewHeadline

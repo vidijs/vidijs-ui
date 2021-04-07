@@ -42,7 +42,7 @@ function ImportImpFileWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         grandParentTitle="Import"
         parentTitle="IMF"
@@ -138,7 +138,7 @@ function ImportImpFileWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

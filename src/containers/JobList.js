@@ -106,7 +106,7 @@ class JobList extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Job"
           helpTo="/ref/job.html"
@@ -132,9 +132,9 @@ class JobList extends React.PureComponent {
         />
         <JobCreate
           dialogName={JOB_CREATE_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

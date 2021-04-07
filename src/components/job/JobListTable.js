@@ -88,7 +88,7 @@ export default function JobListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {jobList.map(jobDocument => (
+        {jobList.map((jobDocument) => (
           <JobRow
             key={jobDocument.jobId}
             jobDocument={jobDocument}

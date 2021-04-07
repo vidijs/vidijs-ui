@@ -4,7 +4,6 @@ import { reduxForm } from 'redux-form';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-
 function ShapeTagPresetForm({
   handleSubmit,
   error,
@@ -12,9 +11,9 @@ function ShapeTagPresetForm({
   return (
     <form onSubmit={handleSubmit}>
       {error && <Typography color="error">{error}</Typography>}
-      <DialogContent >
+      <DialogContent>
         <DialogContentText>
-           Add built-in shape-tag templates.
+          Add built-in shape-tag templates.
         </DialogContentText>
         <DialogContentText>
           These template tags have names that begin with double underscore

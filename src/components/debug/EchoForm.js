@@ -57,5 +57,4 @@ function EchoForm({
   );
 }
 
-
 export default reduxForm()(withStyles(styles)(EchoForm));

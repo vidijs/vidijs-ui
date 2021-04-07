@@ -6,13 +6,12 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     flexShrink: 0,
     color: theme.palette.text.secondary,
   },
 });
-
 
 function TableActions({
   classes,
@@ -50,6 +49,5 @@ function TableActions({
     </div>
   );
 }
-
 
 export default withStyles(styles)(TableActions);

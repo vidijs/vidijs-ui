@@ -13,7 +13,7 @@ export function onSearchShape(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       shapeSearchDocument,
@@ -39,7 +39,7 @@ export function onSearchFile(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       fileSearchDocument,
@@ -65,7 +65,7 @@ export function onSearch(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       itemSearchDocument,
@@ -87,7 +87,7 @@ export function onAutocomplete(form) {
   return api.searchAutoComplete({
     autocompleteRequestDocument,
   })
-    .then(response => ({
+    .then((response) => ({
       autocompleteRequestDocument,
       ...response,
     }))

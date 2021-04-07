@@ -6,11 +6,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 
-
 import TextGrid from '../ui/TextGrid';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-
 
 function VxaDialog({
   open,
@@ -44,6 +42,5 @@ function VxaDialog({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(VxaDialog);

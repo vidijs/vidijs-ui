@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import Select from '../ui/Select';
 import { fieldgroup as api } from '@vidijs/vidijs-api';
+import Select from '../ui/Select';
 
-
-export const loadFieldGroupOptions = inputValue => new Promise((resolve, reject) => {
+export const loadFieldGroupOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listFieldGroup()
     .then((response) => {
       if (!response.ok) {
@@ -17,9 +16,9 @@ export const loadFieldGroupOptions = inputValue => new Promise((resolve, reject)
       const { group = [] } = jsonDocument;
       let filterFields = group;
       if (inputValue && inputValue !== '*') {
-        filterFields = group.filter(f => f.name.toLowerCase().includes(inputValue.toLowerCase()));
+        filterFields = group.filter((f) => f.name.toLowerCase().includes(inputValue.toLowerCase()));
       }
-      const options = filterFields.map(f => ({ label: f.name, value: f.name }));
+      const options = filterFields.map((f) => ({ label: f.name, value: f.name }));
       resolve(options);
     })
     .catch((error) => {

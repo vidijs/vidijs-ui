@@ -1,32 +1,31 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="reason"
       component={TextField}
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="cleanup"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Cleanup"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function JobAbortForm({
   error,

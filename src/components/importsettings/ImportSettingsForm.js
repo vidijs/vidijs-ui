@@ -1,8 +1,9 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
+import {
+  reduxForm, Field, FormSection, FieldArray,
+} from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField, Select } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { TextField, Select } from '../form';
 
 import TextButton from '../ui/TextButton';
 import BoolCheckbox from '../ui/BoolCheckbox';
@@ -18,9 +20,8 @@ import GroupSelect from '../group/GroupSelect';
 import DynamicSelect from '../ui/DynamicSelect';
 import { AccessControlMetadataType, AccessControlShapeType, AccessControlUriType } from '../access/AccessControlForm';
 
-
 const AccessControlType = ({ fields }) => (
-  <React.Fragment>
+  <>
     <InputLabel>Access Control</InputLabel>
     {fields.map((thisField, index) => (
       <React.Fragment
@@ -69,7 +70,7 @@ const AccessControlType = ({ fields }) => (
             />
             <FormControl fullWidth>
               <InputLabel htmlFor={`${thisField}.permission`}>Permission</InputLabel>
-              <Field name={`${thisField}.permission`} component={Select} >
+              <Field name={`${thisField}.permission`} component={Select}>
                 <MenuItem value="READ">Read</MenuItem>
                 <MenuItem value="WRITE">Write</MenuItem>
                 <MenuItem value="ALL">All</MenuItem>
@@ -84,12 +85,12 @@ const AccessControlType = ({ fields }) => (
               fullWidth
             />
             <FormControlLabel
-              control={
+              control={(
                 <Field
                   name={`${thisField}.recursive`}
                   component={BoolCheckbox}
                 />
-              }
+              )}
               label="Recursive"
             />
             <Field
@@ -137,9 +138,8 @@ const AccessControlType = ({ fields }) => (
         Add Access
       </TextButton>
     </Grid>
-  </React.Fragment>
+  </>
 );
-
 
 const ImportSettingsType = () => (
   <FieldArray

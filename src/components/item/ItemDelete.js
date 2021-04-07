@@ -6,11 +6,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/item';
 import ItemDeleteForm from './ItemDeleteForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const ITEM_DELETE_FORM = 'ITEM_DELETE_FORM';
@@ -71,6 +71,5 @@ function ItemDelete({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(ItemDelete);

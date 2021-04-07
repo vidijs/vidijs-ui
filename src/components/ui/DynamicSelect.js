@@ -9,7 +9,7 @@ export default class DynamicSelect extends React.PureComponent {
     this.handleChange = this.handleChange.bind(this);
     const { meta, choices = {} } = props;
     const { initial = {} } = meta;
-    const initialvalue = Object.keys(choices).find(c => Object.keys(initial).includes(c));
+    const initialvalue = Object.keys(choices).find((c) => Object.keys(initial).includes(c));
     this.state = {
       value: initialvalue || '',
     };
@@ -46,7 +46,7 @@ export default class DynamicSelect extends React.PureComponent {
     const { value } = this.state;
     const ChoiceComponent = value ? choices[value] : null;
     return (
-      <React.Fragment>
+      <>
         <FormHelperText>{label}</FormHelperText>
         <TextField
           {...selectProps}
@@ -58,7 +58,7 @@ export default class DynamicSelect extends React.PureComponent {
           { children }
         </TextField>
         {ChoiceComponent}
-      </React.Fragment>
+      </>
     );
   }
 }

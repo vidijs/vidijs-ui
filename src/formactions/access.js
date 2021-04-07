@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { access as api } from '@vidijs/vidijs-api';
 
-
 export function onUpdateImportAccessGroup(form, dispatch, props) {
   const { groupName, queryParams } = form;
   const { userName } = props;
@@ -30,7 +29,7 @@ export function onCreate(form, dispatch, props) {
     queryParams,
     accessControlDocument,
   })
-    .then(response => ({ accessControlDocument: response.data }))
+    .then((response) => ({ accessControlDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -39,7 +38,6 @@ export function onCreate(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
 
 export function onGet(form, dispatch, props) {
   const { queryParams = {} } = form;

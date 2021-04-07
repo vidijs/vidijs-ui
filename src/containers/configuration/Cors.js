@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import CorsCard from '../../components/configuration/cors/CorsCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
-
 
 class Cors extends React.PureComponent {
   constructor(props) {
@@ -25,8 +24,8 @@ class Cors extends React.PureComponent {
   onRefresh() {
     try {
       api.getCorsConfiguration()
-        .then(response => this.setState({ corsConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ corsConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -41,7 +40,7 @@ class Cors extends React.PureComponent {
   render() {
     const { corsConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Configuration"
           parentTo="/configuration/"
@@ -57,7 +56,7 @@ class Cors extends React.PureComponent {
             onSuccess={this.onRefresh}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -8,7 +8,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadProjectionOptions } from '../projection/ProjectionSelect';
 
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="projection"
       label="Projection"
@@ -18,9 +18,8 @@ const matrixParams = () => (
       isClearable
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemProjectionForm({
   error,

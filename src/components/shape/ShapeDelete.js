@@ -6,11 +6,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/shape';
 import ShapeDeleteForm from './ShapeDeleteForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const SHAPE_DELETE_FORM = 'SHAPE_DELETE_FORM';
@@ -73,6 +73,5 @@ function ShapeDelete({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(ShapeDelete);

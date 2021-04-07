@@ -14,7 +14,6 @@ import JobFilterForm from './JobFilterForm';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 
-
 function JobFilter({
   onClose,
   onSuccess,

@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { collection as api } from '@vidijs/vidijs-api';
 
-
 export function onUpdateMetadata(form, dispatch, props) {
   const { metadataDocument = {}, matrixParams = [], queryParams } = form;
   const collectionId = props.collectionId || form.collectionId;
@@ -12,7 +11,7 @@ export function onUpdateMetadata(form, dispatch, props) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({ collectionId, ...response }))
+    .then((response) => ({ collectionId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -30,7 +29,7 @@ export function onGetMetadata(form, dispatch, props) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({ collectionId, ...response }))
+    .then((response) => ({ collectionId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -47,7 +46,7 @@ export function onGet(form, dispatch, props) {
     collectionId,
     queryParams,
   })
-    .then(response => ({ collectionId, ...response }))
+    .then((response) => ({ collectionId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -68,7 +67,7 @@ export function onSearch(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       itemSearchDocument,

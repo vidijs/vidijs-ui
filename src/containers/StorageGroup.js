@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { storagegroup as api } from '@vidijs/vidijs-api';
 import StorageGroupTitle from '../components/storagegroup/StorageGroupTitle';
 import StorageGroupCard from '../components/storagegroup/StorageGroupCard';
 import StorageGroupRemove from '../components/storagegroup/StorageGroupRemove';
@@ -8,7 +9,6 @@ import StorageGroupStorageDialog from '../components/storagegroup/StorageGroupSt
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { storagegroup as api } from '@vidijs/vidijs-api';
 
 const STORAGEGROUP_CODE_MODAL = 'STORAGEGROUP_CODE_MODAL';
 const STORAGEGROUP_REMOVE_MODAL = 'STORAGEGROUP_REMOVE_MODAL';
@@ -33,7 +33,7 @@ class StorageGroup extends React.PureComponent {
     const { openSnackBar, groupName } = this.props;
     try {
       api.getStorageGroup({ groupName })
-        .then(response => this.setState({ storageGroupDocument: response.data }));
+        .then((response) => this.setState({ storageGroupDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Storage Group';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -53,7 +53,7 @@ class StorageGroup extends React.PureComponent {
       storageGroupDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <StorageGroupTitle
           openCode={() => openModal({ modalName: STORAGEGROUP_CODE_MODAL })}
           openRemove={() => openModal({ modalName: STORAGEGROUP_REMOVE_MODAL })}
@@ -61,13 +61,14 @@ class StorageGroup extends React.PureComponent {
           onRefresh={this.onRefresh}
           groupName={groupName}
         />
-        {storageGroupDocument &&
+        {storageGroupDocument
+        && (
         <StorageGroupCard
           onRefresh={this.onRefresh}
           groupName={groupName}
           storageGroupDocument={storageGroupDocument}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === STORAGEGROUP_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -87,7 +88,7 @@ class StorageGroup extends React.PureComponent {
           groupName={groupName}
           onRefresh={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

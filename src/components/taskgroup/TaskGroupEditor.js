@@ -56,9 +56,9 @@ class ImportSettingsEditor extends React.PureComponent {
       openSnackBar({ messageContent, messageColor: 'secondary' });
     };
     return (
-      <React.Fragment>
+      <>
         <CardHeader
-          action={
+          action={(
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>
                 <FormControlLabel
@@ -69,26 +69,29 @@ class ImportSettingsEditor extends React.PureComponent {
                 />
               </Grid>
             </Grid>
-          }
+          )}
         />
         <CardContent>
-          {isEditing ?
-            <TaskGroupForm
-              form={EDIT_TASKGROUP_FORM}
-              initialValues={initialValues}
-              onSubmit={formActions.onUpdate}
-              onSubmitSuccess={onSubmitSuccess}
-              onSubmitFail={onSubmitFail}
-              groupName={groupName}
-            />
-          :
-            <TaskGroupDisplay
-              taskGroupDocument={taskGroupDocument}
-            />
-          }
+          {isEditing
+            ? (
+              <TaskGroupForm
+                form={EDIT_TASKGROUP_FORM}
+                initialValues={initialValues}
+                onSubmit={formActions.onUpdate}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+                groupName={groupName}
+              />
+            )
+            : (
+              <TaskGroupDisplay
+                taskGroupDocument={taskGroupDocument}
+              />
+            )}
         </CardContent>
-        {isEditing &&
-          <React.Fragment>
+        {isEditing
+          && (
+          <>
             <Divider />
             <ExpansionPanelActions>
               <Button
@@ -105,13 +108,12 @@ class ImportSettingsEditor extends React.PureComponent {
                 Save
               </Button>
             </ExpansionPanelActions>
-          </React.Fragment>
-        }
-      </React.Fragment>
+          </>
+          )}
+      </>
     );
   }
 }
-
 
 const mapDispatchToProps = {
   submitForm: submit,

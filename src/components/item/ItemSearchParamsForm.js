@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -16,7 +16,7 @@ import {
 } from './ItemContentParamsForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="result">Result</InputLabel>
       <Field name="result" component={Select}>
@@ -42,11 +42,11 @@ const queryParams = () => (
       )}
       label="Save"
     />
-  </React.Fragment>
+  </>
 );
 
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="first"
       component={TextField}
@@ -91,9 +91,8 @@ const matrixParams = () => (
       )}
       label="Auto Refresh"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemSearchParamsForm({
   error,

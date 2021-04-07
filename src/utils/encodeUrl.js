@@ -34,8 +34,8 @@ const encodeUrl = (props = {}, url) => {
     }
   }
   if (queryParams) {
-    const queryParamsHasValue = Object.entries(queryParams).filter(c => c[1] !== '');
-    const queryString = queryParamsHasValue.map(c => c.join('=')).join('&');
+    const queryParamsHasValue = Object.entries(queryParams).filter((c) => c[1] !== '');
+    const queryString = queryParamsHasValue.map((c) => c.join('=')).join('&');
     if (queryString) {
       urlString = `${urlString}?${queryString}`;
     }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -11,7 +11,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
 
 const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       component={StatefulAsyncSelect}
@@ -107,11 +107,11 @@ const matrixParams = () => (
       )}
       label="Terse"
     />
-  </React.Fragment>
+  </>
 );
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -121,9 +121,8 @@ const queryParams = () => (
       )}
       label="Include Transient Metadata"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function MetadataDisplayParamsForm({
   error,

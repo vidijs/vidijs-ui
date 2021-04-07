@@ -90,7 +90,7 @@ class FieldGroupSearch extends React.PureComponent {
       queryParams,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Field Groups"
           helpTo="/ref/metadata/field-group.html"
@@ -118,7 +118,7 @@ class FieldGroupSearch extends React.PureComponent {
           form={FIELDGROUP_SEARCH_FORM}
           sortField="metadataFieldGroupSearchDocument.sort"
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -17,13 +17,15 @@ export default class Javascript extends React.PureComponent {
   render() {
     const { result } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TestCard
           result={result}
-          onSuccess={response => this.setState({ result: JSON.stringify(response.data, null, 2) })}
+          onSuccess={(response) => this.setState({
+            result: JSON.stringify(response.data, null, 2),
+          })}
           onFail={() => this.setState({ result: undefined })}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

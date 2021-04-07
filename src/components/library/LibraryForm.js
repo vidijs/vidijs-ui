@@ -27,13 +27,13 @@ export const ItemListDocument = () => (
 );
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="externalId"
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 function LibraryForm({

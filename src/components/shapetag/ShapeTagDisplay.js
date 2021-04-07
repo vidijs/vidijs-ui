@@ -5,7 +5,7 @@ import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
 const FastStartSettingType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="requireFastStart"
       value={value.requireFastStart}
@@ -20,11 +20,11 @@ const FastStartSettingType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const ResolutionType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="width"
       value={value.width}
@@ -37,11 +37,11 @@ const ResolutionType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const AspectRatioType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="horizontal"
       value={value.horizontal}
@@ -54,11 +54,11 @@ const AspectRatioType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const KeyValuePairType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="key"
       value={value.key}
@@ -71,11 +71,11 @@ const KeyValuePairType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const RationalType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="numerator"
       value={value.numerator}
@@ -88,13 +88,13 @@ const RationalType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const TimeBaseType = RationalType;
 
 const TimeCodeType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="samples"
       value={value.samples}
@@ -107,11 +107,11 @@ const TimeCodeType = ({ value = {} }) => (
       title="timeBase"
       value={value.timeBase}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTranscodePresetChannelMixType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -136,11 +136,11 @@ const AudioTranscodePresetChannelMixType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTranscodePresetMixType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title="input"
       value={value.input}
@@ -153,12 +153,11 @@ const AudioTranscodePresetMixType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
-
 const NameURIPairType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -171,11 +170,11 @@ const NameURIPairType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const OtifPresetType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="uuid"
       value={value.uuid}
@@ -210,11 +209,11 @@ const OtifPresetType = ({ value = {} }) => (
       value={value.resource}
       component={NameURIPairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioOutputType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="format"
       value={value.format}
@@ -253,12 +252,11 @@ const AudioOutputType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
-
 const AudioTranscodePresetType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="format"
       value={value.format}
@@ -346,11 +344,11 @@ const AudioTranscodePresetType = ({ value = {} }) => (
       value={value.output}
       component={AudioOutputType}
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioTrackTranscodePresetType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="codec"
       value={value.codec}
@@ -393,12 +391,11 @@ const AudioTrackTranscodePresetType = ({ value = {} }) => (
       value={value.mix}
       component={AudioTranscodePresetMixType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 export const VideoTranscodePresetType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="codec"
       value={value.codec}
@@ -550,12 +547,11 @@ export const VideoTranscodePresetType = ({ value = {} }) => (
       component={OtifPresetType}
       value={value.otif}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const SequenceRangeType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="start"
       value={value.start}
@@ -580,11 +576,11 @@ const SequenceRangeType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const TimeIntervalType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       hideNoValue
       title="start"
@@ -597,11 +593,11 @@ const TimeIntervalType = ({ value = {} }) => (
       component={TimeCodeType}
       value={value.end}
     />
-  </React.Fragment>
+  </>
 );
 
 const OverlayType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="uri"
       value={value.uri}
@@ -644,11 +640,11 @@ const OverlayType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const TextRenditionType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="line"
       value={value.line}
@@ -782,11 +778,11 @@ const TextRenditionType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const TextOverlayType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       hideNoValue
       title="text"
@@ -805,11 +801,11 @@ const TextOverlayType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const SequenceOutputType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="start"
       value={value.start}
@@ -822,11 +818,11 @@ const SequenceOutputType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const ContainerSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -845,11 +841,11 @@ export const ContainerSection = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const AudioSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       hideNoValue
       component={AudioTranscodePresetType}
@@ -861,21 +857,20 @@ export const AudioSection = ({ value = {} }) => (
       component={AudioTrackTranscodePresetType}
       value={value.audioTrack}
     />
-  </React.Fragment>
+  </>
 );
 
-
 export const VideoSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={VideoTranscodePresetType}
       value={value.video}
     />
-  </React.Fragment>
+  </>
 );
 
 export const OverlaySection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       hideNoValue
       hover={false}
@@ -890,11 +885,11 @@ export const OverlaySection = ({ value = {} }) => (
       component={TextOverlayType}
       value={value.textOverlay}
     />
-  </React.Fragment>
+  </>
 );
 
 export const AdvancedSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="startTimecode"
       value={value.startTimecode}
@@ -967,11 +962,11 @@ export const AdvancedSection = ({ value = {} }) => (
       component={SequenceOutputType}
       value={value.SequenceOutputType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const ThumbnailSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       hideNoValue
       name="thumbnailResolution"
@@ -1011,28 +1006,28 @@ export const ThumbnailSection = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const ScriptSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       value={value.script}
       variant="json"
     />
-  </React.Fragment>
+  </>
 );
 
 export function ShapeTagContainerDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={ContainerSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1040,12 +1035,12 @@ export function ShapeTagAudioDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={AudioSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1053,12 +1048,12 @@ export function ShapeTagVideoDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={VideoSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1066,12 +1061,12 @@ export function ShapeTagThumbnailDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={ThumbnailSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1079,12 +1074,12 @@ export function ShapeTagOverlayDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={OverlaySection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1092,12 +1087,12 @@ export function ShapeTagAdvancedDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={AdvancedSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1105,12 +1100,12 @@ export function ShapeTagScriptDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={ScriptSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -1118,7 +1113,7 @@ export default function ShapeTagDisplay({
   transcodePresetDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={ContainerSection}
         value={transcodePresetDocument}
@@ -1147,6 +1142,6 @@ export default function ShapeTagDisplay({
         component={ScriptSection}
         value={transcodePresetDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

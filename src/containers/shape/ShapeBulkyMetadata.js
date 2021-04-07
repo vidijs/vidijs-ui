@@ -21,7 +21,7 @@ class ShapeBulkyMetadata extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ shapeId, itemId, bulkyMetadataKey }) {
+  UNSAFE_componentWillReceiveProps({ shapeId, itemId, bulkyMetadataKey }) {
     const { shapeId: prevItemId, bulkyMetadataKey: prevKey } = this.props;
     if (prevItemId !== shapeId || prevKey !== bulkyMetadataKey) {
       this.onFetch(itemId, shapeId, bulkyMetadataKey);
@@ -37,8 +37,8 @@ class ShapeBulkyMetadata extends React.PureComponent {
   onFetch(itemId, shapeId, bulkyMetadataKey) {
     try {
       BulkyMetadataApi.getShapeBulkyMetadata({ itemId, shapeId, key: bulkyMetadataKey })
-        .then(response => this.setState({ bulkyMetadataDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ bulkyMetadataDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -50,7 +50,6 @@ class ShapeBulkyMetadata extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -59,7 +58,7 @@ class ShapeBulkyMetadata extends React.PureComponent {
     } = this.props;
     const { bulkyMetadataDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={bulkyMetadataDocument}
@@ -74,7 +73,7 @@ class ShapeBulkyMetadata extends React.PureComponent {
         { bulkyMetadataDocument && (
           <BulkyMetadataDisplay bulkyMetadataDocument={bulkyMetadataDocument} />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

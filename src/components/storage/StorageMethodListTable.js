@@ -22,14 +22,13 @@ export default function StorageMethodListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {storageMethodList && storageMethodList.map(storageMethod => (
+        {storageMethodList && storageMethodList.map((storageMethod) => (
           <StorageMethodRow
             key={storageMethod.id}
             storageMethod={storageMethod}
             storageId={storageId}
           />
-        ))
-        }
+        ))}
       </TableBody>
     </Table>
   );

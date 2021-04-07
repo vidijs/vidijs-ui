@@ -19,7 +19,7 @@ export default function StorageGroupListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {storageGroupList.map(storageGroup => (
+        {storageGroupList.map((storageGroup) => (
           <StorageGroupRow
             key={storageGroup.name}
             storageGroup={storageGroup}

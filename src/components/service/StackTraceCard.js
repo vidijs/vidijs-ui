@@ -12,16 +12,18 @@ export default function StackTraceCard({
   return (
     <SquareCard>
       <CardContent>
-        {stacktrace ?
-          <TextGrid
-            value={stacktrace}
-            variant="code"
-          />
-        :
-          <Grid container justify="center">
-            <CircularProgress size={100} color="secondary" />
-          </Grid>
-        }
+        {stacktrace
+          ? (
+            <TextGrid
+              value={stacktrace}
+              variant="code"
+            />
+          )
+          : (
+            <Grid container justify="center">
+              <CircularProgress size={100} color="secondary" />
+            </Grid>
+          )}
       </CardContent>
     </SquareCard>
   );

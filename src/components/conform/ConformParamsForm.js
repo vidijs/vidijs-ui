@@ -1,15 +1,14 @@
 import React from 'react';
 import { reduxForm, Field, FieldArray } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import ChipInput from '../ui/ChipInput';
 import SimpleMetadataField from '../ui/SimpleMetadataField';
-
 
 function ConformParamsForm({
   handleSubmit,
@@ -24,7 +23,7 @@ function ConformParamsForm({
       />
       <FormControl fullWidth>
         <InputLabel htmlFor="priority">Priority</InputLabel>
-        <Field name="queryParams.priority" component={Select} >
+        <Field name="queryParams.priority" component={Select}>
           <MenuItem value="HIGHEST">HIGHEST</MenuItem>
           <MenuItem value="HIGH">HIGH</MenuItem>
           <MenuItem value="MEDIUM">MEDIUM</MenuItem>
@@ -40,30 +39,30 @@ function ConformParamsForm({
         fullWidth
       />
       <FormControlLabel
-        control={
+        control={(
           <Field
             name="queryParams.conformMetadata"
             component={BoolCheckbox}
           />
-        }
+        )}
         label="Conform Metadata"
       />
       <FormControlLabel
-        control={
+        control={(
           <Field
             name="queryParams.createThumbnails"
             component={BoolCheckbox}
           />
-        }
+        )}
         label="Create Thumbnails"
       />
       <FormControlLabel
-        control={
+        control={(
           <Field
             name="queryParams.createPosters"
             component={BoolCheckbox}
           />
-        }
+        )}
         label="Create Posters"
       />
       <Field

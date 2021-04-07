@@ -1,14 +1,14 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextField } from '../form';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -36,9 +36,8 @@ const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportShapeAdvancedForm({
   error,

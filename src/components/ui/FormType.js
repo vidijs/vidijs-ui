@@ -1,6 +1,6 @@
 import React from 'react';
-import { TextField } from '../form';
 import Grid from '@material-ui/core/Grid';
+import { TextField } from '../form';
 
 import FieldTypeArray from './FieldTypeArray';
 import Field from './Field';
@@ -26,7 +26,7 @@ export const KeyValuePairType = ({ dense = true }) => (
       </Grid>
     </Grid>
   ) : (
-    <React.Fragment>
+    <>
       <Field
         name="key"
         label="key"
@@ -39,12 +39,12 @@ export const KeyValuePairType = ({ dense = true }) => (
         component={TextField}
         fullWidth
       />
-    </React.Fragment>
+    </>
   )
 );
 
 export const SimpleMetadataType = ({ dense = true }) => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="field"
       arrayHeader="field"
@@ -52,5 +52,5 @@ export const SimpleMetadataType = ({ dense = true }) => (
       component={KeyValuePairType}
       dense={dense}
     />
-  </React.Fragment>
+  </>
 );

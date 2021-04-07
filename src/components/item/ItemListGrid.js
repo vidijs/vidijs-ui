@@ -10,7 +10,7 @@ export default function ItemListCard({
   const { item: itemList = [] } = itemListDocument;
   return (
     <GridList cellHeight="auto">
-      {itemList.map(itemType => (
+      {itemList.map((itemType) => (
         <ItemGridListTile
           key={itemType.id}
           itemType={itemType}

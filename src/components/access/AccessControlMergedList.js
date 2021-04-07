@@ -2,14 +2,14 @@ import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
 
 import SquareCard from '../ui/SquareCard';
-import { AccessControlMergedType } from '../access/AccessControlMergedDisplay';
+import { AccessControlMergedType } from './AccessControlMergedDisplay';
 
 export default function AccessControlMergedList({
   accessControlMergedDocument = {},
 }) {
   const { access: accessList = [] } = accessControlMergedDocument;
   return (
-    <React.Fragment>
+    <>
       {
         accessList.map((access, index) => (
           <SquareCard
@@ -21,6 +21,6 @@ export default function AccessControlMergedList({
           </SquareCard>
         ))
       }
-    </React.Fragment>
+    </>
   );
 }

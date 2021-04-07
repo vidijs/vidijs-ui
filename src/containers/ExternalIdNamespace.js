@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { externalid as api } from '@vidijs/vidijs-api';
 import ExternalIdNamespaceTitle from '../components/externalid/ExternalIdNamespaceTitle';
 import ExternalIdNamespaceCard from '../components/externalid/ExternalIdNamespaceCard';
 import ExternalIdNamespaceWizard from '../components/externalid/ExternalIdNamespaceWizard';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { externalid as api } from '@vidijs/vidijs-api';
 
 const EXTERNALID_NAMESPACE_CREATE_MODAL = 'EXTERNALID_NAMESPACE_CREATE_MODAL';
 
@@ -27,8 +27,10 @@ class ExternalIdNamespace extends React.PureComponent {
   onRefresh() {
     try {
       api.listExternalIdNamespace()
-        .then(response => this.setState({ externalIdentifierNamespaceListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({
+          externalIdentifierNamespaceListDocument: response.data,
+        }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -40,28 +42,28 @@ class ExternalIdNamespace extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { externalIdentifierNamespaceListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ExternalIdNamespaceTitle
           createModal={EXTERNALID_NAMESPACE_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={externalIdentifierNamespaceListDocument}
           codeModal="ExternalIdentifierNamespaceListDocument"
         />
-        {externalIdentifierNamespaceListDocument &&
+        {externalIdentifierNamespaceListDocument
+        && (
         <ExternalIdNamespaceCard
           externalIdentifierNamespaceListDocument={externalIdentifierNamespaceListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <ExternalIdNamespaceWizard
           dialogName={EXTERNALID_NAMESPACE_CREATE_MODAL}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

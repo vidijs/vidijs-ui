@@ -8,7 +8,7 @@ import Field from '../ui/Field';
 import ChipInput from '../ui/ChipInput';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="frameDuration"
       label="Frame Duration"
@@ -29,7 +29,7 @@ const queryParams = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 function ImportPlaceholderAdvancedForm({

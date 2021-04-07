@@ -2,8 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 import startCase from 'lodash.startcase';
 
-
-const withStartCase = WrappedComponent => ({
+const withStartCase = (WrappedComponent) => ({
   nameAsTitle = true,
   useStartCase = true,
   ...props

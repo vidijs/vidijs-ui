@@ -17,11 +17,11 @@ export default function ShapeTagTitle({
       parentTo="/shape-tag/"
       openCode={openCode}
       onRefresh={onRefresh}
-      actionComponent={
+      actionComponent={(
         <IconButton onClick={openRemove}>
           <DeleteForever />
         </IconButton>
-      }
+      )}
     />
   );
 }

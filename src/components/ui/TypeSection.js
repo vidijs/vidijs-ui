@@ -5,7 +5,7 @@ import startCase from 'lodash.startcase';
 
 import withErrorBoundary from '../../hoc/withErrorBoundary';
 
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     paddingTop: '10px',
     paddingBottom: '10px',
@@ -40,17 +40,16 @@ const TypeSection = ({
     <div
       className={hover ? classes.onHover : classes.noHover}
     >
-      {title &&
-      <Typography variant="subtitle2">{titleStartCase ? startCase(title) : title}</Typography>
-      }
-      { typeof value === 'object' &&
+      {title
+      && <Typography variant="subtitle2">{titleStartCase ? startCase(title) : title}</Typography>}
+      { typeof value === 'object'
+      && (
       <div className={dense ? undefined : classes.marginLeft}>
         <Component value={value} {...props} />
       </div>
-      }
+      )}
     </div>
   );
 };
-
 
 export default withErrorBoundary(withStyles(hoverStyle)(TypeSection));

@@ -17,11 +17,11 @@ export default function TaskGroupTitle({
       parentTo="/task-group/"
       openCode={openCode}
       onRefresh={onRefresh}
-      actionComponent={
+      actionComponent={(
         <IconButton onClick={openRemove}>
           <DeleteForever />
         </IconButton>
-      }
+      )}
     />
   );
 }

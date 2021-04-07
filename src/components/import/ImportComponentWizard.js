@@ -57,7 +57,7 @@ function ImportComponentWizard({
     itemId: initialValues.itemId,
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Component"
@@ -151,9 +151,8 @@ function ImportComponentWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
-
 
 export default compose(withStepper, withUI, withFormActions)(ImportComponentWizard);

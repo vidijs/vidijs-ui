@@ -21,5 +21,4 @@ function ConformMetadataForm({
   );
 }
 
-
 export default reduxForm()(ConformMetadataForm);

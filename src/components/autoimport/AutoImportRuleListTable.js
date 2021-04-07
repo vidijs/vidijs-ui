@@ -20,7 +20,7 @@ export default function AutoImportRuleListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {autoImportRuleList.map(autoImportRule => (
+        {autoImportRuleList.map((autoImportRule) => (
           <AutoImportRuleRow
             key={autoImportRule.storage}
             autoImportRule={autoImportRule}

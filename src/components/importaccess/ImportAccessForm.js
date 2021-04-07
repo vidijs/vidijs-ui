@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FormSection } from 'redux-form';
-import { Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { Select } from '../form';
 
 import { loadGroupOptions } from '../group/GroupSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
@@ -12,7 +12,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 const ImportAccessQueryParams = () => (
   <FormControl fullWidth>
     <InputLabel htmlFor="permission">Permission</InputLabel>
-    <Field name="permission" component={Select} >
+    <Field name="permission" component={Select}>
       <MenuItem value="READ">Read</MenuItem>
       <MenuItem value="WRITE">Write</MenuItem>
       <MenuItem value="ALL">All</MenuItem>

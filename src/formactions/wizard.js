@@ -7,7 +7,7 @@ export function onParseXML(form) {
   return api.echo({
     xmlDocument,
   })
-    .then(response => (response.data))
+    .then((response) => (response.data))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

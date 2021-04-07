@@ -4,9 +4,8 @@ import TextGrid from '../../ui/TextGrid';
 import TypeSection from '../../ui/TypeSection';
 import TypeArray from '../../ui/TypeArray';
 
-
 const IndexingConfigurationType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="solrPath"
       value={value.solrPath}
@@ -61,8 +60,8 @@ const IndexingConfigurationType = ({ value = {} }) => (
     />
     <TypeArray
       value={value.fieldDefault}
-      component={v => (
-        <React.Fragment>
+      component={(v) => (
+        <>
           <TextGrid
             title="name"
             value={v.name}
@@ -74,23 +73,23 @@ const IndexingConfigurationType = ({ value = {} }) => (
             variant="boolean"
             hover
           />
-        </React.Fragment>
+        </>
       )}
       arrayTitle="Pools"
       dense
     />
-  </React.Fragment>
+  </>
 );
 
 export default function IndexingDisplay({
   indexingConfigurationDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={indexingConfigurationDocument}
         component={IndexingConfigurationType}
       />
-    </React.Fragment>
+    </>
   );
 }

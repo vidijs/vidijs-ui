@@ -6,15 +6,14 @@ import { TextField } from '../form';
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="id"
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const ExportLocationForm = ({ error, handleSubmit }) => (

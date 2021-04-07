@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { resource as api } from '@vidijs/vidijs-api';
 
-
 export function onUpdate(form, dispatch, props) {
   const { resourceId, resourceType } = props;
   const { resourceDocument } = form;
@@ -11,7 +10,7 @@ export function onUpdate(form, dispatch, props) {
     resourceId,
     resourceDocument,
   })
-    .then(response => ({ resourceDocument: response.data }))
+    .then((response) => ({ resourceDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -28,7 +27,7 @@ export function onCreate(form, dispatch, props) {
     resourceType,
     resourceDocument,
   })
-    .then(response => ({ resourceDocument: response.data }))
+    .then((response) => ({ resourceDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

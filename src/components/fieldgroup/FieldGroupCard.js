@@ -17,7 +17,7 @@ import FieldGroupFieldEditor from './FieldGroupFieldEditor';
 
 export default function FieldGroupCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <FieldGroupEditor
           title="Overview"
@@ -52,6 +52,6 @@ export default function FieldGroupCard(props) {
           {...props}
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

@@ -32,7 +32,6 @@ const EvacuateMenuItem = ({
   return null;
 };
 
-
 function StorageTitle({
   onOpen,
   storageId,
@@ -54,7 +53,7 @@ function StorageTitle({
       entityType="storage"
       code={code}
       iconList={(
-        <React.Fragment>
+        <>
           <StorageStatus storageDocument={code} />
           <Menu>
             <MenuItem onClick={() => onOpen({ modalName: typeModal })}>
@@ -73,7 +72,7 @@ function StorageTitle({
               <Typography color="secondary">Delete Storage</Typography>
             </MenuItem>
           </Menu>
-        </React.Fragment>
+        </>
 
       )}
       {...props}

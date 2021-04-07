@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -11,7 +11,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
 
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="content"
       component={StatefulAsyncSelect}
@@ -123,9 +123,8 @@ export const queryParams = () => (
       )}
       label="Terse"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function CollectionContentParamsForm({
   error,

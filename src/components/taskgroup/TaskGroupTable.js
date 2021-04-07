@@ -20,7 +20,7 @@ export default function TaskGroupTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {groupList.map(group => (
+        {groupList.map((group) => (
           <TaskGroupRow
             key={group.name}
             group={group}

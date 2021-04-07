@@ -1,7 +1,7 @@
 import React from 'react';
 import { Checkbox } from '../form';
 
-const BoolCheckbox = p => (
+const BoolCheckbox = (p) => (
   <Checkbox
     value={p.input.checked}
     checked={p.input.checked}

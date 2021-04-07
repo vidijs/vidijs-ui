@@ -5,7 +5,7 @@ import TypeSection from '../ui/TypeSection';
 import { ItemSearchType } from '../item/ItemSearchDisplay';
 
 const LibrarySettingsType = ({ value }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Library ID"
       value={value.id}
@@ -42,18 +42,18 @@ const LibrarySettingsType = ({ value }) => (
       title="Query"
       component={ItemSearchType}
     />
-  </React.Fragment>
+  </>
 );
 
 export default function LibrarySettingsDisplay({
   librarySettingsDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={librarySettingsDocument}
         component={LibrarySettingsType}
       />
-    </React.Fragment>
+    </>
   );
 }

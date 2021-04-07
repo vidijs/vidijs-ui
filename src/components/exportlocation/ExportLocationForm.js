@@ -14,7 +14,7 @@ import UrlField from '../ui/UrlField';
 import FieldArray from '../ui/FieldArray';
 
 const ExportLocationType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="name"
@@ -56,7 +56,7 @@ const ExportLocationType = () => (
         lineNumbers: true,
       }}
     />
-  </React.Fragment>
+  </>
 );
 
 const ExportLocationForm = ({ error, handleSubmit }) => (

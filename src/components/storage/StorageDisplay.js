@@ -7,7 +7,7 @@ import TypeSection from '../ui/TypeSection';
 import { SimpleMetadataType } from '../ui/DisplayType';
 
 const StorageFileSequenceType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="regex"
       value={value.regex}
@@ -16,11 +16,11 @@ const StorageFileSequenceType = ({ value = {} }) => (
       title="numGroup"
       value={value.numGroup}
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageMethodType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -75,11 +75,11 @@ export const StorageMethodType = ({ value = {} }) => (
       value={value.metadata}
       component={SimpleMetadataType}
     />
-  </React.Fragment>
+  </>
 );
 
 const StorageSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -131,40 +131,40 @@ const StorageSection = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageBasicDisplay = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={StorageSection}
       value={value}
     />
-  </React.Fragment>
+  </>
 );
 
 const MethodSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title="method"
       titleKey="id"
       value={value.method}
       component={StorageMethodType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageMethodDisplay = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={MethodSection}
       value={value}
     />
-  </React.Fragment>
+  </>
 );
 
 const AdvancedSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="bandwidth"
       value={value.bandwidth}
@@ -213,62 +213,61 @@ const AdvancedSection = ({ value = {} }) => (
       value={value.sequenceTimeout}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageAdvancedDisplay = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={AdvancedSection}
       value={value}
     />
-  </React.Fragment>
+  </>
 );
 
 const MetadataSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       value={value.metadata}
       component={SimpleMetadataType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageMetadataDisplay = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={MetadataSection}
       value={value}
     />
-  </React.Fragment>
+  </>
 );
 
 const ScriptSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="archiveScript"
       value={value.archiveScript}
       variant="code"
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const StorageScriptDisplay = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={ScriptSection}
       value={value}
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function StorageDisplay({
   value,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={value}
         component={StorageSection}
@@ -289,6 +288,6 @@ export default function StorageDisplay({
         value={value}
         component={ScriptSection}
       />
-    </React.Fragment>
+    </>
   );
 }

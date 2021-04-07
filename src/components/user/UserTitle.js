@@ -46,7 +46,6 @@ const DisableMenuItem = ({
   );
 };
 
-
 function UserTitle({
   userName,
   onOpen,
@@ -66,7 +65,7 @@ function UserTitle({
       parentTitle="User"
       parentTo="/user/"
       iconList={(
-        <React.Fragment>
+        <>
           <Tooltip title="Access Keys">
             <IconButton onClick={() => history.push(`/user/${userName}/key`)}>
               <VpnKeyIcon />
@@ -91,7 +90,7 @@ function UserTitle({
             />
             )}
           </Menu>
-        </React.Fragment>
+        </>
       )}
       {...props}
     />

@@ -6,7 +6,7 @@ import ShapeOverview from './ShapeOverview';
 export default function ShapeOverviewList({ shapeList = [], itemId }) {
   if (shapeList === undefined || !Array.isArray(shapeList)) { return null; }
   return (
-    shapeList.map(shapeDocument => (
+    shapeList.map((shapeDocument) => (
       <React.Fragment
         key={shapeDocument.id}
       >

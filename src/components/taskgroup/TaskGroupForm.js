@@ -1,27 +1,30 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
-import { Select, TextField } from '../form';
+import {
+  reduxForm, Field, FormSection, FieldArray,
+} from 'redux-form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import { Select, TextField } from '../form';
 
 import TextButton from '../ui/TextButton';
 import ChipInput from '../ui/ChipInput';
 
-const InitialDisabledTextField = props => (
+const InitialDisabledTextField = (props) => (
   <TextField
     disabled={props.meta.initial !== undefined}
     onFocus={props.onFocus}
     onBlur={props.onBlur}
     {...props}
-  />);
+  />
+);
 
 const TranscoderArray = ({ fields }) => (
-  <React.Fragment>
+  <>
     {fields.map((thisField, index) => (
       <Grid
         key={thisField}
@@ -48,12 +51,11 @@ const TranscoderArray = ({ fields }) => (
     <TextButton onClick={() => fields.push()} color="primary" style={{ marginTop: 10 }}>
       Add Transcoder
     </TextButton>
-  </React.Fragment>
+  </>
 );
 
-
 const DataArray = ({ fields }) => (
-  <React.Fragment>
+  <>
     {fields.map((thisField, index) => (
       <Grid
         key={thisField}
@@ -88,11 +90,11 @@ const DataArray = ({ fields }) => (
     <TextButton onClick={() => fields.push()} color="primary" style={{ marginTop: 10 }}>
       Add Data
     </TextButton>
-  </React.Fragment>
+  </>
 );
 
 const JobArray = ({ fields }) => (
-  <React.Fragment>
+  <>
     {fields.map((thisField, index) => (
       <React.Fragment key={thisField}>
         <Grid
@@ -147,11 +149,11 @@ const JobArray = ({ fields }) => (
     <TextButton onClick={() => fields.push()} color="primary" style={{ marginTop: 10 }}>
       Add Job
     </TextButton>
-  </React.Fragment>
+  </>
 );
 
 const TaskGroupType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       component={InitialDisabledTextField}
@@ -161,7 +163,7 @@ const TaskGroupType = () => (
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
-      <Field name="priority" component={Select} >
+      <Field name="priority" component={Select}>
         <MenuItem value="HIGHEST">HIGHEST</MenuItem>
         <MenuItem value="HIGH">HIGH</MenuItem>
         <MenuItem value="MEDIUM">MEDIUM</MenuItem>
@@ -181,7 +183,7 @@ const TaskGroupType = () => (
         component={JobArray}
       />
     </Grid>
-  </React.Fragment>
+  </>
 );
 
 function TaskGroupForm({

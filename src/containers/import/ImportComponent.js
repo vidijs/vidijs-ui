@@ -19,7 +19,7 @@ class ImportComponent extends React.PureComponent {
     const itemId = query.get('itemId');
     return (
       <ImportComponentWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         initialValues={{ itemId, queryParams: { fileId } }}
         {...props}
       />

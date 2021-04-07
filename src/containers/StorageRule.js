@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { storagerule as api } from '@vidijs/vidijs-api';
 import StorageRuleListCard from '../components/storagerule/StorageRuleListCard';
 import StorageRuleEntityDialog from '../components/storagerule/StorageRuleEntityDialog';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { storagerule as api } from '@vidijs/vidijs-api';
 
 const STORAGERULE_DIALOG = 'STORAGERULE_DIALOG';
 
@@ -25,7 +25,7 @@ class StorageRule extends React.PureComponent {
     const { openSnackBar, entityId, entityType } = this.props;
     try {
       api.getEntityStorageRule({ entityId, entityType })
-        .then(response => this.setState({ storageRulesDocument: response.data }));
+        .then((response) => this.setState({ storageRulesDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Getting Storage Rule List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -41,7 +41,7 @@ class StorageRule extends React.PureComponent {
     } = this.props;
     const { storageRulesDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             onRefresh={this.onRefresh}
@@ -66,10 +66,9 @@ class StorageRule extends React.PureComponent {
           entityId={entityId}
           entityType={entityType}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(StorageRule);

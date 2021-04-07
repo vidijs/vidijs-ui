@@ -8,7 +8,7 @@ export function browserLogout() {
 }
 
 export function browserLogoutOn401(onLogout) {
-  api.defaultClient.interceptors.response.use(response => response, (error) => {
+  api.defaultClient.interceptors.response.use((response) => response, (error) => {
     if (error.response && error.response.status === 401) {
       browserLogout();
       if (onLogout) { onLogout(); }

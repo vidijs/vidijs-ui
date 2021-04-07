@@ -5,11 +5,11 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/job';
 import JobAbortForm from './JobAbortForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const JOB_ABORT_FORM = 'JOB_ABORT_FORM';
@@ -72,6 +72,5 @@ function JobAbort({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(JobAbort);

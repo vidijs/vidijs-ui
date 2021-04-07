@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Select } from '../form';
 
 import ChipInput from '../ui/ChipInput';
 import FieldTypeArray from '../ui/FieldTypeArray';
@@ -18,7 +18,7 @@ import { loadGroupOptions } from '../group/GroupSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
 
 const GroupType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="groupName"
       label="Group"
@@ -27,7 +27,7 @@ const GroupType = () => (
       cacheOptions
       isClearable
     />
-  </React.Fragment>
+  </>
 );
 
 const GroupListType = () => (
@@ -38,7 +38,7 @@ const GroupListType = () => (
 );
 
 const UserType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="userName"
       component={InitialDisabledTextField}
@@ -75,24 +75,24 @@ const UserType = () => (
       component={SimpleMetadataType}
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="disabled"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Disabled"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="remove"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="remove"
     />
-  </React.Fragment>
+  </>
 );
 
 const queryParams = () => (
@@ -104,7 +104,6 @@ const queryParams = () => (
     </Field>
   </FormControl>
 );
-
 
 function UserForm({
   error,

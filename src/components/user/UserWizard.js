@@ -8,7 +8,6 @@ import WizardForm from '../ui/WizardForm';
 import * as formActions from '../../formactions/user';
 import withUI from '../../hoc/withUI';
 
-
 function UserWizard({
   open,
   onClose,

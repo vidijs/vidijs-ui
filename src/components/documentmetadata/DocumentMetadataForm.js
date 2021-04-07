@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -11,7 +11,7 @@ import BoolCheckbox from '../ui/BoolCheckbox';
 import { MetadataType } from '../metadata/MetadataForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="revision"
       component={TextField}
@@ -26,7 +26,7 @@ const queryParams = () => (
       )}
       label="Skip Forbidden"
     />
-  </React.Fragment>
+  </>
 );
 
 function DocumentMetadataForm({

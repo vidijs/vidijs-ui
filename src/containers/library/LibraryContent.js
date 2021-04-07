@@ -5,7 +5,6 @@ import ItemListContent from '../../components/item/ItemListContent';
 import withFormActions from '../../hoc/withFormActions';
 import withFormSelectors from '../../hoc/withFormSelectors';
 
-
 class LibraryList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -15,7 +14,6 @@ class LibraryList extends React.PureComponent {
     this.onChangeExpansion = this.onChangeExpansion.bind(this);
     this.state = {
       itemListDocument: undefined,
-      page: 0,
       rowsPerPage: 100,
       expanded: false,
     };
@@ -35,7 +33,7 @@ class LibraryList extends React.PureComponent {
     const first = 1;
     changeForm(LIBRARY_CONTENT_PARAMS_FORM, 'queryParams.first', first);
     await changeForm(LIBRARY_CONTENT_PARAMS_FORM, 'queryParams.number', number);
-    this.setState({ page: 0, rowsPerPage: number });
+    this.setState({ rowsPerPage: number });
     this.onRefresh();
   }
 
@@ -47,7 +45,7 @@ class LibraryList extends React.PureComponent {
     const first = page * number + 1;
     changeForm(LIBRARY_CONTENT_PARAMS_FORM, 'queryParams.first', first);
     await changeForm(LIBRARY_CONTENT_PARAMS_FORM, 'queryParams.number', number);
-    this.setState({ page, rowsPerPage: number });
+    this.setState({ rowsPerPage: number });
     this.onRefresh();
   }
 
@@ -63,7 +61,7 @@ class LibraryList extends React.PureComponent {
     } = this.props;
     const { itemListDocument, expanded } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={itemListDocument}
@@ -76,7 +74,7 @@ class LibraryList extends React.PureComponent {
         )}
         <LibraryContentParams
           libraryId={libraryId}
-          onSuccess={response => this.setState({ itemListDocument: response.data })}
+          onSuccess={(response) => this.setState({ itemListDocument: response.data })}
           expanded={expanded}
           onChangeExpansion={this.onChangeExpansion}
           initialValues={{
@@ -91,9 +89,15 @@ class LibraryList extends React.PureComponent {
             itemListDocument={itemListDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }
 
-export default compose(withFormActions, withFormSelectors)(LibraryList, LIBRARY_CONTENT_PARAMS_FORM);
+export default compose(
+  withFormActions,
+  withFormSelectors,
+)(
+  LibraryList,
+  LIBRARY_CONTENT_PARAMS_FORM,
+);

@@ -27,7 +27,7 @@ export function onCreate(form, dispatch, props) {
     entityType,
     notificationDocument,
   })
-    .then(response => ({ ...response, entityType }))
+    .then((response) => ({ ...response, entityType }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

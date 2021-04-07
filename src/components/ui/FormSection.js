@@ -4,8 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import startCase from 'lodash.startcase';
 
-
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     paddingTop: '10px',
     paddingBottom: '10px',
@@ -32,9 +31,8 @@ const WrappedFormSection = ({
   <div
     className={hover ? classes.onHover : classes.noHover}
   >
-    { label &&
-      <Typography variant="subtitle2">{labelStartCase ? startCase(label) : label}</Typography>
-    }
+    { label
+      && <Typography variant="subtitle2">{labelStartCase ? startCase(label) : label}</Typography>}
     <div className={label ? classes.marginLeft : undefined}>
       <FormSection
         {...props}
@@ -42,6 +40,5 @@ const WrappedFormSection = ({
     </div>
   </div>
 );
-
 
 export default withStyles(hoverStyle)(WrappedFormSection);

@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { metadatafield as api } from '@vidijs/vidijs-api';
 import MetadataFieldListCard from '../components/metadatafield/MetadataFieldListCard';
 import MetadataFieldDialog from '../components/metadatafield/MetadataFieldDialog';
 import MetadataFieldListTitle from '../components/metadatafield/MetadataFieldListTitle';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { metadatafield as api } from '@vidijs/vidijs-api';
 
 const METADATAFIELDLIST_CREATE_MODAL = 'METADATAFIELDLIST_CREATE_MODAL';
 
@@ -27,34 +27,34 @@ class MetadataFieldList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listMetadataField()
-        .then(response => this.setState({ metadataFieldListDocument: response.data }));
+        .then((response) => this.setState({ metadataFieldListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Metadata Field List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
     }
   }
 
-
   render() {
     const { metadataFieldListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <MetadataFieldListTitle
           createModal={METADATAFIELDLIST_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={metadataFieldListDocument}
           codeModal="MetadataFieldListDocument"
         />
-        {metadataFieldListDocument &&
+        {metadataFieldListDocument
+        && (
         <MetadataFieldListCard
           metadataFieldListDocument={metadataFieldListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <MetadataFieldDialog
           dialogName={METADATAFIELDLIST_CREATE_MODAL}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

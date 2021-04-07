@@ -17,7 +17,7 @@ const FileStatus = ({ fileDocument }) => {
         label={startCase(state.toLowerCase())}
       />
     );
-  } else if (WARNING_STATES.includes(state)) {
+  } if (WARNING_STATES.includes(state)) {
     return (
       <Chip
         avatar={

@@ -5,7 +5,7 @@ import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
 const StorageRuleType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="storageCount"
       value={value.storageCount}
@@ -15,8 +15,8 @@ const StorageRuleType = ({ value = {} }) => (
     <TypeArray
       title="priority"
       value={value.priority}
-      component={v => (
-        <React.Fragment>
+      component={(v) => (
+        <>
           <TextGrid
             title="value"
             value={v.value}
@@ -27,7 +27,7 @@ const StorageRuleType = ({ value = {} }) => (
             value={v.value}
             hover
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
     />
@@ -54,8 +54,8 @@ const StorageRuleType = ({ value = {} }) => (
     <TypeSection
       title="not"
       value={value.priority}
-      component={v => (
-        <React.Fragment>
+      component={(v) => (
+        <>
           <TextGrid
             title="storage"
             value={v.storage}
@@ -67,15 +67,15 @@ const StorageRuleType = ({ value = {} }) => (
             value={v.storage}
             hover
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
     />
     <TypeSection
       title="pool"
       value={value.priority}
-      component={v => (
-        <React.Fragment>
+      component={(v) => (
+        <>
           <TextGrid
             title="storage"
             value={v.storage}
@@ -87,15 +87,15 @@ const StorageRuleType = ({ value = {} }) => (
             value={v.storage}
             hover
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
     />
     <TypeSection
       title="appliesTo"
       value={value.priority}
-      component={v => (
-        <React.Fragment>
+      component={(v) => (
+        <>
           <TextGrid
             title="id"
             value={v.id}
@@ -106,7 +106,7 @@ const StorageRuleType = ({ value = {} }) => (
             value={v.type}
             hover
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
     />
@@ -116,18 +116,18 @@ const StorageRuleType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export default function StorageRuleDisplay({
   storageRuleDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={StorageRuleType}
         value={storageRuleDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import FieldTypeArray from '../ui/FieldTypeArray';
@@ -17,9 +17,8 @@ import DynamicSelect from '../ui/DynamicSelect';
 
 import { SimpleMetadataType, KeyValuePairType } from '../ui/FormType';
 
-
 export const MetadataFieldFloatType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="minInclusive"
       label="minInclusive"
@@ -34,11 +33,11 @@ export const MetadataFieldFloatType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldIntegerType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="minInclusive"
       label="minInclusive"
@@ -53,11 +52,11 @@ export const MetadataFieldIntegerType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldLongType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="minInclusive"
       label="minInclusive"
@@ -72,11 +71,11 @@ export const MetadataFieldLongType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldStringType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="minLength"
       label="minLength"
@@ -97,19 +96,18 @@ export const MetadataFieldStringType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
-
 export const MetadataSchemaElementType = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="reference"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Reference"
     />
     <Field
@@ -132,10 +130,10 @@ export const MetadataSchemaElementType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
-export const MetadataFieldTypeType = props => (
+export const MetadataFieldTypeType = (props) => (
   <Select {...props}>
     <MenuItem value="string">String</MenuItem>
     <MenuItem value="integer">Integer</MenuItem>
@@ -159,7 +157,7 @@ export const MetadataFieldTypeType = props => (
   </Select>
 );
 
-export const MetadataFieldIndexType = props => (
+export const MetadataFieldIndexType = (props) => (
   <Select {...props}>
     <MenuItem value="index">index</MenuItem>
     <MenuItem value="noindex">noindex</MenuItem>
@@ -167,9 +165,8 @@ export const MetadataFieldIndexType = props => (
   </Select>
 );
 
-
 const MetadataFieldConstraintType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="dataset"
       label="dataset"
@@ -200,11 +197,11 @@ const MetadataFieldConstraintType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataFieldType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="name"
@@ -218,39 +215,39 @@ export const MetadataFieldType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="system"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="System"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="sortable"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Sortable"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="inheritance"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Inheritance"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="fullText"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Full Text"
     />
     <FormControl fullWidth>
@@ -289,7 +286,7 @@ export const MetadataFieldType = () => (
       label="data"
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const MetadataFieldForm = ({ error, handleSubmit }) => (

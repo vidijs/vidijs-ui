@@ -8,7 +8,7 @@ import InitialDisabledTextField from '../../ui/InitialDisabledTextField';
 import FormSection from '../../ui/FormSection';
 
 const ConfigurationPropertyType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="key"
       label="Key"
@@ -22,7 +22,7 @@ const ConfigurationPropertyType = () => (
       fullWidth
       multiline
     />
-  </React.Fragment>
+  </>
 );
 
 const PropertiesForm = ({ error, handleSubmit }) => (

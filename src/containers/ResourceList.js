@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash.startcase';
 
+import { resource as api } from '@vidijs/vidijs-api';
 import ResourceListTitle from '../components/resource/ResourceListTitle';
 import ResourceListCard from '../components/resource/ResourceListCard';
 import ResourceDialog from '../components/resource/ResourceDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { resource as api } from '@vidijs/vidijs-api';
 
 const RESOURCELIST_CODE_MODAL = 'RESOURCELIST_CODE_MODAL';
 const RESOURCE_CREATE_MODAL = 'RESOURCE_CREATE_MODAL';
@@ -32,7 +32,7 @@ class ResourceList extends React.PureComponent {
     const { openSnackBar, resourceType } = this.props;
     try {
       api.listResourceType({ resourceType })
-        .then(response => this.setState({ resourceListDocument: response.data }));
+        .then((response) => this.setState({ resourceListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Resource List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -51,19 +51,20 @@ class ResourceList extends React.PureComponent {
       resourceListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ResourceListTitle
           openCode={() => openModal({ modalName: RESOURCELIST_CODE_MODAL })}
           openCreate={() => openModal({ modalName: RESOURCE_CREATE_MODAL })}
           onRefresh={this.onRefresh}
           resourceType={resourceType}
         />
-        { resourceListDocument &&
+        { resourceListDocument
+        && (
         <ResourceListCard
           resourceType={resourceType}
           resourceListDocument={resourceListDocument}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === RESOURCELIST_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -76,7 +77,7 @@ class ResourceList extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

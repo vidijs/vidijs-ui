@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { importsettings as api } from '@vidijs/vidijs-api';
 
-
 export function onUpdate(form, dispatch, props) {
   const { settingsId } = props;
   const { importSettingsDocument } = form;
@@ -24,7 +23,7 @@ export function onCreate(form) {
   return api.createImportSettings({
     importSettingsDocument,
   })
-    .then(response => ({ importSettingsDocument: response.data }))
+    .then((response) => ({ importSettingsDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

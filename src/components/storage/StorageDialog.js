@@ -9,7 +9,6 @@ import * as formActions from '../../formactions/storage';
 import * as actions from '../../actions';
 import WizardForm from '../ui/WizardForm';
 
-
 function StorageDialog({
   closeModal,
   isOpen,

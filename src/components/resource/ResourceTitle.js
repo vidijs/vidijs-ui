@@ -21,11 +21,11 @@ export default function ResourceTitle({
       title={resourceId}
       onRefresh={onRefresh}
       openCode={openCode}
-      actionComponent={
+      actionComponent={(
         <IconButton onClick={openRemove}>
           <DeleteForever />
         </IconButton>
-      }
+      )}
     />
   );
 }

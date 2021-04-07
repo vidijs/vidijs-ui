@@ -7,7 +7,7 @@ import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="keepShapeTagMedia"
       component={TextField}
@@ -18,9 +18,8 @@ const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemDeleteForm({
   error,

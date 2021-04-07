@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import JobPoolCard from '../../components/configuration/jobpool/JobPoolCard';
 import JobPoolRemove from '../../components/configuration/jobpool/JobPoolRemove';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
 
 const JOBPOOL_REMOVE_DIALOG = 'JOBPOOL_REMOVE_DIALOG';
 
@@ -27,8 +27,8 @@ class JobPool extends React.PureComponent {
   onRefresh() {
     try {
       api.getJobPoolConfiguration()
-        .then(response => this.setState({ jobPoolListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ jobPoolListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -43,7 +43,7 @@ class JobPool extends React.PureComponent {
   render() {
     const { jobPoolListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Configuration"
           parentTo="/configuration/"
@@ -54,17 +54,18 @@ class JobPool extends React.PureComponent {
           codeModal="JobPoolListDocument"
           removeModal={JOBPOOL_REMOVE_DIALOG}
         />
-        { jobPoolListDocument &&
+        { jobPoolListDocument
+        && (
         <JobPoolCard
           jobPoolListDocument={jobPoolListDocument}
           onSuccess={this.onRefresh}
         />
-        }
+        )}
         <JobPoolRemove
           dialogName={JOBPOOL_REMOVE_DIALOG}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

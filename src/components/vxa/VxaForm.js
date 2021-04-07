@@ -8,7 +8,7 @@ import Field from '../ui/Field';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uuid"
       component={TextField}
@@ -38,7 +38,7 @@ const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 function VxaForm({
@@ -56,6 +56,5 @@ function VxaForm({
     </form>
   );
 }
-
 
 export default reduxForm()(VxaForm);

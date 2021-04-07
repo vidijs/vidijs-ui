@@ -11,9 +11,8 @@ import Field from '../ui/Field';
 import FieldTypeArray from '../ui/FieldTypeArray';
 import { KeyValuePairType } from '../ui/FormType';
 
-
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="direction">Direction</InputLabel>
       <Field name="direction" component={Select} fullWidth>
@@ -32,9 +31,8 @@ export const queryParams = () => (
       withHeader={false}
       dense
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemRelationParamsForm({
   error,

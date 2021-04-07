@@ -6,11 +6,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/library';
 import LibraryRemoveForm from './LibraryRemoveForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const LIBRARY_REMOVE_FORM = 'LIBRARY_REMOVE_FORM';
@@ -71,6 +71,5 @@ function LibraryRemove({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(LibraryRemove);

@@ -31,7 +31,6 @@ function setMainMenu(isMainMenuOpen) {
   };
 }
 
-
 export function toggleMainMenu() {
   return (dispatch, getState) => {
     const { isMainMenuOpen } = getState().ui;

@@ -22,7 +22,6 @@ import ShapeTagPresetForm, { EDIT_SHAPETAG_PRESET_FORM } from '../components/sha
 import withUI from '../hoc/withUI';
 import withFormActions from '../hoc/withFormActions';
 
-
 import * as userFormActions from '../formactions/user';
 import * as resourceFormActions from '../formactions/resource';
 import * as shapetagFormActions from '../formactions/shapetag';
@@ -37,7 +36,6 @@ const EDIT_TRANSCODER_RESOURCE_FORM = 'EDIT_TRANSCODER_RESOURCE_FORM';
 const EDIT_LICENSE_FORM = 'EDIT_LICENSE_FORM';
 const EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM = 'EDIT_CONFIGURATIONPROPERTIES_SOLRPATH_FORM';
 const EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM = 'EDIT_CONFIGURATIONPROPERTIES_APIURI_FORM';
-
 
 const storageInitialValues = {
   storageDocument: {
@@ -67,7 +65,6 @@ const thumbnailInitialValues = {
   },
 };
 
-
 function Wizard({
   openSnackBar,
   submitForm,
@@ -92,7 +89,7 @@ function Wizard({
   };
 
   const onNext = () => setActiveStep(activeStep + 1);
-  const onComplete = stepName => setStepsCompleted([stepName, ...stepsCompleted]);
+  const onComplete = (stepName) => setStepsCompleted([stepName, ...stepsCompleted]);
 
   const onSubmitSuccess = ({
     stepName,

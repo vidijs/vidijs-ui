@@ -4,7 +4,6 @@ import { bulkymetadata as BulkyMetadataApi } from '@vidijs/vidijs-api';
 import UriListCard from '../../components/ui/UriListCard';
 import withSnackbar from '../../hoc/withSnackbar';
 
-
 class ItemBulkyMetadataList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class ItemBulkyMetadataList extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -36,8 +35,8 @@ class ItemBulkyMetadataList extends React.PureComponent {
   onFetch(itemId) {
     try {
       BulkyMetadataApi.listItemBulkyMetadata({ itemId })
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -49,7 +48,6 @@ class ItemBulkyMetadataList extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -57,7 +55,7 @@ class ItemBulkyMetadataList extends React.PureComponent {
     } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={uriListDocument}
@@ -73,7 +71,7 @@ class ItemBulkyMetadataList extends React.PureComponent {
             uriListDocument={uriListDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

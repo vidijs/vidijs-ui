@@ -58,7 +58,7 @@ export function onList(form, dispatch, props) {
     itemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -77,7 +77,7 @@ export function onGet(form, dispatch, props) {
     shapeId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -114,7 +114,7 @@ export function onCreateTranscode(form, dispatch, props) {
     shapeId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -133,7 +133,7 @@ export function onUpdateShapeTag(form, dispatch, props) {
     shapeId,
     tagName,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -152,7 +152,7 @@ export function onRemoveShapeTag(form, dispatch, props) {
     shapeId,
     tagName,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -172,7 +172,7 @@ export function onCreateShapeAnalyze(form, dispatch, props) {
     queryParams,
     analyzeJobDocument,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

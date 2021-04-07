@@ -16,7 +16,7 @@ export default withFormActions(({ submitForm }) => {
   const onSuccess = ({ data }) => setScheduledRequestListDocument(data);
   React.useEffect(onRefresh, []);
   return (
-    <React.Fragment>
+    <>
       <ScheduledRequestTitle
         code={scheduledRequestListDocument}
         codeModal="ScheduledRequestListDocument"
@@ -37,6 +37,6 @@ export default withFormActions(({ submitForm }) => {
         dialogName={SCHEDULED_REMOVEALL}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 });

@@ -47,7 +47,7 @@ class DynamicSelect extends React.PureComponent {
     const choiceValue = value[name];
     const ChoiceComponent = choiceValue ? choices[choiceValue] : null;
     return (
-      <React.Fragment>
+      <>
         <TextField
           select
           value={choiceValue || ''}
@@ -57,14 +57,12 @@ class DynamicSelect extends React.PureComponent {
         >
           { children }
         </TextField>
-        {ChoiceComponent &&
-        <ChoiceComponent {...choiceProps} value={value} onChange={this.onChange} />
-        }
-      </React.Fragment>
+        {ChoiceComponent
+        && <ChoiceComponent {...choiceProps} value={value} onChange={this.onChange} />}
+      </>
     );
   }
 }
-
 
 const onPathBlur = (blurKey, onKeyChange) => (event) => {
   if (blurKey === 'path') {
@@ -82,15 +80,15 @@ const S3Form = ({
   },
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <FormControlLabel
-      control={
+      control={(
         <Checkbox
           checked={value.direct}
           onChange={onChange('direct')}
           value={value.direct.toString()}
         />
-      }
+      )}
       label="Direct"
     />
     <TextField
@@ -198,14 +196,14 @@ const S3Form = ({
       <MenuItem value="true">True</MenuItem>
       <MenuItem value="false">False</MenuItem>
     </TextField>
-  </React.Fragment>
+  </>
 );
 
 const Ds3Form = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Bucket"
       value={value.host || ''}
@@ -254,14 +252,14 @@ const Ds3Form = ({
       <MenuItem value="crc32">crc32</MenuItem>
       <MenuItem value="crc32c">crc32c</MenuItem>
     </TextField>
-  </React.Fragment>
+  </>
 );
 
 const AzureForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Account Name"
       value={value.host || ''}
@@ -281,14 +279,14 @@ const AzureForm = ({
       onChange={onChange('username')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const GsForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Bucket"
       value={value.host || ''}
@@ -313,14 +311,14 @@ const GsForm = ({
       onChange={onChange('queryParams.account')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const VidinetForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Resource ID"
       value={value.host || ''}
@@ -339,14 +337,14 @@ const VidinetForm = ({
       onChange={onChange('password')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const FtpForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Host"
       value={value.host || ''}
@@ -372,14 +370,14 @@ const FtpForm = ({
       onChange={onChange('password')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const SftpForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Host"
       value={value.host || ''}
@@ -405,7 +403,7 @@ const SftpForm = ({
       onChange={onChange('password')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const HttpForm = ({
@@ -413,7 +411,7 @@ const HttpForm = ({
   onChange,
   showHttpCreds = false,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Host"
       value={value.host || ''}
@@ -433,8 +431,9 @@ const HttpForm = ({
       onBlur={onPathBlur('path', onChange('path'))}
       fullWidth
     />
-    { showHttpCreds &&
-      <React.Fragment>
+    { showHttpCreds
+      && (
+      <>
         <TextField
           label="URL Username"
           value={value.username || ''}
@@ -447,9 +446,9 @@ const HttpForm = ({
           onChange={onChange('password')}
           fullWidth
         />
-      </React.Fragment>
-    }
-  </React.Fragment>
+      </>
+      )}
+  </>
 );
 
 const HttpsForm = ({
@@ -457,7 +456,7 @@ const HttpsForm = ({
   onChange,
   showHttpCreds = false,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Host"
       value={value.host || ''}
@@ -477,8 +476,9 @@ const HttpsForm = ({
       onChange={onChange('path')}
       fullWidth
     />
-    { showHttpCreds &&
-      <React.Fragment>
+    { showHttpCreds
+      && (
+      <>
         <TextField
           label="URL Username"
           value={value.username || ''}
@@ -491,16 +491,16 @@ const HttpsForm = ({
           onChange={onChange('password')}
           fullWidth
         />
-      </React.Fragment>
-    }
-  </React.Fragment>
+      </>
+      )}
+  </>
 );
 
 const OmmsForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Host"
       value={value.host || ''}
@@ -526,15 +526,14 @@ const OmmsForm = ({
       onChange={onChange('password')}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 const FileForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Path"
       value={value.path || '/'}
@@ -542,15 +541,14 @@ const FileForm = ({
       onBlur={onPathBlur('path', onChange('path'))}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 const VsaForm = ({
   value = {},
   onChange,
 }) => (
-  <React.Fragment>
+  <>
     <TextField
       label="Agent UUID"
       value={value.host || ''}
@@ -564,9 +562,8 @@ const VsaForm = ({
       onBlur={onPathBlur('path', onChange('path'))}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function UrlField(props) {
   const { defaultValue, input: { value } } = props;
@@ -577,7 +574,7 @@ export default function UrlField(props) {
   };
   const { path } = decodedUrl;
   return (
-    <React.Fragment>
+    <>
       <FormHelperText>{`${props.label || 'URL'}: ${value || (defaultValue || '')}`}</FormHelperText>
       <DynamicSelect
         choices={{
@@ -612,6 +609,6 @@ export default function UrlField(props) {
         <MenuItem value={scheme.UNIVERSAL_SCHEME}>Universal</MenuItem>
         <MenuItem value={scheme.VIDINET_SCHEME}>Vidinet</MenuItem>
       </DynamicSelect>
-    </React.Fragment>
+    </>
   );
 }

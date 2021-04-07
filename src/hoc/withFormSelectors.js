@@ -6,16 +6,16 @@ import {
   formValueSelector,
 } from 'redux-form';
 
-
-const mapStateToProps = form => state => ({
+const mapStateToProps = (form) => (state) => ({
   formValues: getFormValues(form)(state),
   isFormDirty: isDirty(form)(state),
   isFormSubmitting: isSubmitting(form)(state),
-  valueSelector: field => formValueSelector(form)(state, field),
+  valueSelector: (field) => formValueSelector(form)(state, field),
 });
 
-
-const withFormSelectors = (WrappedComponent, form) =>
-  connect(mapStateToProps(form))(WrappedComponent);
+const withFormSelectors = (
+  WrappedComponent,
+  form,
+) => connect(mapStateToProps(form))(WrappedComponent);
 
 export default withFormSelectors;

@@ -5,7 +5,6 @@ import withSnackbar from '../../hoc/withSnackbar';
 import ShapeParams from '../../components/shape/ShapeParams';
 import ShapeOverviewComponent from '../../components/shape/ShapeOverview';
 
-
 class ShapeOverview extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -21,7 +20,7 @@ class ShapeOverview extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ shapeId, itemId }) {
+  UNSAFE_componentWillReceiveProps({ shapeId, itemId }) {
     const { shapeId: prevItemId } = this.props;
     if (prevItemId !== shapeId) {
       this.onFetch(itemId, shapeId);
@@ -40,8 +39,8 @@ class ShapeOverview extends React.PureComponent {
         itemId,
         shapeId,
       })
-        .then(response => this.setState({ shapeDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ shapeDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -53,7 +52,6 @@ class ShapeOverview extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -63,7 +61,7 @@ class ShapeOverview extends React.PureComponent {
     } = this.props;
     const { shapeDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={shapeDocument}
@@ -84,7 +82,7 @@ class ShapeOverview extends React.PureComponent {
             shapeDocument={shapeDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

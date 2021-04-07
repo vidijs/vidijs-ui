@@ -1,10 +1,10 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TextField, Select } from '../form';
 
 import Field from '../ui/Field';
 import FormSection from '../ui/FormSection';
@@ -14,11 +14,11 @@ import { KeyValuePairType } from '../ui/FormType';
 import { MetadataType } from '../metadata/MetadataForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -46,9 +46,8 @@ const queryParams = () => (
       withHeader={false}
       dense
     />
-  </React.Fragment>
+  </>
 );
-
 
 function LibraryItemMetadataForm({
   error,

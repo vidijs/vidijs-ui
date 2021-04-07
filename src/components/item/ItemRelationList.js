@@ -8,7 +8,7 @@ export default function ItemRelationList({ itemRelationListDocument, openRemove,
     relation: relationList = [],
   } = itemRelationListDocument;
   return (
-    relationList.map(itemRelationType => (
+    relationList.map((itemRelationType) => (
       <ItemRelationEditor
         key={itemRelationType.id}
         itemRelationType={itemRelationType}

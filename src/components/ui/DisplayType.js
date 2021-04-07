@@ -5,59 +5,65 @@ import TypeArray from './TypeArray';
 import TypeSection from './TypeSection';
 
 export const SimpleMetadataType = ({ value: v = {}, dense = true }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title={dense ? undefined : 'field'}
       value={v.field}
       component={({ value = {} }) => (
-        dense ?
-          <TextGrid
-            title={value.key}
-            value={value.value}
-            hover
-            hideNoValue
-            titleStartCase={false}
-          />
-          :
-          <React.Fragment>
+        dense
+          ? (
             <TextGrid
-              title="key"
-              value={value.key}
-            />
-            <TextGrid
-              title="value"
+              title={value.key}
               value={value.value}
+              hover
+              hideNoValue
+              titleStartCase={false}
             />
-          </React.Fragment>
+          )
+          : (
+            <>
+              <TextGrid
+                title="key"
+                value={value.key}
+              />
+              <TextGrid
+                title="value"
+                value={value.value}
+              />
+            </>
+          )
       )}
     />
-  </React.Fragment>
+  </>
 );
 
 export const KeyValuePairType = ({ value = {}, dense = true }) => (
-  dense ?
-    <TextGrid
-      title={value.key}
-      value={value.value}
-      hover
-      hideNoValue
-      titleStartCase={false}
-    />
-    :
-    <React.Fragment>
+  dense
+    ? (
       <TextGrid
-        title="key"
-        value={value.key}
-      />
-      <TextGrid
-        title="value"
+        title={value.key}
         value={value.value}
+        hover
+        hideNoValue
+        titleStartCase={false}
       />
-    </React.Fragment>
+    )
+    : (
+      <>
+        <TextGrid
+          title="key"
+          value={value.key}
+        />
+        <TextGrid
+          title="value"
+          value={value.value}
+        />
+      </>
+    )
 );
 
 export const RationalType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="numerator"
       value={value.numerator}
@@ -70,13 +76,13 @@ export const RationalType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const TimeBaseType = RationalType;
 
 export const TimeCodeType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="samples"
       value={value.samples}
@@ -89,11 +95,11 @@ export const TimeCodeType = ({ value = {} }) => (
       title="timeBase"
       value={value.timeBase}
     />
-  </React.Fragment>
+  </>
 );
 
 export const ResolutionType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="width"
       value={value.width}
@@ -106,11 +112,11 @@ export const ResolutionType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const AspectRatioType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="horizontal"
       value={value.horizontal}
@@ -123,11 +129,11 @@ export const AspectRatioType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export const TimeIntervalType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       hideNoValue
       title="start"
@@ -140,5 +146,5 @@ export const TimeIntervalType = ({ value = {} }) => (
       component={TimeCodeType}
       value={value.end}
     />
-  </React.Fragment>
+  </>
 );

@@ -67,7 +67,6 @@ export function onFilePath(form, dispatch, props) {
     });
 }
 
-
 export function onFileOverwrite(form, dispatch, props) {
   const fileId = props.fileId || form.fileId;
   const { queryParams, file } = form;

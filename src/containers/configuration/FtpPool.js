@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import FtpPoolCard from '../../components/configuration/ftppool/FtpPoolCard';
 import FtpPoolRemove from '../../components/configuration/ftppool/FtpPoolRemove';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
 
 const FTPPOOL_REMOVE_DIALOG = 'FTPPOOL_REMOVE_DIALOG';
 
@@ -27,8 +27,8 @@ class FtpPool extends React.PureComponent {
   onRefresh() {
     try {
       api.getFtpPoolConfiguration()
-        .then(response => this.setState({ ftpPoolConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ ftpPoolConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -43,7 +43,7 @@ class FtpPool extends React.PureComponent {
   render() {
     const { ftpPoolConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Configuration"
           parentTo="/configuration/"
@@ -54,17 +54,18 @@ class FtpPool extends React.PureComponent {
           codeModal="FtpPoolConfigurationDocument"
           removeModal={FTPPOOL_REMOVE_DIALOG}
         />
-        { ftpPoolConfigurationDocument &&
+        { ftpPoolConfigurationDocument
+        && (
         <FtpPoolCard
           ftpPoolConfigurationDocument={ftpPoolConfigurationDocument}
           onSuccess={this.onRefresh}
         />
-        }
+        )}
         <FtpPoolRemove
           dialogName={FTPPOOL_REMOVE_DIALOG}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

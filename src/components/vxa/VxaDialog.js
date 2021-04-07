@@ -69,5 +69,4 @@ function VxaDialog({
   );
 }
 
-
 export default compose(withUI, withFormActions)(VxaDialog);

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { StatefulAsyncSelect } from '../ui/Select';
 import { group as api } from '@vidijs/vidijs-api';
+import { StatefulAsyncSelect } from '../ui/Select';
 
-
-export const loadGroupOptions = inputValue => new Promise((resolve, reject) => {
+export const loadGroupOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listGroup()
     .then((response) => {
       if (!response.ok) {
@@ -16,17 +15,14 @@ export const loadGroupOptions = inputValue => new Promise((resolve, reject) => {
     .then((jsonDocument) => {
       const { group = [] } = jsonDocument;
       let filterOps = group;
-      if (inputValue && inputValue !== '*') {
-        filterOps = group.filter(f => f.groupName.toLowerCase().includes(inputValue.toLowerCase()));
-      }
-      const options = filterOps.map(f => ({ label: f.groupName, value: f.groupName }));
+      if (inputValue && inputValue !== '*') filterOps = group.filter((f) => f.groupName.toLowerCase().includes(inputValue.toLowerCase()));
+      const options = filterOps.map((f) => ({ label: f.groupName, value: f.groupName }));
       resolve(options);
     })
     .catch((error) => {
       reject(error);
     });
 });
-
 
 const parse = (value) => {
   if (value) {

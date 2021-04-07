@@ -36,7 +36,6 @@ const TAB_TITLE = [
   { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
 ];
 
-
 const listComponent = ({ onChangeTab, tabValue }) => (
   <List>
     {TAB_TITLE.map(({ tab, listText }) => (
@@ -52,7 +51,6 @@ const listComponent = ({ onChangeTab, tabValue }) => (
   </List>
 );
 
-
 class Collection extends React.PureComponent {
   componentDidMount() {
     const { collectionId } = this.props;
@@ -66,9 +64,9 @@ class Collection extends React.PureComponent {
       collectionId,
       history,
     } = this.props;
-    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const tabInfo = TAB_TITLE.find((thisTab) => thisTab.tab === tabValue) || TAB_TITLE[0];
     const { listText, component: mainComponent } = tabInfo;
-    const titleComponent = props => (
+    const titleComponent = (props) => (
       <TitleHeader
         grandParentTitle="Collection"
         grandParentTo="/collection/"
@@ -83,7 +81,7 @@ class Collection extends React.PureComponent {
       />
     );
     return (
-      <React.Fragment>
+      <>
         <DrawerContainer
           mainComponent={mainComponent}
           listComponent={listComponent}
@@ -105,7 +103,7 @@ class Collection extends React.PureComponent {
           entityType="collection"
           entityId={collectionId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

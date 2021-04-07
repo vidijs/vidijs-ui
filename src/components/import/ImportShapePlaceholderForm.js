@@ -9,7 +9,7 @@ import { required } from '../../utils/FieldValidation';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="container"
       label="Container"
@@ -52,9 +52,8 @@ const queryParams = () => (
       fullWidth
       isMulti
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportShapePlaceholderForm({
   error,

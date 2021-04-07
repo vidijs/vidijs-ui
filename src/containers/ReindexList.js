@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { reindex as api } from '@vidijs/vidijs-api';
 import ReindexCard from '../components/reindex/ReindexCard';
 
 import TitleHeader from '../components/ui/TitleHeader';
 import withSnackbar from '../hoc/withSnackbar';
-import { reindex as api } from '@vidijs/vidijs-api';
 import { RUNNING_STATES } from '../const/ReindexStates';
 
 const INDEX_NAMES = [
@@ -43,7 +43,7 @@ class ReindexList extends React.PureComponent {
   }
 
   onRefresh() {
-    INDEX_NAMES.forEach(indexName => this.onFetch(indexName));
+    INDEX_NAMES.forEach((indexName) => this.onFetch(indexName));
   }
 
   onRefreshError(error, index) {
@@ -66,11 +66,10 @@ class ReindexList extends React.PureComponent {
     this.onRefresh();
   }
 
-
   onFetch(indexName) {
     try {
       api.getReindex({ indexName })
-        .then(response => this.setState({ [indexName]: response.data }))
+        .then((response) => this.setState({ [indexName]: response.data }))
         .catch((error) => {
           if (!error.response) {
             this.onRefreshError(error);
@@ -89,7 +88,7 @@ class ReindexList extends React.PureComponent {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Reindex"
           helpTo="/ref/metadata/reindex.html"
@@ -98,7 +97,7 @@ class ReindexList extends React.PureComponent {
           codeModal="All reindexRequestDocument"
         />
         {
-        INDEX_NAMES.map(indexName => (
+        INDEX_NAMES.map((indexName) => (
           <ReindexCard
             key={indexName}
             indexName={indexName}
@@ -113,7 +112,7 @@ class ReindexList extends React.PureComponent {
           />
         ))
         }
-      </React.Fragment>
+      </>
     );
   }
 }

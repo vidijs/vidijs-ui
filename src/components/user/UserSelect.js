@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { StatefulAsyncSelect } from '../ui/Select';
 import { user as api } from '@vidijs/vidijs-api';
+import { StatefulAsyncSelect } from '../ui/Select';
 
-
-export const loadUserOptions = inputValue => new Promise((resolve, reject) => {
+export const loadUserOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listUser()
     .then((response) => {
       if (!response.ok) {
@@ -17,9 +16,9 @@ export const loadUserOptions = inputValue => new Promise((resolve, reject) => {
       const { user = [] } = jsonDocument;
       let filterOps = user;
       if (inputValue && inputValue !== '*') {
-        filterOps = user.filter(f => f.userName.toLowerCase().includes(inputValue.toLowerCase()));
+        filterOps = user.filter((f) => f.userName.toLowerCase().includes(inputValue.toLowerCase()));
       }
-      const options = filterOps.map(f => ({ label: f.userName, value: f.userName }));
+      const options = filterOps.map((f) => ({ label: f.userName, value: f.userName }));
       resolve(options);
     })
     .catch((error) => {

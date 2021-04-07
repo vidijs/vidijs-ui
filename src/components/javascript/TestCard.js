@@ -32,7 +32,7 @@ function TestCard({
     if (onFail) { onFail(errors, dispatch, submitError, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         title="Javascript Test"
         action={(
@@ -64,7 +64,7 @@ function TestCard({
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
 

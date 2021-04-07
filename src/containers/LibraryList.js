@@ -65,7 +65,7 @@ class LibraryList extends React.PureComponent {
       history,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Library"
           helpTo="/ref/library.html"
@@ -75,7 +75,7 @@ class LibraryList extends React.PureComponent {
           createModal={LIBRARY_CREATE_DIALOG}
         />
         <LibraryListParams
-          onSuccess={response => this.setState({ uriListDocument: response.data })}
+          onSuccess={(response) => this.setState({ uriListDocument: response.data })}
           initialValues={{
             matrixParams: {
               number: 100,
@@ -86,7 +86,7 @@ class LibraryList extends React.PureComponent {
         {uriListDocument && (
           <UriListCard
             uriListDocument={uriListDocument}
-            linkTo={uri => `/library/${uri}/`}
+            linkTo={(uri) => `/library/${uri}/`}
             page={page}
             rowsPerPage={rowsPerPage}
             onChangePage={this.onChangePage}
@@ -95,9 +95,9 @@ class LibraryList extends React.PureComponent {
         )}
         <LibraryCreate
           dialogName={LIBRARY_CREATE_DIALOG}
-          onSuccess={response => history.push(`/library/${response.data.uri[0]}/`)}
+          onSuccess={(response) => history.push(`/library/${response.data.uri[0]}/`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

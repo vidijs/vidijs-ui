@@ -5,15 +5,14 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/user';
 import UserTokenForm from './UserTokenForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const USER_TOKEN_FORM = 'USER_TOKEN_FORM';
-
 
 function UserToken({
   open,
@@ -40,64 +39,65 @@ function UserToken({
       fullWidth
       maxWidth={false}
     >
-      {userToken ?
-        <React.Fragment>
-          <DialogTitle>Current Token</DialogTitle>
-          <DialogContent>
-            {userToken}
-          </DialogContent>
-          <DialogActions>
-            <Button
-              size="small"
-              color="secondary"
-              onClick={onClose}
-            >
-              Close
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => onSuccess({ data: undefined })}
-            >
-              Generate New
-            </Button>
-          </DialogActions>
-        </React.Fragment>
-        :
-        <React.Fragment>
-          <DialogTitle>Generate Token</DialogTitle>
-          <DialogContent>
-            <UserTokenForm
-              form={USER_TOKEN_FORM}
-              onSubmit={formActions.onGetToken}
-              onSubmitSuccess={onSubmitSuccess}
-              onSubmitFail={onSubmitFail}
-              onCancel={onClose}
-              userName={userName}
-            />
-          </DialogContent>
-          <Divider />
-          <DialogActions>
-            <Button
-              size="small"
-              color="secondary"
-              onClick={onClose}
-            >
-              Close
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => submitForm(USER_TOKEN_FORM)}
-            >
-              Generate
-            </Button>
-          </DialogActions>
-        </React.Fragment>
-      }
+      {userToken
+        ? (
+          <>
+            <DialogTitle>Current Token</DialogTitle>
+            <DialogContent>
+              {userToken}
+            </DialogContent>
+            <DialogActions>
+              <Button
+                size="small"
+                color="secondary"
+                onClick={onClose}
+              >
+                Close
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => onSuccess({ data: undefined })}
+              >
+                Generate New
+              </Button>
+            </DialogActions>
+          </>
+        )
+        : (
+          <>
+            <DialogTitle>Generate Token</DialogTitle>
+            <DialogContent>
+              <UserTokenForm
+                form={USER_TOKEN_FORM}
+                onSubmit={formActions.onGetToken}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+                onCancel={onClose}
+                userName={userName}
+              />
+            </DialogContent>
+            <Divider />
+            <DialogActions>
+              <Button
+                size="small"
+                color="secondary"
+                onClick={onClose}
+              >
+                Close
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => submitForm(USER_TOKEN_FORM)}
+              >
+                Generate
+              </Button>
+            </DialogActions>
+          </>
+        )}
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(UserToken);

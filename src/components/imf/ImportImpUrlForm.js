@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -14,9 +14,8 @@ import JobPriority from '../../const/JobPriority';
 import { StatefulAsyncSelect } from '../ui/Select';
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uri"
       component={TextField}
@@ -26,7 +25,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -70,9 +69,8 @@ const queryParams = () => (
       fullWidth
       isMulti
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportImpUrlForm({
   error,

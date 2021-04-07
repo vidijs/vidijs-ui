@@ -19,7 +19,7 @@ import { KeyValuePairType } from '../ui/FormType';
 import FieldTypeArray from '../ui/FieldTypeArray';
 
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="content"
       component={StatefulAsyncSelect}
@@ -207,11 +207,11 @@ export const queryParams = () => (
       )}
       label="Include Transient Metadata"
     />
-  </React.Fragment>
+  </>
 );
 
 export const matrixParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="storage"
       label="Storage"
@@ -246,9 +246,8 @@ export const matrixParams = () => (
       )}
       label="Start TC"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemContentParamsForm({
   error,

@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import MetricsCard from '../../components/configuration/metrics/MetricsCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
-
 
 class Metrics extends React.PureComponent {
   constructor(props) {
@@ -25,8 +24,8 @@ class Metrics extends React.PureComponent {
   onRefresh() {
     try {
       api.getMetricsConfiguration()
-        .then(response => this.setState({ metricsConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metricsConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -41,7 +40,7 @@ class Metrics extends React.PureComponent {
   render() {
     const { metricsConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Metrics"
           parentTitle="Configuration"
@@ -51,13 +50,14 @@ class Metrics extends React.PureComponent {
           code={metricsConfigurationDocument}
           codeModal="MetricsConfigurationDocument"
         />
-        { metricsConfigurationDocument &&
+        { metricsConfigurationDocument
+        && (
         <MetricsCard
           metricsConfigurationDocument={metricsConfigurationDocument}
           onSuccess={this.onRefresh}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

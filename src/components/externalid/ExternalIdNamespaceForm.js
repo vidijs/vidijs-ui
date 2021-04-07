@@ -8,7 +8,7 @@ import InitialDisabledTextField from '../ui/InitialDisabledTextField';
 import Field from '../ui/Field';
 
 const ExternalIdentifierNamespaceType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       component={InitialDisabledTextField}
@@ -25,9 +25,8 @@ const ExternalIdentifierNamespaceType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ExternalIdNamespaceForm({
   error,

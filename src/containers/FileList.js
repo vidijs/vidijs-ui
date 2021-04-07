@@ -113,7 +113,7 @@ class FileList extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <FileListTitle
           code={fileListDocument}
           codeModal="FileListDocument"
@@ -125,7 +125,7 @@ class FileList extends React.PureComponent {
           onSuccess={this.onSuccess}
         />
         {fileListDocument && (
-          <React.Fragment>
+          <>
             { fileListDocument.prefixes && (
               <FilePrefixCard
                 filePrefixType={fileListDocument.prefixes}
@@ -143,13 +143,13 @@ class FileList extends React.PureComponent {
               orderBy={orderBy}
               orderDirection={orderDirection}
             />
-          </React.Fragment>
+          </>
         )}
         <FileEntity
           dialogName={FILE_ENTITY_DIALOG}
-          onSuccess={response => history.push(`/file/${response.data.id}`)}
+          onSuccess={(response) => history.push(`/file/${response.data.id}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

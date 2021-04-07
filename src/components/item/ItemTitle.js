@@ -10,7 +10,6 @@ import Menu, { MenuItem } from '../ui/Menu';
 import UnstyledLink from '../ui/UnstyledLink';
 import { withModalNoRouter } from '../../hoc/withModal';
 
-
 export const ItemHeading = ({ itemId }) => (
   <Grid container alignItems="center">
     <Grid item>

@@ -93,7 +93,7 @@ class CollectionSearch extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Collection"
           helpTo="/ref/collection.html"
@@ -123,9 +123,9 @@ class CollectionSearch extends React.PureComponent {
         />
         <CollectionCreate
           dialogName={COLLECTION_CREATE_DIALOG}
-          onSuccess={response => history.push(`/collection/${response.data.id}`)}
+          onSuccess={(response) => history.push(`/collection/${response.data.id}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

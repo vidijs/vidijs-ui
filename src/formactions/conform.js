@@ -9,8 +9,8 @@ export function onCreateSubmit(form) {
     conformRequestDocument,
     queryParams,
   })
-    .then(response => response.json())
-    .then(jobDocument => ({ jobDocument }))
+    .then((response) => response.json())
+    .then((jobDocument) => ({ jobDocument }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

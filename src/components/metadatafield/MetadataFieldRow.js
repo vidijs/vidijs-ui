@@ -7,14 +7,13 @@ import UnstyledLink from '../ui/UnstyledLink';
 import TableCell from '../ui/TableCell';
 import TableRow from '../ui/TableRow';
 
-
 function MetadataFieldRow({
   metadataFieldDocument = {},
   onOpen,
 }) {
   return (
-    <React.Fragment>
-      <TableRow to={`/metadata-field/${metadataFieldDocument.name}/`} hover >
+    <>
+      <TableRow to={`/metadata-field/${metadataFieldDocument.name}/`} hover>
         <TableCell>
           <UnstyledLink to={`/metadata-field/${metadataFieldDocument.name}/`}>{metadataFieldDocument.name}</UnstyledLink>
         </TableCell>
@@ -27,7 +26,7 @@ function MetadataFieldRow({
           </IconButton>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
 

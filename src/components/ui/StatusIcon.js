@@ -46,7 +46,6 @@ const styles = {
   },
 };
 
-
 export const OnlineIcon = withStyles(styles)(({
   classes,
 }) => (
@@ -87,7 +86,6 @@ export const LoadingIcon = withStyles(styles)(({
     )}
   </Avatar>
 ));
-
 
 export const OfflineIcon = withStyles(styles)(({
   classes,

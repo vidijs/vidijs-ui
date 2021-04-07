@@ -26,30 +26,30 @@ export default function StorageMethodRow({
       <TableCell padding="checkbox">
         <FormGroup row>
           <FormControlLabel
-            control={
+            control={(
               <Checkbox
                 checked={storageMethod.read}
                 disabled
               />
-            }
+            )}
             label={<Typography variant="subtitle2">Read</Typography>}
           />
           <FormControlLabel
-            control={
+            control={(
               <Checkbox
                 checked={storageMethod.write}
                 disabled
               />
-            }
+            )}
             label={<Typography variant="subtitle2">Write</Typography>}
           />
           <FormControlLabel
-            control={
+            control={(
               <Checkbox
                 checked={storageMethod.browse}
                 disabled
               />
-            }
+            )}
             label={<Typography variant="subtitle2">Browse</Typography>}
           />
         </FormGroup>

@@ -1,12 +1,11 @@
 import React from 'react';
 
+import { notification as api } from '@vidijs/vidijs-api';
 import NotificationCard from '../components/notification/NotificationCard';
 import NotificationRemove from '../components/notification/NotificationRemove';
 import capitalizeString from '../utils/capitalizeString';
 import withSnackbar from '../hoc/withSnackbar';
 import TitleHeader from '../components/ui/TitleHeader';
-
-import { notification as api } from '@vidijs/vidijs-api';
 
 const NOTIFICATION_REMOVE_DIALOG = 'NOTIFICATION_REMOVE_DIALOG';
 
@@ -35,8 +34,8 @@ class Notification extends React.PureComponent {
     } = this.props;
     try {
       api.getNotification({ notificationId, entityType })
-        .then(response => this.setState({ notificationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ notificationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -47,7 +46,6 @@ class Notification extends React.PureComponent {
     const messageContent = 'Error Loading Notification';
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
-
 
   toggleEdit() {
     const { isEditing: currentIsEditing } = this.state;
@@ -65,7 +63,7 @@ class Notification extends React.PureComponent {
       isEditing,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title={notificationId}
           parentTitle={capitalizeString(entityType)}
@@ -94,7 +92,7 @@ class Notification extends React.PureComponent {
           entityType={entityType}
           notificationId={notificationId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

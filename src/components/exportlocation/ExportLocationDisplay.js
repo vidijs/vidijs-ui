@@ -4,7 +4,7 @@ import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
 
 const ExportLocationType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -32,18 +32,18 @@ const ExportLocationType = ({ value = {} }) => (
       value={value.script}
       variant="code"
     />
-  </React.Fragment>
+  </>
 );
 
 export default function ExportLocationDisplay({
   exportLocationDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={ExportLocationType}
         value={exportLocationDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

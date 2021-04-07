@@ -34,7 +34,7 @@ class Transfer extends React.PureComponent {
   render() {
     const { transferListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TransferTitle
           code={transferListDocument}
           codeModal="TransferListDocument"
@@ -44,13 +44,14 @@ class Transfer extends React.PureComponent {
           form={TRANSFER_FILTER_FORM}
           onSuccess={this.onSuccess}
         />
-        {transferListDocument &&
+        {transferListDocument
+        && (
         <TransferCard
           transferListDocument={transferListDocument}
           onSuccess={this.onRefresh}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

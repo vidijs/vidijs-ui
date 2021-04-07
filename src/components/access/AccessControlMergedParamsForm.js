@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -12,7 +12,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadUserOptions } from '../user/UserSelect';
 
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="username"
       label="User"
@@ -47,9 +47,8 @@ export const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function AccessControlMergedParamsForm({
   error,

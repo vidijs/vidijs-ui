@@ -23,7 +23,7 @@ function ExternalIdTable({
     id: externalIdentifierList = [],
   } = externalIdentifierListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -35,7 +35,7 @@ function ExternalIdTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {externalIdentifierList.map(externalIdentifierDocument => (
+          {externalIdentifierList.map((externalIdentifierDocument) => (
             <ExternalIdRow
               key={externalIdentifierDocument.externalId}
               externalIdentifierDocument={externalIdentifierDocument}
@@ -51,7 +51,7 @@ function ExternalIdTable({
         entityType={entityType}
         entityId={entityId}
       />
-    </React.Fragment>
+    </>
   );
 }
 

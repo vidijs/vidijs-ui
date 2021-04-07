@@ -16,7 +16,7 @@ class ImportRaw extends React.PureComponent {
     const { history, ...props } = this.props;
     return (
       <ImportRawWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         {...props}
       />
     );

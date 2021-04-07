@@ -5,10 +5,9 @@ import TextGridArray from '../ui/TextGridArray';
 import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
-
 export const MetadataFieldValueType = ({ value = {} }) => {
   const { value: valueList = [] } = value;
-  const valueListValues = valueList.map(thisValue => thisValue.value);
+  const valueListValues = valueList.map((thisValue) => thisValue.value);
   return (
     <TextGridArray
       title={value.name}
@@ -35,7 +34,7 @@ export const MetadataFieldValueType = ({ value = {} }) => {
 };
 
 export const MetadataGroupValueType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Group Name"
       value={value.name}
@@ -54,17 +53,17 @@ export const MetadataGroupValueType = ({ value = {} }) => (
       component={MetadataGroupValueType}
       titleStartCase={false}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       value={value.timespan}
       hover={false}
       dense
       component={({ value: v = {} }) => (
-        <React.Fragment>
+        <>
           <TextGrid
             title="Timespan"
             value={`${v.start} ${v.end}`}
@@ -83,22 +82,21 @@ export const MetadataType = ({ value = {} }) => (
             titleStartCase={false}
             hideNoValue
           />
-        </React.Fragment>
+        </>
       )}
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function MetadataDisplay({
   metadataDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={metadataDocument}
         component={MetadataType}
       />
-    </React.Fragment>
+    </>
   );
 }

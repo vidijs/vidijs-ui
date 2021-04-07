@@ -1,11 +1,11 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextField } from '../form';
 import Typography from '@material-ui/core/Typography';
+import { TextField } from '../form';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="frameDuration"
       label="Frame Duration"
@@ -13,9 +13,8 @@ const queryParams = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportShapePlaceholderAdvancedForm({
   error,

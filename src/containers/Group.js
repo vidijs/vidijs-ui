@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { group as api } from '@vidijs/vidijs-api';
 import GroupTitle from '../components/group/GroupTitle';
 import GroupCard from '../components/group/GroupCard';
 import GroupChildCard from '../components/group/GroupChildCard';
@@ -9,7 +10,6 @@ import GroupRemove from '../components/group/GroupRemove';
 import SimpleMetadataCard from '../components/ui/SimpleMetadataCard';
 
 import withUI from '../hoc/withUI';
-import { group as api } from '@vidijs/vidijs-api';
 
 const GROUP_REMOVE_DIALOG = 'GROUP_REMOVE_DIALOG';
 
@@ -30,7 +30,7 @@ class Group extends React.PureComponent {
     document.title = `vidi.js | Group | ${groupName}`;
   }
 
-  componentWillReceiveProps({ groupName }) {
+  UNSAFE_componentWillReceiveProps({ groupName }) {
     const { groupName: prevGroupName } = this.props;
     if (prevGroupName !== groupName) {
       this.onFetch(groupName);
@@ -46,8 +46,8 @@ class Group extends React.PureComponent {
   onFetch(groupName) {
     try {
       api.getGroup({ groupName })
-        .then(response => this.setState({ groupDocument: response.data }))
-        .catch(error => this.onFetchError(error));
+        .then((response) => this.setState({ groupDocument: response.data }))
+        .catch((error) => this.onFetchError(error));
     } catch (error) {
       this.onFetchError(error);
     }
@@ -63,7 +63,7 @@ class Group extends React.PureComponent {
     const { groupDocument } = this.state;
     const { groupName, history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <GroupTitle
           onRefresh={this.onRefresh}
           code={groupDocument}
@@ -72,7 +72,7 @@ class Group extends React.PureComponent {
           removeModal={GROUP_REMOVE_DIALOG}
         />
         {groupDocument && (
-          <React.Fragment>
+          <>
             <GroupCard
               groupDocument={groupDocument}
             />
@@ -97,14 +97,14 @@ class Group extends React.PureComponent {
               entityType="group"
               entityId={groupName}
             />
-          </React.Fragment>
+          </>
         )}
         <GroupRemove
           dialogName={GROUP_REMOVE_DIALOG}
           groupName={groupName}
           onSuccess={() => history.push('/group/')}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

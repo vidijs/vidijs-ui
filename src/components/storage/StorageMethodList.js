@@ -14,7 +14,7 @@ export default function StorageMethodList({ storageDocument, openMethodCreate })
     </IconButton>
   ) : undefined;
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         disableTypography
         title={<Typography variant="subtitle1">Methods</Typography>}
@@ -25,6 +25,6 @@ export default function StorageMethodList({ storageDocument, openMethodCreate })
           storageDocument={storageDocument}
         />
       </CardContent>
-    </React.Fragment>
+    </>
   );
 }

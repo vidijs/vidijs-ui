@@ -25,31 +25,31 @@ export default function ScheduledRequestDetail({
   };
   React.useEffect(onGetScheduledRequestResponse, []);
   return (
+    <>
+      <TextGrid title="URI" value={request.uri} hover />
+      <TextGrid title="Method" value={request.method} hover />
+      <TextGrid
+        title="Request Body"
+        value={request.body}
+        variant="code"
+        hover
+        hideNoValue
+      />
+      {response.statusCode && (
       <>
-        <TextGrid title="URI" value={request.uri} hover />
-        <TextGrid title="Method" value={request.method} hover />
+        <TextGrid title="Response Status" value={response.statusCode} hover />
+        <TextGrid title="Response Content-Type" value={response.contentType} hover />
+        {responseBody && (
         <TextGrid
-          title="Request Body"
-          value={request.body}
-          variant="code"
+          title="Response Body"
+          value={contentType === 'application/json' ? JSON.stringify(responseBody) : responseBody}
+          variant={contentType}
           hover
           hideNoValue
         />
-        {response.statusCode && (
-          <>
-            <TextGrid title="Response Status" value={response.statusCode} hover />
-            <TextGrid title="Response Content-Type" value={response.contentType} hover />
-            {responseBody && (
-              <TextGrid
-                title="Response Body"
-                value={contentType === 'application/json' ? JSON.stringify(responseBody) : responseBody}
-                variant={contentType}
-                hover
-                hideNoValue
-              />
-            )}
-          </>
         )}
       </>
+      )}
+    </>
   );
 }

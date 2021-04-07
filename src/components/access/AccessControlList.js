@@ -15,7 +15,7 @@ export default function AccessControlListCard({
 }) {
   const { access: accessList = [] } = accessControlListDocument;
   return (
-    <React.Fragment>
+    <>
       {openCreate && (
         <CardHeader
           action={(
@@ -26,7 +26,7 @@ export default function AccessControlListCard({
         />
       )}
       {
-        accessList.map(accessControlDocument => (
+        accessList.map((accessControlDocument) => (
           <AccessControlCard
             accessControlDocument={accessControlDocument}
             key={accessControlDocument.id}
@@ -37,6 +37,6 @@ export default function AccessControlListCard({
           />
         ))
       }
-    </React.Fragment>
+    </>
   );
 }

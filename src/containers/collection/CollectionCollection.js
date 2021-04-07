@@ -1,7 +1,7 @@
 import React from 'react';
+import { collection as api } from '@vidijs/vidijs-api';
 import MetadataCollectionTable from '../../components/collection/MetadataCollectionTable';
 
-import { collection as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
 import withCard from '../../hoc/withCard';
 
@@ -22,7 +22,7 @@ class CollectionCollection extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ collectionId }) {
+  UNSAFE_componentWillReceiveProps({ collectionId }) {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
@@ -42,8 +42,8 @@ class CollectionCollection extends React.PureComponent {
         collectionId,
         matrixParams: Object.entries(matrixParams),
       })
-        .then(response => this.setState({ metadataDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metadataDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -55,7 +55,6 @@ class CollectionCollection extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -63,7 +62,7 @@ class CollectionCollection extends React.PureComponent {
     } = this.props;
     const { metadataDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={metadataDocument}
@@ -79,7 +78,7 @@ class CollectionCollection extends React.PureComponent {
             metadataDocument={metadataDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -1,9 +1,8 @@
 import React from 'react';
+import { item as api } from '@vidijs/vidijs-api';
 import ItemPosterGrid from '../../components/item/ItemPosterGrid';
 
-import { item as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class ItemPoster extends React.PureComponent {
   constructor(props) {
@@ -20,7 +19,7 @@ class ItemPoster extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -42,8 +41,8 @@ class ItemPoster extends React.PureComponent {
     };
     try {
       api.getItem({ itemId, queryParams })
-        .then(response => this.setState({ itemDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ itemDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -55,7 +54,6 @@ class ItemPoster extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -63,7 +61,7 @@ class ItemPoster extends React.PureComponent {
     } = this.props;
     const { itemDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={itemDocument}
@@ -75,15 +73,15 @@ class ItemPoster extends React.PureComponent {
           <TabComponent />
         )}
         {itemDocument && (
-          <React.Fragment>
+          <>
             {itemDocument.posters && (
               <ItemPosterGrid
                 uriListDocument={itemDocument.posters}
               />
             )}
-          </React.Fragment>
+          </>
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

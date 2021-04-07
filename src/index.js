@@ -18,7 +18,6 @@ const store = configureStore({ history });
 
 browserLogoutOn401(() => history.push('/login/'));
 
-
 ReactDOM.render(
   <Provider store={store}>
     <Auth

@@ -5,18 +5,18 @@ import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
 
 const TaskDefinitionDependency = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid title="step" value={value.step} hover hideNoValue />
     <TextGrid title="previous" value={value.previous} hover variant="boolean" />
     <TextGrid title="allPrevious" value={value.allPrevious} hover variant="boolean" />
-  </React.Fragment>
+  </>
 );
 
 export default function TaskDefinitionDisplay({
   taskDefinitionDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <Grid container>
         <Grid item sm={6} xs={12}>
           <TextGrid title="ID" value={taskDefinitionDocument.id} hover hideNoValue />
@@ -58,6 +58,6 @@ export default function TaskDefinitionDisplay({
         }}
         hideNoValue
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -52,7 +52,7 @@ export const CollectionTypeRow = ({
       <TableCell>{collectionType.name}</TableCell>
     )}
     {(terse && collectionType.terse) && (
-      fieldList.map(fieldName => (
+      fieldList.map((fieldName) => (
         <TableCell
           key={fieldName}
         >
@@ -81,7 +81,7 @@ function CollectionListTable({
   let fieldList = field;
   if (!Array.isArray(field)) { fieldList = field.split(','); }
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -98,7 +98,7 @@ function CollectionListTable({
               orderDirection={orderDirection}
             />
             {terse && (
-              fieldList.map(fieldName => (
+              fieldList.map((fieldName) => (
                 <TableHeadCell
                   key={fieldName}
                   name={fieldName}
@@ -111,7 +111,7 @@ function CollectionListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {collectionContentList.map(collectionType => (
+          {collectionContentList.map((collectionType) => (
             <CollectionTypeRow
               key={collectionType.id}
               collectionType={collectionType}
@@ -136,7 +136,7 @@ function CollectionListTable({
           </TableFooter>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }
 

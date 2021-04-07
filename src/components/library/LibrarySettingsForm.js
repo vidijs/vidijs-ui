@@ -1,11 +1,11 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -13,7 +13,7 @@ import BoolCheckbox from '../ui/BoolCheckbox';
 import { ItemSearchType } from '../item/ItemSearchForm';
 
 const LibrarySettingsDocument = () => (
-  <React.Fragment>
+  <>
     <Field
       name="username"
       component={TextField}
@@ -53,9 +53,8 @@ const LibrarySettingsDocument = () => (
       label="Query"
       component={ItemSearchType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function LibrarySettingsForm({
   error,
