@@ -7,7 +7,7 @@ export function onCreate(form) {
   return api.createStorage({
     storageDocument,
   })
-    .then(response => ({ storageDocument: response.data }))
+    .then((response) => ({ storageDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -17,7 +17,6 @@ export function onCreate(form) {
     });
 }
 
-
 export function onUpdate(form, dispatch, props) {
   const { storageDocument } = form;
   const storageId = props.storageId || storageDocument.storageId;
@@ -25,7 +24,7 @@ export function onUpdate(form, dispatch, props) {
     storageId,
     storageDocument,
   })
-    .then(response => ({ storageDocument: response.data }))
+    .then((response) => ({ storageDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -52,7 +51,7 @@ export function onMethodUpdate(form, dispatch, props) {
     storageMethodId,
     queryParams,
   })
-    .then(response => ({ storageMethodDocument: response.data }))
+    .then((response) => ({ storageMethodDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -77,7 +76,7 @@ export function onMethodCreate(form, dispatch, props) {
     storageId,
     queryParams,
   })
-    .then(response => ({ storageMethodDocument: response.data }))
+    .then((response) => ({ storageMethodDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

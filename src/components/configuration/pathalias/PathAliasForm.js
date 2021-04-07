@@ -6,16 +6,15 @@ import { TextField } from '../../form';
 import FormSection from '../../ui/FormSection';
 import FieldArray from '../../ui/FieldArray';
 
-
 const PathAliasConfigurationType = () => (
-  <React.Fragment>
+  <>
     <FieldArray
       name="alias"
       label="Alias"
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 function PathAliasForm({

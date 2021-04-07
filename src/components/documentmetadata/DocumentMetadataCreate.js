@@ -6,11 +6,11 @@ import Divider from '@material-ui/core/Divider';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+import Dialog from '@material-ui/core/Dialog';
 import DocumentMetadataForm from './DocumentMetadataForm';
 import * as formActions from '../../formactions/documentmetadata';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 export const EDIT_DOCUMENT_FORM = 'EDIT_DOCUMENT_FORM';

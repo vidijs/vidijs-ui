@@ -19,7 +19,7 @@ class Conform extends React.PureComponent {
       history,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           openCode={() => openModal({ modalName: CONFORM_CODE_MODAL })}
           title="Conform"
@@ -31,7 +31,7 @@ class Conform extends React.PureComponent {
           code={conformRequestDocument}
           title="ConformRequestDocument"
         />
-      </React.Fragment>
+      </>
     );
   }
 }

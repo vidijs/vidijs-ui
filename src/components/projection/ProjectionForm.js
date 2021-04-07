@@ -26,5 +26,4 @@ function ProjectionForm({
   );
 }
 
-
 export default reduxForm()(ProjectionForm);

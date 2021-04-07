@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { scheduledrequest as api } from '@vidijs/vidijs-api';
 
-
 export function onListScheduledRequest(form) { // eslint-disable-line import/prefer-default-export
   const { queryParams } = form;
   return api.listScheduledRequest({

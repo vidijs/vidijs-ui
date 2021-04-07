@@ -17,7 +17,7 @@ class ImportCollection extends React.PureComponent {
     const { history, ...props } = this.props;
     return (
       <ImportCollectionWizard
-        onSuccess={response => history.push(`/collection/${response.data.id}`)}
+        onSuccess={(response) => history.push(`/collection/${response.data.id}`)}
         {...props}
       />
     );

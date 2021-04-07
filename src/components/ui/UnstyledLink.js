@@ -7,6 +7,6 @@ export default function UnstyledLink(props) {
     color: 'inherit',
   };
   return (
-    <Link style={style} {...props} onClick={e => e.stopPropagation()} />
+    <Link style={style} {...props} onClick={(e) => e.stopPropagation()} />
   );
 }

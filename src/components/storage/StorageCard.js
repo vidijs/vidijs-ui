@@ -18,7 +18,7 @@ import {
 
 export default function StorageCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <StorageEditor
           title="Settings"
@@ -56,6 +56,6 @@ export default function StorageCard(props) {
           {...props}
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

@@ -26,8 +26,7 @@ class Metadata extends React.PureComponent {
     this.onRefresh();
   }
 
-
-  componentWillReceiveProps({ metadataUuid }) {
+  UNSAFE_componentWillReceiveProps({ metadataUuid }) {
     const { metadataUuid: prevMetadataUuid } = this.props;
     if (prevMetadataUuid !== metadataUuid) {
       this.onFetch(metadataUuid);
@@ -49,8 +48,8 @@ class Metadata extends React.PureComponent {
   onFetch(metadataUuid) {
     try {
       api.getMetadata({ metadataUuid })
-        .then(response => this.setState({ metadataEntryDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metadataEntryDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -60,7 +59,7 @@ class Metadata extends React.PureComponent {
     const { metadataUuid } = this.props;
     const { metadataEntryDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           code={metadataEntryDocument}
           codeModal="MetadataDocument"
@@ -72,10 +71,9 @@ class Metadata extends React.PureComponent {
         <MetadataEntryDisplayCard
           metadataEntryDocument={metadataEntryDocument}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default withSnackbar(Metadata);

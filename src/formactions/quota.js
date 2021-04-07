@@ -32,7 +32,7 @@ export function onCreate(form) {
   return api.createQuota({
     quotaRuleDocument,
   })
-    .then(response => ({ quotaRuleDocument: response.data }))
+    .then((response) => ({ quotaRuleDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -48,7 +48,7 @@ export function onList(form) {
   return api.listQuota({
     queryParams,
   })
-    .then(response => ({ quotaRuleListDocument: response.data, queryParams }))
+    .then((response) => ({ quotaRuleListDocument: response.data, queryParams }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

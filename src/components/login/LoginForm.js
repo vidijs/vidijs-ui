@@ -9,7 +9,7 @@ import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
 const headers = () => (
-  <React.Fragment>
+  <>
     <Field
       name="username"
       label="Username"
@@ -28,11 +28,11 @@ const headers = () => (
       autoFocus
       validate={[required]}
     />
-  </React.Fragment>
+  </>
 );
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -42,7 +42,7 @@ const queryParams = () => (
       )}
       label="Remember Me"
     />
-  </React.Fragment>
+  </>
 );
 
 function LoginForm({
@@ -74,6 +74,5 @@ function LoginForm({
     </form>
   );
 }
-
 
 export default reduxForm()(LoginForm);

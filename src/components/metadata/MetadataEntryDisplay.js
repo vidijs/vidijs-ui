@@ -5,7 +5,7 @@ import { MetadataGroupValueType, MetadataFieldValueType } from './MetadataDispla
 import TextGrid from '../ui/TextGrid';
 
 export const MetadataEntrySourceType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="Source ID"
       value={value.id}
@@ -19,9 +19,8 @@ export const MetadataEntrySourceType = ({ value = {} }) => (
       title="Source Location"
       value={value.loc}
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function MetadataEntryDisplay({
   metadataEntryDocument,
@@ -34,7 +33,7 @@ export default function MetadataEntryDisplay({
     source,
   } = metadataEntryDocument;
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={group}
         component={MetadataGroupValueType}
@@ -58,6 +57,6 @@ export default function MetadataEntryDisplay({
         title="source"
         hideNoValue
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -10,7 +10,6 @@ import * as formActions from '../../formactions/resource';
 import * as actions from '../../actions';
 import WizardForm from '../ui/WizardForm';
 
-
 function ImportSettingsDialog({
   closeModal,
   isOpen,

@@ -21,7 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import { WrappedSelect } from '../components/ui/Select';
 import { withModalNoRouter } from '../hoc/withModal';
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
     position: 'relative',
     backgroundColor: theme.palette.background.default,
@@ -36,7 +36,6 @@ const styles = theme => ({
 });
 
 const Transition = React.forwardRef((props, ref) => <Slide direction="down" ref={ref} {...props} />);
-
 
 function FullScreenDialog({
   classes,

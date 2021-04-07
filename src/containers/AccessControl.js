@@ -33,8 +33,8 @@ class AccessControl extends React.PureComponent {
         entityType,
         entityId,
       })
-        .then(response => response.json())
-        .then(accessControlListDocument => this.setState({ accessControlListDocument }));
+        .then((response) => response.json())
+        .then((accessControlListDocument) => this.setState({ accessControlListDocument }));
     } catch (error) {
       const messageContent = 'Error Loading Access List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -71,7 +71,6 @@ class AccessControl extends React.PureComponent {
     };
   }
 
-
   render() {
     const {
       accessControlListDocument,
@@ -87,7 +86,7 @@ class AccessControl extends React.PureComponent {
       tabComponent: TabComponent,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             onRefresh={this.onRefresh}
@@ -124,7 +123,7 @@ class AccessControl extends React.PureComponent {
           entityId={entityId}
           onRefresh={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

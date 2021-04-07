@@ -17,17 +17,16 @@ const RunningMenuItem = ({
   const { status } = jobDocument;
   if (!RUNNING_STATES.includes(status)) { return null; }
   return (
-    <React.Fragment>
+    <>
       <MenuItem onClick={() => onOpen({ modalName: priorityDialog })}>
         <Typography color="inherit">Change Priority</Typography>
       </MenuItem>
       <MenuItem onClick={() => onOpen({ modalName: abortDialog })}>
         <Typography color="secondary">Abort</Typography>
       </MenuItem>
-    </React.Fragment>
+    </>
   );
 };
-
 
 function JobTitle({
   onOpen,
@@ -43,8 +42,8 @@ function JobTitle({
       parentTo="/job/"
       helpTo="/ref/job.html"
       codeModal="JobDocument"
-      iconList={
-        <React.Fragment>
+      iconList={(
+        <>
           <JobStatus jobDocument={props.code} />
           <Menu>
             <RunningMenuItem
@@ -60,8 +59,8 @@ function JobTitle({
               <Typography color="secondary">Delete</Typography>
             </MenuItem>
           </Menu>
-        </React.Fragment>
-      }
+        </>
+      )}
       {...props}
     />
   );

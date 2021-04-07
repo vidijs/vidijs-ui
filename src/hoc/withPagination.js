@@ -1,6 +1,6 @@
 import React from 'react';
 
-const withPagination = WrappedComponent => class extends React.PureComponent {
+const withPagination = (WrappedComponent) => class extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this);
@@ -33,7 +33,6 @@ const withPagination = WrappedComponent => class extends React.PureComponent {
     this.setState({ page });
     if (onChangePage) { onChangePage({ page, rowsPerPage }); }
   }
-
 
   onChangeOrder(newOrderBy) {
     return () => {
@@ -81,6 +80,5 @@ const withPagination = WrappedComponent => class extends React.PureComponent {
     );
   }
 };
-
 
 export default withPagination;

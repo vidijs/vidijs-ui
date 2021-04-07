@@ -30,7 +30,7 @@ export default function UriListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {uriList.map(uri => (
+        {uriList.map((uri) => (
           <UriListRow
             key={uri}
             uri={uri}

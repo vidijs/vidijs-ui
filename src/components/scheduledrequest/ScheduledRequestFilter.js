@@ -10,7 +10,6 @@ import ScheduledRequestFilterForm from './ScheduledRequestFilterForm';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 
-
 function ScheduledRequestFilter({
   onClose,
   onSuccess,
@@ -27,7 +26,7 @@ function ScheduledRequestFilter({
     openSnackBar({ messageContent, messageColor: 'secondary' });
   };
   return (
-    <React.Fragment>
+    <>
       <CardContent>
         <ScheduledRequestFilterForm
           form={form}
@@ -53,7 +52,7 @@ function ScheduledRequestFilter({
           Filter
         </Button>
       </DialogActions>
-    </React.Fragment>
+    </>
   );
 }
 

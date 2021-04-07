@@ -8,7 +8,7 @@ export function onCreate(form) {
   return api.createTaskDefinition({
     taskDefinitionListDocument,
   })
-    .then(response => ({ uriListDocument: response.data }))
+    .then((response) => ({ uriListDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -25,7 +25,7 @@ export function onUpdate(form, dispatch, props) {
     taskDefinitionId,
     taskDefinitionDocument,
   })
-    .then(response => ({ taskDefinitionDocument: response.data, taskDefinitionId }))
+    .then((response) => ({ taskDefinitionDocument: response.data, taskDefinitionId }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

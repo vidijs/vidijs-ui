@@ -4,32 +4,31 @@ import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
 import TypeArray from '../ui/TypeArray';
 
-
 export const BulkyMetadataEntry = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title={value.key}
       value={value.value}
     />
-  </React.Fragment>
+  </>
 );
 
 export const BulkyMetadataMap = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       value={value.entry}
       component={BulkyMetadataEntry}
     />
-  </React.Fragment>
+  </>
 );
 
 export const BulkyMetadataMaps = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       value={value.map}
       component={BulkyMetadataMap}
     />
-  </React.Fragment>
+  </>
 );
 
 export const BulkyMetadataType = ({ value }) => (
@@ -58,11 +57,11 @@ export default function BulkyMetadataDisplay({
 }) {
   const { field = [] } = bulkyMetadataDocument;
   return (
-    <React.Fragment>
+    <>
       <TypeArray
         value={field}
         component={BulkyMetadataType}
       />
-    </React.Fragment>
+    </>
   );
 }

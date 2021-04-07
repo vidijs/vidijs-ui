@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { vxa as api } from '@vidijs/vidijs-api';
 import VxaTitle from '../components/vxa/VxaTitle';
 import VxaCard from '../components/vxa/VxaCard';
 import VxaRemove from '../components/vxa/VxaRemove';
 
 import withUI from '../hoc/withUI';
-import { vxa as api } from '@vidijs/vidijs-api';
 
 const REMOVE_AGENT_DIALOG = 'REMOVE_AGENT_DIALOG';
 
@@ -29,8 +29,8 @@ class Vxa extends React.PureComponent {
     const { vxaUuid } = this.props;
     try {
       api.getVxa({ vxaUuid })
-        .then(response => this.setState({ vxaDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ vxaDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -42,12 +42,11 @@ class Vxa extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { vxaDocument } = this.state;
     const { vxaUuid, history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <VxaTitle
           onRefresh={this.onRefresh}
           code={vxaDocument}
@@ -55,17 +54,18 @@ class Vxa extends React.PureComponent {
           removeModal={REMOVE_AGENT_DIALOG}
           vxaUuid={vxaUuid}
         />
-        {vxaDocument &&
+        {vxaDocument
+        && (
         <VxaCard
           vxaDocument={vxaDocument}
         />
-        }
+        )}
         <VxaRemove
           dialogName={REMOVE_AGENT_DIALOG}
           onSuccess={() => history.push('/vxa/')}
           vxaDocument={vxaDocument}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

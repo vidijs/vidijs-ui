@@ -23,7 +23,7 @@ export default function ImportAccessTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {groupList.map(group => (
+        {groupList.map((group) => (
           <ImportAccessRow
             key={group.name}
             group={group}

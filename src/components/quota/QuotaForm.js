@@ -1,20 +1,22 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
+import {
+  reduxForm, Field, FormSection, FieldArray,
+} from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField, Select } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { TextField, Select } from '../form';
 
 import TextButton from '../ui/TextButton';
 import UserSelect from '../user/UserSelect';
 import GroupSelect from '../group/GroupSelect';
 
 const ResourceArray = ({ fields }) => (
-  <React.Fragment>
+  <>
     {fields.map((thisField, index) => (
       <React.Fragment key={thisField}>
         <Grid
@@ -27,7 +29,7 @@ const ResourceArray = ({ fields }) => (
           <Grid item sm={10}>
             <FormControl fullWidth>
               <InputLabel htmlFor={`${thisField}.name`}>Resource Name</InputLabel>
-              <Field name={`${thisField}.name`} component={Select} required >
+              <Field name={`${thisField}.name`} component={Select} required>
                 <MenuItem value="item">Item</MenuItem>
                 <MenuItem value="storage">Storage</MenuItem>
               </Field>
@@ -51,12 +53,11 @@ const ResourceArray = ({ fields }) => (
     <TextButton onClick={() => fields.push()} color="primary" style={{ marginTop: 10 }}>
       Add Resource
     </TextButton>
-  </React.Fragment>
+  </>
 );
 
-
 const QuotaRuleType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="description"
       component={TextField}
@@ -111,9 +112,8 @@ const QuotaRuleType = () => (
         component={ResourceArray}
       />
     </Grid>
-  </React.Fragment>
+  </>
 );
-
 
 function QuotaForm({
   error,

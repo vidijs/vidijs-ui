@@ -27,7 +27,7 @@ function Watchfolder({
   activeStep,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         title="Watchfolder Setup"
         helpTo="/ref/storage/storage.html"
@@ -124,7 +124,7 @@ function Watchfolder({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

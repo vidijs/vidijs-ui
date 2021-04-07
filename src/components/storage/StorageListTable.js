@@ -19,7 +19,7 @@ export default function StorageListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {storageList.map(storageDocument => (
+        {storageList.map((storageDocument) => (
           <StorageRow
             key={storageDocument.id}
             storageDocument={storageDocument}

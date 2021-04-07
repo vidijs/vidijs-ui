@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -19,9 +19,8 @@ import FieldTypeArray from '../ui/FieldTypeArray';
 import { KeyValuePairType } from '../ui/FormType';
 import { required } from '../../utils/FieldValidation';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uri"
       component={TextField}
@@ -70,7 +69,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -155,9 +154,8 @@ const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ExportImpForm({
   error,

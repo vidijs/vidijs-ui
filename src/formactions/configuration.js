@@ -17,7 +17,6 @@ export function onUpdatePropertiesConfiguration(form) {
     });
 }
 
-
 export function onUpdateIndexingConfiguration(form) {
   const { indexingConfigurationDocument } = form;
   return api.updateIndexingConfiguration({ indexingConfigurationDocument })

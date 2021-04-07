@@ -8,14 +8,13 @@ import moment from 'moment';
 import TableCell from '../../ui/TableCell';
 import TableRow from '../../ui/TableRow';
 
-
 export default function PropertiesRow({
   configurationPropertyDocument = {},
   onRemove,
   onEdit,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TableRow hover>
         <TableCell>{configurationPropertyDocument.key}</TableCell>
         <TableCell>
@@ -35,6 +34,6 @@ export default function PropertiesRow({
           </IconButton>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }

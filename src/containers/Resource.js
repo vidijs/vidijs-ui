@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash.startcase';
 
+import { resource as api } from '@vidijs/vidijs-api';
 import ResourceTitle from '../components/resource/ResourceTitle';
 import ResourceCard from '../components/resource/ResourceCard';
 import ResourceRemove from '../components/resource/ResourceRemove';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { resource as api } from '@vidijs/vidijs-api';
 
 const RESOURCE_CODE_MODAL = 'RESOURCELIST_CODE_MODAL';
 const RESOURCE_REMOVE_MODAL = 'RESOURCE_REMOVE_MODAL';
@@ -32,7 +32,7 @@ class Resource extends React.PureComponent {
     const { openSnackBar, resourceType, resourceId } = this.props;
     try {
       api.getResource({ resourceType, resourceId })
-        .then(response => this.setState({ resourceDocument: response.data }));
+        .then((response) => this.setState({ resourceDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Resource';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -53,7 +53,7 @@ class Resource extends React.PureComponent {
       resourceDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ResourceTitle
           openCode={() => openModal({ modalName: RESOURCE_CODE_MODAL })}
           openRemove={() => openModal({ modalName: RESOURCE_REMOVE_MODAL })}
@@ -61,14 +61,15 @@ class Resource extends React.PureComponent {
           resourceType={resourceType}
           resourceId={resourceId}
         />
-        {resourceDocument &&
+        {resourceDocument
+        && (
         <ResourceCard
           onRefresh={this.onRefresh}
           resourceType={resourceType}
           resourceId={resourceId}
           resourceDocument={resourceDocument}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === RESOURCE_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -83,7 +84,7 @@ class Resource extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -15,7 +15,6 @@ import withFormActions from '../../hoc/withFormActions';
 
 const EDIT_JOBTYPE_FORM = 'EDIT_JOBTYPE_FORM';
 
-
 function JobTypeDialog({
   submitForm,
   openSnackBar,

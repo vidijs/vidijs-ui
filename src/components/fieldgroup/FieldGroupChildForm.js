@@ -6,7 +6,6 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import Field from '../ui/Field';
 import { loadFieldGroupOptions } from './FieldGroupSelect';
 
-
 const FieldGroupChildForm = ({ error, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     {error && <Typography color="error">{error}</Typography>}

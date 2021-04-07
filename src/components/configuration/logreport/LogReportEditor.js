@@ -6,7 +6,6 @@ import LogReportForm from './LogReportForm';
 import LogReportDisplay from './LogReportDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function LogReportEditor({
   logReportConfigurationDocument,
   openSnackBar,
@@ -35,6 +34,5 @@ function LogReportEditor({
     />
   );
 }
-
 
 export default withSnackbar(LogReportEditor);

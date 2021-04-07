@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { vxa as api } from '@vidijs/vidijs-api';
 import VxaListCard from '../components/vxa/VxaListCard';
 import VxaDialog from '../components/vxa/VxaDialog';
 import VxaConfigurationDialog from '../components/vxa/VxaConfigurationDialog';
 import VxaListTitle from '../components/vxa/VxaListTitle';
 
 import withUI from '../hoc/withUI';
-import { vxa as api } from '@vidijs/vidijs-api';
 
 const VXA_CREATE_MODAL = 'VXA_CREATE_MODAL';
 const VXA_CONFIG_MODAL = 'VXA_CONFIG_MODAL';
@@ -30,8 +30,8 @@ class VxaList extends React.PureComponent {
   onRefresh() {
     try {
       api.listVxa()
-        .then(response => this.setState({ vxaListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ vxaListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -43,24 +43,24 @@ class VxaList extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { vxaListDocument, vxaConfiguration } = this.state;
     const { onOpen } = this.props;
     return (
-      <React.Fragment>
+      <>
         <VxaListTitle
           createModal={VXA_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={vxaListDocument}
           codeModal="VXAListDocument"
         />
-        {vxaListDocument &&
+        {vxaListDocument
+        && (
         <VxaListCard
           vxaListDocument={vxaListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <VxaDialog
           dialogName={VXA_CREATE_MODAL}
           onSuccess={(response) => {
@@ -69,13 +69,14 @@ class VxaList extends React.PureComponent {
             this.onRefresh();
           }}
         />
-        { vxaConfiguration &&
+        { vxaConfiguration
+          && (
           <VxaConfigurationDialog
             dialogName={VXA_CONFIG_MODAL}
             vxaConfiguration={vxaConfiguration}
           />
-        }
-      </React.Fragment>
+          )}
+      </>
     );
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import { reduxForm, FieldArray } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -9,6 +8,7 @@ import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Select } from '../form';
 
 import UrlField from '../ui/UrlField';
 import TextButton from '../ui/TextButton';
@@ -19,7 +19,7 @@ import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 
 const TranscoderConfigurationType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="encoderThreads"
       label="encoderThreads"
@@ -71,17 +71,16 @@ const TranscoderConfigurationType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="bilinearEffects"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Bilinear Effects"
     />
-  </React.Fragment>
+  </>
 );
-
 
 const MediaLocationArray = ({ fields }) => (
   <Grid container direction="column">
@@ -172,9 +171,8 @@ const DirectAccessArray = ({ fields }) => (
   </Grid>
 );
 
-
 export const NetworkTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="netmask"
       component={TextField}
@@ -187,11 +185,11 @@ export const NetworkTypeForm = () => (
       label="Bandwidth"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const ExternalTranscoderTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="source"
       component={TextField}
@@ -234,11 +232,11 @@ export const ExternalTranscoderTypeForm = () => (
       label="Regex"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const CerifyTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="address"
       component={UrlField}
@@ -256,11 +254,11 @@ export const CerifyTypeForm = () => (
       name="mediaLocation"
       component={MediaLocationArray}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FinalCutServerTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       component={UrlField}
@@ -290,11 +288,11 @@ export const FinalCutServerTypeForm = () => (
       name="metadata.field"
       component={SimpleMetadataFieldArray}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MXFServerResourceTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       label="URL"
@@ -378,11 +376,11 @@ export const MXFServerResourceTypeForm = () => (
       name="metadata.field"
       component={SimpleMetadataFieldArray}
     />
-  </React.Fragment>
+  </>
 );
 
 export const SigniantTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       component={UrlField}
@@ -414,11 +412,11 @@ export const SigniantTypeForm = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const LDAPResourceTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       label="url"
@@ -499,28 +497,28 @@ export const LDAPResourceTypeForm = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="sync.createUsers"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Create Users"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="sync.createGroups"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Create Groups"
     />
-  </React.Fragment>
+  </>
 );
 
 export const CloudConvertTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="publicAddress"
       label="Public Address"
@@ -551,11 +549,11 @@ export const CloudConvertTypeForm = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const VidinetServiceTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       component={UrlField}
@@ -582,11 +580,11 @@ export const VidinetServiceTypeForm = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const EidrTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       component={UrlField}
@@ -619,11 +617,11 @@ export const EidrTypeForm = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const TranscoderTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="url"
       label="URL"
@@ -633,7 +631,7 @@ export const TranscoderTypeForm = () => (
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="type">Resource Name</InputLabel>
-      <Field name="type" component={Select} required >
+      <Field name="type" component={Select} required>
         <MenuItem value="TRANSCODER">TRANSCODER</MenuItem>
         <MenuItem value="DIRECTORY">DIRECTORY</MenuItem>
       </Field>
@@ -659,11 +657,11 @@ export const TranscoderTypeForm = () => (
       label="Configuration"
       component={TranscoderConfigurationType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const ThumbnailServiceTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="path"
       component={UrlField}
@@ -679,9 +677,8 @@ export const ThumbnailServiceTypeForm = () => (
         <MenuItem value="NONE">NONE</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
-
 
 const ResourceTypeForm = ({ resourceType }) => {
   switch (resourceType) {
@@ -773,7 +770,6 @@ const ResourceTypeForm = ({ resourceType }) => {
       return null;
   }
 };
-
 
 function ResourceForm({
   error,

@@ -14,7 +14,6 @@ import withFormActions from '../../hoc/withFormActions';
 
 const EDIT_TASKDEFINITION_FORM = 'EDIT_TASKDEFINITION_FORM';
 
-
 function TaskDefinitionDialog({
   jobType,
   submitForm,

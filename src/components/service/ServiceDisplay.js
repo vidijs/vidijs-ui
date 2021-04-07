@@ -2,9 +2,8 @@ import React from 'react';
 import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
 
-
 const VidispineServiceType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -81,19 +80,18 @@ const VidispineServiceType = ({ value = {} }) => (
       hover
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function ServiceDisplay({
   vidispineServiceDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={VidispineServiceType}
         value={vidispineServiceDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

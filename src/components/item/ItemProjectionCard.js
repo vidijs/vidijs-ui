@@ -4,7 +4,6 @@ import CardContent from '@material-ui/core/CardContent';
 import ItemProjection from './ItemProjection';
 import SquareCard from '../ui/SquareCard';
 
-
 function ItemProjectionCard(props) {
   return (
     <SquareCard>

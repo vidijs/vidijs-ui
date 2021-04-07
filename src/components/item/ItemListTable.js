@@ -48,7 +48,7 @@ export const ItemTypeRow = ({
     {children}
     <TableCell>{itemType.id}</TableCell>
     {(terse && itemType.terse) && (
-      fieldList.map(fieldName => (
+      fieldList.map((fieldName) => (
         <TableCell
           key={fieldName}
         >
@@ -77,7 +77,7 @@ function ItemListTable({
   let fieldList = field;
   if (!Array.isArray(field)) { fieldList = field.split(','); }
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -88,7 +88,7 @@ function ItemListTable({
               orderDirection={orderDirection}
             />
             {terse && (
-              fieldList.map(fieldName => (
+              fieldList.map((fieldName) => (
                 <TableHeadCell
                   key={fieldName}
                   name={fieldName}
@@ -101,7 +101,7 @@ function ItemListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {itemList.map(itemType => (
+          {itemList.map((itemType) => (
             <ItemTypeRow
               key={itemType.id}
               itemType={itemType}
@@ -126,7 +126,7 @@ function ItemListTable({
           </TableFooter>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }
 

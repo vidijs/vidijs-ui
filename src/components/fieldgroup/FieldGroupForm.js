@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import FieldTypeArray from '../ui/FieldTypeArray';
 
@@ -16,7 +16,7 @@ import { KeyValuePairType } from '../ui/FormType';
 import { MetadataSchemaElementType, MetadataFieldType } from '../metadatafield/MetadataFieldForm';
 
 const MetadataFieldAccessControlType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       label="field"
@@ -47,11 +47,11 @@ const MetadataFieldAccessControlType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const BasicSection = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="name"
@@ -60,56 +60,56 @@ const BasicSection = () => (
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="inheritance">Inheritance</InputLabel>
-      <Field name="inheritance" component={Select} >
+      <Field name="inheritance" component={Select}>
         <MenuItem value="true">True</MenuItem>
         <MenuItem value="false">False</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
 
 const AccessSection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="access"
       label="access"
       component={MetadataFieldAccessControlType}
     />
-  </React.Fragment>
+  </>
 );
 
 const FieldSection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="field"
       label="field"
       component={MetadataFieldType}
     />
-  </React.Fragment>
+  </>
 );
 
 const SchemaSection = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="schema"
       label="schema"
       component={MetadataSchemaElementType}
     />
-  </React.Fragment>
+  </>
 );
 
 const DataSection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="data"
       label="data"
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
 
 const MetadataFieldGroupType = () => (
-  <React.Fragment>
+  <>
     <BasicSection />
     <SchemaSection />
     <FieldSection />
@@ -120,17 +120,17 @@ const MetadataFieldGroupType = () => (
     />
     <AccessSection />
     <DataSection />
-  </React.Fragment>
+  </>
 );
 
 const GroupSection = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="group"
       label="group"
       component={MetadataFieldGroupType}
     />
-  </React.Fragment>
+  </>
 );
 
 const DataForm = ({ error, handleSubmit }) => (

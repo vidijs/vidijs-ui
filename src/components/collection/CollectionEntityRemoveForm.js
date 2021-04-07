@@ -1,17 +1,17 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import { required } from '../../utils/FieldValidation';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="type">Entity Type</InputLabel>
       <Field name="type" component={Select} validate={[required]}>
@@ -20,9 +20,8 @@ const queryParams = () => (
         <MenuItem value="library">Library</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
-
 
 function CollectionEntityRemoveForm({
   error,

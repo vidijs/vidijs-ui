@@ -4,8 +4,7 @@ import { reduxForm, FieldArray, FormSection } from 'redux-form';
 
 import { SimpleMetadataFieldArray, SimpleMetadataFieldRemove } from './SimpleMetadataField';
 
-
-export const SimpleMetadataType = props => (
+export const SimpleMetadataType = (props) => (
   <FieldArray
     {...props}
     name="field"
@@ -24,7 +23,7 @@ function SimpleMetadataForm({
     if (value) {
       const { simpleMetadataDocument = {} } = initialValues;
       const { field = [] } = simpleMetadataDocument;
-      const isInitial = field.find(thisField => thisField.key === value.key);
+      const isInitial = field.find((thisField) => thisField.key === value.key);
       if (isInitial) {
         array.push('removedKeys', value);
       }

@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -10,9 +10,8 @@ import FieldTypeArray from '../ui/FieldTypeArray';
 import BoolCheckbox from '../ui/BoolCheckbox';
 import { KeyValuePairType } from '../ui/FormType';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControlLabel
       control={(
         <Field
@@ -78,9 +77,8 @@ const queryParams = () => (
       label="Notification Metadata"
       component={KeyValuePairType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportImpAdvancedForm({
   error,

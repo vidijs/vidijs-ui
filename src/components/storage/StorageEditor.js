@@ -4,7 +4,6 @@ import * as formActions from '../../formactions/storage';
 import * as actions from '../../actions';
 import Editor from '../ui/Editor';
 
-
 function StorageEditor({
   storageDocument,
   storageId,

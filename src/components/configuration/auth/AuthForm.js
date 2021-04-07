@@ -7,7 +7,7 @@ import FormSection from '../../ui/FormSection';
 import Field from '../../ui/Field';
 
 const OAuth2ConfigurationType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="federationMetadataURI"
       component={TextField}
@@ -40,7 +40,7 @@ const OAuth2ConfigurationType = () => (
       fullWidth
       multiline
     />
-  </React.Fragment>
+  </>
 );
 
 function AuthForm({

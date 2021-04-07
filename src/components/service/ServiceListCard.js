@@ -16,9 +16,9 @@ function ServiceListCard({
 }) {
   const { service: serviceList = [] } = vidispineServiceListDocument;
   return (
-    <React.Fragment>
+    <>
       {
-      serviceList.map(vidispineServiceDocument => (
+      serviceList.map((vidispineServiceDocument) => (
         <ServiceListServiceCard
           key={vidispineServiceDocument.name}
           vidispineServiceDocument={vidispineServiceDocument}
@@ -37,7 +37,7 @@ function ServiceListCard({
         dialogName={DISABLE_SERVICE_DIALOG}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

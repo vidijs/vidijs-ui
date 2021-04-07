@@ -5,96 +5,94 @@ import UnstyledLink from '../ui/UnstyledLink';
 import { OnlineIcon, OfflineIcon } from '../ui/StatusIcon';
 
 const NetworkRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.netmask}</TableCell>
     <TableCell>{resource.bandwidth}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const ExternalTranscoderRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.source}</TableCell>
     <TableCell>{resource.destination}</TableCell>
     <TableCell>{resource.shapeTag}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const TranscoderRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.version}</TableCell>
     <TableCell>
       {resource.state === 'ONLINE' ? <OnlineIcon /> : <OfflineIcon />}
     </TableCell>
-  </React.Fragment>
+  </>
 );
 
 const ThumbnailServiceRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.path}</TableCell>
-  </React.Fragment>
+  </>
 );
 
-
 const CerifyRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.address}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const FinalCutServerRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.tag}</TableCell>
     <TableCell>{resource.state}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const MXFServerRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.workspaceUrl}</TableCell>
     <TableCell>{resource.userWorkspaceUrl}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const SigniantRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.tag}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const LDAPRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const CloudConvertRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.publicAddress}</TableCell>
     <TableCell>{resource.apiHost}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const VidinetServiceRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.name}</TableCell>
     <TableCell>{resource.endpoint}</TableCell>
     <TableCell>{resource.state}</TableCell>
-  </React.Fragment>
+  </>
 );
 
 const EidrRow = ({ resource }) => (
-  <React.Fragment>
+  <>
     <TableCell>{resource.url}</TableCell>
     <TableCell>{resource.partyId}</TableCell>
     <TableCell>{resource.userId}</TableCell>
-  </React.Fragment>
+  </>
 );
-
 
 const ResourceRow = ({ resource, resourceType }) => {
   switch (resourceType) {
@@ -152,7 +150,6 @@ const ResourceRow = ({ resource, resourceType }) => {
       );
   }
 };
-
 
 export default function ResourceListRow({
   resource,

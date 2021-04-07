@@ -1,10 +1,10 @@
 import { SubmissionError } from 'redux-form';
+import { configuration as api } from '@vidijs/vidijs-api';
 
-import * as api from '../api/pathalias';
 import * as actions from '../actions';
 
 export function onSubmit(form) {
-  return api.updatePathAlias({ pathAliasConfigurationDocument: form })
+  return api.updatePathAliasConfiguration({ pathAliasConfigurationDocument: form })
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -23,8 +23,8 @@ export function onSubmitFail(errors, dispatch) {
 export function onSubmitSuccess(response, dispatch) {
   const { receivePathAlias } = actions.pathalias;
   const { openSnackBar } = actions.ui;
-  api.listPathAlias()
-    .then(r => r.json())
+  api.getPathAliasConfiguration()
+    .then((r) => r.json())
     .then((pathAliasConfigurationDocument) => {
       dispatch(receivePathAlias({ pathAliasConfigurationDocument }));
     });

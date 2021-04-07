@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { taskgroup as api } from '@vidijs/vidijs-api';
 import TaskGroupListTitle from '../components/taskgroup/TaskGroupListTitle';
 import TaskGroupListCard from '../components/taskgroup/TaskGroupListCard';
 import TaskGroupDialog from '../components/taskgroup/TaskGroupDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { taskgroup as api } from '@vidijs/vidijs-api';
 
 const TASKGROUPLIST_CODE_MODAL = 'TASKGROUPLIST_CODE_MODAL';
 const TASKGROUPLIST_CREATE_MODAL = 'TASKGROUPLIST_CREATE_MODAL';
@@ -30,8 +30,8 @@ class TaskGroupList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listTaskGroup()
-        .then(response => response.json())
-        .then(taskGroupListDocument => this.setState({ taskGroupListDocument }));
+        .then((response) => response.json())
+        .then((taskGroupListDocument) => this.setState({ taskGroupListDocument }));
     } catch (error) {
       const messageContent = 'Error Loading Task Groups';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -49,17 +49,18 @@ class TaskGroupList extends React.PureComponent {
       taskGroupListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TaskGroupListTitle
           openCode={() => openModal({ modalName: TASKGROUPLIST_CODE_MODAL })}
           openCreate={() => openModal({ modalName: TASKGROUPLIST_CREATE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        {taskGroupListDocument &&
+        {taskGroupListDocument
+          && (
           <TaskGroupListCard
             taskGroupListDocument={taskGroupListDocument}
           />
-        }
+          )}
         <CodeModal
           isOpen={(modalName === TASKGROUPLIST_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -71,7 +72,7 @@ class TaskGroupList extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

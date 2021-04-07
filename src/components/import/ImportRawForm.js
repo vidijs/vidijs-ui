@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FieldArray } from 'redux-form';
-import { Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import { Select } from '../form';
 
 import SimpleMetadataField from '../ui/SimpleMetadataField';
 import UploadButton from '../ui/UploadButton';
@@ -15,7 +15,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="filename"
       label="Filename"
@@ -48,9 +48,8 @@ const queryParams = () => (
       component={SimpleMetadataField}
       buttonLabel="Add Job Metadata"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportRawForm({
   error,

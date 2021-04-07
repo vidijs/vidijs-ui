@@ -14,11 +14,9 @@ import 'codemirror/addon/fold/indent-fold';
 import 'codemirror/addon/fold/comment-fold';
 import 'codemirror/addon/fold/foldgutter.css';
 
-
 import 'codemirror/theme/material.css';
 import 'codemirror/lib/codemirror.css';
 import '../../css/CodeMirror.css';
-
 
 const CodeField = (p) => {
   const className = p.className || {};

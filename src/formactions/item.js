@@ -50,7 +50,6 @@ export function onRemoveItem(form, dispatch, props) {
     });
 }
 
-
 export function onUpdateMetadata(form, dispatch, props) {
   const { metadataDocument = {}, matrixParams = [], queryParams } = form;
   const itemId = props.itemId || form.itemId;
@@ -60,7 +59,7 @@ export function onUpdateMetadata(form, dispatch, props) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -80,7 +79,7 @@ export function onGetMetadata(form, dispatch, props) {
     matrixParams: Object.entries(matrixParams),
     headers,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -98,7 +97,7 @@ export function onGet(form, dispatch, props) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -119,7 +118,7 @@ export function onSearch(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       itemSearchDocument,
@@ -141,7 +140,7 @@ export function onGetUri(form, dispatch, props) {
     itemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -158,7 +157,7 @@ export function onCreateTranscode(form, dispatch, props) {
     itemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -175,7 +174,7 @@ export function onCreateThumbnail(form, dispatch, props) {
     itemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -194,7 +193,7 @@ export function onListItemRelation(form, dispatch, props) {
     itemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -215,7 +214,7 @@ export function onCreateItemRelation(form, dispatch, props) {
     relationItemId,
     queryParams,
   })
-    .then(response => ({ itemId, ...response }))
+    .then((response) => ({ itemId, ...response }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

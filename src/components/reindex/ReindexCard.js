@@ -7,11 +7,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
+import { reindex as api } from '@vidijs/vidijs-api';
 import SquareCard from '../ui/SquareCard';
 import ReindexDisplay from './ReindexDisplay';
 import ReindexStatus from './ReindexStatus';
 
-import { reindex as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withUI';
 
 function ReindexCard({

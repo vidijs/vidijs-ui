@@ -35,7 +35,7 @@ function QuotaFilter({
     <SquareCard>
       <CardContent>
         <CardHeader
-          action={
+          action={(
             <Button
               size="small"
               color="primary"
@@ -43,7 +43,7 @@ function QuotaFilter({
             >
               Search
             </Button>
-          }
+          )}
         />
         <CardContent>
           <QuotaFilterForm

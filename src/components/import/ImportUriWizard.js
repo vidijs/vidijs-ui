@@ -55,7 +55,7 @@ function ImportUriWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="URI"
@@ -150,7 +150,7 @@ function ImportUriWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

@@ -22,7 +22,7 @@ export default function FilePrefixTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {prefixList.map(prefix => (
+        {prefixList.map((prefix) => (
           <TableRow hover onClick={() => onChangePrefix(prefix)}>
             <TableCell>
               {prefix}

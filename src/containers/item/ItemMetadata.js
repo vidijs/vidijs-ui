@@ -1,10 +1,9 @@
 import React from 'react';
+import { item as api } from '@vidijs/vidijs-api';
 import ItemMetadataListCard from '../../components/item/ItemMetadataListCard';
 import ItemMetadataDisplayParams from '../../components/item/ItemMetadataDisplayParams';
 
-import { item as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class ItemMetadata extends React.PureComponent {
   constructor(props) {
@@ -21,7 +20,7 @@ class ItemMetadata extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -37,8 +36,8 @@ class ItemMetadata extends React.PureComponent {
   onFetch(itemId) {
     try {
       api.getItemMetadata({ itemId })
-        .then(response => this.setState({ metadataListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metadataListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -50,7 +49,6 @@ class ItemMetadata extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       itemId,
@@ -59,7 +57,7 @@ class ItemMetadata extends React.PureComponent {
     } = this.props;
     const { metadataListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={metadataListDocument}
@@ -72,7 +70,7 @@ class ItemMetadata extends React.PureComponent {
         )}
         <ItemMetadataDisplayParams
           itemId={itemId}
-          onSuccess={response => this.setState({ metadataListDocument: response.data })}
+          onSuccess={(response) => this.setState({ metadataListDocument: response.data })}
         />
         {metadataListDocument && (
           <ItemMetadataListCard
@@ -81,7 +79,7 @@ class ItemMetadata extends React.PureComponent {
             onSuccess={() => this.onRefresh()}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

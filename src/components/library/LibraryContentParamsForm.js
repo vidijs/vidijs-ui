@@ -1,8 +1,8 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -10,7 +10,7 @@ import BoolCheckbox from '../ui/BoolCheckbox';
 import { queryParams as itemQueryParams, matrixParams as itemMatrixParams } from '../item/ItemContentParamsForm';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="first"
       component={TextField}
@@ -32,9 +32,8 @@ const queryParams = () => (
       )}
       label="Count"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function LibraryContentParamsForm({
   error,

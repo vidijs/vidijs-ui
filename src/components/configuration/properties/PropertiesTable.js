@@ -11,7 +11,6 @@ import PropertiesRow from './PropertiesRow';
 import PropertiesRemove from './PropertiesRemove';
 import PropertiesDialog from './PropertiesDialog';
 
-
 const REMOVE_CONFIGURATIONPROPERTIES_DIALOG = 'REMOVE_CONFIGURATIONPROPERTIES_DIALOG';
 const CONFIGURATIONPROPERTIES_EDIT_MODAL = 'CONFIGURATIONPROPERTIES_EDIT_MODAL';
 
@@ -23,7 +22,7 @@ function PropertiesTable({
 }) {
   const { property: propertyList = [] } = configurationPropertyListDocument;
   return (
-    <React.Fragment>
+    <>
       <FixedTable>
         <TableHead>
           <TableRow>
@@ -34,7 +33,7 @@ function PropertiesTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {propertyList.map(configurationPropertyDocument => (
+          {propertyList.map((configurationPropertyDocument) => (
             <PropertiesRow
               key={configurationPropertyDocument.key}
               configurationPropertyDocument={configurationPropertyDocument}
@@ -54,7 +53,7 @@ function PropertiesTable({
         dialogName={CONFIGURATIONPROPERTIES_EDIT_MODAL}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

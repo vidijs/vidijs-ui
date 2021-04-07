@@ -1,9 +1,8 @@
 import React from 'react';
+import { item as api } from '@vidijs/vidijs-api';
 import ItemProjectionCard from '../../components/item/ItemProjectionCard';
 
-import { item as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class ItemProjection extends React.PureComponent {
   constructor(props) {
@@ -20,7 +19,7 @@ class ItemProjection extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -42,8 +41,8 @@ class ItemProjection extends React.PureComponent {
         headers,
         matrixParams,
       })
-        .then(response => this.setState({ outgoingProjectionDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ outgoingProjectionDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -55,7 +54,6 @@ class ItemProjection extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       itemId,
@@ -64,7 +62,7 @@ class ItemProjection extends React.PureComponent {
     } = this.props;
     const { outgoingProjectionDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={outgoingProjectionDocument}
@@ -79,10 +77,10 @@ class ItemProjection extends React.PureComponent {
           <ItemProjectionCard
             itemId={itemId}
             outgoingProjectionDocument={outgoingProjectionDocument}
-            onSuccess={response => this.setState({ outgoingProjectionDocument: response.data })}
+            onSuccess={(response) => this.setState({ outgoingProjectionDocument: response.data })}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

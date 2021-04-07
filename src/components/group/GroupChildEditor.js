@@ -19,11 +19,11 @@ function GroupChildEditor({
   onOpen,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         disableTypography
         title={<Typography variant="subtitle1">Child Groups</Typography>}
-        action={
+        action={(
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>
               <Tooltip title="Add">
@@ -33,7 +33,7 @@ function GroupChildEditor({
               </Tooltip>
             </Grid>
           </Grid>
-        }
+        )}
       />
       <GroupTable
         groupListDocument={groupDocument.childGroupList}
@@ -47,7 +47,7 @@ function GroupChildEditor({
         groupDocument={groupDocument}
         onSuccess={onSuccess}
       />
-    </React.Fragment>
+    </>
   );
 }
 

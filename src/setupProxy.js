@@ -1,4 +1,5 @@
-const proxy = require('http-proxy-middleware');
+// eslint-disable-next-line import/no-extraneous-dependencies
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const VIDISPINE_ENDPOINTS = [
   '/API/',
@@ -13,7 +14,7 @@ const target = process.env.REACT_APP_VIDISPINE_URL || 'http://localhost:8080/';
 const options = { target, changeOrigin: true };
 
 function useProxy(app) {
-  app.use(proxy(VIDISPINE_ENDPOINTS, options));
+  app.use(createProxyMiddleware(VIDISPINE_ENDPOINTS, options));
 }
 
 module.exports = useProxy;

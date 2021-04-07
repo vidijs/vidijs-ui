@@ -24,16 +24,16 @@ function StorageGroupStorageEditor({
   history,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         subheader={storageDocument.id}
-        action={
+        action={(
           <IconButton
             onClick={() => openModal({ modalName: STORAGEGROUP_STORAGE_REMOVE_MODAL })}
           >
             <Delete />
           </IconButton>
-        }
+        )}
       />
       <CardContent onClick={() => history.push(`/storage/${storageId}`)}>
         <StorageGroupStorageDisplay
@@ -48,7 +48,7 @@ function StorageGroupStorageEditor({
         closeModal={closeModal}
         onRefresh={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

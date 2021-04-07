@@ -11,7 +11,7 @@ export default function TaskGroupCard({
 }) {
   const { metadata: simpleMetadataList = {} } = taskGroupDocument;
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <TaskGroupEditor
           groupName={groupName}
@@ -19,7 +19,8 @@ export default function TaskGroupCard({
           onRefresh={onRefresh}
         />
       </SquareCard>
-      {simpleMetadataList &&
+      {simpleMetadataList
+      && (
       <SquareCard>
         <SimpleMetadataGrid
           simpleMetadataList={simpleMetadataList.field}
@@ -29,7 +30,7 @@ export default function TaskGroupCard({
           editable
         />
       </SquareCard>
-    }
-    </React.Fragment>
+      )}
+    </>
   );
 }

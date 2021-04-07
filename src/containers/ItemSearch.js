@@ -101,7 +101,7 @@ class ItemSearch extends React.PureComponent {
       viewLayout,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Item"
           helpTo="/ref/item/item.html"
@@ -148,7 +148,7 @@ class ItemSearch extends React.PureComponent {
             queryParams={queryParams}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

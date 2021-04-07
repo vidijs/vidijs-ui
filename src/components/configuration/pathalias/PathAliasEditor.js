@@ -6,7 +6,6 @@ import PathAliasForm from './PathAliasForm';
 import PathAliasTable from './PathAliasTable';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function PathAliasEditor({
   pathAliasConfigurationDocument,
   openSnackBar,
@@ -35,6 +34,5 @@ function PathAliasEditor({
     />
   );
 }
-
 
 export default withSnackbar(PathAliasEditor);

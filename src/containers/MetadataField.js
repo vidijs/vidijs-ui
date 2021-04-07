@@ -30,9 +30,9 @@ class MetadataField extends React.PureComponent {
     const { openSnackBar, fieldName } = this.props;
     try {
       api.getMetadataField({ fieldName, queryParams: { includeValues: true } })
-        .then(response => this.setState({ metadataFieldDocument: response.data }));
+        .then((response) => this.setState({ metadataFieldDocument: response.data }));
       api.getSimpleMetadata({ fieldName })
-        .then(response => this.setState({ simpleMetadataDocument: response.data }));
+        .then((response) => this.setState({ simpleMetadataDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Getting Metadata Field';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -46,7 +46,7 @@ class MetadataField extends React.PureComponent {
     const { simpleMetadataDocument = {}, metadataFieldDocument } = this.state;
     const { field: simpleMetadataList = [] } = simpleMetadataDocument;
     return (
-      <React.Fragment>
+      <>
         <MetadataFieldTitle
           removeModal={METADATAFIELD_REMOVE_MODAL}
           onRefresh={this.onRefresh}
@@ -54,25 +54,27 @@ class MetadataField extends React.PureComponent {
           code={metadataFieldDocument}
           codeModal="MetadataFieldDocument"
         />
-        {metadataFieldDocument &&
+        {metadataFieldDocument
+        && (
         <MetadataFieldCard
           metadataFieldDocument={metadataFieldDocument}
           onRefresh={this.onRefresh}
         />
-        }
-        {simpleMetadataList &&
+        )}
+        {simpleMetadataList
+        && (
         <SimpleMetadataCard
           simpleMetadataList={simpleMetadataList}
           onSuccess={this.onRefresh}
           entityType="metadata-field"
           entityId={fieldName}
         />
-        }
+        )}
         <MetadataFieldRemove
           dialogName={METADATAFIELD_REMOVE_MODAL}
           fieldName={fieldName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

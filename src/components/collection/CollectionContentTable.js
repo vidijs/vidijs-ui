@@ -23,7 +23,7 @@ function CollectionContentTable({
   const { content: collectionContentList = [], id: collectionId } = collectionDocument;
   const onOpenRemove = onOpen(REMOVE_COLLECTION_ENTITY_DIALOG);
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -33,7 +33,7 @@ function CollectionContentTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {collectionContentList.map(collectionContentType => (
+          {collectionContentList.map((collectionContentType) => (
             <TableRow key={`${collectionContentType.type}_${collectionContentType.id}`} hover>
               <TableCell>
                 <UnstyledLink
@@ -51,7 +51,10 @@ function CollectionContentTable({
               </TableCell>
               <TableCell>
                 <IconButton
-                  onClick={() => onOpenRemove({ entityType: collectionContentType.type, entityId: collectionContentType.id })}
+                  onClick={() => onOpenRemove({
+                    entityType: collectionContentType.type,
+                    entityId: collectionContentType.id,
+                  })}
                 >
                   <DeleteForever />
                 </IconButton>
@@ -66,7 +69,7 @@ function CollectionContentTable({
         collectionId={collectionId}
         {...dialogProps}
       />
-    </React.Fragment>
+    </>
   );
 }
 export default withDialogProps(CollectionContentTable);

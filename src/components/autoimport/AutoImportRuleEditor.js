@@ -40,7 +40,6 @@ function AutoImportRuleEditor({
   );
 }
 
-
 const mapDispatchToProps = {
   openSnackBar: actions.ui.openSnackBar,
 };

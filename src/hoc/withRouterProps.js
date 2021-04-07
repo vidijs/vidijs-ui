@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-
 function mapStateToProps(state, ownProps) {
   const { match = {} } = ownProps;
   const { params = {} } = match;
@@ -10,8 +9,7 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-
-export const withRouterProps = WrappedComponent => connect(
+export const withRouterProps = (WrappedComponent) => connect(
   mapStateToProps,
   null,
 )(withRouter(WrappedComponent));

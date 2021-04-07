@@ -9,7 +9,7 @@ export function onUpdate(form, dispatch, props) {
     locationName,
     exportLocationDocument,
   })
-    .then(response => ({ exportLocationDocument: response.data, locationName }))
+    .then((response) => ({ exportLocationDocument: response.data, locationName }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

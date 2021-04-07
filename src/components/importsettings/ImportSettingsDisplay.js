@@ -7,7 +7,7 @@ import { AccessControlType } from '../access/AccessControlDisplay';
 export default function ImportSettingsDisplay({ importSettingsDocument = {} }) {
   const { access: accessList = [] } = importSettingsDocument;
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="ID" value={importSettingsDocument.id} />
       {
         accessList.map((access, index) => (
@@ -19,6 +19,6 @@ export default function ImportSettingsDisplay({ importSettingsDocument = {} }) {
           </React.Fragment>
         ))
       }
-    </React.Fragment>
+    </>
   );
 }

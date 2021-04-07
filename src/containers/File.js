@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { file as api } from '@vidijs/vidijs-api';
 import FileTitle from '../components/file/FileTitle';
 import FileCard from '../components/file/FileCard';
 import FileDelete from '../components/file/FileDelete';
@@ -12,7 +13,6 @@ import FileOverwrite from '../components/file/FileOverwrite';
 import SimpleMetadataCard from '../components/ui/SimpleMetadataCard';
 
 import withUI from '../hoc/withUI';
-import { file as api } from '@vidijs/vidijs-api';
 
 const FILE_DELETE_DIALOG = 'FILE_DELETE_DIALOG';
 const FILE_ABANDON_DIALOG = 'FILE_ABANDON_DIALOG';
@@ -39,7 +39,7 @@ class File extends React.PureComponent {
     document.title = `vidi.js | File | ${fileId}`;
   }
 
-  componentWillReceiveProps({ fileId }) {
+  UNSAFE_componentWillReceiveProps({ fileId }) {
     const { fileId: prevFileId } = this.props;
     if (prevFileId !== fileId) {
       this.onFetch(fileId);
@@ -52,13 +52,12 @@ class File extends React.PureComponent {
     this.onFetch(fileId);
   }
 
-
   onFetch(fileId) {
     const matrixParams = [{ includeItem: true }];
     try {
       api.getFile({ fileId, matrixParams })
-        .then(response => this.setState({ fileDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ fileDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -70,12 +69,11 @@ class File extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { fileDocument } = this.state;
     const { fileId, history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <FileTitle
           onRefresh={this.onRefresh}
           code={fileDocument}
@@ -89,8 +87,9 @@ class File extends React.PureComponent {
           overwriteModal={FILE_OVERWRITE_DIALOG}
           fileId={fileId}
         />
-        {fileDocument &&
-          <React.Fragment>
+        {fileDocument
+          && (
+          <>
             <FileCard
               fileDocument={fileDocument}
             />
@@ -100,11 +99,11 @@ class File extends React.PureComponent {
               entityType="storage/file"
               entityId={fileId}
             />
-          </React.Fragment>
-        }
+          </>
+          )}
         <FileDelete
           dialogName={FILE_DELETE_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
           fileDocument={fileDocument}
         />
         <FileAbandon
@@ -119,12 +118,12 @@ class File extends React.PureComponent {
         />
         <FileMove
           dialogName={FILE_MOVE_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
           fileDocument={fileDocument}
         />
         <FilePath
           dialogName={FILE_PATH_DIALOG}
-          onSuccess={response => history.push(`/file/${response.data.id}`)}
+          onSuccess={(response) => history.push(`/file/${response.data.id}`)}
           fileDocument={fileDocument}
         />
         <FileEntityRemove
@@ -137,7 +136,7 @@ class File extends React.PureComponent {
           onSuccess={this.onRefresh}
           fileDocument={fileDocument}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

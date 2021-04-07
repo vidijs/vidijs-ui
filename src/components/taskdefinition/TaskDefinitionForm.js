@@ -2,8 +2,8 @@ import React from 'react';
 
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField } from '../form';
 
 import { required } from '../../utils/FieldValidation';
 import BoolCheckbox from '../ui/BoolCheckbox';
@@ -15,7 +15,7 @@ import { StatefulAsyncSelect } from '../ui/Select';
 import { loadJobTypeOptions } from '../jobtype/JobTypeSelect';
 
 const TaskDefinitionDependency = () => (
-  <React.Fragment>
+  <>
     <Field
       name="step"
       type="number"
@@ -23,28 +23,28 @@ const TaskDefinitionDependency = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="previous"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Previous"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="allPrevious"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="All Previous"
     />
-  </React.Fragment>
+  </>
 );
 
 const TaskDefinitionType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="jobType"
       label="Job Type"
@@ -78,21 +78,21 @@ const TaskDefinitionType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="critical"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Critical"
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="cleanup"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Cleanup"
     />
     <FormSection
@@ -123,7 +123,7 @@ const TaskDefinitionType = () => (
       type="hidden"
       component="input"
     />
-  </React.Fragment>
+  </>
 );
 
 function TaskDefintionForm({
@@ -141,6 +141,5 @@ function TaskDefintionForm({
     </form>
   );
 }
-
 
 export default reduxForm()(TaskDefintionForm);

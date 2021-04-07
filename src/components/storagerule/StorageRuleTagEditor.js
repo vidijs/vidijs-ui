@@ -32,7 +32,7 @@ function StorageRuleTagEditor({
   const displayProps = { storageRuleDocument };
   const initialValues = { storageRuleDocument };
   return (
-    <React.Fragment>
+    <>
       <Editor
         formName={EDIT_STORAGERULE_TAG_FORM}
         onSubmitSuccess={onSubmitSuccess}
@@ -45,10 +45,12 @@ function StorageRuleTagEditor({
         formComponent={StorageRuleTagForm}
         title="Storage Rule"
         iconList={
-          storageRuleDocument &&
+          storageRuleDocument
+          && (
           <IconButton onClick={() => onOpen({ modalName: REMOVE_STORAGERULE_DIALOG })}>
             <DeleteForever />
           </IconButton>
+          )
         }
       />
       <StorageRuleRemove
@@ -56,7 +58,7 @@ function StorageRuleTagEditor({
         onSuccess={onRefresh}
         storageRuleDocument={storageRuleDocument}
       />
-    </React.Fragment>
+    </>
 
   );
 }

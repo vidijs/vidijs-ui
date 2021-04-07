@@ -56,7 +56,7 @@ function ImportPlaceholderWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Placeholder Item"
@@ -151,7 +151,7 @@ function ImportPlaceholderWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

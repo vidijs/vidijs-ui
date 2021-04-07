@@ -14,9 +14,9 @@ function StorageListStorageCard(props) {
   const { storageDocument, classes } = props;
   const { id: storageId } = storageDocument;
   const onClick = () => props.history.push(`/storage/${storageId}/`);
-  const disableOnClick = event => event.stopPropagation();
+  const disableOnClick = (event) => event.stopPropagation();
   return (
-    <React.Fragment>
+    <>
       <SquareCard
         onClick={onClick}
         className={classes.onHover}
@@ -36,10 +36,10 @@ function StorageListStorageCard(props) {
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
       backgroundColor: theme.palette.grey[100],

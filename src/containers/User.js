@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { user as api } from '@vidijs/vidijs-api';
 import UserTitle from '../components/user/UserTitle';
 import UserCard from '../components/user/UserCard';
 import UserGroupCard from '../components/user/UserGroupCard';
@@ -9,7 +10,6 @@ import UserRealName from '../components/user/UserRealName';
 import SimpleMetadataCard from '../components/ui/SimpleMetadataCard';
 
 import withUI from '../hoc/withUI';
-import { user as api } from '@vidijs/vidijs-api';
 
 const USER_PASSWORD_DIALOG = 'USER_PASSWORD_DIALOG';
 const USER_TOKEN_DIALOG = 'USER_TOKEN_DIALOG';
@@ -35,7 +35,7 @@ class User extends React.PureComponent {
     document.title = `vidi.js | User | ${userName}`;
   }
 
-  componentWillReceiveProps({ userName }) {
+  UNSAFE_componentWillReceiveProps({ userName }) {
     const { userName: prevUserName } = this.props;
     if (prevUserName !== userName) {
       this.onFetch(userName);
@@ -51,8 +51,8 @@ class User extends React.PureComponent {
   onFetch(userName) {
     try {
       api.getUser({ userName })
-        .then(response => this.setState({ userDocument: response.data }))
-        .catch(error => this.onFetchError(error));
+        .then((response) => this.setState({ userDocument: response.data }))
+        .catch((error) => this.onFetchError(error));
     } catch (error) {
       this.onFetchError(error);
     }
@@ -73,7 +73,7 @@ class User extends React.PureComponent {
           openSnackBar({ messageContent });
           this.onRefresh();
         })
-        .catch(error => this.onRefreshError(error));
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -88,7 +88,7 @@ class User extends React.PureComponent {
           openSnackBar({ messageContent });
           this.onRefresh();
         })
-        .catch(error => this.onRefreshError(error));
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -98,7 +98,7 @@ class User extends React.PureComponent {
     const { userDocument, userToken } = this.state;
     const { userName } = this.props;
     return (
-      <React.Fragment>
+      <>
         <UserTitle
           onRefresh={this.onRefresh}
           code={userDocument}
@@ -111,7 +111,7 @@ class User extends React.PureComponent {
           onDisable={this.onDisable}
         />
         {userDocument && (
-          <React.Fragment>
+          <>
             <UserCard
               userDocument={userDocument}
             />
@@ -132,7 +132,7 @@ class User extends React.PureComponent {
               userName={userName}
               realName={userDocument.realName}
             />
-          </React.Fragment>
+          </>
         )}
         <UserPassword
           dialogName={USER_PASSWORD_DIALOG}
@@ -142,9 +142,9 @@ class User extends React.PureComponent {
           dialogName={USER_TOKEN_DIALOG}
           userName={userName}
           userToken={userToken}
-          onSuccess={response => this.setState({ userToken: response.data })}
+          onSuccess={(response) => this.setState({ userToken: response.data })}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

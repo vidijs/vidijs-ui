@@ -47,7 +47,12 @@ function NotificationCreate({
   };
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={false}>
-      <DialogTitle>New {entityType ? capitalizeString(entityType) : ''} Notification</DialogTitle>
+      <DialogTitle>
+        New
+        {entityType ? capitalizeString(entityType) : ''}
+        {' '}
+        Notification
+      </DialogTitle>
       <DialogContent>
         <Typography
           variant="h5"
@@ -102,7 +107,6 @@ function NotificationCreate({
     </Dialog>
   );
 }
-
 
 export default compose(
   withUI,

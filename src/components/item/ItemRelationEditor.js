@@ -12,28 +12,28 @@ import withUI from '../../hoc/withUI';
 const ITEM_RELATION_FORM_EDIT = 'ITEM_RELATION_FORM_EDIT';
 
 export const ItemRelationType = ({ itemRelationType }) => (
-  <React.Fragment>
+  <>
     {itemRelationType.direction && (
-      <React.Fragment>
+      <>
         <TextGrid title="Source" value={itemRelationType.direction.source} />
         <TextGrid title="Target" value={itemRelationType.direction.target} />
         <TextGrid title="Type" value={itemRelationType.direction.type} />
-      </React.Fragment>
+      </>
     )}
     {itemRelationType.value && (
-      <React.Fragment>
+      <>
         <Divider />
         <TextGrid title="Metadata" />
-        {itemRelationType.value.map(relationMetadata => (
+        {itemRelationType.value.map((relationMetadata) => (
           <TextGrid
             key={relationMetadata.key}
             title={relationMetadata.key}
             value={relationMetadata.value}
           />
         ))}
-      </React.Fragment>
+      </>
     )}
-  </React.Fragment>
+  </>
 );
 
 const ItemRelationDisplay = ({ itemRelationType }) => (

@@ -10,7 +10,7 @@ import Field from '../../ui/Field';
 import BoolCheckbox from '../../ui/BoolCheckbox';
 
 const IndexingFieldDefaultType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       component={TextField}
@@ -25,11 +25,11 @@ const IndexingFieldDefaultType = () => (
       )}
       label="Full Text"
     />
-  </React.Fragment>
+  </>
 );
 
 const IndexingConfigurationType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="solrPath"
       component={TextField}
@@ -94,9 +94,8 @@ const IndexingConfigurationType = () => (
       label="fieldDefault"
       component={IndexingFieldDefaultType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function IndexingForm({
   error,

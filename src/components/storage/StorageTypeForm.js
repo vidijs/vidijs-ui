@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field } from 'redux-form';
-import { Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { Select } from '../form';
 
 import StorageTypes from '../../const/StorageTypes';
 
@@ -18,7 +18,7 @@ function StorageTypeForm({
       <FormControl fullWidth>
         <InputLabel htmlFor="type">Type</InputLabel>
         <Field name="type" component={Select}>
-          {StorageTypes.map(storageType => (
+          {StorageTypes.map((storageType) => (
             <MenuItem key={storageType} value={storageType}>
               {storageType}
             </MenuItem>

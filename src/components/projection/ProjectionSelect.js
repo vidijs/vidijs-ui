@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { StatefulAsyncSelect } from '../ui/Select';
 import { projection as api } from '@vidijs/vidijs-api';
+import { StatefulAsyncSelect } from '../ui/Select';
 
-
-export const loadProjectionOptions = inputValue => new Promise((resolve, reject) => {
+export const loadProjectionOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listProjection()
     .then((response) => {
       if (!response.ok) {
@@ -17,16 +16,15 @@ export const loadProjectionOptions = inputValue => new Promise((resolve, reject)
       const { uri = [] } = jsonDocument;
       let filterProj = uri;
       if (inputValue && inputValue !== '*') {
-        filterProj = uri.filter(p => p.toLowerCase().includes(inputValue.toLowerCase()));
+        filterProj = uri.filter((p) => p.toLowerCase().includes(inputValue.toLowerCase()));
       }
-      const options = filterProj.map(p => ({ label: p, value: p }));
+      const options = filterProj.map((p) => ({ label: p, value: p }));
       resolve(options);
     })
     .catch((error) => {
       reject(error);
     });
 });
-
 
 const parseValue = (value) => {
   if (value) {

@@ -37,7 +37,7 @@ const TRANSIENT_FIELDS = [
   { name: '__deletion_lock_expiry' },
 ];
 
-export const loadMetadataFieldOptions = inputValue => new Promise((resolve, reject) => {
+export const loadMetadataFieldOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listMetadataField()
     .then((response) => {
       if (!response.ok) {
@@ -51,9 +51,9 @@ export const loadMetadataFieldOptions = inputValue => new Promise((resolve, reje
       let filterFields = fieldList;
       if (inputValue && inputValue !== '*') {
         const inputValueLower = inputValue.toLowerCase();
-        filterFields = fieldList.filter(f => f.name.toLowerCase().includes(inputValueLower));
+        filterFields = fieldList.filter((f) => f.name.toLowerCase().includes(inputValueLower));
       }
-      const options = filterFields.map(f => ({ label: f.name, value: f.name }));
+      const options = filterFields.map((f) => ({ label: f.name, value: f.name }));
       resolve(options);
     })
     .catch((error) => {
@@ -67,7 +67,6 @@ const parse = (value) => {
   }
   return undefined;
 };
-
 
 export default function MetadataFieldSelect(props) {
   return (

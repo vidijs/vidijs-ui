@@ -10,7 +10,7 @@ import BoolCheckbox from '../../ui/BoolCheckbox';
 import FieldArray from '../../ui/FieldArray';
 
 const StatsdReporterType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="host"
       component={TextField}
@@ -27,12 +27,12 @@ const StatsdReporterType = () => (
       fullWidth
     />
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="tags"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Tags"
     />
     <FieldArray
@@ -47,18 +47,17 @@ const StatsdReporterType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const MetricsConfigurationType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="statsd"
       component={StatsdReporterType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function MetricsForm({
   error,

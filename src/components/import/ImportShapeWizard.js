@@ -47,7 +47,7 @@ function ImportShapeWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Shape"
@@ -113,9 +113,8 @@ function ImportShapeWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
-
 
 export default compose(withStepper, withUI, withFormActions)(ImportShapeWizard);

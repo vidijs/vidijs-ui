@@ -9,8 +9,8 @@ export default function NotificationListCard({
   entityType,
 }) {
   if (uriListDocument === undefined) { return null; }
-  const linkTo = uri => `/notification/${entityType}/${uri.split('/').pop()}/`;
-  const textTo = uri => uri.split('/').pop();
+  const linkTo = (uri) => `/notification/${entityType}/${uri.split('/').pop()}/`;
+  const textTo = (uri) => uri.split('/').pop();
   return (
     <SquareCard>
       <CardContent>

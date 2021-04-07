@@ -8,7 +8,7 @@ export default function ShapeDescriptorComponentList({ shapeDocument = {} }) {
     return null;
   }
   return (
-    descriptorComponentList.map(descriptorComponent => (
+    descriptorComponentList.map((descriptorComponent) => (
       <ShapeDescriptorComponentCard
         key={descriptorComponent.id}
         descriptorComponent={descriptorComponent}

@@ -20,11 +20,12 @@ export default function GroupRow({
       </TableCell>
       <TableCell>{groupDocument.role && <Check />}</TableCell>
       <TableCell disableOnClick>
-        {onRemove &&
+        {onRemove
+        && (
         <IconButton onClick={() => onRemove({ groupName: groupDocument.groupName })}>
           <DeleteForever />
         </IconButton>
-        }
+        )}
       </TableCell>
     </TableRow>
   );

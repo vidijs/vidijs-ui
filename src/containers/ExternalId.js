@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { externalid as api } from '@vidijs/vidijs-api';
 import ExternalIdTitle from '../components/externalid/ExternalIdTitle';
 import ExternalIdCard from '../components/externalid/ExternalIdCard';
 import ExternalIdDialog from '../components/externalid/ExternalIdDialog';
 import ExternalIdRemoveAll from '../components/externalid/ExternalIdRemoveAll';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { externalid as api } from '@vidijs/vidijs-api';
 
 const EXTERNALID_CREATE_MODAL = 'EXTERNALID_CREATE_MODAL';
 const EXTERNALID_REMOVEALL_MODAL = 'EXTERNALID_REMOVEALL_MODAL';
@@ -33,8 +33,8 @@ class ExternalId extends React.PureComponent {
         entityType: entitySubType ? `${entityType}/${entitySubType}` : entityType,
         entityId,
       })
-        .then(response => this.setState({ externalIdentifierListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ externalIdentifierListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -46,12 +46,11 @@ class ExternalId extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { externalIdentifierListDocument } = this.state;
     const { entityType, entityId, entitySubType } = this.props;
     return (
-      <React.Fragment>
+      <>
         <ExternalIdTitle
           createModal={EXTERNALID_CREATE_MODAL}
           onRefresh={this.onRefresh}
@@ -61,14 +60,15 @@ class ExternalId extends React.PureComponent {
           entityType={entitySubType ? `${entityType}/${entitySubType}` : entityType}
           entityId={entityId}
         />
-        {externalIdentifierListDocument &&
+        {externalIdentifierListDocument
+        && (
         <ExternalIdCard
           externalIdentifierListDocument={externalIdentifierListDocument}
           onRefresh={this.onRefresh}
           entityType={entitySubType ? `${entityType}/${entitySubType}` : entityType}
           entityId={entityId}
         />
-        }
+        )}
         <ExternalIdDialog
           dialogName={EXTERNALID_CREATE_MODAL}
           onSuccess={this.onRefresh}
@@ -81,7 +81,7 @@ class ExternalId extends React.PureComponent {
           entityType={entitySubType ? `${entityType}/${entitySubType}` : entityType}
           entityId={entityId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

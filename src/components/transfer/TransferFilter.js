@@ -10,7 +10,6 @@ import TransferFilterForm from './TransferFilterForm';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 
-
 function TransferFilter({
   onClose,
   onSuccess,
@@ -27,7 +26,7 @@ function TransferFilter({
     openSnackBar({ messageContent, messageColor: 'secondary' });
   };
   return (
-    <React.Fragment>
+    <>
       <CardContent>
         <TransferFilterForm
           form={form}
@@ -54,7 +53,7 @@ function TransferFilter({
           Filter
         </Button>
       </DialogActions>
-    </React.Fragment>
+    </>
   );
 }
 

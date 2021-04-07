@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { quota as api } from '@vidijs/vidijs-api';
 import QuotaTitle from '../components/quota/QuotaTitle';
 import QuotaRemove from '../components/quota/QuotaRemove';
 import QuotaDialog from '../components/quota/QuotaDialog';
@@ -9,7 +10,6 @@ import QuotaFilter from '../components/quota/QuotaFilter';
 
 import CodeModal from '../components/ui/CodeModal';
 import * as actions from '../actions';
-import { quota as api } from '@vidijs/vidijs-api';
 
 const QUOTA_CODE_MODAL = 'QUOTA_CODE_MODAL';
 const QUOTA_REMOVE_MODAL = 'QUOTA_REMOVE_MODAL';
@@ -35,8 +35,8 @@ class AccessControl extends React.Component {
     const { openSnackBar } = this.props;
     const { queryParams } = this.state;
     api.listQuota({ queryParams })
-      .then(response => response.json())
-      .then(quotaRuleListDocument => this.setState({ quotaRuleListDocument }))
+      .then((response) => response.json())
+      .then((quotaRuleListDocument) => this.setState({ quotaRuleListDocument }))
       .catch(() => {
         const messageContent = 'Error Loading Quota';
         openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -75,7 +75,6 @@ class AccessControl extends React.Component {
     };
   }
 
-
   render() {
     const {
       quotaRuleListDocument,
@@ -87,7 +86,7 @@ class AccessControl extends React.Component {
       openModal,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         <QuotaTitle
           openCode={() => openModal({ modalName: QUOTA_CODE_MODAL })}
           openCreate={() => openModal({ modalName: QUOTA_CREATE_MODAL })}
@@ -102,14 +101,15 @@ class AccessControl extends React.Component {
           onRefresh={this.onRefresh}
           openRemove={this.openRemove}
         />
-        { currentRuleId &&
+        { currentRuleId
+          && (
           <QuotaRemove
             isOpen={(modalName === QUOTA_REMOVE_MODAL)}
             closeModal={closeModal}
             onRemove={this.onRemove}
             ruleId={currentRuleId}
           />
-        }
+          )}
         <QuotaDialog
           isOpen={(modalName === QUOTA_CREATE_MODAL)}
           closeModal={closeModal}
@@ -121,7 +121,7 @@ class AccessControl extends React.Component {
           code={quotaRuleListDocument}
           title="QuotaRuleListDocument"
         />
-      </React.Fragment>
+      </>
     );
   }
 }

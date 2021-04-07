@@ -5,15 +5,14 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/user';
 import UserRealNameForm from './UserRealNameForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const USER_REALNAME_FORM = 'USER_PASSWORD_FORM';
-
 
 function UserRealName({
   open,
@@ -73,6 +72,5 @@ function UserRealName({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(UserRealName);

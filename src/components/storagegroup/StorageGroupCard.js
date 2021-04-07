@@ -11,9 +11,9 @@ export default function StorageGroupCard({
 }) {
   const { data: simpleMetadataList, storage: storageList = [] } = storageGroupDocument;
   return (
-    <React.Fragment>
+    <>
       {
-        storageList.map(storageDocument => (
+        storageList.map((storageDocument) => (
           <StorageGroupStorageCard
             key={storageDocument.id}
             storageId={storageDocument.id}
@@ -32,6 +32,6 @@ export default function StorageGroupCard({
           editable
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

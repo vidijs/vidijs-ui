@@ -20,13 +20,12 @@ export default function PathAliasTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {pathAliasList.map(pathAlias => (
+        {pathAliasList.map((pathAlias) => (
           <PathAliasRow
             key={pathAlias}
             pathAlias={pathAlias}
           />
-          ))
-        }
+        ))}
       </TableBody>
     </Table>
   );

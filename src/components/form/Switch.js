@@ -1,5 +1,5 @@
-import Switch from '@material-ui/core/Switch'
-import createComponent from './createComponent'
+import Switch from '@material-ui/core/Switch';
+import createComponent from './createComponent';
 
 export default createComponent(Switch, ({
   input: { onChange, value, ...inputProps },
@@ -10,5 +10,5 @@ export default createComponent(Switch, ({
   ...inputProps,
   ...props,
   onChange,
-  checked: !!value
-}))
+  checked: !!value,
+}));

@@ -9,7 +9,7 @@ import FieldTypeArray from '../../ui/FieldTypeArray';
 import FormSection from '../../ui/FormSection';
 
 const ConfigurationPropertyType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="key"
       label="Key"
@@ -23,9 +23,8 @@ const ConfigurationPropertyType = () => (
       fullWidth
       multiline
     />
-  </React.Fragment>
+  </>
 );
-
 
 const ConfigurationPropertyListType = () => (
   <FieldTypeArray

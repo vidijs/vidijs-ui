@@ -4,7 +4,7 @@ import TextGrid from '../../ui/TextGrid';
 import TypeSection from '../../ui/TypeSection';
 
 const LogReportConfigurationType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="path"
       value={value.path}
@@ -35,18 +35,18 @@ const LogReportConfigurationType = ({ value = {} }) => (
       value={value.clientCertificate}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export default function LogReportDisplay({
   logReportConfigurationDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={logReportConfigurationDocument}
         component={LogReportConfigurationType}
       />
-    </React.Fragment>
+    </>
   );
 }

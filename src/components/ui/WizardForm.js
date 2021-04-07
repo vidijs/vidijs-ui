@@ -6,7 +6,9 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Typography from '@material-ui/core/Typography';
-import { reduxForm, Field, submit, destroy, getFormValues, stopSubmit, isDirty } from 'redux-form';
+import {
+  reduxForm, Field, submit, destroy, getFormValues, stopSubmit, isDirty,
+} from 'redux-form';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Divider from '@material-ui/core/Divider';
@@ -92,11 +94,11 @@ class WizardForm extends React.PureComponent {
 
   onBack(response) {
     if (this.state.activeStep !== 0) {
-      this.setState({
-        activeStep: this.state.activeStep - 1,
+      this.setState(({ activeStep }) => ({
+        activeStep: activeStep - 1,
         jsonDocument: response,
         tabValue: JSON_TAB,
-      });
+      }));
     }
   }
 
@@ -161,8 +163,9 @@ class WizardForm extends React.PureComponent {
               <Tab label="JSON" value={JSON_TAB} />
               <Tab label="XML" value={XML_TAB} />
             </Tabs>
-            { tabValue === JSON_TAB &&
-            <React.Fragment>
+            { tabValue === JSON_TAB
+            && (
+            <>
               <ReduxJsonForm
                 form={EDIT_JSON_FORM}
                 onSubmitSuccess={this.onNext}
@@ -170,7 +173,8 @@ class WizardForm extends React.PureComponent {
                 initialValues={{ jsonDocument }}
               />
               <ExpansionPanelActions>
-                {onCancel &&
+                {onCancel
+                && (
                 <Button
                   size="small"
                   color="secondary"
@@ -178,15 +182,17 @@ class WizardForm extends React.PureComponent {
                 >
                   Cancel
                 </Button>
-                }
-                {jsonDocument === undefined &&
+                )}
+                {jsonDocument === undefined
+                && (
                 <Button
                   onClick={this.onSkip}
                 >
                   Skip
                 </Button>
-                }
-                {isJSONFormDirty &&
+                )}
+                {isJSONFormDirty
+                && (
                 <Button
                   variant="text"
                   color="primary"
@@ -194,8 +200,9 @@ class WizardForm extends React.PureComponent {
                 >
                   Next
                 </Button>
-                }
-                {!isJSONFormDirty && jsonDocument !== undefined &&
+                )}
+                {!isJSONFormDirty && jsonDocument !== undefined
+                && (
                 <Button
                   variant="text"
                   color="primary"
@@ -203,12 +210,13 @@ class WizardForm extends React.PureComponent {
                 >
                   Next
                 </Button>
-              }
+                )}
               </ExpansionPanelActions>
-            </React.Fragment>
-            }
-            { tabValue === XML_TAB &&
-            <React.Fragment>
+            </>
+            )}
+            { tabValue === XML_TAB
+            && (
+            <>
               <ReduxXMLForm
                 form={EDIT_XML_FORM}
                 onSubmitSuccess={this.onNext}
@@ -217,7 +225,8 @@ class WizardForm extends React.PureComponent {
                 destroyOnUnmount={false}
               />
               <ExpansionPanelActions>
-                {onCancel &&
+                {onCancel
+                && (
                 <Button
                   size="small"
                   color="secondary"
@@ -225,13 +234,14 @@ class WizardForm extends React.PureComponent {
                 >
                   Cancel
                 </Button>
-                }
+                )}
                 <Button
                   onClick={this.onSkip}
                 >
                   Skip
                 </Button>
-                {isXMLFormDirty &&
+                {isXMLFormDirty
+                && (
                 <Button
                   variant="text"
                   color="primary"
@@ -239,10 +249,10 @@ class WizardForm extends React.PureComponent {
                 >
                   Next
                 </Button>
-                }
+                )}
               </ExpansionPanelActions>
-            </React.Fragment>
-            }
+            </>
+            )}
           </StepContent>
         </Step>
         <Step>
@@ -255,7 +265,8 @@ class WizardForm extends React.PureComponent {
             />
             <ExpansionPanelActions>
               <Divider />
-              {onCancel &&
+              {onCancel
+              && (
               <Button
                 size="small"
                 color="secondary"
@@ -263,7 +274,7 @@ class WizardForm extends React.PureComponent {
               >
                 Cancel
               </Button>
-              }
+              )}
               <Button
                 onClick={this.onGetValues}
               >
@@ -284,7 +295,6 @@ class WizardForm extends React.PureComponent {
   }
 }
 
-
 function mapStateToProps(state) {
   return {
     formValues: getFormValues(EDIT_WIZARD_FORM)(state),
@@ -292,7 +302,6 @@ function mapStateToProps(state) {
     isXMLFormDirty: isDirty(EDIT_XML_FORM)(state),
   };
 }
-
 
 const mapDispatchToProps = {
   openSnackBar: actions.ui.openSnackBar,

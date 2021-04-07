@@ -17,38 +17,40 @@ function ServiceListServiceCard({
   onEnable,
 }) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard
         className={classes.onHover}
       >
         <CardHeader
           disableTypography
-          title={
+          title={(
             <Typography variant="subtitle1">
               {startCase(vidispineServiceDocument.name)}
             </Typography>
-          }
-          action={
+          )}
+          action={(
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>
-                {vidispineServiceDocument.isEnabled ?
-                  <Button
-                    onClick={() => onDisable({ serviceName: vidispineServiceDocument.name })}
-                    color="secondary"
-                  >
-                    Disable
-                  </Button>
-                :
-                  <Button
-                    onClick={() => onEnable({ serviceName: vidispineServiceDocument.name })}
-                    color="primary"
-                  >
-                    Enable
-                  </Button>
-                }
+                {vidispineServiceDocument.isEnabled
+                  ? (
+                    <Button
+                      onClick={() => onDisable({ serviceName: vidispineServiceDocument.name })}
+                      color="secondary"
+                    >
+                      Disable
+                    </Button>
+                  )
+                  : (
+                    <Button
+                      onClick={() => onEnable({ serviceName: vidispineServiceDocument.name })}
+                      color="primary"
+                    >
+                      Enable
+                    </Button>
+                  )}
               </Grid>
             </Grid>
-          }
+          )}
         />
         <CardContent>
           <ServiceDisplay
@@ -56,10 +58,10 @@ function ServiceListServiceCard({
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
-const hoverStyle = theme => ({
+const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
       backgroundColor: theme.palette.grey[100],

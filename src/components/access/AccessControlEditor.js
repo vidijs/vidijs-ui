@@ -22,7 +22,7 @@ export default function AccessControlEditor({
     );
   }
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         subheader={accessControlDocument.id}
         action={actionComponent}
@@ -34,6 +34,6 @@ export default function AccessControlEditor({
           entityId={entityId}
         />
       </CardContent>
-    </React.Fragment>
+    </>
   );
 }

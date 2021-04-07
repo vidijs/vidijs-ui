@@ -19,12 +19,12 @@ export default function ImportAccessRow({
         </UnstyledLink>
       </TableCell>
       <TableCell>{group.permission}</TableCell>
-      <TableCell numeric onClick={e => e.stopPropagation()}>
+      <TableCell numeric onClick={(e) => e.stopPropagation()}>
         <Menu>
-          <MenuItem onClick={openEdit(group)} >
+          <MenuItem onClick={openEdit(group)}>
             <Typography color="inherit">Edit</Typography>
           </MenuItem>
-          <MenuItem onClick={openRemove(group)} >
+          <MenuItem onClick={openRemove(group)}>
             <Typography color="error">Remove</Typography>
           </MenuItem>
         </Menu>

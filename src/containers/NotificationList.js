@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { notification as api } from '@vidijs/vidijs-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import NotificationListCard from '../components/notification/NotificationListCard';
 import NotificationCreate from '../components/notification/NotificationCreate';
 
-import { notification as api } from '@vidijs/vidijs-api';
 import withUI from '../hoc/withUI';
 import capitalizeString from '../utils/capitalizeString';
 
@@ -27,7 +27,7 @@ class NotificationList extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ entityType }) {
+  UNSAFE_componentWillReceiveProps({ entityType }) {
     const { entityType: prevEntityType } = this.props;
     if (prevEntityType !== entityType) {
       document.title = `vidi.js | ${capitalizeString(entityType)} Notification`;
@@ -49,13 +49,12 @@ class NotificationList extends React.PureComponent {
   onFetch(entityType) {
     try {
       api.listNotification({ entityType })
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
   }
-
 
   render() {
     const {
@@ -64,7 +63,7 @@ class NotificationList extends React.PureComponent {
     } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title={capitalizeString(entityType)}
           parentTitle="Notification"
@@ -90,7 +89,7 @@ class NotificationList extends React.PureComponent {
             history.push(`/notification/${entityType}/${notificationId}`);
           }}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

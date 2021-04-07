@@ -23,7 +23,7 @@ function ExternalIdNamespaceTable({
     namespace: externalIdentifierNamespaceList = [],
   } = externalIdentifierNamespaceListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -34,7 +34,7 @@ function ExternalIdNamespaceTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {externalIdentifierNamespaceList.map(externalIdentifierNamespaceDocument => (
+          {externalIdentifierNamespaceList.map((externalIdentifierNamespaceDocument) => (
             <ExternalIdNamespaceRow
               key={externalIdentifierNamespaceDocument.name}
               externalIdentifierNamespaceDocument={externalIdentifierNamespaceDocument}
@@ -54,7 +54,7 @@ function ExternalIdNamespaceTable({
         dialogName={EXTERNALID_NAMESPACE_REMOVE_DIALOG}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

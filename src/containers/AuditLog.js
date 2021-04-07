@@ -92,7 +92,7 @@ class AuditLog extends React.PureComponent {
       orderDirection,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <AuditLogTitle
           code={auditLogDocument}
           codeModal="AuditLogDocument"
@@ -102,7 +102,8 @@ class AuditLog extends React.PureComponent {
           form={AUDITLOG_FILTER_FORM}
           onSuccess={this.onSuccess}
         />
-        {auditLogDocument &&
+        {auditLogDocument
+        && (
         <AuditLogCard
           auditLogDocument={auditLogDocument}
           count={count}
@@ -113,8 +114,8 @@ class AuditLog extends React.PureComponent {
           onChangeOrder={this.onChangeOrder}
           orderDirection={orderDirection}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

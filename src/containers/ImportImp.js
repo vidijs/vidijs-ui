@@ -36,7 +36,7 @@ const listComponent = ({ onChangeTab, tabValue }) => (
 class ImportImp extends React.PureComponent {
   render() {
     const { tabValue, onChangeTab, ...tabProps } = this.props;
-    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const tabInfo = TAB_TITLE.find((thisTab) => thisTab.tab === tabValue) || TAB_TITLE[0];
     const { listText, component: mainComponent } = tabInfo;
     return (
       <DrawerContainer

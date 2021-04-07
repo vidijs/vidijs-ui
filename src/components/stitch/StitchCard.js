@@ -14,7 +14,6 @@ import StitchForm from './StitchForm';
 
 export const STITCH_FORM = 'STITCH_FORM';
 
-
 function StitchCard({
   submitForm,
   resetForm,
@@ -34,7 +33,7 @@ function StitchCard({
     if (onFail) { onFail(errors, dispatch, submitError, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <CardContent>
           <StitchForm
@@ -69,7 +68,7 @@ function StitchCard({
           </Grid>
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import Select from '../ui/Select';
 import { taskdefinition as api } from '@vidijs/vidijs-api';
+import Select from '../ui/Select';
 
-
-const loadOptions = inputValue => new Promise((resolve, reject) => {
+const loadOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listJobType()
     .then((response) => {
       if (!response.ok) {
@@ -17,9 +16,9 @@ const loadOptions = inputValue => new Promise((resolve, reject) => {
       const { uri = [] } = jsonDocument;
       let filterFields = uri;
       if (inputValue && inputValue !== '*') {
-        filterFields = uri.filter(f => f.toLowerCase().includes(inputValue.toLowerCase()));
+        filterFields = uri.filter((f) => f.toLowerCase().includes(inputValue.toLowerCase()));
       }
-      const options = filterFields.map(f => ({ label: f, value: f }));
+      const options = filterFields.map((f) => ({ label: f, value: f }));
       resolve(options);
     })
     .catch((error) => {
@@ -27,14 +26,12 @@ const loadOptions = inputValue => new Promise((resolve, reject) => {
     });
 });
 
-
 const parse = (value) => {
   if (value) {
     return value.value;
   }
   return undefined;
 };
-
 
 export default function JobTypeSelect(props) {
   return (

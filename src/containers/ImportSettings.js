@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { importsettings as api } from '@vidijs/vidijs-api';
 import ImportSettingsTitle from '../components/importsettings/ImportSettingsTitle';
 import ImportSettingsCard from '../components/importsettings/ImportSettingsCard';
 import ImportSettingsRemove from '../components/importsettings/ImportSettingsRemove';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { importsettings as api } from '@vidijs/vidijs-api';
 
 const IMPORTSETTINGS_CODE_MODAL = 'IMPORTSETTINGS_CODE_MODAL';
 const IMPORTSETTINGS_REMOVE_MODAL = 'IMPORTSETTINGS_REMOVE_MODAL';
@@ -31,8 +31,8 @@ class ImportSettings extends React.PureComponent {
   onRefresh() {
     const { openSnackBar, settingsId } = this.props;
     api.getImportSettings({ settingsId })
-      .then(response => response.json())
-      .then(importSettingsDocument => this.setState({ importSettingsDocument }))
+      .then((response) => response.json())
+      .then((importSettingsDocument) => this.setState({ importSettingsDocument }))
       .catch(() => {
         const messageContent = 'Error Loading Import Settings';
         openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -70,20 +70,21 @@ class ImportSettings extends React.PureComponent {
       importSettingsDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ImportSettingsTitle
           settingsId={settingsId}
           openCode={() => openModal({ modalName: IMPORTSETTINGS_CODE_MODAL })}
           openRemove={() => openModal({ modalName: IMPORTSETTINGS_REMOVE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        {importSettingsDocument &&
+        {importSettingsDocument
+          && (
           <ImportSettingsCard
             settingsId={settingsId}
             importSettingsDocument={importSettingsDocument}
             onRefresh={this.onRefresh}
           />
-        }
+          )}
         <CodeModal
           isOpen={(modalName === IMPORTSETTINGS_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -96,7 +97,7 @@ class ImportSettings extends React.PureComponent {
           onRemove={this.onRemove}
           settingsId={settingsId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

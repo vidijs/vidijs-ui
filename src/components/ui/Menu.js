@@ -42,24 +42,25 @@ export default class Menu extends React.PureComponent {
     const { icon, children = [], iconProps = {} } = this.props;
     const wrappedChildren = this.renderChildren(children);
     return (
-      <React.Fragment>
-        { wrappedChildren.length === 0 ?
-          <div /> :
-          <React.Fragment>
-            <IconButton onClick={this.openMenu} {...iconProps}>
-              {icon || <MoreVertIcon />}
-            </IconButton>
-            <MUIMenu
-              id="simple-menu"
-              anchorEl={menuAnchor}
-              open={Boolean(menuAnchor)}
-              onClose={this.closeMenu}
-            >
-              { wrappedChildren }
-            </MUIMenu>
-          </React.Fragment>
-        }
-      </React.Fragment>
+      <>
+        { wrappedChildren.length === 0
+          ? <div />
+          : (
+            <>
+              <IconButton onClick={this.openMenu} {...iconProps}>
+                {icon || <MoreVertIcon />}
+              </IconButton>
+              <MUIMenu
+                id="simple-menu"
+                anchorEl={menuAnchor}
+                open={Boolean(menuAnchor)}
+                onClose={this.closeMenu}
+              >
+                { wrappedChildren }
+              </MUIMenu>
+            </>
+          )}
+      </>
     );
   }
 }

@@ -5,12 +5,12 @@ import ExportLocationEditor from './ExportLocationEditor';
 
 export default function FieldGroupCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <ExportLocationEditor
           {...props}
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

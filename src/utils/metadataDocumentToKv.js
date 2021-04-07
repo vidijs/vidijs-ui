@@ -6,7 +6,7 @@ function fieldValueToList(valueList) {
   };
 
   if (valueList === undefined) { return output; }
-  valueList.forEach(thisValue => output.push(thisValue.value));
+  valueList.forEach((thisValue) => output.push(thisValue.value));
   return output;
 }
 
@@ -26,7 +26,6 @@ function fieldToKv(fieldList) {
   });
   return output;
 }
-
 
 function groupToKv(groupList) {
   const output = {};

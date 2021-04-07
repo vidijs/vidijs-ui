@@ -15,7 +15,6 @@ import FileFilterForm from './FileFilterForm';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 
-
 function FileFilter({
   onClose,
   onSuccess,

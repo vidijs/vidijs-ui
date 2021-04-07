@@ -43,10 +43,10 @@ function UserKeyDialog({
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth={false}>
       {accessKeyDocument ? (
-        <React.Fragment>
+        <>
           <DialogTitle>Success!</DialogTitle>
           <DialogContent>
-            <React.Fragment>
+            <>
               <TextGrid
                 title="ID"
                 value={accessKeyDocument.id}
@@ -59,7 +59,7 @@ function UserKeyDialog({
                 hideNoValue
                 hover
               />
-            </React.Fragment>
+            </>
           </DialogContent>
           <Divider />
           <DialogActions>
@@ -71,9 +71,9 @@ function UserKeyDialog({
               Close
             </Button>
           </DialogActions>
-        </React.Fragment>
+        </>
       ) : (
-        <React.Fragment>
+        <>
           <DialogTitle>New User Key</DialogTitle>
           <DialogContent>
             <UserKeyForm
@@ -101,7 +101,7 @@ function UserKeyDialog({
               Create
             </Button>
           </DialogActions>
-        </React.Fragment>
+        </>
       )}
     </Dialog>
   );

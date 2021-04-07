@@ -78,7 +78,7 @@ export default function FileListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {fileList.map(fileDocument => (
+        {fileList.map((fileDocument) => (
           <FileRow
             key={fileDocument.id}
             fileDocument={fileDocument}

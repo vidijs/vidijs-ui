@@ -40,5 +40,4 @@ function LibrarySettingsEditor({
   );
 }
 
-
 export default withSnackbar(LibrarySettingsEditor);

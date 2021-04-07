@@ -36,7 +36,7 @@ export const DefaultActionComponent = ({
   onRemove,
   ...props
 }) => (
-  <React.Fragment>
+  <>
     {onRemove && (
       <RemoveComponent
         onRemove={onRemove}
@@ -52,7 +52,7 @@ export const DefaultActionComponent = ({
         {...props}
       />
     )}
-  </React.Fragment>
+  </>
 );
 
 export const DefaultCardHeaderComponent = ({
@@ -105,7 +105,7 @@ export const DefaultCardActionComponent = ({
   cancelProps = {},
 }) => (
   isEditing ? (
-    <React.Fragment>
+    <>
       <Divider />
       <ExpansionPanelActions>
         <Button
@@ -124,10 +124,9 @@ export const DefaultCardActionComponent = ({
           Save
         </Button>
       </ExpansionPanelActions>
-    </React.Fragment>
+    </>
   ) : null
 );
-
 
 const EditorCard = ({
   initialState = false,

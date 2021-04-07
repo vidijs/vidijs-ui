@@ -32,7 +32,7 @@ function ProjectionCard({
     openSnackBar({ messageContent, messageColor: 'secondary' });
   };
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <CardHeader
           title={<Typography variant="subtitle1">Incoming</Typography>}
@@ -87,7 +87,7 @@ function ProjectionCard({
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
 

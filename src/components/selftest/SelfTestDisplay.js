@@ -6,7 +6,7 @@ import TypeArray from '../ui/TypeArray';
 import TextGridArray from '../ui/TextGridArray';
 
 export const SelfTestType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -44,18 +44,18 @@ export const SelfTestType = ({ value = {} }) => (
       titleKey="name"
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 export default function SelfTestDisplay({
   selfTestDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={SelfTestType}
         value={selfTestDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

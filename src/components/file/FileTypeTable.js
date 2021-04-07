@@ -30,7 +30,7 @@ export default function FileTypeTable({
 }) {
   if (hideNoValue && value === undefined) { return null; }
   return (
-    <React.Fragment>
+    <>
       <Typography variant="subtitle2">{title}</Typography>
       <Table>
         <TableHead>
@@ -46,12 +46,12 @@ export default function FileTypeTable({
         </TableHead>
         {Array.isArray(value) && (
           <TableBody>
-            {value.map(fileType => (
+            {value.map((fileType) => (
               <FileTypeRow key={fileType.id} fileType={fileType} />
             ))}
           </TableBody>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }

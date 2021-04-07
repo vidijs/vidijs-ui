@@ -8,7 +8,7 @@ import FormSection from '../../ui/FormSection';
 import CodeField from '../../ui/CodeField';
 
 const ConfigurationPropertyType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="key"
       label="Key"
@@ -26,7 +26,7 @@ const ConfigurationPropertyType = () => (
         lineNumbers: true,
       }}
     />
-  </React.Fragment>
+  </>
 );
 
 const PropertiesForm = ({ error, handleSubmit }) => (

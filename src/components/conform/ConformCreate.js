@@ -28,7 +28,7 @@ function ConformCreate({
     tag: ['original'],
   };
   return (
-    <React.Fragment>
+    <>
       <Grid container justify="space-between">
         <Typography
           variant="h5"
@@ -81,11 +81,11 @@ function ConformCreate({
         onSubmitSuccess={onSubmitSuccess}
         onSubmitFail={formActions.onCreateSubmitFail}
       />
-    </React.Fragment>
+    </>
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   submitting: isSubmitting(EDIT_CONFORM_FORM)(state),
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,7 +9,6 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 import { withModalNoRouter } from '../../hoc/withModal';
 import TextGrid from '../ui/TextGrid';
-
 
 const corsConfigurationDocument = `<CORSConfigurationDocument xmlns="http://xml.vidispine.com/schema/vidispine">
     <entry>
@@ -36,8 +36,7 @@ function LoginHelpDialog({
     >
       <DialogTitle>Configure CORS</DialogTitle>
       <DialogContent>
-        {'Cross-Origin must be configured on the Vidispine API server to allow browser requests from this location.'}
-
+        Cross-Origin must be configured on the Vidispine API server to allow browser requests from this location.
       </DialogContent>
       <DialogContent>
         <TextGrid
@@ -61,7 +60,7 @@ function LoginHelpDialog({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {'View API Documentation'}
+          View API Documentation
         </Link>
       </DialogContent>
       <DialogActions>
@@ -76,6 +75,5 @@ function LoginHelpDialog({
     </Dialog>
   );
 }
-
 
 export default withModalNoRouter(LoginHelpDialog);

@@ -5,7 +5,6 @@ import CorsForm from './CorsForm';
 import CorsDisplay from './CorsDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function CorsEditor({
   corsConfigurationDocument,
   openSnackBar,
@@ -34,6 +33,5 @@ function CorsEditor({
     />
   );
 }
-
 
 export default withSnackbar(CorsEditor);

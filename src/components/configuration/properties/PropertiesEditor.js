@@ -18,9 +18,9 @@ function PropertiesEditor({
   onOpen,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
-        action={
+        action={(
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>
               <Tooltip title="New">
@@ -30,7 +30,7 @@ function PropertiesEditor({
               </Tooltip>
             </Grid>
           </Grid>
-        }
+        )}
       />
       <CardContent>
         <PropertiesTable
@@ -42,7 +42,7 @@ function PropertiesEditor({
         dialogName={ADD_CONFIGURATIONPROPERTIES}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

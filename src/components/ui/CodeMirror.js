@@ -16,7 +16,6 @@ import 'codemirror/theme/material.css';
 import 'codemirror/lib/codemirror.css';
 import '../../css/CodeMirror.css';
 
-
 export default class CodeMirror extends React.Component {
   constructor(props) {
     super(props);
@@ -31,13 +30,13 @@ export default class CodeMirror extends React.Component {
     const { value } = this.props;
     if (this.jsonRef) { this.jsonRef.codeMirror.setValue(value); }
     return (
-      <React.Fragment>
+      <>
         <ReactCodeMirror
           codeMirrorInstance={CodeMirrorInstance}
           ref={this.cmRef}
           {...this.props}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

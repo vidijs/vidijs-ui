@@ -31,7 +31,7 @@ function JobCreate({
     openSnackBar({ messageContent, messageColor: 'secondary' });
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         title="Start Job"
         helpTo="/ref/job.html"
@@ -57,9 +57,8 @@ function JobCreate({
           </Button>
         </DialogActions>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
-
 
 export default compose(withSnackbar, withFormActions)(JobCreate);

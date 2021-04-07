@@ -1,10 +1,10 @@
 import React from 'react';
 
+import { documentmetadata as api } from '@vidijs/vidijs-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import DocumentMetadataListCard from '../components/documentmetadata/DocumentMetadataListCard';
 import DocumentMetadataCreate from '../components/documentmetadata/DocumentMetadataCreate';
 
-import { documentmetadata as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
 const DOCUMENT_CREATE_DIALOG = 'DOCUMENT_CREATE_DIALOG';
@@ -42,8 +42,8 @@ class DocumentMetadataList extends React.PureComponent {
     const matrixParams = [{ first }, { number }];
     try {
       api.listDocumentMetadata({ matrixParams })
-        .then(response => this.setState({ documentListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ documentListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -76,7 +76,7 @@ class DocumentMetadataList extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Document"
           code={documentListDocument}
@@ -93,9 +93,9 @@ class DocumentMetadataList extends React.PureComponent {
         />
         <DocumentMetadataCreate
           dialogName={DOCUMENT_CREATE_DIALOG}
-          onSuccess={response => history.push(`/document/${response.documentMetadataName}`)}
+          onSuccess={(response) => history.push(`/document/${response.documentMetadataName}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

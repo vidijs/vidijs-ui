@@ -44,7 +44,7 @@ export const ShapeTypeRow = ({ shapeType }) => {
     essenceVersion,
     tag = [],
   } = shapeType;
-  const itemIds = itemList.map(thisItem => thisItem.id);
+  const itemIds = itemList.map((thisItem) => thisItem.id);
   const [itemId] = itemIds;
   const linkTo = itemId ? `/item/${itemId}/shape/${shapeId}/` : undefined;
   return (
@@ -81,7 +81,7 @@ function ShapeListTable({
   if (shapeListDocument === undefined) { return null; }
   const { shape: shapeList = [], hits: count = 0 } = shapeListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -108,7 +108,7 @@ function ShapeListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {shapeList.map(shapeType => (
+          {shapeList.map((shapeType) => (
             <ShapeTypeRow
               key={shapeType.id}
               shapeType={shapeType}
@@ -131,7 +131,7 @@ function ShapeListTable({
           </TableFooter>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }
 

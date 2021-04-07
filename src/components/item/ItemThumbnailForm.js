@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import ChipInput from '../ui/ChipInput';
 import FormSection from '../ui/FormSection';
@@ -17,9 +17,9 @@ import JobPriority from '../../const/JobPriority';
 import { required } from '../../utils/FieldValidation';
 
 const queryParams = ({ variant }) => (
-  <React.Fragment>
+  <>
     {variant !== 'thumbnail' && (
-    <React.Fragment>
+    <>
       <Field
         name="createPosters"
         label="Poster Timecode"
@@ -46,10 +46,10 @@ const queryParams = ({ variant }) => (
           <MenuItem value="png">PNG</MenuItem>
         </Field>
       </FormControl>
-    </React.Fragment>
+    </>
     )}
     {variant !== 'poster' && (
-    <React.Fragment>
+    <>
       <Field
         name="createThumbnails"
         label="Thumbnail Timecode"
@@ -69,12 +69,12 @@ const queryParams = ({ variant }) => (
         component={TextField}
         fullWidth
       />
-    </React.Fragment>
+    </>
     )}
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -137,9 +137,8 @@ const queryParams = ({ variant }) => (
       withHeader={false}
       dense
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemThumbnailForm({
   error,

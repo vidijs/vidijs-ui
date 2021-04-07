@@ -1,22 +1,23 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
+import {
+  reduxForm, Field, FormSection, FieldArray,
+} from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField, Select } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Select } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 
 import TextButton from '../ui/TextButton';
 
-
 const FilterArray = ({ fields }) => (
-  <React.Fragment>
+  <>
     {fields.map((thisField, index) => (
       <Grid
         key={thisField}
@@ -28,7 +29,7 @@ const FilterArray = ({ fields }) => (
         <Grid item sm={5}>
           <FormControl fullWidth>
             <InputLabel htmlFor={`${thisField}.key`}>Filter Key</InputLabel>
-            <Field name={`${thisField}.key`} component={Select} >
+            <Field name={`${thisField}.key`} component={Select}>
               <MenuItem value="user">user</MenuItem>
               <MenuItem value="group">group</MenuItem>
               <MenuItem value="storage">storage</MenuItem>
@@ -57,12 +58,11 @@ const FilterArray = ({ fields }) => (
     <TextButton onClick={() => fields.push()} color="primary" style={{ marginTop: 10 }}>
       Add Filter
     </TextButton>
-  </React.Fragment>
+  </>
 );
 
-
 const QuotaFilterQueryParams = () => (
-  <React.Fragment>
+  <>
     <Grid container direction="column">
       <FieldArray
         name="filter"
@@ -70,21 +70,21 @@ const QuotaFilterQueryParams = () => (
       />
     </Grid>
     <FormControlLabel
-      control={
+      control={(
         <Field
           name="exceeded"
           component={BoolCheckbox}
         />
-      }
+      )}
       label="Exceeded"
     />
     <FormControl fullWidth>
       <InputLabel htmlFor="content">Content</InputLabel>
-      <Field name="content" component={Select} >
+      <Field name="content" component={Select}>
         <MenuItem value="external">External</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
 
 function QuotaFilterForm({

@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submit, SubmissionError } from 'redux-form';
 
-import EchoCard from '../components/debug/EchoCard';
 import { debug as api } from '@vidijs/vidijs-api';
+import EchoCard from '../components/debug/EchoCard';
 import { openSnackBar } from '../actions/ui';
-
 
 class Echo extends React.PureComponent {
   constructor(props) {
@@ -41,16 +40,15 @@ class Echo extends React.PureComponent {
   render() {
     const { dispatch } = this.props;
     return (
-      <React.Fragment>
+      <>
         <EchoCard
           onSubmit={this.onSubmit}
-          submitForm={p => dispatch(submit(p))}
+          submitForm={(p) => dispatch(submit(p))}
           cmRef={(el) => { this.jsonRef = el; }}
         />
-      </React.Fragment>
+      </>
     );
   }
 }
-
 
 export default connect()(Echo);

@@ -29,7 +29,7 @@ export default function DocumentMetadataListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {documentList.map(documentMetadata => (
+        {documentList.map((documentMetadata) => (
           <DocumentMetadataListRow
             key={documentMetadata.name}
             documentMetadata={documentMetadata}

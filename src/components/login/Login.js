@@ -37,7 +37,7 @@ function Login({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <DialogContent>
         <LoginForm
           form={LOGIN_FORM}
@@ -73,7 +73,7 @@ function Login({
           Log In
         </Button>
       </DialogActions>
-    </React.Fragment>
+    </>
   );
 }
 

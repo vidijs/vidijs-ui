@@ -4,7 +4,7 @@ import TextGrid from '../ui/TextGrid';
 import TypeSection from '../ui/TypeSection';
 
 const ReindexRequestType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="index"
       value={value.index}
@@ -42,19 +42,18 @@ const ReindexRequestType = ({ value = {} }) => (
       value={value.indexesTotal}
       hover
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function ReindexDisplay({
   reindexRequestDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={reindexRequestDocument}
         component={ReindexRequestType}
       />
-    </React.Fragment>
+    </>
   );
 }

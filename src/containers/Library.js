@@ -53,7 +53,6 @@ const listComponent = ({ onChangeTab, tabValue }) => (
   </List>
 );
 
-
 class Library extends React.PureComponent {
   componentDidMount() {
     const { libraryId } = this.props;
@@ -67,9 +66,9 @@ class Library extends React.PureComponent {
       libraryId,
       history,
     } = this.props;
-    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const tabInfo = TAB_TITLE.find((thisTab) => thisTab.tab === tabValue) || TAB_TITLE[0];
     const { listText, component: mainComponent } = tabInfo;
-    const titleComponent = props => (
+    const titleComponent = (props) => (
       <LibraryTitle
         libraryId={libraryId}
         removeModal={LIBRARY_REMOVE_DIALOG}
@@ -81,7 +80,7 @@ class Library extends React.PureComponent {
       />
     );
     return (
-      <React.Fragment>
+      <>
         <DrawerContainer
           mainComponent={mainComponent}
           listComponent={listComponent}
@@ -111,7 +110,7 @@ class Library extends React.PureComponent {
           entityType="library"
           entityId={libraryId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -15,7 +15,7 @@ import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import StorageTypes from '../../const/StorageTypes';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="type"
       component={TextField}
@@ -39,7 +39,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="storageType">StorageType</InputLabel>
       <Field name="storageType" component={Select}>
-        {StorageTypes.map(storageType => (
+        {StorageTypes.map((storageType) => (
           <MenuItem key={storageType} value={storageType}>
             {storageType}
           </MenuItem>
@@ -67,9 +67,8 @@ const queryParams = () => (
       )}
       label="Closed Files"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemUriParamsForm({
   error,

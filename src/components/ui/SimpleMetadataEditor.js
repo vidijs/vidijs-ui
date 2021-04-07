@@ -58,11 +58,11 @@ class SimpleMetadataEditor extends React.PureComponent {
       if (onSuccess) { onSuccess(response, dispatch, props); }
     };
     return (
-      <React.Fragment>
+      <>
         <CardHeader
           title={<Typography variant="subtitle1">Metadata</Typography>}
           disableTypography
-          action={
+          action={(
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>
                 <FormControlLabel
@@ -73,25 +73,26 @@ class SimpleMetadataEditor extends React.PureComponent {
                 />
               </Grid>
             </Grid>
-          }
+          )}
         />
         <CardContent>
-          {isEditing ?
-            <SimpleMetadataForm
-              form={EDIT_SIMPLE_METADATA_FORM}
-              initialValues={initialValues}
-              onSubmit={formActions.onUpdateSimpleMetadataSubmit}
-              onSubmitSuccess={onSubmitSuccess}
-              onSubmitFail={formActions.onUpdateSimpleMetadataSubmitFail}
-              entityType={entityType}
-              entityId={entityId}
-            />
-          :
-            <SimpleMetadataDisplay simpleMetadataList={simpleMetadataList} />
-          }
+          {isEditing
+            ? (
+              <SimpleMetadataForm
+                form={EDIT_SIMPLE_METADATA_FORM}
+                initialValues={initialValues}
+                onSubmit={formActions.onUpdateSimpleMetadataSubmit}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={formActions.onUpdateSimpleMetadataSubmitFail}
+                entityType={entityType}
+                entityId={entityId}
+              />
+            )
+            : <SimpleMetadataDisplay simpleMetadataList={simpleMetadataList} />}
         </CardContent>
-        {isEditing &&
-          <React.Fragment>
+        {isEditing
+          && (
+          <>
             <Divider />
             <ExpansionPanelActions>
               <Button
@@ -108,13 +109,12 @@ class SimpleMetadataEditor extends React.PureComponent {
                 Save
               </Button>
             </ExpansionPanelActions>
-          </React.Fragment>
-        }
-      </React.Fragment>
+          </>
+          )}
+      </>
     );
   }
 }
-
 
 const mapDispatchToProps = {
   submitForm: submit,

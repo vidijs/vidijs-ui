@@ -4,15 +4,15 @@ import Divider from '@material-ui/core/Divider';
 import TextGrid from '../ui/TextGrid';
 
 export const TaskGroupType = ({ group }) => (
-  <React.Fragment>
-    { group.priority &&
-      <TextGrid title="Priority" value={group.priority} />
-    }
-    { group.job &&
-      <React.Fragment>
-        {group.job.map((job, index) => (
+  <>
+    { group.priority
+      && <TextGrid title="Priority" value={group.priority} />}
+    { group.job
+      && (
+      <>
+        {group.job.map((job) => (
           <React.Fragment
-            key={index} // eslint-disable-line react/no-array-index-key
+            key={job.type}
           >
             <Divider />
             <TextGrid title="Job Type" variant="list" value={job.type} />
@@ -20,22 +20,23 @@ export const TaskGroupType = ({ group }) => (
             <TextGrid title="Job User" variant="list" value={job.user} />
             <TextGrid title="Job Group" variant="list" value={job.group} />
           </React.Fragment>
-      ))}
+        ))}
         <Divider />
-      </React.Fragment>
-    }
-    { group.transcoder &&
-      <React.Fragment>
-        {group.transcoder.map(transcoder => (
+      </>
+      )}
+    { group.transcoder
+      && (
+      <>
+        {group.transcoder.map((transcoder) => (
           <React.Fragment key={transcoder.id}>
             <Divider />
             <TextGrid title="Transcoder" value={transcoder.id} />
           </React.Fragment>
         ))}
         <Divider />
-      </React.Fragment>
-  }
-  </React.Fragment>
+      </>
+      )}
+  </>
 );
 
 export default function TaskGroupDisplay({

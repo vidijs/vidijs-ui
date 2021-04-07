@@ -1,12 +1,12 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { TextField, Select } from '../form';
 
 import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
@@ -16,7 +16,6 @@ import ChipInput from '../ui/ChipInput';
 import { StatefulAsyncSelect } from '../ui/Select';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
 import { loadFieldGroupOptions } from '../fieldgroup/FieldGroupSelect';
-
 
 const ItemSearchTextValueType = () => (
   <Grid container>
@@ -87,7 +86,7 @@ const ItemSearchValueType = () => (
 );
 
 const ItemSearchRangeType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="value[0]"
       component={ItemSearchValueType}
@@ -116,11 +115,11 @@ const ItemSearchRangeType = () => (
       )}
       label="Exclusive Maximum"
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchFieldType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="Field Name"
@@ -154,11 +153,11 @@ const SearchFieldType = () => (
         <MenuItem value="file">File</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
 
 const SearchGroupType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="Group Name"
@@ -190,11 +189,11 @@ const SearchGroupType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchOperatorType = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="operation">Operation</InputLabel>
       <Field name="operation" component={Select}>
@@ -237,11 +236,11 @@ const SearchOperatorType = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const SearchFilterType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       component={TextField}
@@ -282,11 +281,11 @@ const SearchFilterType = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const CriterionType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="operator"
       label="operator"
@@ -306,22 +305,22 @@ export const CriterionType = () => (
       withHeader={false}
       arrayHeader
     />
-  </React.Fragment>
+  </>
 );
 
 export const ShapeCriterionType = () => (
-  <React.Fragment>
+  <>
     <CriterionType />
     <FormSection
       name="file"
       component={CriterionType}
       label="Shape File"
     />
-  </React.Fragment>
+  </>
 );
 
 export const ItemCriterionType = () => (
-  <React.Fragment>
+  <>
     <CriterionType />
     <FormSection
       name="shape"
@@ -333,11 +332,11 @@ export const ItemCriterionType = () => (
       component={CriterionType}
       label="Item File"
     />
-  </React.Fragment>
+  </>
 );
 
 export const FacetRangeType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="start"
       component={TextField}
@@ -348,11 +347,11 @@ export const FacetRangeType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const SearchFacetFilterType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       label="Field"
@@ -374,11 +373,11 @@ export const SearchFacetFilterType = () => (
       label="Range"
       component={FacetRangeType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const SearchFacetType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       label="Field"
@@ -429,11 +428,11 @@ export const SearchFacetType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const SearchSortType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       label="Field"
@@ -452,11 +451,11 @@ export const SearchSortType = () => (
         <MenuItem value="descending">Descending</MenuItem>
       </Field>
     </FormControl>
-  </React.Fragment>
+  </>
 );
 
 export const SearchHighlightType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="field"
       label="Field"
@@ -488,11 +487,11 @@ export const SearchHighlightType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const SuggestionSearchType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="maximumSuggestions"
       component={TextField}
@@ -505,11 +504,11 @@ export const SuggestionSearchType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const AutocompleteRequestType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="text"
       component={TextField}
@@ -532,11 +531,11 @@ export const AutocompleteRequestType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 export const ItemSearchType = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="text"
       component={ItemSearchTextValueType}
@@ -615,9 +614,8 @@ export const ItemSearchType = () => (
       fullWidth
       type="number"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemSearchForm({
   error,

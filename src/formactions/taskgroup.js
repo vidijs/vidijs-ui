@@ -9,7 +9,7 @@ export function onUpdate(form) {
     groupName,
     taskGroupDocument,
   })
-    .then(response => ({ taskGroupDocument: response.data }))
+    .then((response) => ({ taskGroupDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import MUITableRow from '@material-ui/core/TableRow';
 import withDivComponent from '../../hoc/withDivComponent';
 
-
 function TableRow({
   history,
   to,

@@ -17,11 +17,10 @@ class ImportImpFile extends React.PureComponent {
     const { history } = this.props;
     return (
       <ImportImpFileWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
       />
     );
   }
 }
-
 
 export default withFormActions(ImportImpFile);

@@ -77,7 +77,6 @@ const TAB_TITLE = [
   { tab: BULKYMETADATA_TAB, listText: 'Bulky Metadata', component: ItemBulkyMetadataList },
 ];
 
-
 const listComponent = ({ onChangeTab, tabValue }) => (
   <List>
     {TAB_TITLE.map(({ tab, listText }) => (
@@ -124,9 +123,9 @@ class Item extends React.PureComponent {
       itemId,
       history,
     } = this.props;
-    const tabInfo = TAB_TITLE.find(thisTab => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const tabInfo = TAB_TITLE.find((thisTab) => thisTab.tab === tabValue) || TAB_TITLE[0];
     const { listText, component: mainComponent } = tabInfo;
-    const titleComponent = props => (
+    const titleComponent = (props) => (
       <ItemTitle
         itemId={itemId}
         removeModal={ITEM_REMOVE_DIALOG}
@@ -144,7 +143,7 @@ class Item extends React.PureComponent {
       />
     );
     return (
-      <React.Fragment>
+      <>
         <DrawerContainer
           mainComponent={mainComponent}
           listComponent={listComponent}
@@ -164,18 +163,18 @@ class Item extends React.PureComponent {
         />
         <ItemTranscode
           dialogName={ITEM_TRANSCODE_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
         />
         <ItemThumbnailDialog
           dialogName={ITEM_THUMBNAIL_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
           variant="thumbnail"
         />
         <ItemThumbnailDialog
           dialogName={ITEM_POSTER_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
           variant="poster"
         />
@@ -186,12 +185,12 @@ class Item extends React.PureComponent {
         />
         <ItemExport
           dialogName={ITEM_EXPORT_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
         />
         <ItemImpExport
           dialogName={ITEM_IMPEXPORT_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}/`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
         />
         <CollectionEntityAdd
@@ -215,7 +214,7 @@ class Item extends React.PureComponent {
             },
           }}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

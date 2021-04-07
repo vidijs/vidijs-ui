@@ -7,7 +7,7 @@ export default function ItemListContent({ itemListDocument }) {
   if (itemListDocument === undefined) { return null; }
   const { item: itemList = [] } = itemListDocument;
   return (
-    itemList.map(itemDocument => (
+    itemList.map((itemDocument) => (
       <React.Fragment
         key={itemDocument.id}
       >

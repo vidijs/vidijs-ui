@@ -21,11 +21,11 @@ export default function StorageTitle({
       openCode={openCode}
       onRefresh={onRefresh}
       helpTo="/ref/storage/storage.html#storage-methods"
-      actionComponent={
+      actionComponent={(
         <IconButton onClick={openRemove}>
           <DeleteForever />
         </IconButton>
-      }
+      )}
     />
   );
 }

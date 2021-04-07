@@ -5,11 +5,11 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/job';
 import JobPriorityForm from './JobPriorityForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const JOB_PRIORITY_FORM = 'JOB_PRIORITY_FORM';
@@ -73,6 +73,5 @@ function JobPriority({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(JobPriority);

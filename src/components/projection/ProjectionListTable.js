@@ -19,7 +19,7 @@ export default function ProjectionListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {projectionList.map(projection => (
+        {projectionList.map((projection) => (
           <ProjectionListRow
             key={projection}
             projection={projection}

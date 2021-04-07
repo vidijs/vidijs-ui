@@ -1,9 +1,11 @@
 import React from 'react';
-import { reduxForm, Field, FormSection, FieldArray } from 'redux-form';
+import {
+  reduxForm, Field, FormSection, FieldArray,
+} from 'redux-form';
 import MenuItem from '@material-ui/core/MenuItem';
-import { TextField } from '../form';
 import Typography from '@material-ui/core/Typography';
 import update from 'immutability-helper';
+import { TextField } from '../form';
 
 import CodeField from '../ui/CodeField';
 import StatefulSelect from '../ui/StatefulSelect';
@@ -12,7 +14,7 @@ import { getActionType } from './NotificationAction';
 
 function ActionTypeBase() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="retry"
         label="Retry"
@@ -38,13 +40,13 @@ function ActionTypeBase() {
         component={TextField}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
 function ActionTypeHttp() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="url"
         label="URL"
@@ -71,13 +73,13 @@ function ActionTypeHttp() {
         required
       />
       <ActionTypeBase />
-    </React.Fragment>
+    </>
   );
 }
 
 function ActionTypeEjb() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="bean"
         label="Bean"
@@ -97,13 +99,13 @@ function ActionTypeEjb() {
         buttonLabel="Add Data"
       />
       <ActionTypeBase />
-    </React.Fragment>
+    </>
   );
 }
 
 function ActionTypeJms() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="Queue"
         label="Queue"
@@ -135,13 +137,13 @@ function ActionTypeJms() {
         fullWidth
       />
       <ActionTypeBase />
-    </React.Fragment>
+    </>
   );
 }
 
 function ActionTypeSqs() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="queue"
         label="Queue"
@@ -173,13 +175,13 @@ function ActionTypeSqs() {
         fullWidth
       />
       <ActionTypeBase />
-    </React.Fragment>
+    </>
   );
 }
 
 function ActionTypeJavascript() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="script"
         component={CodeField}
@@ -191,7 +193,7 @@ function ActionTypeJavascript() {
         }}
       />
       <ActionTypeBase />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -248,7 +250,7 @@ function ActionTypeSelect(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Action Type"
         initialvalue={initialActionType}
@@ -263,14 +265,13 @@ function ActionTypeSelect(props) {
         <MenuItem value="sqs">SQS</MenuItem>
         <MenuItem value="javascript">Javascript</MenuItem>
       </StatefulSelect>
-    </React.Fragment>
+    </>
   );
 }
 
-
 function NotificationActionForm(props) {
   return (
-    <form onSubmit={props.handleSubmit} >
+    <form onSubmit={props.handleSubmit}>
       {props.error && <Typography color="error">{props.error}</Typography>}
       <FormSection
         {...props}
@@ -281,6 +282,5 @@ function NotificationActionForm(props) {
     </form>
   );
 }
-
 
 export default reduxForm()(NotificationActionForm);

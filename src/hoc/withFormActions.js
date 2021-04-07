@@ -6,7 +6,6 @@ import {
   destroy,
 } from 'redux-form';
 
-
 const mapDispatchToProps = {
   submitForm: submit,
   resetForm: reset,
@@ -14,8 +13,7 @@ const mapDispatchToProps = {
   destroyForm: destroy,
 };
 
-
-const withFormActions = WrappedComponent => connect(
+const withFormActions = (WrappedComponent) => connect(
   null,
   mapDispatchToProps,
 )(WrappedComponent);

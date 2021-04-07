@@ -2,7 +2,6 @@ import { SubmissionError } from 'redux-form';
 
 import { library as api } from '@vidijs/vidijs-api';
 
-
 export function onCreate(form) {
   const { queryParams, itemListDocument } = form;
   return api.createLibrary({
@@ -80,7 +79,6 @@ export function onUpdateSettings(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
 
 export function onUpdateItemMetadata(form, dispatch, props) {
   const { metadataDocument, queryParams } = form;

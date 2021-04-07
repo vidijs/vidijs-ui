@@ -4,7 +4,6 @@ import { bulkymetadata as BulkyMetadataApi } from '@vidijs/vidijs-api';
 import UriListCard from '../../components/ui/UriListCard';
 import withSnackbar from '../../hoc/withSnackbar';
 
-
 class ShapeBulkyMetadataList extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class ShapeBulkyMetadataList extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ shapeId, itemId }) {
+  UNSAFE_componentWillReceiveProps({ shapeId, itemId }) {
     const { shapeId: prevItemId } = this.props;
     if (prevItemId !== shapeId) {
       this.onFetch(itemId, shapeId);
@@ -36,8 +35,8 @@ class ShapeBulkyMetadataList extends React.PureComponent {
   onFetch(itemId, shapeId) {
     try {
       BulkyMetadataApi.listShapeBulkyMetadata({ itemId, shapeId })
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -49,7 +48,6 @@ class ShapeBulkyMetadataList extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       titleComponent: TitleComponent,
@@ -59,7 +57,7 @@ class ShapeBulkyMetadataList extends React.PureComponent {
     } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={uriListDocument}
@@ -73,10 +71,10 @@ class ShapeBulkyMetadataList extends React.PureComponent {
         {uriListDocument && (
           <UriListCard
             uriListDocument={uriListDocument}
-            linkTo={uri => `/item/${itemId}/shape/${shapeId}/bulky-metadata/${uri}/`}
+            linkTo={(uri) => `/item/${itemId}/shape/${shapeId}/bulky-metadata/${uri}/`}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

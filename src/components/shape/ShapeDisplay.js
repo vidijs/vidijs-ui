@@ -31,7 +31,7 @@ export const SimpleMetadataType = ({ value = {} }) => (
 );
 
 const ComponentType = ({ value = {}, title = 'Component', ...props }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title={`${title} ID`}
       value={value.id}
@@ -49,11 +49,11 @@ const ComponentType = ({ value = {}, title = 'Component', ...props }) => (
       value={value.file}
       {...props}
     />
-  </React.Fragment>
+  </>
 );
 
 const MediaComponentType = ({ value = {}, title = 'Component', ...props }) => (
-  <React.Fragment>
+  <>
     <ComponentType
       title={title}
       value={value}
@@ -147,12 +147,11 @@ const MediaComponentType = ({ value = {}, title = 'Component', ...props }) => (
       value={value.segment}
       {...props}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const BaseMediaInfoType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       component={KeyValuePairType}
       dense
@@ -172,11 +171,11 @@ const BaseMediaInfoType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export const ContainerComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <ComponentType
       title="Container Component"
       value={value}
@@ -247,9 +246,8 @@ export const ContainerComponentType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
-
 
 const ContainerComponentSection = ({ value = {} }) => (
   <TypeSection
@@ -259,9 +257,8 @@ const ContainerComponentSection = ({ value = {} }) => (
   />
 );
 
-
 export const DescriptorComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <ComponentType
       title="Descriptor Component"
       value={value}
@@ -272,7 +269,7 @@ export const DescriptorComponentType = ({ value = {} }) => (
       value={value.description}
       hover={false}
       component={({ value: v }) => (
-        <React.Fragment>
+        <>
           <TextGrid
             value={v.type}
             title="Type"
@@ -281,10 +278,10 @@ export const DescriptorComponentType = ({ value = {} }) => (
             value={v.value}
             variant="xml"
           />
-        </React.Fragment>
+        </>
       )}
     />
-  </React.Fragment>
+  </>
 );
 
 const DescriptorComponentSection = ({ value = {} }) => (
@@ -298,7 +295,7 @@ const DescriptorComponentSection = ({ value = {} }) => (
 );
 
 export const BinaryComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <ComponentType
       title="Binary Component"
       value={value}
@@ -336,7 +333,7 @@ export const BinaryComponentType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const BinaryComponentSection = ({ value = {} }) => (
@@ -350,7 +347,7 @@ const BinaryComponentSection = ({ value = {} }) => (
 );
 
 export const AudioComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <MediaComponentType
       title="Audio Component"
       value={value}
@@ -394,7 +391,7 @@ export const AudioComponentType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const AudioComponentSection = ({ value = {} }) => (
@@ -408,7 +405,7 @@ const AudioComponentSection = ({ value = {} }) => (
 );
 
 export const VideoComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <MediaComponentType
       title="Video Component"
       value={value}
@@ -563,7 +560,7 @@ export const VideoComponentType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const VideoComponentSection = ({ value = {} }) => (
@@ -577,14 +574,14 @@ const VideoComponentSection = ({ value = {} }) => (
 );
 
 export const SubtitleComponentType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <MediaComponentType
       title="Subtitle Component"
       value={value}
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const SubtitleComponentSection = ({ value = {} }) => (
@@ -606,7 +603,7 @@ const MetadataSection = ({ value = {} }) => (
 );
 
 export const ShapeSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="id"
       value={value.id}
@@ -643,14 +640,14 @@ export const ShapeSection = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export default function ShapeDisplay({
   shapeDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={shapeDocument}
         component={SubtitleComponentSection}
@@ -683,6 +680,6 @@ export default function ShapeDisplay({
         value={shapeDocument}
         component={MetadataSection}
       />
-    </React.Fragment>
+    </>
   );
 }

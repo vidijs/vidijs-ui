@@ -4,7 +4,6 @@ import { job as api } from '@vidijs/vidijs-api';
 import JobListCard from '../../components/job/JobListCard';
 import withSnackbar from '../../hoc/withSnackbar';
 
-
 class ItemJob extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -31,7 +30,7 @@ class ItemJob extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -70,8 +69,8 @@ class ItemJob extends React.PureComponent {
         queryParams,
         matrixParams: Object.entries(matrixParams),
       })
-        .then(response => this.onSuccess(response))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.onSuccess(response))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -137,7 +136,7 @@ class ItemJob extends React.PureComponent {
       tabComponent: TabComponent,
     } = this.props;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={jobListDocument}
@@ -159,7 +158,7 @@ class ItemJob extends React.PureComponent {
           orderBy={orderBy}
           orderDirection={orderDirection}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

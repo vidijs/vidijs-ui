@@ -8,7 +8,7 @@ import { KeyValuePairType } from '../ui/FormType';
 import { MetadataSchemaElementType, MetadataFieldType } from '../metadatafield/MetadataFieldDisplay';
 
 const MetadataFieldAccessControlType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="field"
       value={value.field}
@@ -34,11 +34,11 @@ const MetadataFieldAccessControlType = ({ value = {} }) => (
       value={value.permission}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const BasicSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="name"
       value={value.name}
@@ -50,43 +50,43 @@ const BasicSection = ({ value = {} }) => (
       variant="boolean"
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const SchemaSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       title="schema"
       value={value.schema}
       component={MetadataSchemaElementType}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const DataSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       title="data"
       value={value.data}
       component={KeyValuePairType}
       hideNoValue
     />
-  </React.Fragment>
+  </>
 );
 
 const AccessSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       title="access"
       value={value.access}
       component={MetadataFieldAccessControlType}
     />
-  </React.Fragment>
+  </>
 );
 
 const FieldSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       arrayTitle="Child Fields"
       titleKey="name"
@@ -94,12 +94,11 @@ const FieldSection = ({ value = {} }) => (
       value={value.field}
       component={MetadataFieldType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const MetadataFieldGroupType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <BasicSection value={value} />
     <SchemaSection value={value} />
     <FieldSection value={value} />
@@ -112,11 +111,11 @@ const MetadataFieldGroupType = ({ value = {} }) => (
     />
     <DataSection value={value} />
     <AccessSection value={value} />
-  </React.Fragment>
+  </>
 );
 
 const GroupSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeArray
       arrayTitle="Child Groups"
       titleKey="name"
@@ -124,74 +123,72 @@ const GroupSection = ({ value = {} }) => (
       value={value.group}
       component={MetadataFieldGroupType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 export const FieldGroupBasicDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={BasicSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FieldGroupSchemaDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={SchemaSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FieldGroupGroupDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={GroupSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FieldGroupDataDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={DataSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FieldGroupAccessDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={AccessSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const FieldGroupFieldDisplay = ({ metadataFieldGroupDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={FieldSection}
       value={metadataFieldGroupDocument}
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function FieldGroupDisplay({
   metadataFieldGroupDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={MetadataFieldGroupType}
         value={metadataFieldGroupDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

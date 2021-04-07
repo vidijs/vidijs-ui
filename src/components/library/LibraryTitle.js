@@ -5,7 +5,6 @@ import TitleHeader from '../ui/TitleHeader';
 import Menu, { MenuItem } from '../ui/Menu';
 import { withModalNoRouter } from '../../hoc/withModal';
 
-
 function LibraryTitle({
   libraryId,
   onOpen,

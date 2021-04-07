@@ -18,14 +18,14 @@ export default function AccessControlCard({
       <CardContent>
         <CardHeader
           subheader={ruleId}
-          action={
-            <React.Fragment>
+          action={(
+            <>
               <IconButton onClick={openRemove(ruleId)}>
                 <Delete />
               </IconButton>
               <ExternalIdLink entityId={ruleId} entityType="quota" />
-            </React.Fragment>
-          }
+            </>
+          )}
         />
         <CardContent>
           <QuotaDisplay

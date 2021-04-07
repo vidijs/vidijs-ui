@@ -1,9 +1,8 @@
 import React from 'react';
+import { library as api } from '@vidijs/vidijs-api';
 import LibrarySettingsCard from '../../components/library/LibrarySettingsCard';
 
-import { library as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class LibrarySettings extends React.PureComponent {
   constructor(props) {
@@ -20,7 +19,7 @@ class LibrarySettings extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ libraryId }) {
+  UNSAFE_componentWillReceiveProps({ libraryId }) {
     const { libraryId: prevLibraryId } = this.props;
     if (prevLibraryId !== libraryId) {
       this.onFetch(libraryId);
@@ -36,8 +35,8 @@ class LibrarySettings extends React.PureComponent {
   onFetch(libraryId) {
     try {
       api.getLibrarySettings({ libraryId })
-        .then(response => this.setState({ librarySettingsDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ librarySettingsDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -49,7 +48,6 @@ class LibrarySettings extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       libraryId,
@@ -58,7 +56,7 @@ class LibrarySettings extends React.PureComponent {
     } = this.props;
     const { librarySettingsDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={librarySettingsDocument}
@@ -76,7 +74,7 @@ class LibrarySettings extends React.PureComponent {
             onSuccess={this.onRefresh}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

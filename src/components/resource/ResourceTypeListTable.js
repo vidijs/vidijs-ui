@@ -19,7 +19,7 @@ export default function ResourceTypeListTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {resourceTypeList.map(resourceType => (
+        {resourceTypeList.map((resourceType) => (
           <ResourceTypeListRow
             key={resourceType.type}
             resourceType={resourceType.type}

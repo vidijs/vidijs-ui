@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import PropertiesCard from '../../components/configuration/properties/PropertiesCard';
 import PropertiesDialog from '../../components/configuration/properties/PropertiesDialog';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
 
 const CONFIGURATIONPROPERTIES_CREATE_MODAL = 'CONFIGURATIONPROPERTIES_CREATE_MODAL';
 
@@ -27,7 +27,7 @@ class Properties extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.getPropertiesConfiguration()
-        .then(response => this.setState({ configurationPropertyListDocument: response.data }));
+        .then((response) => this.setState({ configurationPropertyListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Getting Configuration Properties';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -37,7 +37,7 @@ class Properties extends React.PureComponent {
   render() {
     const { configurationPropertyListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Configuration"
           parentTo="/configuration/"
@@ -48,17 +48,18 @@ class Properties extends React.PureComponent {
           code={configurationPropertyListDocument}
           codeModal="ConfigurationPropertyListDocument"
         />
-        {configurationPropertyListDocument &&
+        {configurationPropertyListDocument
+        && (
         <PropertiesCard
           configurationPropertyListDocument={configurationPropertyListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <PropertiesDialog
           dialogName={CONFIGURATIONPROPERTIES_CREATE_MODAL}
           onSuccess={this.onRefresh}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

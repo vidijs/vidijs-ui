@@ -12,7 +12,7 @@ import {
 
 export default function VersionCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <CardHeader
           title="System"
@@ -43,6 +43,6 @@ export default function VersionCard(props) {
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

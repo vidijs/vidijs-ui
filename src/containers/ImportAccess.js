@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { access as api } from '@vidijs/vidijs-api';
 import ImportAccessTitle from '../components/importaccess/ImportAccessTitle';
 import ImportAccessCard from '../components/importaccess/ImportAccessCard';
 import ImportAccessRemove from '../components/importaccess/ImportAccessRemove';
@@ -8,7 +9,6 @@ import ImportAccessDialog from '../components/importaccess/ImportAccessDialog';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { access as api } from '@vidijs/vidijs-api';
 
 const IMPORTACCESS_CODE_MODAL = 'IMPORTACCESS_CODE_MODAL';
 const IMPORTACCESS_REMOVE_MODAL = 'IMPORTACCESS_REMOVE_MODAL';
@@ -36,8 +36,8 @@ class ImportSettings extends React.PureComponent {
     const { openSnackBar, userName } = this.props;
     const headers = { RunAs: userName };
     api.getImportAccess({ headers })
-      .then(response => response.json())
-      .then(importAccessControlListDocument => this.setState({ importAccessControlListDocument }))
+      .then((response) => response.json())
+      .then((importAccessControlListDocument) => this.setState({ importAccessControlListDocument }))
       .catch(() => {
         const messageContent = 'Error Loading Import Settings';
         openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -82,7 +82,6 @@ class ImportSettings extends React.PureComponent {
     };
   }
 
-
   render() {
     const {
       modalName,
@@ -95,34 +94,36 @@ class ImportSettings extends React.PureComponent {
       currentGroup,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ImportAccessTitle
           openCode={() => openModal({ modalName: IMPORTACCESS_CODE_MODAL })}
           openCreate={() => openModal({ modalName: IMPORTACCESS_EDIT_MODAL })}
           onRefresh={this.onRefresh}
           userName={userName}
         />
-        {importAccessControlListDocument &&
+        {importAccessControlListDocument
+          && (
           <ImportAccessCard
             importAccessControlListDocument={importAccessControlListDocument}
             openRemove={this.openRemove}
             openEdit={this.openEdit}
           />
-        }
+          )}
         <CodeModal
           isOpen={(modalName === IMPORTACCESS_CODE_MODAL)}
           toggleDialogue={closeModal}
           code={importAccessControlListDocument}
           title="ImportAccessControlListDocument"
         />
-        { currentGroup &&
+        { currentGroup
+          && (
           <ImportAccessRemove
             isOpen={(modalName === IMPORTACCESS_REMOVE_MODAL)}
             closeModal={closeModal}
             onRemove={this.onRemove}
             groupName={currentGroup.name}
           />
-        }
+          )}
         <ImportAccessDialog
           isOpen={(modalName === IMPORTACCESS_EDIT_MODAL)}
           closeModal={closeModal}
@@ -130,7 +131,7 @@ class ImportSettings extends React.PureComponent {
           group={currentGroup}
           userName={userName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

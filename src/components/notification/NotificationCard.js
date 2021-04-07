@@ -43,8 +43,8 @@ function NotificationCard({
   };
   const { action, trigger } = notificationDocument;
   return (
-    <React.Fragment>
-      <Grid container direction="row" alignItems="center" >
+    <>
+      <Grid container direction="row" alignItems="center">
         <Grid item xs={10}>
           <Typography
             variant="h5"
@@ -65,7 +65,8 @@ function NotificationCard({
               />
             </Grid>
             <Grid item>
-              {isEditing &&
+              {isEditing
+              && (
               <Button
                 size="small"
                 color="primary"
@@ -74,7 +75,7 @@ function NotificationCard({
               >
                 Save
               </Button>
-              }
+              )}
             </Grid>
           </Grid>
         </Grid>
@@ -82,22 +83,25 @@ function NotificationCard({
       <SquareCard>
         <CardContent>
           {isEditing
-          ? <NotificationTriggerForm
-            notificationId={notificationId}
-            entityType={entityType}
-            form={NOTIFICATION_EDIT_FORM}
-            onSubmit={formActions.onUpdate}
-            onSubmitSuccess={onSubmitSuccess}
-            onSubmitFail={onSubmitFail}
-            initialValues={{ notificationDocument }}
-            valueSelector={valueSelector}
-          />
-          : <NotificationTrigger
-            notificationId={notificationId}
-            trigger={trigger}
-            entityType={entityType}
-          />
-        }
+            ? (
+              <NotificationTriggerForm
+                notificationId={notificationId}
+                entityType={entityType}
+                form={NOTIFICATION_EDIT_FORM}
+                onSubmit={formActions.onUpdate}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+                initialValues={{ notificationDocument }}
+                valueSelector={valueSelector}
+              />
+            )
+            : (
+              <NotificationTrigger
+                notificationId={notificationId}
+                trigger={trigger}
+                entityType={entityType}
+              />
+            )}
         </CardContent>
       </SquareCard>
       <Typography
@@ -110,26 +114,29 @@ function NotificationCard({
       <SquareCard>
         <CardContent>
           {isEditing
-          ? <NotificationActionForm
-            notificationId={notificationId}
-            entityType={entityType}
-            form={NOTIFICATION_EDIT_FORM}
-            onSubmit={formActions.onUpdate}
-            onSubmitSuccess={onSubmitSuccess}
-            onSubmitFail={onSubmitFail}
-            initialValues={{ notificationDocument }}
-            valueSelector={valueSelector}
-          />
-          : <NotificationAction
-            notificationId={notificationId}
-            action={action}
-            entityType={entityType}
-          />
-        }
+            ? (
+              <NotificationActionForm
+                notificationId={notificationId}
+                entityType={entityType}
+                form={NOTIFICATION_EDIT_FORM}
+                onSubmit={formActions.onUpdate}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+                initialValues={{ notificationDocument }}
+                valueSelector={valueSelector}
+              />
+            )
+            : (
+              <NotificationAction
+                notificationId={notificationId}
+                action={action}
+                entityType={entityType}
+              />
+            )}
 
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }
 

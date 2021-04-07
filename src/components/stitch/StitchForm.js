@@ -10,9 +10,8 @@ import FormSection from '../ui/FormSection';
 import Field from '../ui/Field';
 import ChipInput from '../ui/ChipInput';
 
-
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uri"
       label="URI"
@@ -42,9 +41,8 @@ const queryParams = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function StitchForm({
   error,

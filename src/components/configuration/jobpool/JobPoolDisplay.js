@@ -5,7 +5,7 @@ import TypeSection from '../../ui/TypeSection';
 import TypeArray from '../../ui/TypeArray';
 
 const JobPoolType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="priorityThreshold"
       value={value.priorityThreshold}
@@ -16,11 +16,11 @@ const JobPoolType = ({ value = {} }) => (
       value={value.size}
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const JobPoolListType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="concurrentJobs"
       value={value.concurrentJobs}
@@ -32,18 +32,18 @@ const JobPoolListType = ({ value = {} }) => (
       arrayTitle="Pools"
       dense
     />
-  </React.Fragment>
+  </>
 );
 
 export default function JobPoolDisplay({
   jobPoolListDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={jobPoolListDocument}
         component={JobPoolListType}
       />
-    </React.Fragment>
+    </>
   );
 }

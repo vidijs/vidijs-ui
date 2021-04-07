@@ -27,8 +27,7 @@ class FieldGroup extends React.PureComponent {
     this.onRefresh();
   }
 
-
-  componentWillReceiveProps({ groupName }) {
+  UNSAFE_componentWillReceiveProps({ groupName }) {
     const { groupName: prevGroupName } = this.props;
     if (prevGroupName !== groupName) {
       this.onFetch(groupName);
@@ -45,9 +44,9 @@ class FieldGroup extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.getFieldGroup({ groupName })
-        .then(response => this.setState({ metadataFieldGroupDocument: response.data }));
+        .then((response) => this.setState({ metadataFieldGroupDocument: response.data }));
       api.getSimpleMetadata({ groupName })
-        .then(response => this.setState({ simpleMetadataDocument: response.data }));
+        .then((response) => this.setState({ simpleMetadataDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Getting Metadata Field';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -60,7 +59,7 @@ class FieldGroup extends React.PureComponent {
     } = this.props;
     const { simpleMetadataDocument, metadataFieldGroupDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <FieldGroupTitle
           removeModal={FIELDGROUP_REMOVE_MODAL}
           onRefresh={this.onRefresh}
@@ -68,26 +67,28 @@ class FieldGroup extends React.PureComponent {
           code={metadataFieldGroupDocument}
           codeModal="MetadataFieldGroupDocument"
         />
-        {metadataFieldGroupDocument &&
+        {metadataFieldGroupDocument
+        && (
         <FieldGroupCard
           metadataFieldGroupDocument={metadataFieldGroupDocument}
           groupName={groupName}
           onRefresh={this.onRefresh}
         />
-        }
-        {simpleMetadataDocument &&
+        )}
+        {simpleMetadataDocument
+        && (
         <SimpleMetadataCard
           simpleMetadataList={simpleMetadataDocument.field || []}
           onSuccess={this.onRefresh}
           entityType="metadata-field/field-group"
           entityId={groupName}
         />
-        }
+        )}
         <FieldGroupRemove
           dialogName={FIELDGROUP_REMOVE_MODAL}
           groupName={groupName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

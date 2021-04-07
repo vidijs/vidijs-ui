@@ -11,7 +11,6 @@ import ScheduledRequestRow from './ScheduledRequestRow';
 import ScheduledRequestDialog from './ScheduledRequestDialog';
 import ScheduledRequestRemove from './ScheduledRequestRemove';
 
-
 const SCHEDULEDREQUEST_REMOVE_DIALOG = 'SCHEDULEDREQUEST_REMOVE_DIALOG';
 const SCHEDULEDREQUEST_DETAIL_DIALOG = 'SCHEDULEDREQUEST_DETAIL_DIALOG';
 
@@ -23,7 +22,7 @@ function ScheduledRequestTable({
 }) {
   const { scheduledRequest: scheduledRequestListType = [] } = scheduledRequestListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -37,7 +36,7 @@ function ScheduledRequestTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {scheduledRequestListType.map(scheduledRequestType => (
+          {scheduledRequestListType.map((scheduledRequestType) => (
             <ScheduledRequestRow
               key={scheduledRequestType.id}
               scheduledRequestType={scheduledRequestType}
@@ -56,7 +55,7 @@ function ScheduledRequestTable({
         dialogName={SCHEDULEDREQUEST_REMOVE_DIALOG}
         onSuccess={onSuccess}
       />
-    </React.Fragment>
+    </>
   );
 }
 

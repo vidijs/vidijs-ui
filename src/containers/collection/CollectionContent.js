@@ -2,6 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import Typography from '@material-ui/core/Typography';
 
+import { collection as api } from '@vidijs/vidijs-api';
 import CollectionContentParams from '../../components/collection/CollectionContentParams';
 import CollectionContentTable from '../../components/collection/CollectionContentTable';
 import CollectionMetadataEditor from '../../components/collection/CollectionMetadataEditor';
@@ -9,7 +10,6 @@ import CollectionRename from '../../components/collection/CollectionRename';
 import CollectionEntityAdd from '../../components/collection/CollectionEntityAdd';
 import Menu, { MenuItem } from '../../components/ui/Menu';
 
-import { collection as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
 import withUI from '../../hoc/withUI';
 import withCard from '../../hoc/withCard';
@@ -35,7 +35,7 @@ class CollectionContent extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ collectionId }) {
+  UNSAFE_componentWillReceiveProps({ collectionId }) {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
@@ -51,8 +51,8 @@ class CollectionContent extends React.PureComponent {
   onFetch(collectionId) {
     try {
       api.getCollection({ collectionId })
-        .then(response => this.setState({ collectionDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ collectionDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -64,7 +64,6 @@ class CollectionContent extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       onOpen,
@@ -74,7 +73,7 @@ class CollectionContent extends React.PureComponent {
     } = this.props;
     const { collectionDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={collectionDocument}
@@ -98,10 +97,10 @@ class CollectionContent extends React.PureComponent {
         )}
         <CollectionContentParams
           collectionId={collectionId}
-          onSuccess={response => this.setState({ collectionDocument: response.data })}
+          onSuccess={(response) => this.setState({ collectionDocument: response.data })}
         />
         {collectionDocument && (
-          <React.Fragment>
+          <>
             <CollectionContentCard
               collectionId={collectionId}
               collectionDocument={collectionDocument}
@@ -120,14 +119,14 @@ class CollectionContent extends React.PureComponent {
               collectionDocument={collectionDocument}
               onSuccess={() => this.onRefresh()}
             />
-          </React.Fragment>
+          </>
         )}
         <CollectionEntityAdd
           dialogName={COLLECTION_ENTITY_ADD_DIALOG}
           onSuccess={this.onRefresh}
           collectionId={collectionId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -17,11 +17,10 @@ class ImportImpPath extends React.PureComponent {
     const { history } = this.props;
     return (
       <ImportImpPathWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
       />
     );
   }
 }
-
 
 export default withFormActions(ImportImpPath);

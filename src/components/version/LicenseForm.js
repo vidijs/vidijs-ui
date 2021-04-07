@@ -13,7 +13,7 @@ function LicenseForm({
   onSubmit,
   submitOnChange,
 }) {
-  const onChange = submitOnChange ? () => setTimeout(handleSubmit(p => onSubmit(p))) : undefined;
+  const onChange = submitOnChange ? () => setTimeout(handleSubmit((p) => onSubmit(p))) : undefined;
   return (
     <form onChange={onChange} onSubmit={handleSubmit} className={className} style={{ padding: '10px' }}>
       <Grid container direction="column" alignItems="center">

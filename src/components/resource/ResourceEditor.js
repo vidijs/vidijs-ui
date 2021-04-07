@@ -57,9 +57,9 @@ class ResourceEditor extends React.PureComponent {
       openSnackBar({ messageContent, messageColor: 'secondary' });
     };
     return (
-      <React.Fragment>
+      <>
         <CardHeader
-          action={
+          action={(
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>
                 <FormControlLabel
@@ -70,28 +70,31 @@ class ResourceEditor extends React.PureComponent {
                 />
               </Grid>
             </Grid>
-          }
+          )}
         />
         <CardContent>
-          {isEditing ?
-            <ResourceForm
-              form={EDIT_RESOURCE_FORM}
-              initialValues={initialValues}
-              onSubmit={formActions.onUpdate}
-              onSubmitSuccess={onSubmitSuccess}
-              onSubmitFail={onSubmitFail}
-              resourceId={resourceId}
-              resourceType={resourceType}
-            />
-          :
-            <ResourceDisplay
-              resourceDocument={resourceDocument}
-              resourceType={resourceType}
-            />
-          }
+          {isEditing
+            ? (
+              <ResourceForm
+                form={EDIT_RESOURCE_FORM}
+                initialValues={initialValues}
+                onSubmit={formActions.onUpdate}
+                onSubmitSuccess={onSubmitSuccess}
+                onSubmitFail={onSubmitFail}
+                resourceId={resourceId}
+                resourceType={resourceType}
+              />
+            )
+            : (
+              <ResourceDisplay
+                resourceDocument={resourceDocument}
+                resourceType={resourceType}
+              />
+            )}
         </CardContent>
-        {isEditing &&
-          <React.Fragment>
+        {isEditing
+          && (
+          <>
             <Divider />
             <ExpansionPanelActions>
               <Button
@@ -108,13 +111,12 @@ class ResourceEditor extends React.PureComponent {
                 Save
               </Button>
             </ExpansionPanelActions>
-          </React.Fragment>
-        }
-      </React.Fragment>
+          </>
+          )}
+      </>
     );
   }
 }
-
 
 const mapDispatchToProps = {
   submitForm: submit,

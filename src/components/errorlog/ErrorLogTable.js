@@ -24,7 +24,7 @@ export default function ErrorLogTable({
         </TableRow>
       </TableHead>
       <TableBody>
-        {errorLogList.map(errorLogDocument => (
+        {errorLogList.map((errorLogDocument) => (
           <ErrorLogRow
             key={errorLogDocument.id}
             errorLogDocument={errorLogDocument}

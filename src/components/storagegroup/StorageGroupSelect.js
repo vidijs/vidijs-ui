@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import Select from '../ui/Select';
 import { storage as api } from '@vidijs/vidijs-api';
+import Select from '../ui/Select';
 
-
-export const loadStorageGroupOptions = inputValue => new Promise((resolve, reject) => {
+export const loadStorageGroupOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listStorage()
     .then((response) => {
       if (!response.ok) {
@@ -15,11 +14,9 @@ export const loadStorageGroupOptions = inputValue => new Promise((resolve, rejec
     })
     .then((jsonDocument) => {
       const { group: groupList = [] } = jsonDocument;
-      let filterFields = groupList.map(s => s.name);
-      if (inputValue && inputValue !== '*') {
-        filterFields = filterFields.filter(f => f.toLowerCase().includes(inputValue.toLowerCase()));
-      }
-      const options = filterFields.map(f => ({ label: f, value: f }));
+      let filterFields = groupList.map((s) => s.name);
+      if (inputValue && inputValue !== '*') filterFields = filterFields.filter((f) => f.toLowerCase().includes(inputValue.toLowerCase()));
+      const options = filterFields.map((f) => ({ label: f, value: f }));
       resolve(options);
     })
     .catch((error) => {

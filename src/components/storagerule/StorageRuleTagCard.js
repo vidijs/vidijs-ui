@@ -5,12 +5,12 @@ import StorageRuleTagEditor from './StorageRuleTagEditor';
 
 export default function StorageRuleTagCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <StorageRuleTagEditor
           {...props}
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

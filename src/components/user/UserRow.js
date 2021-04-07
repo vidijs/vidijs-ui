@@ -21,11 +21,12 @@ export default function UserRow({
       <TableCell>{userDocument.realName}</TableCell>
       <TableCell>{userDocument.disabled && <Check />}</TableCell>
       <TableCell disableOnClick>
-        {onRemove &&
+        {onRemove
+        && (
         <IconButton onClick={() => onRemove({ userName: userDocument.userName })}>
           <DeleteForever />
         </IconButton>
-        }
+        )}
       </TableCell>
     </TableRow>
   );

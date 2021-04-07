@@ -5,7 +5,6 @@ import FtpPoolForm from './FtpPoolForm';
 import FtpPoolDisplay from './FtpPoolDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function FtpPoolEditor({
   ftpPoolConfigurationDocument,
   openSnackBar,
@@ -34,6 +33,5 @@ function FtpPoolEditor({
     />
   );
 }
-
 
 export default withSnackbar(FtpPoolEditor);

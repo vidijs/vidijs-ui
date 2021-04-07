@@ -15,7 +15,7 @@ import { KeyValuePairType } from '../ui/FormType';
 import { TextField, Select } from '../form';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="type"
       label="Type"
@@ -36,7 +36,7 @@ const queryParams = () => (
     <FormControl fullWidth>
       <InputLabel htmlFor="priority">Priority</InputLabel>
       <Field name="priority" component={Select}>
-        {JobPriority.map(priority => (
+        {JobPriority.map((priority) => (
           <MenuItem key={priority} value={priority}>
             {priority}
           </MenuItem>
@@ -56,9 +56,8 @@ const queryParams = () => (
       withHeader={false}
       dense
     />
-  </React.Fragment>
+  </>
 );
-
 
 function JobCreateForm({
   error,

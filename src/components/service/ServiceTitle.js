@@ -7,7 +7,7 @@ import { OnlineIcon, OfflineIcon } from '../ui/StatusIcon';
 const getServiceListStatus = ({ vidispineServiceListDocument }) => {
   if (vidispineServiceListDocument === undefined) { return null; }
   const { service: serviceList = [] } = vidispineServiceListDocument;
-  const notRunning = serviceList.filter(thisService => thisService.isRunning !== true);
+  const notRunning = serviceList.filter((thisService) => thisService.isRunning !== true);
   if (notRunning.length === 0) {
     return (
       <Chip

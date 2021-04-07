@@ -1,11 +1,10 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import Select from '../ui/Select';
 import { exportlocation as api } from '@vidijs/vidijs-api';
+import Select from '../ui/Select';
 
-
-export const loadExportLocationOptions = inputValue => new Promise((resolve, reject) => {
+export const loadExportLocationOptions = (inputValue) => new Promise((resolve, reject) => {
   api.listExportLocation()
     .then((response) => {
       if (!response.ok) {
@@ -16,10 +15,8 @@ export const loadExportLocationOptions = inputValue => new Promise((resolve, rej
     .then((jsonDocument) => {
       const { exportLocation = [] } = jsonDocument;
       let filterExportLocation = exportLocation;
-      if (inputValue && inputValue !== '*') {
-        filterExportLocation = exportLocation.filter(f => f.name.toLowerCase().includes(inputValue.toLowerCase()));
-      }
-      const options = filterExportLocation.map(f => ({ label: f.name, value: f.name }));
+      if (inputValue && inputValue !== '*') filterExportLocation = exportLocation.filter((f) => f.name.toLowerCase().includes(inputValue.toLowerCase()));
+      const options = filterExportLocation.map((f) => ({ label: f.name, value: f.name }));
       resolve(options);
     })
     .catch((error) => {

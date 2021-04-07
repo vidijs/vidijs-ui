@@ -29,7 +29,7 @@ export function onImportRawNoAuth(form) {
   })
     .then((response) => {
       const { data: { data: jobData = [] } } = response;
-      const passkey = jobData.find(j => j.key === 'passkey').value;
+      const passkey = jobData.find((j) => j.key === 'passkey').value;
       return api.createImportRawNoAuth({
         file,
         queryParams: {
@@ -46,7 +46,6 @@ export function onImportRawNoAuth(form) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
 
 export function onImportPlaceholder(form) {
   const { queryParams, metadataDocument } = form;

@@ -23,7 +23,7 @@ import {
 
 export default function ShapeTagCard(props) {
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <ShapeTagEditor
           title="Container"
@@ -80,6 +80,6 @@ export default function ShapeTagCard(props) {
           {...props}
         />
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

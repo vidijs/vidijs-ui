@@ -11,7 +11,7 @@ import { loadGroupOptions } from '../group/GroupSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
 
 const GroupType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="groupName"
       label="Group"
@@ -20,7 +20,7 @@ const GroupType = () => (
       cacheOptions
       isClearable
     />
-  </React.Fragment>
+  </>
 );
 
 const GroupListType = () => (
@@ -30,19 +30,17 @@ const GroupListType = () => (
   />
 );
 
-
 const queryParams = () => (
   <FormControlLabel
-    control={
+    control={(
       <Field
         name="move"
         component={BoolCheckbox}
       />
-    }
+    )}
     label="Move All Groups"
   />
 );
-
 
 function UserGroupForm({
   error,

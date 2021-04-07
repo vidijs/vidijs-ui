@@ -10,7 +10,6 @@ import TaskDefinitionRemove from './TaskDefinitionRemove';
 import Editor from '../ui/Editor';
 import withUI from '../../hoc/withUI';
 
-
 function TaskDefinitionEditor({
   taskDefinitionDocument,
   openSnackBar,
@@ -32,7 +31,7 @@ function TaskDefinitionEditor({
   const displayProps = { taskDefinitionDocument };
   const initialValues = { taskDefinitionDocument };
   return (
-    <React.Fragment>
+    <>
       <Editor
         title={`Step ${step}${description ? ` - ${description}` : ''}`}
         formName={EDIT_TASKDEFINTION_FORM}
@@ -43,18 +42,18 @@ function TaskDefinitionEditor({
         initialValues={initialValues}
         displayComponent={TaskDefinitionDisplay}
         formComponent={TaskDefinitionForm}
-        iconList={
+        iconList={(
           <IconButton onClick={() => onOpen({ modalName: TASKDEFINITION_REMOVE })}>
             <DeleteForever />
           </IconButton>
-        }
+        )}
       />
       <TaskDefinitionRemove
         dialogName={TASKDEFINITION_REMOVE}
         taskDefinitionDocument={taskDefinitionDocument}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

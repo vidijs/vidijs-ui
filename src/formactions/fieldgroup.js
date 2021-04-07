@@ -9,7 +9,7 @@ export function onUpdate(form, dispatch, props) {
     groupName,
     metadataFieldGroupDocument,
   })
-    .then(response => ({ metadataFieldGroupDocument: response.data, groupName }))
+    .then((response) => ({ metadataFieldGroupDocument: response.data, groupName }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -18,7 +18,6 @@ export function onUpdate(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
 
 export function onUpdateFieldGroupChild(form, dispatch, props) {
   const { childGroupName } = form;
@@ -61,7 +60,7 @@ export function onSearch(form) {
     queryParams,
     matrixParams: Object.entries(matrixParams),
   })
-    .then(response => ({
+    .then((response) => ({
       queryParams,
       matrixParams,
       metadataFieldGroupSearchDocument,

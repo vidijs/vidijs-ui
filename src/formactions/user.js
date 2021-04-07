@@ -44,7 +44,7 @@ export function onGetToken(form, dispatch, props) {
     queryParams,
     headers: headerProps,
   })
-    .then(response => ({ ...response, userName, runAs }))
+    .then((response) => ({ ...response, userName, runAs }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -68,7 +68,7 @@ export function onGetUserToken(form, dispatch, props) {
     queryParams,
     headers: headerProps,
   })
-    .then(response => ({ ...response, userName, runAs }))
+    .then((response) => ({ ...response, userName, runAs }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {
@@ -82,7 +82,6 @@ export function onGetUserToken(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
 
 export function onUpdateGroups(form, dispatch, props) {
   const { groupListDocument, queryParams } = form;

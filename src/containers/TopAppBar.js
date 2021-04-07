@@ -14,7 +14,7 @@ import Menu, { MenuItem } from '../components/ui/Menu';
 import UnstyledLink from '../components/ui/UnstyledLink';
 import LoadingProgress from '../components/ui/LoadingProgress';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     backgroundColor: grey[900],
     color: grey[100],

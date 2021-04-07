@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Grid from '@material-ui/core/Grid';
+import { TextField, Select } from '../form';
 
 import FieldTypeArray from '../ui/FieldTypeArray';
 import FormSection from '../ui/FormSection';
@@ -68,7 +68,7 @@ const MetadataFieldValueType = () => (
 );
 
 const MetadataGroupValueType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       label="Group Name"
@@ -97,12 +97,11 @@ const MetadataGroupValueType = () => (
       removeLabel
       component={MetadataGroupValueType}
     />
-  </React.Fragment>
+  </>
 );
 
-
 const MetadataTimespanType = () => (
-  <React.Fragment>
+  <>
     <Grid container spacing={8}>
       <Grid item sm={6}>
         <Field
@@ -135,11 +134,11 @@ const MetadataTimespanType = () => (
       removeLabel
       component={MetadataGroupValueType}
     />
-  </React.Fragment>
+  </>
 );
 
 export const MetadataType = () => (
-  <React.Fragment>
+  <>
     <FieldTypeArray
       name="timespan"
       label="timespan"
@@ -149,9 +148,8 @@ export const MetadataType = () => (
       removeLabel
       component={MetadataTimespanType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function MetadataForm({
   error,

@@ -62,7 +62,7 @@ function FieldGroupSearchListTable({
   if (metadataFieldResultDocument === undefined) { return null; }
   const { group: groupList = [], hits: count = 0 } = metadataFieldResultDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -71,7 +71,7 @@ function FieldGroupSearchListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {groupList.map(fieldGroupType => (
+          {groupList.map((fieldGroupType) => (
             <FieldGroupRow
               key={fieldGroupType.uuid}
               fieldGroupType={fieldGroupType}
@@ -94,7 +94,7 @@ function FieldGroupSearchListTable({
           </TableFooter>
         )}
       </Table>
-    </React.Fragment>
+    </>
   );
 }
 

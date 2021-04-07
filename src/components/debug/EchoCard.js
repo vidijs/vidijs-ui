@@ -15,7 +15,7 @@ export default function EchoCard({
   cmRef,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         title="XML Echo"
       />
@@ -37,6 +37,6 @@ export default function EchoCard({
           </Button>
         </DialogActions>
       </Card>
-    </React.Fragment>
+    </>
   );
 }

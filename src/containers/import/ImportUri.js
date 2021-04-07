@@ -16,7 +16,7 @@ class ImportUri extends React.PureComponent {
     const { history, ...props } = this.props;
     return (
       <ImportUriWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
         {...props}
       />
     );

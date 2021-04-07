@@ -7,18 +7,18 @@ import TypeArray from '../ui/TypeArray';
 import getJobDataVariant from '../../utils/getJobDataVariant';
 
 const JobTaskProgressType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title={value.total}
       value={value.unit}
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 const JobTaskType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="step"
       value={value.step}
@@ -87,9 +87,8 @@ const JobTaskType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
-
 
 const DataSection = ({ value = {} }) => (
   <TypeArray
@@ -132,7 +131,7 @@ const CurrentSection = ({ value = {} }) => (
     title="currentStep"
     value={value.currentStep}
     component={({ value: v }) => (
-      <React.Fragment>
+      <>
         <TextGrid
           title="description"
           value={v.description}
@@ -151,7 +150,7 @@ const CurrentSection = ({ value = {} }) => (
           hideNoValue
           hover
         />
-      </React.Fragment>
+      </>
     )}
     hideNoValue
     dense
@@ -159,7 +158,7 @@ const CurrentSection = ({ value = {} }) => (
 );
 
 const BasicSection = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="jobId"
       value={value.jobId}
@@ -215,7 +214,7 @@ const BasicSection = ({ value = {} }) => (
       title="waiting"
       value={value.waiting}
       component={({ value: v }) => (
-        <React.Fragment>
+        <>
           <TextGrid
             title="resourceId"
             value={v.resourceId}
@@ -234,16 +233,16 @@ const BasicSection = ({ value = {} }) => (
             hideNoValue
             hover
           />
-        </React.Fragment>
+        </>
       )}
       hideNoValue
       dense
     />
-  </React.Fragment>
+  </>
 );
 
 const JobType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={BasicSection}
       value={value}
@@ -267,55 +266,54 @@ const JobType = ({ value = {} }) => (
       hideNoValue
       hover
     />
-  </React.Fragment>
+  </>
 );
 
 export const JobBasicDisplay = ({ jobDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={BasicSection}
       value={jobDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const JobDataDisplay = ({ jobDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={DataSection}
       value={jobDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const JobStepDisplay = ({ jobDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={StepSection}
       value={jobDocument}
     />
-  </React.Fragment>
+  </>
 );
 
 export const JobCurrentDisplay = ({ jobDocument }) => (
-  <React.Fragment>
+  <>
     <TypeSection
       component={CurrentSection}
       value={jobDocument}
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function JobDisplay({
   jobDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         component={JobType}
         value={jobDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

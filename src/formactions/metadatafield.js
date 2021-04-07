@@ -9,7 +9,7 @@ export function onUpdate(form, dispatch, props) {
     fieldName,
     metadataFieldDocument,
   })
-    .then(response => ({ metadataFieldDocument: response.data }))
+    .then((response) => ({ metadataFieldDocument: response.data }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

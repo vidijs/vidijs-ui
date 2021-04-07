@@ -8,7 +8,7 @@ const mapDispatchToProps = {
   openSnackBar: actions.ui.openSnackBar,
 };
 
-export const withSnackbarNoRouter = WrappedComponent => connect(
+export const withSnackbarNoRouter = (WrappedComponent) => connect(
   null,
   mapDispatchToProps,
 )(WrappedComponent);

@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { group as api } from '@vidijs/vidijs-api';
 import GroupListTitle from '../components/group/GroupListTitle';
 import GroupListCard from '../components/group/GroupListCard';
 import GroupWizard from '../components/group/GroupWizard';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { group as api } from '@vidijs/vidijs-api';
 
 const GROUP_CREATE_MODAL = 'GROUP_CREATE_MODAL';
 
@@ -34,8 +34,8 @@ class GroupList extends React.PureComponent {
     const queryParams = { number, first };
     try {
       api.listGroup({ queryParams })
-        .then(response => this.setState({ groupListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ groupListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -69,14 +69,15 @@ class GroupList extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <GroupListTitle
           createModal={GROUP_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={groupListDocument}
           codeModal="GroupListDocument"
         />
-        {groupListDocument &&
+        {groupListDocument
+        && (
         <GroupListCard
           groupListDocument={groupListDocument}
           onRefresh={this.onRefresh}
@@ -87,12 +88,12 @@ class GroupList extends React.PureComponent {
           page={page}
           onChangeRowsPerPage={this.onChangeRowsPerPage}
         />
-        }
+        )}
         <GroupWizard
           dialogName={GROUP_CREATE_MODAL}
-          onSuccess={response => history.push(`/group/${response.data.groupName}`)}
+          onSuccess={(response) => history.push(`/group/${response.data.groupName}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

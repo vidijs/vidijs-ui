@@ -5,15 +5,14 @@ import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../formactions/fieldgroup';
 import FieldGroupFieldForm from './FieldGroupFieldForm';
 import withUI from '../../hoc/withUI';
 import withFormActions from '../../hoc/withFormActions';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../ui/DialogContent';
 
 const FIELDGROUP_FIELD_FORM = 'FIELDGROUP_FIELD_FORM';
-
 
 function FieldGroupFieldDialog({
   open,
@@ -72,6 +71,5 @@ function FieldGroupFieldDialog({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions)(FieldGroupFieldDialog);

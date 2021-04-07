@@ -12,7 +12,6 @@ import CardContent from '@material-ui/core/CardContent';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Divider from '@material-ui/core/Divider';
 
-
 class Editor extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -52,29 +51,31 @@ class Editor extends React.PureComponent {
       isEditing,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <CardHeader
           disableTypography
           title={<Typography variant="subtitle1">{title}</Typography>}
-          action={
+          action={(
             <Grid container direction="row-reverse" alignItems="center">
               <Grid item>
                 {iconList}
-                { FormComponent &&
+                { FormComponent
+                && (
                 <FormControlLabel
                   control={<Switch color="primary" />}
                   label="Edit"
                   checked={isEditing}
                   onChange={this.toggleEdit}
                 />
-                }
+                )}
               </Grid>
             </Grid>
-          }
+          )}
         />
         <CardContent>
-          {isEditing ?
-            FormComponent &&
+          {isEditing
+            ? FormComponent
+            && (
             <FormComponent
               form={formName}
               initialValues={initialValues}
@@ -83,16 +84,18 @@ class Editor extends React.PureComponent {
               onSubmitFail={onSubmitFail}
               {...formProps}
             />
-          :
-          DisplayComponent &&
+            )
+            : DisplayComponent
+            && (
             <DisplayComponent
               {...displayProps}
             />
-          }
+            )}
         </CardContent>
-        {isEditing &&
-          FormComponent &&
-          <React.Fragment>
+        {isEditing
+          && FormComponent
+          && (
+          <>
             <Divider />
             <ExpansionPanelActions>
               <Button
@@ -109,13 +112,12 @@ class Editor extends React.PureComponent {
                 Save
               </Button>
             </ExpansionPanelActions>
-          </React.Fragment>
-        }
-      </React.Fragment>
+          </>
+          )}
+      </>
     );
   }
 }
-
 
 const mapDispatchToProps = {
   submitForm: submit,

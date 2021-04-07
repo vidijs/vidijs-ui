@@ -5,7 +5,6 @@ import JobPoolForm from './JobPoolForm';
 import JobPoolDisplay from './JobPoolDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function JobPoolEditor({
   jobPoolListDocument,
   openSnackBar,
@@ -34,6 +33,5 @@ function JobPoolEditor({
     />
   );
 }
-
 
 export default withSnackbar(JobPoolEditor);

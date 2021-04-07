@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
+import { TextField, Select } from '../form';
 
 import FieldTypeArray from '../ui/FieldTypeArray';
 import FormSection from '../ui/FormSection';
@@ -36,7 +36,7 @@ const KeyValueType = () => (
 );
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <FormControl fullWidth>
       <InputLabel htmlFor="type">Entity Type</InputLabel>
       <Field name="type" component={Select} validate={[required]}>
@@ -62,9 +62,8 @@ const queryParams = () => (
       dense
       component={KeyValueType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function CollectionEntityAddForm({
   error,

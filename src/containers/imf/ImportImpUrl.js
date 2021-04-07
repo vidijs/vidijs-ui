@@ -17,11 +17,10 @@ class ImportImpUrl extends React.PureComponent {
     const { history } = this.props;
     return (
       <ImportImpUrlWizard
-        onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+        onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
       />
     );
   }
 }
-
 
 export default withFormActions(ImportImpUrl);

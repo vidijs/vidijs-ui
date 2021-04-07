@@ -66,7 +66,7 @@ class Login extends React.PureComponent {
               if (name === 'database') {
                 return subTestList.find((thisSubTest) => {
                   const { message: messageList = [] } = thisSubTest;
-                  return messageList.find(message => message.includes('did APIInit run?'));
+                  return messageList.find((message) => message.includes('did APIInit run?'));
                 });
               }
               return false;
@@ -76,7 +76,7 @@ class Login extends React.PureComponent {
             onOpen({ modalName: INIT_DIALOG });
           }
         })
-        .catch(error => this.onRefreshError(error));
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -112,7 +112,7 @@ class Login extends React.PureComponent {
     const { selfTestDocument, loading, loadingInit } = this.state;
     const { userName, baseUrl, onOpen } = this.props;
     const initialValues = {
-      headers: { username: userName, accept: 'text/plain', },
+      headers: { username: userName, accept: 'text/plain' },
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl,
     };
@@ -161,7 +161,7 @@ class Login extends React.PureComponent {
                       rel="noopener noreferrer"
                       style={{ marginRight: 5 }}
                     >
-                      {'vidijs-ui'}
+                      vidijs-ui
                     </Link>
                     <Typography
                       variant="body2"
@@ -209,7 +209,7 @@ class Login extends React.PureComponent {
           dialogName={INIT_DIALOG}
           onSuccess={this.onRefresh}
           loadingInit={loadingInit}
-          setLoadingInit={newState => this.setState({ loadingInit: newState })}
+          setLoadingInit={(newState) => this.setState({ loadingInit: newState })}
         />
         <LoginHelpDialog
           dialogName={HELP_DIALOG}
@@ -218,6 +218,5 @@ class Login extends React.PureComponent {
     );
   }
 }
-
 
 export default compose(withModalNoRouter, withSnackbarNoRouter)(Login);

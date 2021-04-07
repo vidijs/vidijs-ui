@@ -9,9 +9,9 @@ export default function AccessControlListCard({
 }) {
   const { rule: ruleList = [] } = quotaRuleListDocument;
   return (
-    <React.Fragment>
+    <>
       {
-        ruleList.map(quotaRuleDocument => (
+        ruleList.map((quotaRuleDocument) => (
           <QuotaCard
             quotaRuleDocument={quotaRuleDocument}
             key={quotaRuleDocument.id}
@@ -20,6 +20,6 @@ export default function AccessControlListCard({
           />
         ))
       }
-    </React.Fragment>
+    </>
   );
 }

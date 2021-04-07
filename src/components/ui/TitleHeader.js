@@ -17,7 +17,6 @@ import ExternalIdLink from '../externalid/ExternalIdLink';
 import withUI from '../../hoc/withUI';
 import CodeModal from './CodeModal';
 
-
 function TitleHeader({
   title,
   openCode,
@@ -42,15 +41,16 @@ function TitleHeader({
   style = {},
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl') || '';
-  const breadcrumb =
-    (
-      <Grid
-        container
-        alignItems="center"
-      >
-        {grandParentTitle &&
+  const breadcrumb = (
+    <Grid
+      container
+      alignItems="center"
+    >
+      {grandParentTitle
+          && (
           <Grid item>
-              {grandParentTo ?
+            {grandParentTo
+              ? (
                 <Typography
                   variant="h5"
                   color="textSecondary"
@@ -59,23 +59,28 @@ function TitleHeader({
                   style={{ textDecoration: 'none' }}
                 >
                   {grandParentTitle}
-                </Typography> :
+                </Typography>
+              )
+              : (
                 <Typography variant="h5" color="textSecondary">
                   {grandParentTitle}
                 </Typography>
-              }
+              )}
           </Grid>
-        }
-        {grandParentTitle &&
+          )}
+      {grandParentTitle
+          && (
           <Grid item>
             <IconButton disabled>
               <ArrowForwardIos />
             </IconButton>
           </Grid>
-        }
-        {parentTitle &&
+          )}
+      {parentTitle
+          && (
           <Grid item>
-              {parentTo ?
+            {parentTo
+              ? (
                 <Typography
                   variant="h5"
                   color="textSecondary"
@@ -84,30 +89,33 @@ function TitleHeader({
                   style={{ textDecoration: 'none' }}
                 >
                   {parentTitle}
-                </Typography> :
+                </Typography>
+              )
+              : (
                 <Typography variant="h5" color="textSecondary">
                   {parentTitle}
                 </Typography>
-              }
+              )}
           </Grid>
-        }
-        {parentTitle &&
+          )}
+      {parentTitle
+          && (
           <Grid item>
             <IconButton disabled>
               <ArrowForwardIos />
             </IconButton>
           </Grid>
-        }
-        <Grid item>
-          <Typography variant="h5">
-            {title}
-          </Typography>
-        </Grid>
-        {titleChip && (
-          <Chip label={titleChip} />
-        )}
+          )}
+      <Grid item>
+        <Typography variant="h5">
+          {title}
+        </Typography>
       </Grid>
-    );
+      {titleChip && (
+      <Chip label={titleChip} />
+      )}
+    </Grid>
+  );
   let openCodeComponent;
   if (openCode) {
     openCodeComponent = (
@@ -203,13 +211,14 @@ function TitleHeader({
           </Grid>
         </Grid>
       </Grid>
-      { code &&
+      { code
+      && (
       <CodeModal
         dialogName={codeModal}
         code={code}
         title={codeModal}
       />
-    }
+      )}
     </div>
   );
 }

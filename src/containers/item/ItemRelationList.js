@@ -29,7 +29,7 @@ class ItemRelation extends React.PureComponent {
     setOnRefresh(this.onRefresh);
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onRefresh(itemId);
@@ -85,7 +85,7 @@ class ItemRelation extends React.PureComponent {
       currentRelationId,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={itemRelationListDocument}
@@ -98,7 +98,7 @@ class ItemRelation extends React.PureComponent {
         )}
         <ItemRelationListParams
           itemId={itemId}
-          onSuccess={response => this.setState({ itemRelationListDocument: response.data })}
+          onSuccess={(response) => this.setState({ itemRelationListDocument: response.data })}
         />
         {itemRelationListDocument && (
           <ItemRelationListDisplay
@@ -114,7 +114,7 @@ class ItemRelation extends React.PureComponent {
           onRemove={this.onRemove}
           relationId={currentRelationId}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

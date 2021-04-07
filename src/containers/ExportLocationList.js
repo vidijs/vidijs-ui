@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { exportlocation as api } from '@vidijs/vidijs-api';
 import ExportLocationListCard from '../components/exportlocation/ExportLocationListCard';
 import ExportLocationDialog from '../components/exportlocation/ExportLocationDialog';
 import ExportLocationListTitle from '../components/exportlocation/ExportLocationListTitle';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { exportlocation as api } from '@vidijs/vidijs-api';
 
 const EXPORTLOCATION_CREATE_MODAL = 'EXPORTLOCATION_CREATE_MODAL';
 
@@ -27,34 +27,34 @@ class ExportLocationList extends React.PureComponent {
     const { openSnackBar } = this.props;
     try {
       api.listExportLocation()
-        .then(response => this.setState({ exportLocationListDocument: response.data }));
+        .then((response) => this.setState({ exportLocationListDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Export Location List';
       openSnackBar({ messageContent, messageColor: 'secondary' });
     }
   }
 
-
   render() {
     const { exportLocationListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ExportLocationListTitle
           createModal={EXPORTLOCATION_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={exportLocationListDocument}
           codeModal="ExportLocationListDocument"
         />
-        {exportLocationListDocument &&
+        {exportLocationListDocument
+        && (
         <ExportLocationListCard
           exportLocationListDocument={exportLocationListDocument}
           onRefresh={this.onRefresh}
         />
-        }
+        )}
         <ExportLocationDialog
           dialogName={EXPORTLOCATION_CREATE_MODAL}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -7,7 +7,6 @@ import rootReducer from './reducers';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
-
 export default function configureStore({ preloadedState }) {
   return createStore(
     rootReducer,

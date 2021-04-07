@@ -1,10 +1,9 @@
 import React from 'react';
 
+import { errorlog as api } from '@vidijs/vidijs-api';
 import ErrorLogTitle from '../components/errorlog/ErrorLogTitle';
 import ErrorLogCard from '../components/errorlog/ErrorLogCard';
 import withSnackbar from '../hoc/withSnackbar';
-
-import { errorlog as api } from '@vidijs/vidijs-api';
 
 class ErrorLog extends React.PureComponent {
   constructor(props) {
@@ -24,8 +23,8 @@ class ErrorLog extends React.PureComponent {
   onRefresh() {
     try {
       api.listErrorLogs()
-        .then(response => this.setState({ errorLogListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ errorLogListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -37,24 +36,24 @@ class ErrorLog extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       errorLogListDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <ErrorLogTitle
           code={errorLogListDocument}
           codeModal="ErrorLogListDocument"
           onRefresh={this.onRefresh}
         />
-        {errorLogListDocument &&
+        {errorLogListDocument
+        && (
         <ErrorLogCard
           errorLogListDocument={errorLogListDocument}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

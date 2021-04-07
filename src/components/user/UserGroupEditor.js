@@ -19,11 +19,11 @@ function UserGroupEditor({
   onOpen,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         disableTypography
         title={<Typography variant="subtitle1">Groups</Typography>}
-        action={
+        action={(
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>
               <Tooltip title="Add">
@@ -33,7 +33,7 @@ function UserGroupEditor({
               </Tooltip>
             </Grid>
           </Grid>
-        }
+        )}
       />
       <GroupTable
         groupListDocument={groupListDocument}
@@ -46,7 +46,7 @@ function UserGroupEditor({
         userName={userName}
         onSuccess={onSuccess}
       />
-    </React.Fragment>
+    </>
   );
 }
 

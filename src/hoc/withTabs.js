@@ -1,6 +1,6 @@
 import React from 'react';
 
-const withTabs = initialTab => WrappedComponent => class extends React.PureComponent {
+const withTabs = (initialTab) => (WrappedComponent) => class extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onChangeTab = this.onChangeTab.bind(this);
@@ -28,6 +28,5 @@ const withTabs = initialTab => WrappedComponent => class extends React.PureCompo
     );
   }
 };
-
 
 export default withTabs;

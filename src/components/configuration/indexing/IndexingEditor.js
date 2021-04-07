@@ -5,7 +5,6 @@ import IndexingForm from './IndexingForm';
 import IndexingDisplay from './IndexingDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function IndexingEditor({
   indexingConfigurationDocument,
   openSnackBar,
@@ -34,6 +33,5 @@ function IndexingEditor({
     />
   );
 }
-
 
 export default withSnackbar(IndexingEditor);

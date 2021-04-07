@@ -1,5 +1,5 @@
-import RadioGroup from '@material-ui/core/RadioGroup'
-import createComponent from './createComponent'
+import RadioGroup from '@material-ui/core/RadioGroup';
+import createComponent from './createComponent';
 
 export default createComponent(
   RadioGroup,
@@ -12,11 +12,11 @@ export default createComponent(
     ...inputProps,
     ...props,
     value,
-    onChange: (event, value) => {
-      onChange(value)
+    onChange: (event, newValue) => {
+      onChange(newValue);
       if (onChangeFromField) {
-        onChangeFromField(value)
+        onChangeFromField(newValue);
       }
-    }
-  })
-)
+    },
+  }),
+);

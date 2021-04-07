@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
+import { auditlog as api } from '@vidijs/vidijs-api';
 
-import * as api from '../api/audit';
 import * as actions from '../actions';
 
 export function onSubmit(form, dispatch, props) {
@@ -16,9 +16,9 @@ export function onSubmit(form, dispatch, props) {
     sort: orderDirection,
     ...form,
   };
-  return api.listAuditLogs({ queryParams })
-    .then(response => response.data)
-    .then(auditLogDocument => ({ auditLogDocument }))
+  return api.listAuditLog({ queryParams })
+    .then((response) => response.data)
+    .then((auditLogDocument) => ({ auditLogDocument }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

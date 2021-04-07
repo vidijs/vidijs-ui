@@ -20,11 +20,11 @@ function FieldGroupChildEditor({
   onOpen,
 }) {
   return (
-    <React.Fragment>
+    <>
       <CardHeader
         disableTypography
         title={<Typography variant="subtitle1">Metadata Fields</Typography>}
-        action={
+        action={(
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>
               <Tooltip title="Add">
@@ -34,7 +34,7 @@ function FieldGroupChildEditor({
               </Tooltip>
             </Grid>
           </Grid>
-        }
+        )}
       />
       <CardContent>
         <MetadataFieldListTable
@@ -48,7 +48,7 @@ function FieldGroupChildEditor({
         groupName={groupName}
         onSuccess={onRefresh}
       />
-    </React.Fragment>
+    </>
   );
 }
 

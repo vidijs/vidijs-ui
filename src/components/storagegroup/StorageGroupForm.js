@@ -3,18 +3,16 @@ import { reduxForm, Field, FormSection } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
 import { TextField } from '../form';
 
-
 export const StorageGroupDocumentForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="name"
       component={TextField}
       label="Group Name"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function StorageGroupForm({
   error,

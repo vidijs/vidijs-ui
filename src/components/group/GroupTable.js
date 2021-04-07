@@ -15,7 +15,6 @@ import UserGroupRemove from '../user/UserGroupRemove';
 import GroupChildRemove from './GroupChildRemove';
 import GroupParentRemove from './GroupParentRemove';
 
-
 const REMOVE_GROUP_DIALOG = 'REMOVE_GROUP_DIALOG';
 
 function GroupTable({
@@ -37,7 +36,7 @@ function GroupTable({
   const rowsPerPageOptions = [100, 250, 500];
   if (!rowsPerPageOptions.includes(rowsPerPage)) { rowsPerPageOptions.push(rowsPerPage); }
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -47,7 +46,7 @@ function GroupTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {groupList.map(groupDocument => (
+          {groupList.map((groupDocument) => (
             <GroupRow
               key={groupDocument.groupName}
               groupDocument={groupDocument}
@@ -55,7 +54,8 @@ function GroupTable({
             />
           ))}
         </TableBody>
-        {count &&
+        {count
+        && (
         <TableFooter>
           <TableRow>
             <TablePagination
@@ -69,33 +69,36 @@ function GroupTable({
             />
           </TableRow>
         </TableFooter>
-        }
+        )}
       </Table>
-      {userName &&
+      {userName
+        && (
         <UserGroupRemove
           {...dialogProps}
           dialogName={REMOVE_GROUP_DIALOG}
           userName={userName}
           onSuccess={onSuccess}
         />
-      }
-      {parentGroupName &&
+        )}
+      {parentGroupName
+        && (
         <GroupChildRemove
           {...dialogProps}
           dialogName={REMOVE_GROUP_DIALOG}
           parentGroupName={parentGroupName}
           onSuccess={onSuccess}
         />
-      }
-      {childGroupName &&
+        )}
+      {childGroupName
+        && (
         <GroupParentRemove
           {...dialogProps}
           dialogName={REMOVE_GROUP_DIALOG}
           childGroupName={childGroupName}
           onSuccess={onSuccess}
         />
-      }
-    </React.Fragment>
+        )}
+    </>
   );
 }
 

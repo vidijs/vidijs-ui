@@ -4,7 +4,7 @@ import TextGrid from '../../ui/TextGrid';
 import TypeSection from '../../ui/TypeSection';
 
 const OAuth2ConfigurationType = ({ value = {} }) => (
-  <React.Fragment>
+  <>
     <TextGrid
       title="federationMetadataURI"
       value={value.federationMetadataURI}
@@ -35,19 +35,18 @@ const OAuth2ConfigurationType = ({ value = {} }) => (
       value={value.x509Certificate}
       hover
     />
-  </React.Fragment>
+  </>
 );
-
 
 export default function AuthDisplay({
   oAuth2ConfigurationDocument,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TypeSection
         value={oAuth2ConfigurationDocument}
         component={OAuth2ConfigurationType}
       />
-    </React.Fragment>
+    </>
   );
 }

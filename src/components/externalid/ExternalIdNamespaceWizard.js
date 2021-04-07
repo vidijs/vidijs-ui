@@ -8,7 +8,6 @@ import WizardForm from '../ui/WizardForm';
 import * as formActions from '../../formactions/externalid';
 import withUI from '../../hoc/withUI';
 
-
 function ExternalIdNamespaceWizard({
   open,
   onClose,

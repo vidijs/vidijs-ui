@@ -4,7 +4,6 @@ import ItemContentDisplay from '../../components/item/ItemContent';
 
 import withFormActions from '../../hoc/withFormActions';
 
-
 class ItemContent extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ class ItemContent extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onRefresh(itemId);
@@ -31,7 +30,6 @@ class ItemContent extends React.PureComponent {
     submitForm(ITEM_PARAMS_FORM);
   }
 
-
   render() {
     const {
       itemId,
@@ -40,7 +38,7 @@ class ItemContent extends React.PureComponent {
     } = this.props;
     const { itemDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={itemDocument}
@@ -53,7 +51,7 @@ class ItemContent extends React.PureComponent {
         )}
         <ItemContentParams
           itemId={itemId}
-          onSuccess={response => this.setState({ itemDocument: response.data })}
+          onSuccess={(response) => this.setState({ itemDocument: response.data })}
         />
         {itemDocument && (
           <ItemContentDisplay
@@ -61,7 +59,7 @@ class ItemContent extends React.PureComponent {
             itemDocument={itemDocument}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

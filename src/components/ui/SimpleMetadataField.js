@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, FieldArray } from 'redux-form';
 import IconButton from '@material-ui/core/IconButton';
-import { TextField } from '../form';
 import Delete from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import InputLabel from '@material-ui/core/InputLabel';
 import ArrowBack from '@material-ui/icons/ArrowBack';
+import { TextField } from '../form';
 
 import TextButton from './TextButton';
 
@@ -19,10 +19,9 @@ export function SimpleMetadataFieldRemove({
     fields.remove(index);
   };
   return (
-    <React.Fragment>
-      {fields.length > 0 &&
-      <InputLabel shrink>Removed</InputLabel>
-      }
+    <>
+      {fields.length > 0
+      && <InputLabel shrink>Removed</InputLabel>}
       {fields.map((thisField, index) => (
         <Grid
           key={thisField}
@@ -41,7 +40,7 @@ export function SimpleMetadataFieldRemove({
             />
           </Grid>
           <Grid item sm={5}>
-            <Grid item >
+            <Grid item>
               <Field
                 name={`${thisField}.value`}
                 component={TextField}
@@ -58,10 +57,9 @@ export function SimpleMetadataFieldRemove({
           </Grid>
         </Grid>
       ))}
-    </React.Fragment>
+    </>
   );
 }
-
 
 export function SimpleMetadataFieldArray({
   fields,
@@ -79,13 +77,14 @@ export function SimpleMetadataFieldArray({
     if (onRemove) { onRemove(thisField, index); }
     fields.remove(index);
   };
-  const InitialTextField = p => (
+  const InitialTextField = (p) => (
     <TextField
       disabled={p.meta.initial !== undefined}
       onFocus={p.onFocus}
       onBlur={p.onBlur}
       {...p}
-    />);
+    />
+  );
   return (
     <Grid
       container
@@ -109,7 +108,7 @@ export function SimpleMetadataFieldArray({
             />
           </Grid>
           <Grid item sm={5}>
-            <Grid item >
+            <Grid item>
               <Field
                 name={`${thisField}.value`}
                 component={TextField}

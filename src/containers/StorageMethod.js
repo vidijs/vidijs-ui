@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { storage as api } from '@vidijs/vidijs-api';
 import StorageMethodTitle from '../components/storage/StorageMethodTitle';
 import StorageMethodCard from '../components/storage/StorageMethodCard';
 import StorageMethodRemove from '../components/storage/StorageMethodRemove';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { storage as api } from '@vidijs/vidijs-api';
 
 const STORAGEMETHOD_CODE_MODAL = 'STORAGEMETHOD_CODE_MODAL';
 const STORAGEMETHOD_REMOVE_MODAL = 'STORAGEMETHOD_REMOVE_MODAL';
@@ -31,7 +31,7 @@ class StorageMethod extends React.PureComponent {
     const { openSnackBar, storageId, storageMethodId } = this.props;
     try {
       api.getStorageMethod({ storageId, storageMethodId })
-        .then(response => this.setState({ storageMethodDocument: response.data }));
+        .then((response) => this.setState({ storageMethodDocument: response.data }));
     } catch (error) {
       const messageContent = 'Error Loading Storage Method';
       openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -52,7 +52,7 @@ class StorageMethod extends React.PureComponent {
       storageMethodDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <StorageMethodTitle
           openCode={() => openModal({ modalName: STORAGEMETHOD_CODE_MODAL })}
           openRemove={() => openModal({ modalName: STORAGEMETHOD_REMOVE_MODAL })}
@@ -60,14 +60,15 @@ class StorageMethod extends React.PureComponent {
           storageId={storageId}
           storageMethodId={storageMethodId}
         />
-        {storageMethodDocument &&
+        {storageMethodDocument
+        && (
         <StorageMethodCard
           onRefresh={this.onRefresh}
           storageMethodDocument={storageMethodDocument}
           storageId={storageId}
           storageMethodId={storageMethodId}
         />
-        }
+        )}
         <CodeModal
           isOpen={(modalName === STORAGEMETHOD_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -82,7 +83,7 @@ class StorageMethod extends React.PureComponent {
           closeModal={closeModal}
           history={history}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

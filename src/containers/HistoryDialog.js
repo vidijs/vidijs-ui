@@ -23,7 +23,7 @@ import formatXML from '../utils/formatXML';
 
 import { withModalNoRouter } from '../hoc/withModal';
 
-const styles = theme => ({
+const styles = (theme) => ({
   appBar: {
     position: 'relative',
     backgroundColor: theme.palette.background.default,
@@ -36,7 +36,6 @@ const styles = theme => ({
     justifyContent: 'flex-start',
   },
 });
-
 
 class HistoryDialog extends React.PureComponent {
   constructor(props) {
@@ -93,7 +92,7 @@ class HistoryDialog extends React.PureComponent {
     const url = fullUrl.replace(baseURL, '');
     let requestDataString;
     let requestContentType;
-    const findContentTypeKey = headerKey => headerKey.toLowerCase() === 'content-type';
+    const findContentTypeKey = (headerKey) => headerKey.toLowerCase() === 'content-type';
     const requestContentTypeKey = Object.keys(requestHeaders).find(findContentTypeKey);
     if (requestContentTypeKey && requestData) {
       requestContentType = requestHeaders[requestContentTypeKey].toLowerCase();
@@ -146,7 +145,7 @@ class HistoryDialog extends React.PureComponent {
     } = config;
     let responseDataString;
     let responseContentType;
-    const findContentTypeKey = headerKey => headerKey.toLowerCase() === 'content-type';
+    const findContentTypeKey = (headerKey) => headerKey.toLowerCase() === 'content-type';
     const responseContentTypeKey = Object.keys(responseHeaders).find(findContentTypeKey);
     if (responseContentTypeKey) {
       responseContentType = responseHeaders[responseContentTypeKey].toLowerCase();
@@ -173,7 +172,7 @@ class HistoryDialog extends React.PureComponent {
       responseHeaders,
       responseContentType,
     };
-    const requestIndex = prevResponses.findIndex(r => r.requestId === requestId);
+    const requestIndex = prevResponses.findIndex((r) => r.requestId === requestId);
     const newResponses = [...prevResponses];
     if (requestIndex >= 0) {
       const prevResponse = prevResponses[requestIndex];
@@ -238,18 +237,18 @@ class HistoryDialog extends React.PureComponent {
               )}
             />
             { displayResponse.requestContentType === 'application/json' ? (
-              <React.Fragment>
+              <>
                 <Typography variant="subtitle2">Request Data</Typography>
                 <ReactJson
                   src={displayResponse.requestData}
                   theme="solarized"
                   displayDataTypes={false}
                   collapsed={false}
-                  enableClipboard={copy => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
+                  enableClipboard={(copy) => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
                   displayObjectSize={false}
                   name={false}
                 />
-              </React.Fragment>
+              </>
             ) : (
               <TextGrid
                 title="Request Data"
@@ -269,19 +268,19 @@ class HistoryDialog extends React.PureComponent {
               />
             )}
             {displayResponse.responseData && (
-              <React.Fragment>
+              <>
                 { displayResponse.responseContentType === 'application/json' ? (
-                  <React.Fragment>
+                  <>
                     <Typography variant="subtitle2">Response Data</Typography>
                     <ReactJson
                       src={displayResponse.responseData}
                       theme="solarized"
                       displayDataTypes={false}
                       collapsed={2}
-                      enableClipboard={copy => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
+                      enableClipboard={(copy) => navigator.clipboard.writeText(JSON.stringify(copy.src, null, '\t'))}
                       name={false}
                     />
-                  </React.Fragment>
+                  </>
                 ) : (
                   <TextGrid
                     title="Response Data"
@@ -291,13 +290,13 @@ class HistoryDialog extends React.PureComponent {
                     hideNoValue
                   />
                 )}
-              </React.Fragment>
+              </>
             )}
           </DialogContent>
         ) : (
           <Table>
             <TableBody>
-              {recentResponses.map(thisResponse => (
+              {recentResponses.map((thisResponse) => (
                 <TableRow
                   key={thisResponse.requestId}
                   hover

@@ -11,7 +11,6 @@ import MetadataFieldRow from './MetadataFieldRow';
 import FieldGroupFieldRemove from '../fieldgroup/FieldGroupFieldRemove';
 import MetadataFieldRemove from './MetadataFieldRemove';
 
-
 const REMOVE_METADATAFIELD_DIALOG = 'REMOVE_METADATAFIELD_DIALOG';
 
 function MetadataFieldListTable({
@@ -23,7 +22,7 @@ function MetadataFieldListTable({
 }) {
   const { field: metadataFieldList = [] } = metadataFieldListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -35,7 +34,7 @@ function MetadataFieldListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {metadataFieldList.map(metadataFieldDocument => (
+          {metadataFieldList.map((metadataFieldDocument) => (
             <MetadataFieldRow
               key={metadataFieldDocument.name}
               metadataFieldDocument={metadataFieldDocument}
@@ -44,21 +43,23 @@ function MetadataFieldListTable({
           ))}
         </TableBody>
       </Table>
-      {groupName ?
-        <FieldGroupFieldRemove
-          {...dialogProps}
-          dialogName={REMOVE_METADATAFIELD_DIALOG}
-          groupName={groupName}
-          onSuccess={onRefresh}
-        />
-      :
-        <MetadataFieldRemove
-          {...dialogProps}
-          dialogName={REMOVE_METADATAFIELD_DIALOG}
-          onSuccess={onRefresh}
-        />
-      }
-    </React.Fragment>
+      {groupName
+        ? (
+          <FieldGroupFieldRemove
+            {...dialogProps}
+            dialogName={REMOVE_METADATAFIELD_DIALOG}
+            groupName={groupName}
+            onSuccess={onRefresh}
+          />
+        )
+        : (
+          <MetadataFieldRemove
+            {...dialogProps}
+            dialogName={REMOVE_METADATAFIELD_DIALOG}
+            onSuccess={onRefresh}
+          />
+        )}
+    </>
   );
 }
 

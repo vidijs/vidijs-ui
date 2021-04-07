@@ -8,7 +8,6 @@ import WizardForm from '../ui/WizardForm';
 import * as formActions from '../../formactions/autoimport';
 import withUI from '../../hoc/withUI';
 
-
 function AutoImportRuleDialog({
   open,
   onClose,

@@ -5,14 +5,12 @@ import { reduxForm } from 'redux-form';
 import FormSection from '../ui/FormSection';
 import { DirectionQueryParam, RelationMetadataQueryParam } from './ItemRelationForm';
 
-
 export const queryParams = () => (
-  <React.Fragment>
+  <>
     <DirectionQueryParam />
     <RelationMetadataQueryParam />
-  </React.Fragment>
+  </>
 );
-
 
 function ItemRelationFormEdit({
   error,

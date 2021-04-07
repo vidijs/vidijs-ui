@@ -1,11 +1,11 @@
 import React from 'react';
 
+import { user as api } from '@vidijs/vidijs-api';
 import UserListTitle from '../components/user/UserListTitle';
 import UserListCard from '../components/user/UserListCard';
 import UserWizard from '../components/user/UserWizard';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { user as api } from '@vidijs/vidijs-api';
 
 const USER_CREATE_MODAL = 'USER_CREATE_MODAL';
 
@@ -34,8 +34,8 @@ class UserList extends React.PureComponent {
     const queryParams = { number, first };
     try {
       api.listUser({ queryParams })
-        .then(response => this.setState({ userListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ userListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -69,14 +69,15 @@ class UserList extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <UserListTitle
           createModal={USER_CREATE_MODAL}
           onRefresh={this.onRefresh}
           code={userListDocument}
           codeModal="UserListDocument"
         />
-        {userListDocument &&
+        {userListDocument
+        && (
         <UserListCard
           userListDocument={userListDocument}
           onRefresh={this.onRefresh}
@@ -87,12 +88,12 @@ class UserList extends React.PureComponent {
           page={page}
           onChangeRowsPerPage={this.onChangeRowsPerPage}
         />
-        }
+        )}
         <UserWizard
           dialogName={USER_CREATE_MODAL}
-          onSuccess={response => history.push(`/user/${response.data.userName}`)}
+          onSuccess={(response) => history.push(`/user/${response.data.userName}`)}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

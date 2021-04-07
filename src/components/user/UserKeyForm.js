@@ -14,7 +14,6 @@ const queryParams = () => (
   />
 );
 
-
 function UserKeyForm({
   error,
   handleSubmit,

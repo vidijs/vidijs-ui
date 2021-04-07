@@ -6,18 +6,18 @@ import { TextField } from '../form';
 import Field from '../ui/Field';
 
 const headers = () => (
-  <React.Fragment>
+  <>
     <Field
       name="runAs"
       label="Login As User"
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="seconds"
       label="Timeout "
@@ -25,7 +25,7 @@ const queryParams = () => (
       helperText="Seconds"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 function LoginFormAdvanced({
@@ -47,6 +47,5 @@ function LoginFormAdvanced({
     </form>
   );
 }
-
 
 export default reduxForm()(LoginFormAdvanced);

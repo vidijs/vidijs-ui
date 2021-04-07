@@ -7,7 +7,7 @@ export function onCreate(form) {
   return api.createVxa({
     queryParams,
   })
-    .then(response => ({ vxaConfiguration: response.data, queryParams }))
+    .then((response) => ({ vxaConfiguration: response.data, queryParams }))
     .catch((error) => {
       let errorMessage = error.message;
       if (error.response) {

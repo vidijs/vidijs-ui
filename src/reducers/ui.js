@@ -25,14 +25,12 @@ function resetSnackBar(state) {
   return { ...state, snackBar };
 }
 
-
 function setSnackBar(state, action) {
   const snackBar = { isOpen: true, ...action };
   return { ...state, snackBar };
 }
 
-
-export default function (state = initialState, action) {
+export default function uiReducer(state = initialState, action) {
   switch (action.type) {
     case LOADING_RECEIVE:
       return { ...state, isLoading: action.isLoading };
@@ -43,13 +41,9 @@ export default function (state = initialState, action) {
     case MODAL_RESET:
       return resetModal(state);
     case MODAL_RECEIVE:
-      return Object.assign({}, state, {
-        modalName: action.modalName,
-      });
+      return { ...state, modalName: action.modalName };
     case MAINMENU_TOGGLE:
-      return Object.assign({}, state, {
-        isMainMenuOpen: action.isMainMenuOpen,
-      });
+      return { ...state, isMainMenuOpen: action.isMainMenuOpen };
     default:
       break;
   }

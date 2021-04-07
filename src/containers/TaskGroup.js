@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { taskgroup as api } from '@vidijs/vidijs-api';
 import TaskGroupTitle from '../components/taskgroup/TaskGroupTitle';
 import TaskGroupCard from '../components/taskgroup/TaskGroupCard';
 import TaskGroupRemove from '../components/taskgroup/TaskGroupRemove';
 import CodeModal from '../components/ui/CodeModal';
 
 import * as actions from '../actions';
-import { taskgroup as api } from '@vidijs/vidijs-api';
 
 const TASKGROUP_CODE_MODAL = 'TASKGROUP_CODE_MODAL';
 const TASKGROUP_REMOVE_MODAL = 'TASKGROUP_REMOVE_MODAL';
@@ -31,8 +31,8 @@ class TaskGroup extends React.PureComponent {
   onRefresh() {
     const { openSnackBar, groupName } = this.props;
     api.getTaskGroup({ groupName })
-      .then(response => response.json())
-      .then(taskGroupDocument => this.setState({ taskGroupDocument }))
+      .then((response) => response.json())
+      .then((taskGroupDocument) => this.setState({ taskGroupDocument }))
       .catch(() => {
         const messageContent = 'Error Loading Task Group';
         openSnackBar({ messageContent, messageColor: 'secondary' });
@@ -70,20 +70,21 @@ class TaskGroup extends React.PureComponent {
       taskGroupDocument,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TaskGroupTitle
           groupName={groupName}
           openCode={() => openModal({ modalName: TASKGROUP_CODE_MODAL })}
           openRemove={() => openModal({ modalName: TASKGROUP_REMOVE_MODAL })}
           onRefresh={this.onRefresh}
         />
-        {taskGroupDocument &&
+        {taskGroupDocument
+          && (
           <TaskGroupCard
             groupName={groupName}
             taskGroupDocument={taskGroupDocument}
             onRefresh={this.onRefresh}
           />
-        }
+          )}
         <CodeModal
           isOpen={(modalName === TASKGROUP_CODE_MODAL)}
           toggleDialogue={closeModal}
@@ -96,7 +97,7 @@ class TaskGroup extends React.PureComponent {
           onRemove={this.onRemove}
           groupName={groupName}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

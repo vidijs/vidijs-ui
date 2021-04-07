@@ -18,11 +18,12 @@ function StorageRuleListCard({
 }) {
   return (
     <SquareCard>
-      {createModal &&
+      {createModal
+      && (
       <CardHeader
         disableTypography
         title={<Typography variant="subtitle1">{title}</Typography>}
-        action={
+        action={(
           <Grid container direction="row-reverse" alignItems="center">
             <Grid item>
               <IconButton onClick={() => onOpen({ modalName: createModal })}>
@@ -30,9 +31,9 @@ function StorageRuleListCard({
               </IconButton>
             </Grid>
           </Grid>
-        }
+        )}
       />
-      }
+      )}
       <CardContent>
         <StorageRuleListTable
           {...props}

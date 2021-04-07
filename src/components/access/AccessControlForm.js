@@ -1,11 +1,11 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FormSection } from 'redux-form';
-import { TextField, Select } from '../form';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import { TextField, Select } from '../form';
 
 import BoolCheckbox from '../ui/BoolCheckbox';
 import UserSelect from '../user/UserSelect';
@@ -14,7 +14,6 @@ import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { loadMetadataFieldOptions } from '../metadatafield/MetadataFieldSelect';
 import DynamicSelect from '../ui/DynamicSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
-
 
 export const AccessControlMetadataType = () => (
   <Field
@@ -48,9 +47,8 @@ export const AccessControlUriType = () => (
   />
 );
 
-
 const AccessControlType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="priority"
       component={TextField}
@@ -83,7 +81,7 @@ const AccessControlType = () => (
       )}
       label="Recursive"
     />
-  </React.Fragment>
+  </>
 );
 
 const AccessControlQueryParams = () => (
@@ -97,7 +95,6 @@ const AccessControlQueryParams = () => (
     label="Allow Duplicate"
   />
 );
-
 
 function AccessControlForm({
   error,

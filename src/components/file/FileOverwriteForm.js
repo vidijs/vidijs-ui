@@ -8,7 +8,7 @@ import Field from '../ui/Field';
 import UploadButton from '../ui/UploadButton';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="transferId"
       component={TextField}
@@ -21,9 +21,8 @@ const queryParams = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function FileOverwriteForm({
   error,

@@ -5,7 +5,6 @@ import DocumentMetadataForm from './DocumentMetadataForm';
 import MetadataDisplay from '../metadata/MetadataDisplay';
 import withSnackbar from '../../hoc/withSnackbar';
 
-
 function DocumentMetadataEditor({
   metadataDocument,
   documentMetadataName,
@@ -37,6 +36,5 @@ function DocumentMetadataEditor({
     />
   );
 }
-
 
 export default withSnackbar(DocumentMetadataEditor);

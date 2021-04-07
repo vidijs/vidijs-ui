@@ -9,7 +9,6 @@ import {
   AUTH_VIDISPINE_SERVER_URL,
 } from '../const/Auth';
 
-
 class Auth extends React.Component {
   constructor(props) {
     super(props);

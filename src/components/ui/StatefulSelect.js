@@ -31,7 +31,7 @@ export default class StatefulSelect extends React.PureComponent {
     const value = this.state[this.props.name];
     const WrappedValueComponent = ValueComponent && ValueComponent(value);
     return (
-      <React.Fragment>
+      <>
         <FormHelperText>{label}</FormHelperText>
         <TextField
           {...selectProps}
@@ -44,7 +44,7 @@ export default class StatefulSelect extends React.PureComponent {
         </TextField>
 
         {WrappedValueComponent}
-      </React.Fragment>
+      </>
     );
   }
 }

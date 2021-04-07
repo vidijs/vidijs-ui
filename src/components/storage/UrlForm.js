@@ -21,14 +21,13 @@ const GS_SCHEME = 'gs';
 const VSA_SCHEME = 'vxa';
 const UNIVERSAL_SCHEME = 'universal';
 
-
 function S3Form({
   values = {},
   onChange,
   onQueryParamsChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Bucket"
         value={values.host || ''}
@@ -90,7 +89,6 @@ function S3Form({
         <MenuItem value="reduced">Reduced</MenuItem>
       </TextField>
 
-
       <TextField
         label="SSE Algorithm"
         value={values.queryParams.sseAlgorithm || ''}
@@ -137,7 +135,7 @@ function S3Form({
         <MenuItem value="true">True</MenuItem>
         <MenuItem value="false">False</MenuItem>
       </TextField>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -147,7 +145,7 @@ function Ds3Form({
   onQueryParamsChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Bucket"
         value={values.host || ''}
@@ -196,7 +194,7 @@ function Ds3Form({
         <MenuItem value="crc32">crc32</MenuItem>
         <MenuItem value="crc32c">crc32c</MenuItem>
       </TextField>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -205,7 +203,7 @@ function AzureForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Account Name"
         value={values.host || ''}
@@ -224,7 +222,7 @@ function AzureForm({
         onChange={onChange('username')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -234,7 +232,7 @@ function GsForm({
   onQueryParamsChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Bucket"
         value={values.host || ''}
@@ -259,7 +257,7 @@ function GsForm({
         onChange={onQueryParamsChange('account')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -268,7 +266,7 @@ function FtpForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Host"
         value={values.host || ''}
@@ -293,7 +291,7 @@ function FtpForm({
         onChange={onChange('password')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -302,7 +300,7 @@ function SftpForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Host"
         value={values.host || ''}
@@ -327,7 +325,7 @@ function SftpForm({
         onChange={onChange('password')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -336,7 +334,7 @@ function HttpForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Host"
         value={values.host || ''}
@@ -361,7 +359,7 @@ function HttpForm({
         onChange={onChange('password')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -370,7 +368,7 @@ function HttpsForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Host"
         value={values.host || ''}
@@ -395,7 +393,7 @@ function HttpsForm({
         onChange={onChange('password')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -404,7 +402,7 @@ function OmmsForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Host"
         value={values.host || ''}
@@ -429,7 +427,7 @@ function OmmsForm({
         onChange={onChange('password')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -438,7 +436,7 @@ function VsaForm({
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Agent UUID"
         value={values.host || ''}
@@ -451,27 +449,25 @@ function VsaForm({
         onChange={onChange('path')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
-
 
 function FileForm({
   values = {},
   onChange,
 }) {
   return (
-    <React.Fragment>
+    <>
       <TextField
         label="Path"
         value={values.path || ''}
         onChange={onChange('path')}
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
-
 
 export default class UrlForm extends React.PureComponent {
   static renderUrl(props) {
@@ -569,9 +565,11 @@ export default class UrlForm extends React.PureComponent {
     }
     const displayUrl = UrlForm.renderUrl(this.state);
     return (
-      <React.Fragment>
+      <>
         <Typography variant="subtitle2">
-          URI: {displayUrl}
+          URI:
+          {' '}
+          {displayUrl}
         </Typography>
         <FormHelperText>Protocol</FormHelperText>
         <TextField
@@ -599,7 +597,7 @@ export default class UrlForm extends React.PureComponent {
           onChange={this.handleChange}
           onQueryParamsChange={this.handleQueryParamsChange}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

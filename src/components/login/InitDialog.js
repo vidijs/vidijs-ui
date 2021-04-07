@@ -68,5 +68,4 @@ function InitDialog({
   );
 }
 
-
 export default compose(withSnackbarNoRouter)(InitDialog);

@@ -6,7 +6,6 @@ import MetricsForm from './MetricsForm';
 import MetricsDisplay from './MetricsDisplay';
 import withSnackbar from '../../../hoc/withSnackbar';
 
-
 function MetricsEditor({
   metricsConfigurationDocument,
   openSnackBar,
@@ -35,6 +34,5 @@ function MetricsEditor({
     />
   );
 }
-
 
 export default withSnackbar(MetricsEditor);

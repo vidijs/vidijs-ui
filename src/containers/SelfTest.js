@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { selftest as api } from '@vidijs/vidijs-api';
 import SelfTestTitle from '../components/selftest/SelfTestTitle';
 import SelfTestListCard from '../components/selftest/SelfTestListCard';
 
 import withSnackbar from '../hoc/withSnackbar';
-import { selftest as api } from '@vidijs/vidijs-api';
-
 
 class SelfTest extends React.PureComponent {
   constructor(props) {
@@ -25,8 +24,8 @@ class SelfTest extends React.PureComponent {
   onRefresh() {
     try {
       api.listSelfTest()
-        .then(response => this.setState({ selfTestDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ selfTestDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -41,18 +40,19 @@ class SelfTest extends React.PureComponent {
   render() {
     const { selfTestDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <SelfTestTitle
           onRefresh={this.onRefresh}
           code={selfTestDocument}
           codeModal="SelfTestDocument"
         />
-        {selfTestDocument &&
+        {selfTestDocument
+        && (
         <SelfTestListCard
           selfTestDocument={selfTestDocument}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

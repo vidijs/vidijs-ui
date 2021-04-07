@@ -12,7 +12,7 @@ import ShapeMetadataCard from './ShapeMetadataCard';
 export default function ShapeOverview({ shapeDocument = {} }) {
   if (shapeDocument === undefined) { return null; }
   return (
-    <React.Fragment>
+    <>
       <ShapeCard
         shapeDocument={shapeDocument}
       />
@@ -37,6 +37,6 @@ export default function ShapeOverview({ shapeDocument = {} }) {
       <ShapeMetadataCard
         shapeDocument={shapeDocument}
       />
-    </React.Fragment>
+    </>
   );
 }

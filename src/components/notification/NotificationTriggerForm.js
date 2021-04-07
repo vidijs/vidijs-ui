@@ -2,9 +2,9 @@ import React from 'react';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { TextField } from '../form';
 import update from 'immutability-helper';
 import Typography from '@material-ui/core/Typography';
+import { TextField } from '../form';
 
 import ChipInput from '../ui/ChipInput';
 import StatefulSelect from '../ui/StatefulSelect';
@@ -40,7 +40,7 @@ function NotificationTriggerItemType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -53,7 +53,7 @@ function NotificationTriggerItemType(props) {
       </StatefulSelect>
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -86,7 +86,7 @@ function NotificationTriggerStorageType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -101,7 +101,7 @@ function NotificationTriggerStorageType(props) {
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
       <Field name="filename" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -134,7 +134,7 @@ function NotificationTriggerFileType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -153,7 +153,7 @@ function NotificationTriggerFileType(props) {
       <Field name="hash" type="hidden" component="input" />
       <Field name="close" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -186,7 +186,7 @@ function NotificationTriggerGroupType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -201,7 +201,7 @@ function NotificationTriggerGroupType(props) {
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
       <Field name="modify" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -234,7 +234,7 @@ function NotificationTriggerShapeType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -249,7 +249,7 @@ function NotificationTriggerShapeType(props) {
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
       <Field name="modify" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -282,7 +282,7 @@ function NotificationTriggerAccessType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -297,7 +297,7 @@ function NotificationTriggerAccessType(props) {
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
       <Field name="change" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -330,7 +330,7 @@ function NotificationTriggerQuotaType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -345,7 +345,7 @@ function NotificationTriggerQuotaType(props) {
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
       <Field name="warning" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -378,7 +378,7 @@ function NotificationTriggerDocumentType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -391,14 +391,13 @@ function NotificationTriggerDocumentType(props) {
       </StatefulSelect>
       <Field name="create" type="hidden" component="input" />
       <Field name="delete" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
-
 function NotificationTriggerMetadataModifyType() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="field"
         component={TextField}
@@ -423,10 +422,9 @@ function NotificationTriggerMetadataModifyType() {
         label="Interval"
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
-
 
 function NotificationTriggerMetadataType(props) {
   const { initialValues = {}, valueSelector, dirty } = props;
@@ -439,6 +437,7 @@ function NotificationTriggerMetadataType(props) {
     try {
       const metadata = initialValues[props.id];
       initialvalue = metadata && Object.keys(metadata)[0];
+      // eslint-disable-next-line no-console
     } catch (error) { console.log(error); }
   }
   const onChange = (event, newValue, previousValue) => {
@@ -471,7 +470,7 @@ function NotificationTriggerMetadataType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -483,7 +482,7 @@ function NotificationTriggerMetadataType(props) {
         <MenuItem value="modify">Modify</MenuItem>
       </StatefulSelect>
       <Field name="modify" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -531,7 +530,7 @@ function NotificationTriggerCollectionType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialvalue}
@@ -549,14 +548,13 @@ function NotificationTriggerCollectionType(props) {
       <Field name="delete" type="hidden" component="input" />
       <Field name="modify" type="hidden" component="input" />
       <Field name="metadata" type="hidden" component="input" />
-    </React.Fragment>
+    </>
   );
 }
 
-
 function NotificationJobTriggerContentFiltersType() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="contentFilter"
         label="Content Filter"
@@ -564,13 +562,13 @@ function NotificationJobTriggerContentFiltersType() {
         simple
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
 function NotificationJobTriggerJobDataType() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="key"
         component={TextField}
@@ -595,13 +593,13 @@ function NotificationJobTriggerJobDataType() {
         label="Value Regex"
         fullWidth
       />
-    </React.Fragment>
+    </>
   );
 }
 
 function NotificationJobTriggerFilterType() {
   return (
-    <React.Fragment>
+    <>
       <Field
         name="type"
         component={TextField}
@@ -619,7 +617,7 @@ function NotificationJobTriggerFilterType() {
         name="jobdata"
         component={NotificationJobTriggerJobDataType}
       />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -652,7 +650,7 @@ function NotificationJobTriggerType(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Action"
         initialvalue={initialJobAction}
@@ -688,7 +686,7 @@ function NotificationJobTriggerType(props) {
         label="Placeholder"
       />
 
-    </React.Fragment>
+    </>
   );
 }
 
@@ -771,7 +769,7 @@ function TriggerEntitySelect(props) {
     }
   };
   return (
-    <React.Fragment>
+    <>
       <StatefulSelect
         label="Trigger Entity"
         initialvalue={initialTriggerEntity}
@@ -793,13 +791,13 @@ function TriggerEntitySelect(props) {
         <MenuItem value="access">Access</MenuItem>
         <MenuItem value="document">Document</MenuItem>
       </StatefulSelect>
-    </React.Fragment>
+    </>
   );
 }
 
 function NotificationTriggerForm(props) {
   return (
-    <form onSubmit={props.handleSubmit} >
+    <form onSubmit={props.handleSubmit}>
       {props.error && <Typography color="error">{props.error}</Typography>}
       <FormSection
         {...props}

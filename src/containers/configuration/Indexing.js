@@ -1,11 +1,10 @@
 import React from 'react';
 
+import { configuration as api } from '@vidijs/vidijs-api';
 import IndexingCard from '../../components/configuration/indexing/IndexingCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
 import withSnackbar from '../../hoc/withSnackbar';
-import { configuration as api } from '@vidijs/vidijs-api';
-
 
 class Indexing extends React.PureComponent {
   constructor(props) {
@@ -25,8 +24,8 @@ class Indexing extends React.PureComponent {
   onRefresh() {
     try {
       api.getIndexingConfiguration()
-        .then(response => this.setState({ indexingConfigurationDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ indexingConfigurationDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -41,7 +40,7 @@ class Indexing extends React.PureComponent {
   render() {
     const { indexingConfigurationDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Indexing"
           parentTitle="Configuration"
@@ -51,13 +50,14 @@ class Indexing extends React.PureComponent {
           code={indexingConfigurationDocument}
           codeModal="IndexingConfigurationDocument"
         />
-        { indexingConfigurationDocument &&
+        { indexingConfigurationDocument
+        && (
         <IndexingCard
           indexingConfigurationDocument={indexingConfigurationDocument}
           onSuccess={this.onRefresh}
         />
-        }
-      </React.Fragment>
+        )}
+      </>
     );
   }
 }

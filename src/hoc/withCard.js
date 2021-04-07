@@ -3,7 +3,7 @@ import CardContent from '@material-ui/core/CardContent';
 
 import SquareCard from '../components/ui/SquareCard';
 
-const withCard = WrappedComponent => props => (
+const withCard = (WrappedComponent) => (props) => (
   <SquareCard>
     <CardContent>
       <WrappedComponent {...props} />

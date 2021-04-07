@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { job as api } from '@vidijs/vidijs-api';
 import JobTitle from '../components/job/JobTitle';
 import JobCard from '../components/job/JobCard';
 import JobPriority from '../components/job/JobPriority';
@@ -9,13 +10,11 @@ import JobRemove from '../components/job/JobRemove';
 import { RUNNING_STATES } from '../const/JobStates';
 
 import withUI from '../hoc/withUI';
-import { job as api } from '@vidijs/vidijs-api';
 
 const JOB_PRIORITY_DIALOG = 'JOB_PRIORITY_DIALOG';
 const JOB_DUPLICATE_DIALOG = 'JOB_DUPLICATE_DIALOG';
 const JOB_ABORT_DIALOG = 'JOB_ABORT_DIALOG';
 const JOB_REMOVE_DIALOG = 'JOB_REMOVE_DIALOG';
-
 
 class Job extends React.PureComponent {
   constructor(props) {
@@ -36,7 +35,7 @@ class Job extends React.PureComponent {
     document.title = `vidi.js | Job | ${jobId}`;
   }
 
-  componentWillReceiveProps({ jobId }) {
+  UNSAFE_componentWillReceiveProps({ jobId }) {
     const { jobId: prevJobId } = this.props;
     if (prevJobId !== jobId) {
       this.onFetch(jobId);
@@ -72,13 +71,12 @@ class Job extends React.PureComponent {
     this.onRefresh();
   }
 
-
   onFetch(jobId) {
     const queryParams = { metadata: true };
     try {
       api.getJob({ jobId, queryParams })
-        .then(response => this.setState({ jobDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ jobDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -90,12 +88,11 @@ class Job extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { jobDocument } = this.state;
     const { jobId, history } = this.props;
     return (
-      <React.Fragment>
+      <>
         <JobTitle
           title={jobId}
           onRefresh={this.onRefresh}
@@ -115,7 +112,7 @@ class Job extends React.PureComponent {
         />
         <JobDuplicate
           dialogName={JOB_DUPLICATE_DIALOG}
-          onSuccess={response => history.push(`/job/${response.data.jobId}`)}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}`)}
           jobDocument={jobDocument}
         />
         <JobAbort
@@ -128,7 +125,7 @@ class Job extends React.PureComponent {
           onSuccess={() => history.push('/job/')}
           jobDocument={jobDocument}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

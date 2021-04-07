@@ -14,9 +14,8 @@ import { loadStorageOptions } from '../storage/StorageSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 
-
 const FilenameFilterTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="pattern"
       label="Filter Pattern"
@@ -30,11 +29,11 @@ const FilenameFilterTypeForm = () => (
       simple
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const AutoImportRuleTypeForm = () => (
-  <React.Fragment>
+  <>
     <Field
       name="storage"
       label="Storage ID"
@@ -125,9 +124,8 @@ const AutoImportRuleTypeForm = () => (
       name="metadata"
       component={MetadataType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function AutoImportRuleForm({
   error,

@@ -1,10 +1,10 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { reduxForm, Field, FieldArray } from 'redux-form';
-import { TextField, Select } from '../form';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import { TextField, Select } from '../form';
 
 import { loadShapeTagOptions } from '../shapetag/ShapeTagSelect';
 import { StatefulAsyncSelect } from '../ui/Select';
@@ -12,7 +12,7 @@ import SimpleMetadataField from '../ui/SimpleMetadataField';
 import FormSection from '../ui/FormSection';
 
 const queryParams = () => (
-  <React.Fragment>
+  <>
     <Field
       name="uri"
       label="URI"
@@ -46,9 +46,8 @@ const queryParams = () => (
       component={SimpleMetadataField}
       buttonLabel="Add Job Metadata"
     />
-  </React.Fragment>
+  </>
 );
-
 
 function ImportUriForm({
   error,

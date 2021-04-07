@@ -49,7 +49,7 @@ function ImportShapePlaceholderWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Placeholder Shape"
@@ -144,10 +144,9 @@ function ImportShapePlaceholderWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
 
   );
 }
-
 
 export default compose(withStepper, withUI, withFormActions)(ImportShapePlaceholderWizard);

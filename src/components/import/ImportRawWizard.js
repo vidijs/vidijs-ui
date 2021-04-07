@@ -23,7 +23,6 @@ import TitleHeader from '../ui/TitleHeader';
 
 export const EDIT_IMPORTRAW_FORM = 'EDIT_IMPORTRAW_FORM';
 
-
 function ImportRawWizard({
   initialValues,
   onSuccess,
@@ -63,7 +62,7 @@ function ImportRawWizard({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <React.Fragment>
+    <>
       <TitleHeader
         parentTitle="Import"
         title="Upload"
@@ -173,7 +172,7 @@ function ImportRawWizard({
           </StepContent>
         </Step>
       </Stepper>
-    </React.Fragment>
+    </>
   );
 }
 

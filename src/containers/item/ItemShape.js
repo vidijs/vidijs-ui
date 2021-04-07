@@ -1,10 +1,9 @@
 import React from 'react';
+import { shape as api } from '@vidijs/vidijs-api';
 import UriListCard from '../../components/ui/UriListCard';
 import ShapeListParams from '../../components/shape/ShapeListParams';
 
-import { shape as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
-
 
 class ItemShape extends React.PureComponent {
   constructor(props) {
@@ -21,7 +20,7 @@ class ItemShape extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ itemId }) {
+  UNSAFE_componentWillReceiveProps({ itemId }) {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
@@ -41,8 +40,8 @@ class ItemShape extends React.PureComponent {
         itemId,
         queryParams,
       })
-        .then(response => this.setState({ uriListDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ uriListDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -54,7 +53,6 @@ class ItemShape extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       itemId,
@@ -63,7 +61,7 @@ class ItemShape extends React.PureComponent {
     } = this.props;
     const { uriListDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={uriListDocument}
@@ -76,15 +74,15 @@ class ItemShape extends React.PureComponent {
         )}
         <ShapeListParams
           itemId={itemId}
-          onSuccess={response => this.setState({ uriListDocument: response.data })}
+          onSuccess={(response) => this.setState({ uriListDocument: response.data })}
         />
         {uriListDocument && (
           <UriListCard
             uriListDocument={uriListDocument}
-            linkTo={uri => `/item/${itemId}/shape/${uri}/`}
+            linkTo={(uri) => `/item/${itemId}/shape/${uri}/`}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

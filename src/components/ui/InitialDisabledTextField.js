@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from '../form';
 
-const InitialDisabledTextField = props => (
+const InitialDisabledTextField = (props) => (
   <TextField
     disabled={(props.meta.initial !== undefined && props.meta.initial !== '')}
     onFocus={props.onFocus}

@@ -15,7 +15,7 @@ export default function ItemThumbnailGrid({
   };
   return (
     <GridList cellHeight="auto" cols={3}>
-      {uriList.map(thisUri => (
+      {uriList.map((thisUri) => (
         <GridListTile key={thisUri}>
           <img src={thisUri} alt={thisUri} />
           <GridListTileBar

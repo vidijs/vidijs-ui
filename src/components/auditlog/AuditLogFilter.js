@@ -10,7 +10,6 @@ import AuditLogFilterForm from './AuditLogFilterForm';
 import withFormActions from '../../hoc/withFormActions';
 import withUI from '../../hoc/withUI';
 
-
 function AuditLogFilter({
   onClose,
   onSuccess,
@@ -32,7 +31,7 @@ function AuditLogFilter({
     submitForm(form);
   };
   return (
-    <React.Fragment>
+    <>
       <CardContent>
         <AuditLogFilterForm
           form={form}
@@ -59,7 +58,7 @@ function AuditLogFilter({
           Filter
         </Button>
       </DialogActions>
-    </React.Fragment>
+    </>
   );
 }
 

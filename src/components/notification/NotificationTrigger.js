@@ -1,7 +1,6 @@
 import React from 'react';
 import TextGrid from '../ui/TextGrid';
 
-
 export function getJobAction(job = {}) {
   let jobTriggerAction;
   if (job === undefined) {
@@ -52,39 +51,35 @@ export function getTriggerEntity(trigger) {
   return triggerEntity;
 }
 
-
 const JobTriggerType = ({ trigger: { job } }) => {
   const triggerAction = getJobAction(job);
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
       <TextGrid title="Placeholder" value={job.placeholder} />
-      {job.filter &&
-        <React.Fragment>
+      {job.filter
+        && (
+        <>
           <TextGrid title="Type" value={job.filter.type} />
           <TextGrid title="Step" value={job.filter.step} />
-          {job.filter.jobdata &&
-            <React.Fragment>
-              { job.filter.jobdata.key &&
-                <TextGrid title="Job Data Key" value={job.filter.jobdata.key} />
-              }
-              { job.filter.jobdata['key-regex'] &&
-                <TextGrid title="Job Data Key Regex" value={job.filter.jobdata['key-regex']} />
-              }
-              { job.filter.jobdata.value &&
-                <TextGrid title="Job Data Value" value={job.filter.jobdata.value} />
-              }
-              { job.filter.jobdata['value-regex'] &&
-                <TextGrid title="Job Data Value Regex" value={job.filter.jobdata['value-regex']} />
-              }
-            </React.Fragment>
-            }
-        </React.Fragment>
-      }
-      {job.contentFilters &&
-        <TextGrid title="Content Filters" variant="list" value={job.contentFilters.contentFilter} />
-      }
-    </React.Fragment>
+          {job.filter.jobdata
+            && (
+            <>
+              { job.filter.jobdata.key
+                && <TextGrid title="Job Data Key" value={job.filter.jobdata.key} />}
+              { job.filter.jobdata['key-regex']
+                && <TextGrid title="Job Data Key Regex" value={job.filter.jobdata['key-regex']} />}
+              { job.filter.jobdata.value
+                && <TextGrid title="Job Data Value" value={job.filter.jobdata.value} />}
+              { job.filter.jobdata['value-regex']
+                && <TextGrid title="Job Data Value Regex" value={job.filter.jobdata['value-regex']} />}
+            </>
+            )}
+        </>
+        )}
+      {job.contentFilters
+        && <TextGrid title="Content Filters" variant="list" value={job.contentFilters.contentFilter} />}
+    </>
   );
 };
 
@@ -94,17 +89,18 @@ const MetadataTriggerType = ({ trigger: { metadata } }) => {
     triggerAction = 'modify';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-      {triggerAction === 'modify' &&
-      <React.Fragment>
+      {triggerAction === 'modify'
+      && (
+      <>
         <TextGrid title="Field" value={metadata.modify.field} />
         <TextGrid title="Language" value={metadata.modify.language} />
         <TextGrid title="Track" value={metadata.modify.track} />
         <TextGrid title="Interval" value={metadata.modify.interval} />
-      </React.Fragment>
-      }
-    </React.Fragment>
+      </>
+      )}
+    </>
   );
 };
 
@@ -118,9 +114,9 @@ const ItemTriggerType = ({ trigger: { item } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -138,15 +134,13 @@ const CollectionTriggerType = ({ trigger: { collection } }) => {
     triggerAction = 'metadata';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-      {triggerAction === 'metadata' &&
-        <MetadataTriggerType trigger={{ trigger: { metadata: collection.metadata } }} />
-      }
-      {triggerAction === 'item' &&
-        <ItemTriggerType trigger={{ trigger: { item: collection.item } }} />
-      }
-    </React.Fragment>
+      {triggerAction === 'metadata'
+        && <MetadataTriggerType trigger={{ trigger: { metadata: collection.metadata } }} />}
+      {triggerAction === 'item'
+        && <ItemTriggerType trigger={{ trigger: { item: collection.item } }} />}
+    </>
   );
 };
 
@@ -160,9 +154,9 @@ const StorageTriggerType = ({ trigger: { storage } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -180,9 +174,9 @@ const FileTriggerType = ({ trigger: { file } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -196,9 +190,9 @@ const GroupTriggerType = ({ trigger: { group } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -212,9 +206,9 @@ const ShapeTriggerType = ({ trigger: { shape } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -228,9 +222,9 @@ const AccessTriggerType = ({ trigger: { access } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -244,9 +238,9 @@ const QuotaTriggerType = ({ trigger: { quota } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
@@ -258,16 +252,16 @@ const DocumentTriggerType = ({ trigger: { document } }) => {
     triggerAction = 'delete';
   }
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Action" value={triggerAction} />
-    </React.Fragment>
+    </>
   );
 };
 
 export default function NotificationTrigger({
   trigger = {},
 }) {
-  let TriggerComponent = <React.Fragment />;
+  let TriggerComponent = <></>;
   const triggerEntity = getTriggerEntity(trigger);
   switch (triggerEntity) {
     case 'job':
@@ -308,9 +302,9 @@ export default function NotificationTrigger({
   }
 
   return (
-    <React.Fragment>
+    <>
       <TextGrid title="Trigger Entity" value={triggerEntity} />
       <TriggerComponent trigger={trigger} />
-    </React.Fragment>
+    </>
   );
 }

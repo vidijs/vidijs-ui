@@ -7,7 +7,7 @@ import FormSection from '../../ui/FormSection';
 import Field from '../../ui/Field';
 
 const LogReportConfigurationType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="path"
       component={TextField}
@@ -38,9 +38,8 @@ const LogReportConfigurationType = () => (
       component={TextField}
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
-
 
 function LogReportForm({
   error,

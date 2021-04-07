@@ -2,11 +2,11 @@ import React from 'react';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
+import Dialog from '@material-ui/core/Dialog';
 import { StorageRuleEntityForm } from './StorageRuleForm';
 import * as formActions from '../../formactions/storagerule';
 import WizardForm from '../ui/WizardForm';
 import withUI from '../../hoc/withUI';
-import Dialog from '@material-ui/core/Dialog';
 
 function StorageRuleEntityDialog({
   open,
@@ -49,6 +49,5 @@ function StorageRuleEntityDialog({
     </Dialog>
   );
 }
-
 
 export default withUI(StorageRuleEntityDialog);

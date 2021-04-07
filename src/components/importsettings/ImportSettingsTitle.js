@@ -17,11 +17,11 @@ export default function ImportSettingsTitle({
       parentTo="/import/settings/"
       openCode={openCode}
       onRefresh={onRefresh}
-      actionComponent={
+      actionComponent={(
         <IconButton onClick={openRemove}>
           <DeleteForever />
         </IconButton>
-      }
+      )}
     />
   );
 }

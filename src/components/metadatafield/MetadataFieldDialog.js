@@ -48,5 +48,4 @@ function MetadataFieldDialog({
   );
 }
 
-
 export default withUI(MetadataFieldDialog);

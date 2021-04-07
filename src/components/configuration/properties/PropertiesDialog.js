@@ -7,13 +7,13 @@ import Button from '@material-ui/core/Button';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+import Dialog from '@material-ui/core/Dialog';
 import * as formActions from '../../../formactions/configuration';
 import PropertiesForm from './PropertiesForm';
 import PropertiesJavascriptForm from './PropertiesJavascriptForm';
 import withUI from '../../../hoc/withUI';
 import withFormActions from '../../../hoc/withFormActions';
 import withTabs from '../../../hoc/withTabs';
-import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '../../ui/DialogContent';
 
 const CONFIGURATIONPROPERTIES_FORM = 'CONFIGURATIONPROPERTIES_FORM';
@@ -56,7 +56,8 @@ function PropertiesDialog({
     >
       <DialogTitle>Edit Configuration Property</DialogTitle>
       <DialogContent>
-        { isJavascript === false &&
+        { isJavascript === false
+        && (
         <Tabs
           value={tabValue}
           onChange={onChangeTab}
@@ -64,8 +65,9 @@ function PropertiesDialog({
           <Tab label="Text" value={TEXT_TAB} />
           <Tab label="Javascript" value={JAVASCRIPT_TAB} />
         </Tabs>
-        }
-        { (!isJavascript && tabValue === TEXT_TAB) &&
+        )}
+        { (!isJavascript && tabValue === TEXT_TAB)
+        && (
         <PropertiesForm
           form={CONFIGURATIONPROPERTIES_FORM}
           onSubmit={formActions.onUpdatePropertiesConfiguration}
@@ -76,8 +78,9 @@ function PropertiesDialog({
           destroyOnUnmount={false}
           enableReinitialize
         />
-        }
-        { (isJavascript || tabValue === JAVASCRIPT_TAB) &&
+        )}
+        { (isJavascript || tabValue === JAVASCRIPT_TAB)
+        && (
         <PropertiesJavascriptForm
           form={CONFIGURATIONPROPERTIES_FORM}
           onSubmit={formActions.onUpdatePropertiesConfiguration}
@@ -85,14 +88,14 @@ function PropertiesDialog({
           onSubmitFail={onSubmitFail}
           onCancel={onClose}
           initialValues={
-            configurationPropertyDocument ?
-            { configurationPropertyDocument }
-            :
-            { configurationPropertyDocument: { key: 'javascript-' } }}
+            configurationPropertyDocument
+              ? { configurationPropertyDocument }
+              : { configurationPropertyDocument: { key: 'javascript-' } }
+}
           destroyOnUnmount={false}
           enableReinitialize
         />
-        }
+        )}
       </DialogContent>
       <Divider />
       <DialogActions>
@@ -114,6 +117,5 @@ function PropertiesDialog({
     </Dialog>
   );
 }
-
 
 export default compose(withUI, withFormActions, withTabs(TEXT_TAB))(PropertiesDialog);

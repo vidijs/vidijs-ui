@@ -1,14 +1,13 @@
 import React from 'react';
 
+import { collection as api } from '@vidijs/vidijs-api';
 import CollectionMetadataEditor from '../../components/collection/CollectionMetadataEditor';
 import CollectionMetadataDisplayParams from '../../components/collection/CollectionMetadataDisplayParams';
 
-import { collection as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../../hoc/withSnackbar';
 import withCard from '../../hoc/withCard';
 
 const CollectionMetadataCard = withCard(CollectionMetadataEditor);
-
 
 class CollectionMetadata extends React.PureComponent {
   constructor(props) {
@@ -25,7 +24,7 @@ class CollectionMetadata extends React.PureComponent {
     this.onRefresh();
   }
 
-  componentWillReceiveProps({ collectionId }) {
+  UNSAFE_componentWillReceiveProps({ collectionId }) {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
@@ -41,8 +40,8 @@ class CollectionMetadata extends React.PureComponent {
   onFetch(collectionId) {
     try {
       api.getCollectionMetadata({ collectionId })
-        .then(response => this.setState({ metadataDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metadataDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -54,7 +53,6 @@ class CollectionMetadata extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const {
       collectionId,
@@ -63,7 +61,7 @@ class CollectionMetadata extends React.PureComponent {
     } = this.props;
     const { metadataDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         {TitleComponent && (
           <TitleComponent
             code={metadataDocument}
@@ -76,7 +74,7 @@ class CollectionMetadata extends React.PureComponent {
         )}
         <CollectionMetadataDisplayParams
           collectionId={collectionId}
-          onSuccess={response => this.setState({ metadataDocument: response.data })}
+          onSuccess={(response) => this.setState({ metadataDocument: response.data })}
         />
         {metadataDocument && (
           <CollectionMetadataCard
@@ -85,7 +83,7 @@ class CollectionMetadata extends React.PureComponent {
             onSuccess={() => this.onRefresh()}
           />
         )}
-      </React.Fragment>
+      </>
     );
   }
 }

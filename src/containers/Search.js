@@ -90,7 +90,7 @@ class Search extends React.PureComponent {
       queryParams,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Search"
           helpTo="/ref/search.html"
@@ -117,7 +117,7 @@ class Search extends React.PureComponent {
           queryParams={queryParams}
           form={SEARCH_FORM}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

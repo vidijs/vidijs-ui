@@ -71,5 +71,4 @@ function JobCreate({
   );
 }
 
-
 export default compose(withUI, withFormActions)(JobCreate);

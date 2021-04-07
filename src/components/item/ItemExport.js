@@ -74,5 +74,4 @@ function ItemExport({
   );
 }
 
-
 export default compose(withUI, withFormActions)(ItemExport);

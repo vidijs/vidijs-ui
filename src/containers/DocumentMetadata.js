@@ -1,10 +1,10 @@
 import React from 'react';
+import { documentmetadata as api } from '@vidijs/vidijs-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import DocumentMetadataCard from '../components/documentmetadata/DocumentMetadataCard';
 import DocumentMetadataRemove from '../components/documentmetadata/DocumentMetadataRemove';
 import DocumentMetadataDisplayParams from '../components/documentmetadata/DocumentMetadataDisplayParams';
 
-import { documentmetadata as api } from '@vidijs/vidijs-api';
 import withSnackbar from '../hoc/withSnackbar';
 
 const DOCUMENT_REMOVE_DIALOG = 'DOCUMENT_REMOVE_DIALOG';
@@ -29,8 +29,8 @@ class DocumentMetadata extends React.PureComponent {
     const { documentMetadataName } = this.props;
     try {
       api.getDocumentMetadata({ documentMetadataName })
-        .then(response => this.setState({ metadataDocument: response.data }))
-        .catch(error => this.onRefreshError(error));
+        .then((response) => this.setState({ metadataDocument: response.data }))
+        .catch((error) => this.onRefreshError(error));
     } catch (error) {
       this.onRefreshError(error);
     }
@@ -42,12 +42,11 @@ class DocumentMetadata extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
-
   render() {
     const { documentMetadataName, history } = this.props;
     const { metadataDocument } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           parentTitle="Document"
           parentTo="/document/"
@@ -59,7 +58,7 @@ class DocumentMetadata extends React.PureComponent {
         />
         <DocumentMetadataDisplayParams
           documentMetadataName={documentMetadataName}
-          onSuccess={response => this.setState({ metadataDocument: response.data })}
+          onSuccess={(response) => this.setState({ metadataDocument: response.data })}
         />
         {documentMetadataName && (
           <DocumentMetadataCard
@@ -73,7 +72,7 @@ class DocumentMetadata extends React.PureComponent {
           onSuccess={() => history.push('/document/')}
           dialogName={DOCUMENT_REMOVE_DIALOG}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

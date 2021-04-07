@@ -66,5 +66,4 @@ function VersionDialog({
   );
 }
 
-
 export default compose(withUI, withFormActions)(VersionDialog);

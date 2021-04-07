@@ -90,7 +90,7 @@ class ShapeSearch extends React.PureComponent {
       queryParams,
     } = this.state;
     return (
-      <React.Fragment>
+      <>
         <TitleHeader
           title="Shape"
           helpTo="/ref/item/shape.html"
@@ -118,7 +118,7 @@ class ShapeSearch extends React.PureComponent {
           form={SHAPE_SEARCH_FORM}
           sortField="shapeSearchDocument.sort"
         />
-      </React.Fragment>
+      </>
     );
   }
 }

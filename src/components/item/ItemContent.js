@@ -15,7 +15,7 @@ export default function ItemContent({ itemDocument }) {
     shape,
   } = itemDocument;
   return (
-    <React.Fragment>
+    <>
       {metadata && (
         <ItemMetadataCard
           itemId={itemId}
@@ -46,6 +46,6 @@ export default function ItemContent({ itemDocument }) {
           shapeList={shape}
         />
       )}
-    </React.Fragment>
+    </>
   );
 }

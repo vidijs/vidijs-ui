@@ -14,7 +14,7 @@ export default function JobCard({
 }) {
   if (props.jobDocument === undefined) { return null; }
   return (
-    <React.Fragment>
+    <>
       <SquareCard>
         <CardContent>
           <JobBasicDisplay
@@ -43,6 +43,6 @@ export default function JobCard({
           />
         </CardContent>
       </SquareCard>
-    </React.Fragment>
+    </>
   );
 }

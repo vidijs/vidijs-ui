@@ -15,7 +15,7 @@ export default function ItemPosterGrid({
   };
   return (
     <GridList cellHeight="auto" cols={1}>
-      {uriList.map(thisUri => (
+      {uriList.map((thisUri) => (
         <GridListTile key={thisUri}>
           <img src={thisUri} alt={thisUri} />
           <GridListTileBar

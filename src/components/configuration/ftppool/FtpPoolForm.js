@@ -7,7 +7,7 @@ import FormSection from '../../ui/FormSection';
 import Field from '../../ui/Field';
 
 const ConnectionPoolType = () => (
-  <React.Fragment>
+  <>
     <Field
       name="minSize"
       component={TextField}
@@ -32,18 +32,17 @@ const ConnectionPoolType = () => (
       type="number"
       fullWidth
     />
-  </React.Fragment>
+  </>
 );
 
 const FtpPoolConfigurationType = () => (
-  <React.Fragment>
+  <>
     <FormSection
       name="pool"
       component={ConnectionPoolType}
     />
-  </React.Fragment>
+  </>
 );
-
 
 function FtpPoolForm({
   error,

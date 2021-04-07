@@ -21,7 +21,7 @@ function FieldGroupListTable({
 }) {
   const { group: fieldGroupList = [] } = metadataFieldGroupListDocument;
   return (
-    <React.Fragment>
+    <>
       <Table>
         <TableHead>
           <TableRow>
@@ -31,7 +31,7 @@ function FieldGroupListTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {fieldGroupList.map(metadataFieldGroupDocument => (
+          {fieldGroupList.map((metadataFieldGroupDocument) => (
             <FieldGroupRow
               key={metadataFieldGroupDocument.name}
               metadataFieldGroupDocument={metadataFieldGroupDocument}
@@ -40,21 +40,23 @@ function FieldGroupListTable({
           ))}
         </TableBody>
       </Table>
-      {groupName ?
-        <FieldGroupChildRemove
-          {...dialogProps}
-          dialogName={REMOVE_FIELDGROUP_DIALOG}
-          groupName={groupName}
-          onSuccess={onRefresh}
-        />
-      :
-        <FieldGroupRemove
-          {...dialogProps}
-          dialogName={REMOVE_FIELDGROUP_DIALOG}
-          onSuccess={onRefresh}
-        />
-      }
-    </React.Fragment>
+      {groupName
+        ? (
+          <FieldGroupChildRemove
+            {...dialogProps}
+            dialogName={REMOVE_FIELDGROUP_DIALOG}
+            groupName={groupName}
+            onSuccess={onRefresh}
+          />
+        )
+        : (
+          <FieldGroupRemove
+            {...dialogProps}
+            dialogName={REMOVE_FIELDGROUP_DIALOG}
+            onSuccess={onRefresh}
+          />
+        )}
+    </>
   );
 }
 

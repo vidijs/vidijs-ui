@@ -6,7 +6,6 @@ import TableCell from '../ui/TableCell';
 import TableRow from '../ui/TableRow';
 import JobStatus from './JobStatus';
 
-
 export default function JobListRow({
   jobDocument,
 }) {
@@ -21,7 +20,7 @@ export default function JobListRow({
     const durationMoment = moment.duration(nowMoment.diff(startMoment));
     durationHuman = `${parseInt(durationMoment.asMinutes(), 10)} minutes`;
   }
-  const JobLink = props => <UnstyledLink to={`/job/${jobDocument.jobId}/`} {...props} />;
+  const JobLink = (props) => <UnstyledLink to={`/job/${jobDocument.jobId}/`} {...props} />;
   return (
     <TableRow to={`/job/${jobDocument.jobId}/`} hover>
       <TableCell><JobLink>{jobDocument.jobId}</JobLink></TableCell>
