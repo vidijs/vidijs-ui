@@ -7,7 +7,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
 import ImportShapeForm from './ImportShapeForm';
 import ImportShapeAdvancedForm from './ImportShapeAdvancedForm';
@@ -78,7 +78,7 @@ function ImportShapeWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button
                   variant="text"
                   color="primary"
@@ -86,7 +86,7 @@ function ImportShapeWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -104,11 +104,11 @@ function ImportShapeWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>

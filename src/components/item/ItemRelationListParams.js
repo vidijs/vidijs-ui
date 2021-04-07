@@ -4,12 +4,12 @@ import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 import ItemRelationListParamsForm from './ItemRelationListParamsForm';
 import withFormActions from '../../hoc/withFormActions';
 import withSnackbar from '../../hoc/withSnackbar';
@@ -36,13 +36,13 @@ function ItemRelationListParams({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <ExpansionPanel defaultExpanded>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+    <Accordion defaultExpanded>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="subtitle2" color="textSecondary">
           Item Relation Options
         </Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      </AccordionSummary>
+      <AccordionDetails>
         <ItemRelationListParamsForm
           form={ITEM_RELATION_LIST_PARAMS_FORM}
           onSubmit={formActions.onListItemRelation}
@@ -51,9 +51,9 @@ function ItemRelationListParams({
           itemId={itemId}
           {...formProps}
         />
-      </ExpansionPanelDetails>
+      </AccordionDetails>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(ITEM_RELATION_LIST_PARAMS_FORM)}
@@ -67,8 +67,8 @@ function ItemRelationListParams({
         >
           Update
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

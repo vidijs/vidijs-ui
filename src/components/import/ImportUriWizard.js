@@ -7,7 +7,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
 import ImportUriForm from './ImportUriForm';
 import ImportUriAdvancedForm from './ImportUriAdvancedForm';
@@ -86,7 +86,7 @@ function ImportUriWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button
                   variant="text"
                   color="primary"
@@ -94,7 +94,7 @@ function ImportUriWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -112,7 +112,7 @@ function ImportUriWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
@@ -123,7 +123,7 @@ function ImportUriWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -141,11 +141,11 @@ function ImportUriWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>

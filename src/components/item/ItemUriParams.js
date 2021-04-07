@@ -4,11 +4,11 @@ import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 import ItemUriParamsForm from './ItemUriParamsForm';
 import withFormActions from '../../hoc/withFormActions';
 import withSnackbar from '../../hoc/withSnackbar';
@@ -37,13 +37,13 @@ function ItemUriParams({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <ExpansionPanel>
-      <ExpansionPanelSummary>
+    <Accordion>
+      <AccordionSummary>
         <Typography variant="subtitle2" color="textSecondary">
           Item URI Options
         </Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      </AccordionSummary>
+      <AccordionDetails>
         <ItemUriParamsForm
           form={ITEM_URI_PARAMS_FORM}
           onSubmit={formActions.onGetUri}
@@ -52,9 +52,9 @@ function ItemUriParams({
           itemId={itemId}
           {...formProps}
         />
-      </ExpansionPanelDetails>
+      </AccordionDetails>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(ITEM_URI_PARAMS_FORM)}
@@ -68,8 +68,8 @@ function ItemUriParams({
         >
           Update
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

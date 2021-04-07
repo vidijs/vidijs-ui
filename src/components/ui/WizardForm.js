@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import Typography from '@material-ui/core/Typography';
 import {
   reduxForm, Field, submit, destroy, getFormValues, stopSubmit, isDirty,
@@ -172,7 +172,7 @@ class WizardForm extends React.PureComponent {
                 onSubmit={formActions.onParse}
                 initialValues={{ jsonDocument }}
               />
-              <ExpansionPanelActions>
+              <AccordionActions>
                 {onCancel
                 && (
                 <Button
@@ -211,7 +211,7 @@ class WizardForm extends React.PureComponent {
                   Next
                 </Button>
                 )}
-              </ExpansionPanelActions>
+              </AccordionActions>
             </>
             )}
             { tabValue === XML_TAB
@@ -224,7 +224,7 @@ class WizardForm extends React.PureComponent {
                 initialValues={{ xmlDocument }}
                 destroyOnUnmount={false}
               />
-              <ExpansionPanelActions>
+              <AccordionActions>
                 {onCancel
                 && (
                 <Button
@@ -250,7 +250,7 @@ class WizardForm extends React.PureComponent {
                   Next
                 </Button>
                 )}
-              </ExpansionPanelActions>
+              </AccordionActions>
             </>
             )}
           </StepContent>
@@ -263,7 +263,7 @@ class WizardForm extends React.PureComponent {
               initialValues={initialValues}
               {...formProps}
             />
-            <ExpansionPanelActions>
+            <AccordionActions>
               <Divider />
               {onCancel
               && (
@@ -287,7 +287,7 @@ class WizardForm extends React.PureComponent {
               >
                 Save
               </Button>
-            </ExpansionPanelActions>
+            </AccordionActions>
           </StepContent>
         </Step>
       </Stepper>

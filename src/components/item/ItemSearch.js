@@ -4,12 +4,12 @@ import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import CardContent from '@material-ui/core/CardContent';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 import ItemSearchForm from './ItemSearchForm';
 import withFormActions from '../../hoc/withFormActions';
 import withSnackbar from '../../hoc/withSnackbar';
@@ -40,15 +40,15 @@ function ItemSearch({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <ExpansionPanel
+    <Accordion
       expanded={expanded}
       onChange={onChangeExpansion}
     >
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="subtitle2" color="textSecondary">
           Item Search Document
         </Typography>
-      </ExpansionPanelSummary>
+      </AccordionSummary>
       <CardContent>
         <ItemSearchForm
           form={form}
@@ -59,7 +59,7 @@ function ItemSearch({
         />
       </CardContent>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(form)}
@@ -73,8 +73,8 @@ function ItemSearch({
         >
           Update
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

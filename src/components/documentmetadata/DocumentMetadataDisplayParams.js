@@ -3,11 +3,11 @@ import { compose } from 'redux';
 
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 import DocumentMetadataDisplayParamsForm from './DocumentMetadataDisplayParamsForm';
 import * as formActions from '../../formactions/documentmetadata';
 import withFormActions from '../../hoc/withFormActions';
@@ -34,9 +34,9 @@ function DocumentMetadataDisplayParams({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <ExpansionPanel>
-      <ExpansionPanelSummary>Display Options</ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+    <Accordion>
+      <AccordionSummary>Display Options</AccordionSummary>
+      <AccordionDetails>
         <DocumentMetadataDisplayParamsForm
           form={DISPLAY_DOCUMENT_FORM}
           onSubmit={formActions.onGet}
@@ -44,9 +44,9 @@ function DocumentMetadataDisplayParams({
           onSubmitFail={onSubmitFail}
           documentMetadataName={documentMetadataName}
         />
-      </ExpansionPanelDetails>
+      </AccordionDetails>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(DISPLAY_DOCUMENT_FORM)}
@@ -60,8 +60,8 @@ function DocumentMetadataDisplayParams({
         >
           Update
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

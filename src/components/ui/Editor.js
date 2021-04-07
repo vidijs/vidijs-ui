@@ -9,7 +9,7 @@ import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import Divider from '@material-ui/core/Divider';
 
 class Editor extends React.PureComponent {
@@ -97,7 +97,7 @@ class Editor extends React.PureComponent {
           && (
           <>
             <Divider />
-            <ExpansionPanelActions>
+            <AccordionActions>
               <Button
                 size="small"
                 onClick={this.toggleEdit}
@@ -111,7 +111,7 @@ class Editor extends React.PureComponent {
               >
                 Save
               </Button>
-            </ExpansionPanelActions>
+            </AccordionActions>
           </>
           )}
       </>

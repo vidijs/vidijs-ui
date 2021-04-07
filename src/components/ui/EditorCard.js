@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import IconButton from '@material-ui/core/IconButton';
 import Delete from '@material-ui/icons/Delete';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 
@@ -107,7 +107,7 @@ export const DefaultCardActionComponent = ({
   isEditing ? (
     <>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={toggleEdit}
@@ -123,7 +123,7 @@ export const DefaultCardActionComponent = ({
         >
           Save
         </Button>
-      </ExpansionPanelActions>
+      </AccordionActions>
     </>
   ) : null
 );

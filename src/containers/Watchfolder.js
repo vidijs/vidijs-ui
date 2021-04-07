@@ -7,7 +7,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
 import SquareCard from '../components/ui/SquareCard';
 import TitleHeader from '../components/ui/TitleHeader';
@@ -43,7 +43,7 @@ function Watchfolder({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button
                   variant="text"
                   color="primary"
@@ -51,7 +51,7 @@ function Watchfolder({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -65,7 +65,7 @@ function Watchfolder({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
@@ -76,7 +76,7 @@ function Watchfolder({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -90,7 +90,7 @@ function Watchfolder({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
@@ -101,7 +101,7 @@ function Watchfolder({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -115,11 +115,11 @@ function Watchfolder({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>

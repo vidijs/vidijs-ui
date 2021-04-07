@@ -7,7 +7,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
 import ImportComponentForm from './ImportComponentForm';
 import ImportComponentAdvancedForm from './ImportComponentAdvancedForm';
@@ -87,7 +87,7 @@ function ImportComponentWizard({
                   form={EDIT_IMPORTCOMPONENT_FORM}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button
                   variant="text"
                   color="primary"
@@ -95,7 +95,7 @@ function ImportComponentWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -113,7 +113,7 @@ function ImportComponentWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
@@ -124,7 +124,7 @@ function ImportComponentWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -142,11 +142,11 @@ function ImportComponentWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>

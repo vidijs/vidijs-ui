@@ -7,7 +7,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 
 import ImportShapePlaceholderForm from './ImportShapePlaceholderForm';
 import ImportShapePlaceholderAdvancedForm from './ImportShapePlaceholderAdvancedForm';
@@ -80,7 +80,7 @@ function ImportShapePlaceholderWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button
                   variant="text"
                   color="primary"
@@ -88,7 +88,7 @@ function ImportShapePlaceholderWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -106,7 +106,7 @@ function ImportShapePlaceholderWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
@@ -117,7 +117,7 @@ function ImportShapePlaceholderWizard({
                 >
                   Next
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>
@@ -135,11 +135,11 @@ function ImportShapePlaceholderWizard({
                   destroyOnUnmount={false}
                 />
               </CardContent>
-              <ExpansionPanelActions>
+              <AccordionActions>
                 <Button onClick={onBack}>
                   Back
                 </Button>
-              </ExpansionPanelActions>
+              </AccordionActions>
             </SquareCard>
           </StepContent>
         </Step>

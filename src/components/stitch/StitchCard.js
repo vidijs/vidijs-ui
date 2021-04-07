@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import CardContent from '@material-ui/core/CardContent';
-import ExpansionPanelActions from '@material-ui/core/DialogActions';
+import AccordionActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
@@ -43,7 +43,7 @@ function StitchCard({
             form={STITCH_FORM}
           />
         </CardContent>
-        <ExpansionPanelActions>
+        <AccordionActions>
           <Button
             size="small"
             onClick={() => resetForm(STITCH_FORM)}
@@ -57,7 +57,7 @@ function StitchCard({
           >
             Get
           </Button>
-        </ExpansionPanelActions>
+        </AccordionActions>
       </SquareCard>
       <SquareCard>
         <CardContent>
