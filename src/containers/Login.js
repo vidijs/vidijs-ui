@@ -116,6 +116,7 @@ class Login extends React.PureComponent {
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl,
     };
+    const { status } = selfTestDocument || {};
     return (
       <>
         <Grid container>
@@ -137,6 +138,7 @@ class Login extends React.PureComponent {
                     initialValues={initialValues}
                     onSuccess={this.onSuccess}
                     onTestUrl={this.onTestUrl}
+                    status={status}
                   />
                 </Grid>
               </Grid>

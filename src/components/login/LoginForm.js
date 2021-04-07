@@ -8,25 +8,24 @@ import { required } from '../../utils/FieldValidation';
 import Field from '../ui/Field';
 import BoolCheckbox from '../ui/BoolCheckbox';
 
+const hasTokenOrValue = (value, { headers = {} }) => (headers.token ? undefined : required(value));
+
 const headers = () => (
   <>
     <Field
       name="username"
       label="Username"
       component={TextField}
-      required
       fullWidth
-      validate={[required]}
+      validate={[hasTokenOrValue]}
     />
     <Field
       name="password"
       label="Password"
       type="password"
       component={TextField}
-      required
       fullWidth
-      autoFocus
-      validate={[required]}
+      validate={[hasTokenOrValue]}
     />
   </>
 );
@@ -60,6 +59,7 @@ function LoginForm({
         required
         onBlur={(event, baseUrl) => onTestUrl(baseUrl)}
         fullWidth
+        autoFocus
         validate={[required]}
       />
       <FormSection

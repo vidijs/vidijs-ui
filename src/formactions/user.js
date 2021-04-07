@@ -59,9 +59,34 @@ export function onGetToken(form, dispatch, props) {
     });
 }
 
+function onWhoAmI(form, dispatch, props) {
+  const { headers = {} } = form;
+  const { status } = props;
+  const { runAs, token } = headers;
+  return api.whoAmI({ headers: { Authorization: `token ${token}` } })
+    .then(({ data }) => ({ userName: data, runAs, data: token }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        const { data, statusText } = error.response;
+        if (data) {
+          errorMessage = JSON.stringify(data, (k, v) => (v === null ? undefined : v));
+        } else {
+          errorMessage = statusText;
+        }
+      }
+      if (status === 'ok' && errorMessage === 'Network Error') throw new SubmissionError({ _error: 'Incorrect Token' });
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}
+
 export function onGetUserToken(form, dispatch, props) {
   const { headers = {}, queryParams } = form;
-  const { runAs, ...headerProps } = headers;
+  const { status } = props;
+  const { runAs, token, ...headerProps } = headers;
+  if (token) {
+    return onWhoAmI(form, dispatch, props);
+  }
   const userName = props.userName || form.userName || headers.username;
   return api.getUserToken({
     username: userName,
@@ -79,6 +104,7 @@ export function onGetUserToken(form, dispatch, props) {
           errorMessage = statusText;
         }
       }
+      if (status === 'ok' && errorMessage === 'Network Error') throw new SubmissionError({ _error: 'Incorrect Credentials' });
       throw new SubmissionError({ _error: errorMessage });
     });
 }

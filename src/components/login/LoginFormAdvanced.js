@@ -8,6 +8,12 @@ import Field from '../ui/Field';
 const headers = () => (
   <>
     <Field
+      name="token"
+      label="Token"
+      component={TextField}
+      fullWidth
+    />
+    <Field
       name="runAs"
       label="Login As User"
       component={TextField}
