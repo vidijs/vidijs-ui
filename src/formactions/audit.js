@@ -16,7 +16,7 @@ export function onSubmit(form, dispatch, props) {
     sort: orderDirection,
     ...form,
   };
-  return api.listAuditLog({ queryParams })
+  return api.listAuditLog({ path: '/API/log/', queryParams }) // path broken in vdt-api@0.13.0
     .then((response) => response.data)
     .then((auditLogDocument) => ({ auditLogDocument }))
     .catch((error) => {
