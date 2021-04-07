@@ -1,6 +1,6 @@
 import React from 'react';
-import AsyncCreatableSelect from 'react-select/lib/AsyncCreatable';
-import Async from 'react-select/lib/Async';
+import AsyncCreatableSelect from 'react-select/async-creatable';
+import Async from 'react-select/async';
 import Select from 'react-select';
 import { change } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
