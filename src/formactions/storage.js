@@ -39,7 +39,7 @@ export function onMethodUpdate(form, dispatch, props) {
   const { storageId } = props;
   const storageMethodId = props.storageMethodId || method.storageMethodId;
   const queryParams = {
-    url: method.uri,
+    url: encodeURIComponent(method.uri),
     read: method.read,
     write: method.write,
     browse: method.browse,
@@ -65,7 +65,7 @@ export function onMethodCreate(form, dispatch, props) {
   const { method } = form;
   const { storageId } = props;
   const queryParams = {
-    url: method.uri,
+    url: encodeURIComponent(method.uri),
     read: method.read,
     write: method.write,
     browse: method.browse,
