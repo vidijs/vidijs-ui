@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { job as api } from '@vidijs/vidijs-api';
+import { job as JobApi } from '@vidispine/vdt-api';
 import JobTitle from '../components/job/JobTitle';
 import JobCard from '../components/job/JobCard';
 import JobPriority from '../components/job/JobPriority';
@@ -74,7 +74,7 @@ class Job extends React.PureComponent {
   onFetch(jobId) {
     const queryParams = { metadata: true };
     try {
-      api.getJob({ jobId, queryParams })
+      JobApi.getJob({ jobId, queryParams })
         .then((response) => this.setState({ jobDocument: response.data }))
         .catch((error) => this.onRefreshError(error));
     } catch (error) {

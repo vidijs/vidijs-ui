@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { group as api } from '@vidijs/vidijs-api';
+import { group as api } from '@vidispine/vdt-api';
 import GroupListTitle from '../components/group/GroupListTitle';
 import GroupListCard from '../components/group/GroupListCard';
 import GroupWizard from '../components/group/GroupWizard';

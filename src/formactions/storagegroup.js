@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { storagegroup as api } from '@vidijs/vidijs-api';
+import { storagegroup as api } from '@vidispine/vdt-api';
 
 export function onCreate(form) {
   const { storageGroupDocument } = form;

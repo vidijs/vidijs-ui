@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { storagegroup as api } from '@vidijs/vidijs-api';
+import { storagegroup as api } from '@vidispine/vdt-api';
 import StorageGroupTitle from '../components/storagegroup/StorageGroupTitle';
 import StorageGroupCard from '../components/storagegroup/StorageGroupCard';
 import StorageGroupRemove from '../components/storagegroup/StorageGroupRemove';

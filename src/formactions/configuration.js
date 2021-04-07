@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 
 export function onUpdatePropertiesConfiguration(form) {
   const { configurationPropertyDocument } = form;

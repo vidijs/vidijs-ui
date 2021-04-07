@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 import { StatefulAsyncSelect } from '../ui/Select';
 
 export const loadUserOptions = (inputValue) => new Promise((resolve, reject) => {

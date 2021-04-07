@@ -1,7 +1,7 @@
 import { SubmissionError } from 'redux-form';
 import update from 'immutability-helper';
 
-import { quota as api } from '@vidijs/vidijs-api';
+import { quota as api } from '@vidispine/vdt-api';
 
 function filterQueryParams(queryParams) {
   if (!('filter' in queryParams) && (typeof queryParams.filter !== 'object')) {

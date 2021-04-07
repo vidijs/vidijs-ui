@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { notification as api } from '@vidijs/vidijs-api';
+import { notification as api } from '@vidispine/vdt-api';
 import NotificationCard from '../components/notification/NotificationCard';
 import NotificationRemove from '../components/notification/NotificationRemove';
 import capitalizeString from '../utils/capitalizeString';

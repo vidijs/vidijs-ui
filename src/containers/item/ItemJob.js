@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { job as api } from '@vidijs/vidijs-api';
+import { job as api } from '@vidispine/vdt-api';
 import JobListCard from '../../components/job/JobListCard';
 import withSnackbar from '../../hoc/withSnackbar';
 

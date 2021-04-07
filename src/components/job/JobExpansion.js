@@ -2,7 +2,7 @@ import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import grey from '@material-ui/core/colors/grey';
 
-import { job as api } from '@vidijs/vidijs-api';
+import { job as api } from '@vidispine/vdt-api';
 import JobCard from './JobCard';
 
 import withSnackbar from '../../hoc/withSnackbar';

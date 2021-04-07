@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash.startcase';
 
-import { resource as api } from '@vidijs/vidijs-api';
+import { resource as api } from '@vidispine/vdt-api';
 import ResourceTitle from '../components/resource/ResourceTitle';
 import ResourceCard from '../components/resource/ResourceCard';
 import ResourceRemove from '../components/resource/ResourceRemove';

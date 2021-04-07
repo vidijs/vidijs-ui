@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
-import { file as api } from '@vidijs/vidijs-api';
+import { file as api } from '@vidispine/vdt-api';
 import withUI from '../../hoc/withUI';
 
 function FileEntityRemove({

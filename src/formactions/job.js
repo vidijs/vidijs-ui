@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { job as api } from '@vidijs/vidijs-api';
+import { job as api } from '@vidispine/vdt-api';
 
 export function onJobList(form) {
   const { queryParams, matrixParams = {} } = form;

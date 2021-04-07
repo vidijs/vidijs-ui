@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { access as api } from '@vidijs/vidijs-api';
+import { access as api } from '@vidispine/vdt-api';
 
 export function onUpdateImportAccessGroup(form, dispatch, props) {
   const { groupName, queryParams } = form;

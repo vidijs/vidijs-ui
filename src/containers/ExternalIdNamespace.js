@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { externalid as api } from '@vidijs/vidijs-api';
+import { externalid as api } from '@vidispine/vdt-api';
 import ExternalIdNamespaceTitle from '../components/externalid/ExternalIdNamespaceTitle';
 import ExternalIdNamespaceCard from '../components/externalid/ExternalIdNamespaceCard';
 import ExternalIdNamespaceWizard from '../components/externalid/ExternalIdNamespaceWizard';

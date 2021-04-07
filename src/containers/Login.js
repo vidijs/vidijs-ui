@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { selftest as api } from '@vidijs/vidijs-api';
+import { selftest as api } from '@vidispine/vdt-api';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';

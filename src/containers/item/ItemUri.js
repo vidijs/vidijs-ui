@@ -1,5 +1,5 @@
 import React from 'react';
-import { item as api } from '@vidijs/vidijs-api';
+import { item as api } from '@vidispine/vdt-api';
 import ItemUriParams from '../../components/item/ItemUriParams';
 import UriListCard from '../../components/ui/UriListCard';
 

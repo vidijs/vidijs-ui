@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { group as api } from '@vidijs/vidijs-api';
+import { group as api } from '@vidispine/vdt-api';
 import { StatefulAsyncSelect } from '../ui/Select';
 
 export const loadGroupOptions = (inputValue) => new Promise((resolve, reject) => {

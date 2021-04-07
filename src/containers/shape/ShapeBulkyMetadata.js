@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { bulkymetadata as BulkyMetadataApi } from '@vidijs/vidijs-api';
+import { bulkymetadata as BulkyMetadataApi } from '@vidispine/vdt-api';
 
 import withSnackbar from '../../hoc/withSnackbar';
 import { withRouterProps } from '../../hoc/withRouterProps';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { file as api } from '@vidijs/vidijs-api';
+import { file as api } from '@vidispine/vdt-api';
 import FileTitle from '../components/file/FileTitle';
 import FileCard from '../components/file/FileCard';
 import FileDelete from '../components/file/FileDelete';

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { debug as api } from '@vidijs/vidijs-api';
+import { debug as api } from '@vidispine/vdt-api';
 
 export function onParseXML(form) {
   const { xmlDocument } = form;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { taskdefinition as api } from '@vidijs/vidijs-api';
+import { taskdefinition as api } from '@vidispine/vdt-api';
 import JobTypeDialog from '../components/jobtype/JobTypeDialog';
 import JobTypeListCard from '../components/jobtype/JobTypeListCard';
 import JobTypeListTitle from '../components/jobtype/JobTypeListTitle';

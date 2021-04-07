@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { javascript as api } from '@vidijs/vidijs-api';
+import { javascript as api } from '@vidispine/vdt-api';
 
 export function onTest(form) {
   const { javascriptDocument } = form;

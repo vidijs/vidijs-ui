@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { quota as api } from '@vidijs/vidijs-api';
+import { quota as api } from '@vidispine/vdt-api';
 import QuotaTitle from '../components/quota/QuotaTitle';
 import QuotaRemove from '../components/quota/QuotaRemove';
 import QuotaDialog from '../components/quota/QuotaDialog';

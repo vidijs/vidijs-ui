@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { reindex as api } from '@vidijs/vidijs-api';
+import { reindex as api } from '@vidispine/vdt-api';
 import ReindexCard from '../components/reindex/ReindexCard';
 
 import TitleHeader from '../components/ui/TitleHeader';

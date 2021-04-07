@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { storage as api } from '@vidijs/vidijs-api';
+import { storage as api } from '@vidispine/vdt-api';
 
 export function onCreate(form) {
   const { storageDocument } = form;

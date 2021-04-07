@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { fieldgroup as api } from '@vidijs/vidijs-api';
+import { fieldgroup as api } from '@vidispine/vdt-api';
 import withUI from '../../hoc/withUI';
 
 function FieldGroupRemove({

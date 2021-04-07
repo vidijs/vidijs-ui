@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { service as api } from '@vidijs/vidijs-api';
+import { service as api } from '@vidispine/vdt-api';
 import StackTraceTitle from '../components/service/StackTraceTitle';
 import StackTraceCard from '../components/service/StackTraceCard';
 

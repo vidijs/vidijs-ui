@@ -6,7 +6,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import {
   file as api,
   noauth as apiNoAuth,
-} from '@vidijs/vidijs-api';
+} from '@vidispine/vdt-api';
 import { downloadFile } from '../../utils';
 import { DOWNLOAD_STATES } from '../../const/FileStates';
 import { withSnackbarNoRouter } from '../../hoc/withSnackbar';

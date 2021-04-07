@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { resource as api } from '@vidijs/vidijs-api';
+import { resource as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { resourceId, resourceType } = props;

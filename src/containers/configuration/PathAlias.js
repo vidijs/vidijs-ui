@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import withSnackbar from '../../hoc/withSnackbar';
 import TitleHeader from '../../components/ui/TitleHeader';
 import PathAliasCard from '../../components/configuration/pathalias/PathAliasCard';

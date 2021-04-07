@@ -1,5 +1,5 @@
 import { SubmissionError } from 'redux-form';
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 
 import * as actions from '../actions';
 

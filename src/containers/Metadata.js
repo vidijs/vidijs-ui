@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { metadata as api } from '@vidijs/vidijs-api';
+import { metadata as api } from '@vidispine/vdt-api';
 import withSnackbar from '../hoc/withSnackbar';
 import withCard from '../hoc/withCard';
 

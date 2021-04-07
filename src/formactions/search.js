@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { search as api } from '@vidijs/vidijs-api';
+import { search as api } from '@vidispine/vdt-api';
 
 export function onSearchShape(form) {
   const {

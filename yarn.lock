@@ -2422,6 +2422,13 @@
   resolved "https://registry.yarnpkg.com/@vidijs/vidijs-api/-/vidijs-api-0.1.14.tgz#5beb85a9c14d8521f00bfc3e832ab3ea7cfaacd5"
   integrity sha512-je1j8XASxPuZPOeWtjF5UZ6xDs9DJ7wW8myyjKhLjbyxGNfObhcvEUR5ROxxvCqwUrD72fCu0xiBu3sV1IBNxQ==
 
+"@vidispine/vdt-api@^0.13.0":
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/@vidispine/vdt-api/-/vdt-api-0.13.0.tgz#29b41ff5ca54cf74f5707afd2633b41c4f279e47"
+  integrity sha512-ljfZ2jWDksO/zrercz0MH5Wsyg+pjkTcPfV9F625j1UuGJHLdG/XjSEwC3ZRDRUTGaP3NpKhAGvat7HVT8Yqeg==
+  dependencies:
+    axios "~0.21.x"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -3025,7 +3032,7 @@ axe-core@^4.0.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.1.4.tgz#f19cd99a84ee32a318b9c5b5bb8ed373ad94f143"
   integrity sha512-Pdgfv6iP0gNx9ejRGa3zE7Xgkj/iclXqLfe7BnatdZz0QnLZ3jrRHUVH8wNSdN68w05Sk3ShGTb3ydktMTooig==
 
-axios@^0.21.1:
+axios@^0.21.1, axios@~0.21.x:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==

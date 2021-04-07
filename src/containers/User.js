@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 import UserTitle from '../components/user/UserTitle';
 import UserCard from '../components/user/UserCard';
 import UserGroupCard from '../components/user/UserGroupCard';

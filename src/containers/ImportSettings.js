@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { importsettings as api } from '@vidijs/vidijs-api';
+import { importsettings as api } from '@vidispine/vdt-api';
 import ImportSettingsTitle from '../components/importsettings/ImportSettingsTitle';
 import ImportSettingsCard from '../components/importsettings/ImportSettingsCard';
 import ImportSettingsRemove from '../components/importsettings/ImportSettingsRemove';

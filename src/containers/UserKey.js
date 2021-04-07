@@ -1,5 +1,5 @@
 import React from 'react';
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 
 import TitleHeader from '../components/ui/TitleHeader';
 import UserKeyCard from '../components/user/UserKeyCard';

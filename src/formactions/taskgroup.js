@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { taskgroup as api } from '@vidijs/vidijs-api';
+import { taskgroup as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form) {
   const { taskGroupDocument } = form;

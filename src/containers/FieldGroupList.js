@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fieldgroup as api } from '@vidijs/vidijs-api';
+import { fieldgroup as api } from '@vidispine/vdt-api';
 import FieldGroupListCard from '../components/fieldgroup/FieldGroupListCard';
 import FieldGroupDialog from '../components/fieldgroup/FieldGroupDialog';
 import FieldGroupListTitle from '../components/fieldgroup/FieldGroupListTitle';

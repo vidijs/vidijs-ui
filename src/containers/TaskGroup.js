@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { taskgroup as api } from '@vidijs/vidijs-api';
+import { taskgroup as api } from '@vidispine/vdt-api';
 import TaskGroupTitle from '../components/taskgroup/TaskGroupTitle';
 import TaskGroupCard from '../components/taskgroup/TaskGroupCard';
 import TaskGroupRemove from '../components/taskgroup/TaskGroupRemove';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { notification as api } from '@vidijs/vidijs-api';
+import { notification as api } from '@vidispine/vdt-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import NotificationListCard from '../components/notification/NotificationListCard';
 import NotificationCreate from '../components/notification/NotificationCreate';

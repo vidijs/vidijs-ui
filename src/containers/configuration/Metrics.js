@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import MetricsCard from '../../components/configuration/metrics/MetricsCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';

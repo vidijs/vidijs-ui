@@ -1,5 +1,5 @@
 import React from 'react';
-import { bulkymetadata as BulkyMetadataApi } from '@vidijs/vidijs-api';
+import { bulkymetadata as BulkyMetadataApi } from '@vidispine/vdt-api';
 
 import UriListCard from '../../components/ui/UriListCard';
 import withSnackbar from '../../hoc/withSnackbar';

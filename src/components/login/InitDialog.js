@@ -4,7 +4,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import { compose } from 'redux';
-import { noauth as api } from '@vidijs/vidijs-api';
+import { noauth as api } from '@vidispine/vdt-api';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import Dialog from '@material-ui/core/Dialog';

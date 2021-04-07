@@ -1,7 +1,7 @@
 import React from 'react';
 import update from 'immutability-helper';
 
-import { exportlocation as api } from '@vidijs/vidijs-api';
+import { exportlocation as api } from '@vidispine/vdt-api';
 
 import ExportLocationTitle from '../components/exportlocation/ExportLocationTitle';
 import ExportLocationCard from '../components/exportlocation/ExportLocationCard';

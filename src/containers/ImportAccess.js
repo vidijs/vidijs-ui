@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { access as api } from '@vidijs/vidijs-api';
+import { access as api } from '@vidispine/vdt-api';
 import ImportAccessTitle from '../components/importaccess/ImportAccessTitle';
 import ImportAccessCard from '../components/importaccess/ImportAccessCard';
 import ImportAccessRemove from '../components/importaccess/ImportAccessRemove';

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { metadatafield as api } from '@vidijs/vidijs-api';
+import { metadatafield as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { metadataFieldDocument } = form;

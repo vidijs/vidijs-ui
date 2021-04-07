@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import FtpPoolCard from '../../components/configuration/ftppool/FtpPoolCard';
 import FtpPoolRemove from '../../components/configuration/ftppool/FtpPoolRemove';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { item as itemApi } from '@vidijs/vidijs-api';
+import { item as itemApi } from '@vidispine/vdt-api';
 
 import ItemRelationListParams, { ITEM_RELATION_LIST_PARAMS_FORM } from '../../components/item/ItemRelationListParams';
 import ItemRelationListDisplay from '../../components/item/ItemRelationList';

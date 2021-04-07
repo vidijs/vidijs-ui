@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { shapetag as api } from '@vidijs/vidijs-api';
+import { shapetag as api } from '@vidispine/vdt-api';
 import Select from '../ui/Select';
 
 export const loadShapeTagOptions = (inputValue) => new Promise((resolve, reject) => {

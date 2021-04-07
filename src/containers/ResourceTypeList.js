@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { resource as api } from '@vidijs/vidijs-api';
+import { resource as api } from '@vidispine/vdt-api';
 import ResourceTypeListTitle from '../components/resource/ResourceTypeListTitle';
 import ResourceTypeListCard from '../components/resource/ResourceTypeListCard';
 import CodeModal from '../components/ui/CodeModal';

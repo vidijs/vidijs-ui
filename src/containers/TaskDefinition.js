@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { taskdefinition as api } from '@vidijs/vidijs-api';
+import { taskdefinition as api } from '@vidispine/vdt-api';
 import TaskDefinitionTitle from '../components/taskdefinition/TaskDefinitionTitle';
 import TaskDefinitionListCard from '../components/taskdefinition/TaskDefinitionListCard';
 import TaskDefinitionDialog from '../components/taskdefinition/TaskDefinitionDialog';

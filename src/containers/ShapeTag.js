@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { shapetag as api } from '@vidijs/vidijs-api';
+import { shapetag as api } from '@vidispine/vdt-api';
 import ShapeTagTitle from '../components/shapetag/ShapeTagTitle';
 import ShapeTagCard from '../components/shapetag/ShapeTagCard';
 import ShapeTagRemove from '../components/shapetag/ShapeTagRemove';

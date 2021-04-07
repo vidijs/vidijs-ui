@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { auditlog as api } from '@vidijs/vidijs-api';
+import { auditlog as api } from '@vidispine/vdt-api';
 
 export function onAuditList(form) {
   const { queryParams } = form;

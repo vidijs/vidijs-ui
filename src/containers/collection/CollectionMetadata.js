@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { collection as api } from '@vidijs/vidijs-api';
+import { collection as api } from '@vidispine/vdt-api';
 import CollectionMetadataEditor from '../../components/collection/CollectionMetadataEditor';
 import CollectionMetadataDisplayParams from '../../components/collection/CollectionMetadataDisplayParams';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { metadatafield as api } from '@vidijs/vidijs-api';
+import { metadatafield as api } from '@vidispine/vdt-api';
 
 import Select from '../ui/Select';
 

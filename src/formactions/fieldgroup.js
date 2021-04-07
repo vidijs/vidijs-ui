@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { fieldgroup as api } from '@vidijs/vidijs-api';
+import { fieldgroup as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { metadataFieldGroupDocument } = form;

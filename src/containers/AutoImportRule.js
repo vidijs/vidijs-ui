@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { autoimport as api } from '@vidijs/vidijs-api';
+import { autoimport as api } from '@vidispine/vdt-api';
 import AutoImportRuleTitle from '../components/autoimport/AutoImportRuleTitle';
 import AutoImportRuleCard from '../components/autoimport/AutoImportRuleCard';
 import AutoImportRuleRemove from '../components/autoimport/AutoImportRuleRemove';

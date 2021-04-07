@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { group as api } from '@vidijs/vidijs-api';
+import { group as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { queryParams, groupDocument } = form;

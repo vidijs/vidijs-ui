@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { scheduledrequest as api } from '@vidijs/vidijs-api';
+import { scheduledrequest as api } from '@vidispine/vdt-api';
 import TextGrid from '../ui/TextGrid';
 
 export default function ScheduledRequestDetail({

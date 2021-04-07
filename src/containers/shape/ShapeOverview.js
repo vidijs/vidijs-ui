@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape as api } from '@vidijs/vidijs-api';
+import { shape as api } from '@vidispine/vdt-api';
 
 import withSnackbar from '../../hoc/withSnackbar';
 import ShapeParams from '../../components/shape/ShapeParams';

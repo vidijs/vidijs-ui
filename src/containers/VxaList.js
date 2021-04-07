@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { vxa as api } from '@vidijs/vidijs-api';
+import { vxa as api } from '@vidispine/vdt-api';
 import VxaListCard from '../components/vxa/VxaListCard';
 import VxaDialog from '../components/vxa/VxaDialog';
 import VxaConfigurationDialog from '../components/vxa/VxaConfigurationDialog';

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { vxa as api } from '@vidijs/vidijs-api';
+import { vxa as api } from '@vidispine/vdt-api';
 
 export function onCreate(form) {
   const { queryParams } = form;

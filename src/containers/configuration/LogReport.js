@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import LogReportCard from '../../components/configuration/logreport/LogReportCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { metadatafield as api } from '@vidijs/vidijs-api';
+import { metadatafield as api } from '@vidispine/vdt-api';
 import MetadataFieldListCard from '../components/metadatafield/MetadataFieldListCard';
 import MetadataFieldDialog from '../components/metadatafield/MetadataFieldDialog';
 import MetadataFieldListTitle from '../components/metadatafield/MetadataFieldListTitle';

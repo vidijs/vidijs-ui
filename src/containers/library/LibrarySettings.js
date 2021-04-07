@@ -1,5 +1,5 @@
 import React from 'react';
-import { library as api } from '@vidijs/vidijs-api';
+import { library as api } from '@vidispine/vdt-api';
 import LibrarySettingsCard from '../../components/library/LibrarySettingsCard';
 
 import withSnackbar from '../../hoc/withSnackbar';

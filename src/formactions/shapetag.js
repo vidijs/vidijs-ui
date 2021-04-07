@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { shapetag as api } from '@vidijs/vidijs-api';
+import { shapetag as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { transcodePresetDocument } = form;

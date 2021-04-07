@@ -1,5 +1,5 @@
 import React from 'react';
-import { item as api } from '@vidijs/vidijs-api';
+import { item as api } from '@vidispine/vdt-api';
 import ItemProjectionCard from '../../components/item/ItemProjectionCard';
 
 import withSnackbar from '../../hoc/withSnackbar';
