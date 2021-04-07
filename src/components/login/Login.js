@@ -55,7 +55,7 @@ function Login({
           <AccordionDetails style={{ padding: 0 }}>
             <LoginFormAdvanced
               form={LOGIN_FORM}
-              onSubmit={formActions.onGetToken}
+              onSubmit={formActions.onGetUserToken}
               onSubmitSuccess={onSubmitSuccess}
               onSubmitFail={onSubmitFail}
               {...formProps}
