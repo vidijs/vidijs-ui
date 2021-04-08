@@ -2,17 +2,16 @@ import React from 'react';
 
 import SquareCard from '../ui/SquareCard';
 import StorageEditor from './StorageEditor';
+import StorageMetadataEditor from './StorageMetadataEditor';
 import StorageMethodList from './StorageMethodList';
 import {
   StorageBasicForm,
-  StorageMetadataForm,
   StorageAdvancedForm,
   StorageScriptForm,
 } from './StorageForm';
 import {
   StorageBasicDisplay,
   StorageAdvancedDisplay,
-  StorageMetadataDisplay,
   StorageScriptDisplay,
 } from './StorageDisplay';
 
@@ -41,10 +40,7 @@ export default function StorageCard(props) {
         />
       </SquareCard>
       <SquareCard>
-        <StorageEditor
-          title="Metadata"
-          formComponent={StorageMetadataForm}
-          displayComponent={StorageMetadataDisplay}
+        <StorageMetadataEditor
           {...props}
         />
       </SquareCard>

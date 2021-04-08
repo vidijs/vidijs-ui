@@ -8,6 +8,7 @@ export default function SimpleMetadataDisplay({ simpleMetadataList = [] }) {
         key={simpleMetadata.key}
         title={simpleMetadata.key}
         value={simpleMetadata.value}
+        titleStartCase={false}
       />
     ))
   );
@@ -21,6 +22,7 @@ export const SimpleMetadataType = ({ simpleMetadata }) => {
         key={field.key}
         title={field.key}
         value={field.value}
+        titleStartCase={false}
       />
     ))
   );
