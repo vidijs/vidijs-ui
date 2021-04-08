@@ -18,7 +18,7 @@ class Cors extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | CORS';
+    document.title = 'xray | Configuration | CORS';
   }
 
   onRefresh() {

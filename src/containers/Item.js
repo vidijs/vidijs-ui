@@ -107,7 +107,7 @@ class Item extends React.PureComponent {
 
   componentDidMount() {
     const { itemId } = this.props;
-    document.title = `vidi.js | Item | ${itemId}`;
+    document.title = `xray | Item | ${itemId}`;
   }
 
   onRefresh() {

@@ -21,7 +21,7 @@ class JobPool extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Job Pools';
+    document.title = 'xray | Job Pools';
   }
 
   onRefresh() {

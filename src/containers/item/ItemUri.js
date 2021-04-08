@@ -24,7 +24,7 @@ class ItemUri extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

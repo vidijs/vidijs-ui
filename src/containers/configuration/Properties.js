@@ -19,7 +19,7 @@ class Properties extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Configuration Properties';
+    document.title = 'xray | Configuration Properties';
     this.onRefresh();
   }
 

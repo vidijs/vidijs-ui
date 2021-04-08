@@ -4,7 +4,7 @@ import ImportFileWizard, { EDIT_IMPORTFILE_FORM } from '../../components/import/
 
 class ImportFile extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | File';
+    document.title = 'xray | Import | File';
   }
 
   componentWillUnmount() {

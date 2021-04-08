@@ -24,7 +24,7 @@ class ShapeTagRule extends React.PureComponent {
 
   componentDidMount() {
     const { tagName } = this.props;
-    document.title = `vidi.js | Shape Tag | ${tagName}`;
+    document.title = `xray | Shape Tag | ${tagName}`;
     this.onRefresh();
   }
 

@@ -24,7 +24,7 @@ class DeletionLock extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { lockId } = this.props;
-    document.title = `vidi.js | Deletion Lock | ${lockId}`;
+    document.title = `xray | Deletion Lock | ${lockId}`;
   }
 
   onRefresh() {

@@ -32,7 +32,7 @@ class ReindexList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Reindex';
+    document.title = 'xray | Reindex';
     this.timer = setInterval(() => this.onAutoRefresh(), 2500);
     this.onRefresh();
   }

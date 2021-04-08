@@ -24,7 +24,7 @@ class ShapeOverview extends React.PureComponent {
     const { shapeId: prevItemId } = this.props;
     if (prevItemId !== shapeId) {
       this.onFetch(itemId, shapeId);
-      document.title = `vidi.js | Shape | ${shapeId}`;
+      document.title = `xray | Shape | ${shapeId}`;
     }
   }
 

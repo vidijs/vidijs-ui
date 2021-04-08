@@ -22,7 +22,7 @@ class TaskGroupList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Task Group';
+    document.title = 'xray | Task Group';
     this.onRefresh();
   }
 

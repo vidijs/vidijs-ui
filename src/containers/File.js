@@ -36,14 +36,14 @@ class File extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { fileId } = this.props;
-    document.title = `vidi.js | File | ${fileId}`;
+    document.title = `xray | File | ${fileId}`;
   }
 
   UNSAFE_componentWillReceiveProps({ fileId }) {
     const { fileId: prevFileId } = this.props;
     if (prevFileId !== fileId) {
       this.onFetch(fileId);
-      document.title = `vidi.js | File | ${fileId}`;
+      document.title = `xray | File | ${fileId}`;
     }
   }
 

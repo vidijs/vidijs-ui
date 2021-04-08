@@ -4,7 +4,7 @@ import ImportPlaceholderWizard, { EDIT_IMPORTPLACEHOLDER_FORM } from '../../comp
 
 class ImportPlaceholder extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Placeholder';
+    document.title = 'xray | Import | Placeholder';
   }
 
   componentWillUnmount() {

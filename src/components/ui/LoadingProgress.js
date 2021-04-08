@@ -5,11 +5,11 @@ import { withStyles } from '@material-ui/core/styles';
 import { utils as api } from '@vidispine/vdt-api';
 
 const styles = {
-  linearColorPrimary: {
-    backgroundColor: '#1D2671',
+  barColorPrimary: {
+    backgroundColor: '#007aff',
   },
-  linearBarColorPrimary: {
-    backgroundColor: '#C33764',
+  colorPrimary: {
+    backgroundColor: '#005d9f',
   },
 };
 
@@ -35,7 +35,7 @@ class LoadingProgress extends React.PureComponent {
       },
     );
     this.state = {
-      showLoading: 100,
+      isLoading: false,
     };
   }
 
@@ -47,11 +47,11 @@ class LoadingProgress extends React.PureComponent {
 
   onShow() {
     this.onClear();
-    this.setState({ showLoading: 0 });
+    this.setState({ isLoading: true });
   }
 
   onHide() {
-    this.setState({ showLoading: 100 });
+    this.setState({ isLoading: false });
     this.onClear();
   }
 
@@ -65,29 +65,18 @@ class LoadingProgress extends React.PureComponent {
   }
 
   render() {
-    const { showLoading } = this.state;
-    const { variant = 'determinate', classes } = this.props;
+    const { isLoading } = this.state;
+    const { classes } = this.props;
     return (
       <div>
-        { variant === 'determinate' ? (
-          <LinearProgress
-            variant="determinate"
-            value={showLoading}
-            color="primary"
-            classes={{
-              colorPrimary: classes.linearColorPrimary,
-              barColorPrimary: classes.linearBarColorPrimary,
-            }}
-          />
-        ) : showLoading === 100 && (
-          <LinearProgress
-            variant="query"
-            classes={{
-              colorPrimary: classes.linearColorPrimary,
-              barColorPrimary: classes.linearBarColorPrimary,
-            }}
-          />
-        )}
+        <LinearProgress
+          variant={isLoading ? 'indeterminate' : 'determinate'}
+          color="primary"
+          classes={{
+            colorPrimary: classes.colorPrimary,
+            barColorPrimary: classes.barColorPrimary,
+          }}
+        />
       </div>
     );
   }

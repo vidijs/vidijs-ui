@@ -22,7 +22,7 @@ class StorageGroupList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Storage Group';
+    document.title = 'xray | Storage Group';
     this.onRefresh();
   }
 

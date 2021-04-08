@@ -57,7 +57,7 @@ const listComponent = ({ onChangeTab, tabValue }) => (
 class Collection extends React.PureComponent {
   componentDidMount() {
     const { collectionId } = this.props;
-    document.title = `vidi.js | Collection | ${collectionId}`;
+    document.title = `xray | Collection | ${collectionId}`;
   }
 
   render() {

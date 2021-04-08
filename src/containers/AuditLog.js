@@ -27,7 +27,7 @@ class AuditLog extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Audit Log';
+    document.title = 'xray | Audit Log';
     this.onRefresh();
   }
 

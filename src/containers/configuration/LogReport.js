@@ -18,7 +18,7 @@ class LogReport extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | Log Report';
+    document.title = 'xray | Configuration | Log Report';
   }
 
   onRefresh() {

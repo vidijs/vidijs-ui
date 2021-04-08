@@ -4,7 +4,7 @@ import ImportShapeWizard, { EDIT_IMPORTSHAPE_FORM } from '../../components/impor
 
 class ImportShape extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Shape';
+    document.title = 'xray | Import | Shape';
   }
 
   componentWillUnmount() {

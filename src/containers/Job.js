@@ -34,7 +34,7 @@ class Job extends React.PureComponent {
     this.onRefresh();
     this.timer = setInterval(() => this.onAutoRefresh(), 2500);
     const { jobId } = this.props;
-    document.title = `vidi.js | Job | ${jobId}`;
+    document.title = `xray | Job | ${jobId}`;
   }
 
   UNSAFE_componentWillReceiveProps({ jobId }) {
@@ -44,7 +44,7 @@ class Job extends React.PureComponent {
       clearInterval(this.timer);
       this.timer = setInterval(() => this.onAutoRefresh(), 2500);
       this.setState({ autoRefresh: true });
-      document.title = `vidi.js | Job | ${jobId}`;
+      document.title = `xray | Job | ${jobId}`;
     }
   }
 

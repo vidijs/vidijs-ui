@@ -5,7 +5,7 @@ import withFormActions from '../../hoc/withFormActions';
 
 class ImportImpPath extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | IMF | Import Path';
+    document.title = 'xray | IMF | Import Path';
   }
 
   componentWillUnmount() {

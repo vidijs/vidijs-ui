@@ -26,7 +26,7 @@ class DocumentMetadataList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Document';
+    document.title = 'xray | Document';
     this.onRefresh();
   }
 

@@ -10,7 +10,7 @@ const SCHEDULED_FILTER_FORM = 'SCHEDULED_FILTER_FORM';
 const SCHEDULED_REMOVEALL = 'SCHEDULED_REMOVEALL';
 
 export default withFormActions(({ submitForm }) => {
-  document.title = 'vidi.js | Scheduled Requests';
+  document.title = 'xray | Scheduled Requests';
   const onRefresh = () => { submitForm(SCHEDULED_FILTER_FORM); };
   const [scheduledRequestListDocument, setScheduledRequestListDocument] = React.useState();
   const onSuccess = ({ data }) => setScheduledRequestListDocument(data);

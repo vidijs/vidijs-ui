@@ -23,7 +23,7 @@ class LibrarySettings extends React.PureComponent {
     const { libraryId: prevLibraryId } = this.props;
     if (prevLibraryId !== libraryId) {
       this.onFetch(libraryId);
-      document.title = `vidi.js | Library | ${libraryId}`;
+      document.title = `xray | Library | ${libraryId}`;
     }
   }
 

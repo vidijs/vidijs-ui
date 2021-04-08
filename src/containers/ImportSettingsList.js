@@ -22,7 +22,7 @@ class ImportSettingsList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Import Settings';
+    document.title = 'xray | Import Settings';
     this.onRefresh();
   }
 

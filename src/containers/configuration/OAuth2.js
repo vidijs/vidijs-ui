@@ -21,7 +21,7 @@ class OAuth2 extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | OAuth2';
+    document.title = 'xray | Configuration | OAuth2';
   }
 
   onRefresh() {

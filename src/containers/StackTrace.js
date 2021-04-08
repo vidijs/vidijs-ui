@@ -17,7 +17,7 @@ class Service extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Stack Trace';
+    document.title = 'xray | Stack Trace';
   }
 
   onRefresh() {

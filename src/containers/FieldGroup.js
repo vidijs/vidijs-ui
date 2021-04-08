@@ -23,7 +23,7 @@ class FieldGroup extends React.PureComponent {
 
   componentDidMount() {
     const { groupName } = this.props;
-    document.title = `vidi.js | Field Group | ${groupName}`;
+    document.title = `xray | Field Group | ${groupName}`;
     this.onRefresh();
   }
 
@@ -31,7 +31,7 @@ class FieldGroup extends React.PureComponent {
     const { groupName: prevGroupName } = this.props;
     if (prevGroupName !== groupName) {
       this.onFetch(groupName);
-      document.title = `vidi.js | Field Group | ${groupName}`;
+      document.title = `xray | Field Group | ${groupName}`;
     }
   }
 

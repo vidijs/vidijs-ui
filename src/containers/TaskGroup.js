@@ -24,7 +24,7 @@ class TaskGroup extends React.PureComponent {
 
   componentDidMount() {
     const { groupName } = this.props;
-    document.title = `vidi.js | Task Group | ${groupName}`;
+    document.title = `xray | Task Group | ${groupName}`;
     this.onRefresh();
   }
 

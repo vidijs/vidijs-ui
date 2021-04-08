@@ -22,7 +22,7 @@ class Vxa extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { vxaUuid } = this.props;
-    document.title = `vidi.js | Agent | ${vxaUuid}`;
+    document.title = `xray | Agent | ${vxaUuid}`;
   }
 
   onRefresh() {

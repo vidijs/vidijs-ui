@@ -22,7 +22,7 @@ class MetadataField extends React.PureComponent {
 
   componentDidMount() {
     const { fieldName } = this.props;
-    document.title = `vidi.js | Metadata Field | ${fieldName}`;
+    document.title = `xray | Metadata Field | ${fieldName}`;
     this.onRefresh();
   }
 

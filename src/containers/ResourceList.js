@@ -24,7 +24,7 @@ class ResourceList extends React.PureComponent {
 
   componentDidMount() {
     const { resourceType } = this.props;
-    document.title = `vidi.js | Resource | ${startCase(resourceType)}`;
+    document.title = `xray | Resource | ${startCase(resourceType)}`;
     this.onRefresh();
   }
 

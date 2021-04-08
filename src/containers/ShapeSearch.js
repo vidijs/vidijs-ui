@@ -48,7 +48,7 @@ class ShapeSearch extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Shape';
+    document.title = 'xray | Shape';
     this.onRefresh();
   }
 

@@ -13,7 +13,7 @@ class Echo extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | XML Echo';
+    document.title = 'xray | XML Echo';
   }
 
   onSubmit(form) {

@@ -18,7 +18,7 @@ class SelfTest extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Self Test';
+    document.title = 'xray | Self Test';
   }
 
   onRefresh() {

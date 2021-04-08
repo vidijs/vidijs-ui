@@ -33,7 +33,7 @@ class Storage extends React.PureComponent {
 
   componentDidMount() {
     const { storageId } = this.props;
-    document.title = `vidi.js | Storage | ${storageId}`;
+    document.title = `xray | Storage | ${storageId}`;
     this.onRefresh();
   }
 

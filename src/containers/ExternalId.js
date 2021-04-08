@@ -23,7 +23,7 @@ class ExternalId extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | External ID';
+    document.title = 'xray | External ID';
   }
 
   onRefresh() {

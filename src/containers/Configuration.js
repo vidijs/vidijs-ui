@@ -16,7 +16,7 @@ class Configuration extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Configuration';
+    document.title = 'xray | Configuration';
     this.onRefresh();
   }
 

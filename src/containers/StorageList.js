@@ -22,7 +22,7 @@ class StorageList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Storage';
+    document.title = 'xray | Storage';
     this.onRefresh();
   }
 

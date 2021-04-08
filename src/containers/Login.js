@@ -22,11 +22,7 @@ import GitHubIcon from '../components/ui/GitHubIcon';
 const INIT_DIALOG = 'INIT_DIALOG';
 const HELP_DIALOG = 'HELP_DIALOG';
 
-const {
-  REACT_APP_UNSPLASH_DISABLE,
-  REACT_APP_UNSPLASH_URL = 'https://source.unsplash.com/collection/8534454/800x600/daily',
-  REACT_APP_VERSION,
-} = process.env;
+const { REACT_APP_VERSION } = process.env;
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -43,7 +39,7 @@ class Login extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js';
+    document.title = 'xray';
     const { baseUrl } = this.props;
     if (baseUrl) {
       this.onRefresh();
@@ -163,7 +159,7 @@ class Login extends React.PureComponent {
                       rel="noopener noreferrer"
                       style={{ marginRight: 5 }}
                     >
-                      vidijs-ui
+                      xray
                     </Link>
                     <Typography
                       variant="body2"
@@ -195,11 +191,8 @@ class Login extends React.PureComponent {
           <Grid
             item
             sm={8}
-            style={REACT_APP_UNSPLASH_DISABLE ? {
-              background: 'linear-gradient(to bottom right, #C33764, #1D2671)',
-            } : {
-              backgroundImage: `url("${REACT_APP_UNSPLASH_URL}")`,
-              backgroundSize: 'cover',
+            style={{
+              background: 'linear-gradient(-45deg,#b0c800,#0068a9 0,#0068a9 33%,#002749 100%,#b0c800 0)',
             }}
             container
             direction="column"

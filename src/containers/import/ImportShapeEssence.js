@@ -5,7 +5,7 @@ import withFormActions from '../../hoc/withFormActions';
 
 class ImportShapeEssence extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Essence';
+    document.title = 'xray | Import | Essence';
   }
 
   componentWillUnmount() {

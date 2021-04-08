@@ -39,7 +39,7 @@ class CollectionContent extends React.PureComponent {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
-      document.title = `vidi.js | Collection | ${collectionId}`;
+      document.title = `xray | Collection | ${collectionId}`;
     }
   }
 

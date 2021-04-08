@@ -20,7 +20,7 @@ class StorageRuleList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Storage Rule';
+    document.title = 'xray | Storage Rule';
   }
 
   onRefresh() {

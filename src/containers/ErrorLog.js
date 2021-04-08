@@ -16,7 +16,7 @@ class ErrorLog extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Error Log';
+    document.title = 'xray | Error Log';
     this.onRefresh();
   }
 

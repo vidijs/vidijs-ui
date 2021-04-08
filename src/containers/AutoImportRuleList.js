@@ -18,7 +18,7 @@ class AutoImportRuleList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Auto Import';
+    document.title = 'xray | Auto Import';
     this.onRefresh();
   }
 

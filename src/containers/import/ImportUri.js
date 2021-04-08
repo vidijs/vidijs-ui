@@ -4,7 +4,7 @@ import ImportUriWizard, { EDIT_IMPORTURI_FORM } from '../../components/import/Im
 
 class ImportUri extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | URI';
+    document.title = 'xray | Import | URI';
   }
 
   componentWillUnmount() {

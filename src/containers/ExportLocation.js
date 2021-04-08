@@ -22,7 +22,7 @@ class ExportLocation extends React.PureComponent {
 
   componentDidMount() {
     const { locationName } = this.props;
-    document.title = `vidi.js | Export Location | ${locationName}`;
+    document.title = `xray | Export Location | ${locationName}`;
     this.onRefresh();
   }
 

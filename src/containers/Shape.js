@@ -88,7 +88,7 @@ class Shape extends React.PureComponent {
 
   componentDidMount() {
     const { shapeId } = this.props;
-    document.title = `vidi.js | Shape | ${shapeId}`;
+    document.title = `xray | Shape | ${shapeId}`;
   }
 
   onRefresh() {

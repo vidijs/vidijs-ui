@@ -23,7 +23,7 @@ class Notification extends React.PureComponent {
 
   componentDidMount() {
     const { entityType, notificationId } = this.props;
-    document.title = `vidi.js | Notification ${capitalizeString(entityType)} | ${notificationId}`;
+    document.title = `xray | Notification ${capitalizeString(entityType)} | ${notificationId}`;
     this.onRefresh();
   }
 

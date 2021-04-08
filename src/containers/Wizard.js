@@ -82,7 +82,7 @@ function Wizard({
     }
   };
   React.useEffect(onRefreshVersion, []);
-  React.useEffect(() => { document.title = 'vidi.js | Wizard'; }, []);
+  React.useEffect(() => { document.title = 'xray | Wizard'; }, []);
 
   const onBack = () => {
     if (activeStep !== 0) setActiveStep(activeStep - 1);

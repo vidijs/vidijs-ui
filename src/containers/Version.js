@@ -18,7 +18,7 @@ class Version extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Version';
+    document.title = 'xray | Version';
     this.onRefresh();
   }
 

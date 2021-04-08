@@ -25,7 +25,7 @@ class GroupList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Group';
+    document.title = 'xray | Group';
   }
 
   onRefresh() {

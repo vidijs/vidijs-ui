@@ -27,7 +27,7 @@ class DeletionLockList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Deletion Lock';
+    document.title = 'xray | Deletion Lock';
     this.onRefresh();
   }
 

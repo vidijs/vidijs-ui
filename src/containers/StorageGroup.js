@@ -25,7 +25,7 @@ class StorageGroup extends React.PureComponent {
 
   componentDidMount() {
     const { groupName } = this.props;
-    document.title = `vidi.js | Storage Group | ${groupName}`;
+    document.title = `xray | Storage Group | ${groupName}`;
     this.onRefresh();
   }
 

@@ -23,7 +23,7 @@ class StorageMethod extends React.PureComponent {
 
   componentDidMount() {
     const { storageId, storageMethodId } = this.props;
-    document.title = `vidi.js | Storage | ${storageId} | Method | ${storageMethodId}`;
+    document.title = `xray | Storage | ${storageId} | Method | ${storageMethodId}`;
     this.onRefresh();
   }
 

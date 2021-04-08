@@ -20,7 +20,7 @@ class ExportLocationList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Export Location';
+    document.title = 'xray | Export Location';
   }
 
   onRefresh() {

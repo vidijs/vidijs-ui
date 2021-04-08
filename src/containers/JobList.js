@@ -33,7 +33,7 @@ class JobList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Job';
+    document.title = 'xray | Job';
     this.onRefresh();
   }
 

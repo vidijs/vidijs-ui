@@ -24,7 +24,7 @@ class ImportSettings extends React.PureComponent {
 
   componentDidMount() {
     const { settingsId } = this.props;
-    document.title = `vidi.js | Import Settings | ${settingsId}`;
+    document.title = `xray | Import Settings | ${settingsId}`;
     this.onRefresh();
   }
 

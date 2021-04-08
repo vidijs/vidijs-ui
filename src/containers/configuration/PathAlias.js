@@ -15,7 +15,7 @@ class PathAlias extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Path Alias';
+    document.title = 'xray | Path Alias';
     this.onRefresh();
   }
 

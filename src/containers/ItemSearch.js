@@ -54,7 +54,7 @@ class ItemSearch extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Item';
+    document.title = 'xray | Item';
     this.onRefresh();
   }
 

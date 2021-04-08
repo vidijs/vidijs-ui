@@ -24,7 +24,7 @@ class VxaList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Agent';
+    document.title = 'xray | Agent';
   }
 
   onRefresh() {

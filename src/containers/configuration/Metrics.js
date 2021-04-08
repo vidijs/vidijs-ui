@@ -18,7 +18,7 @@ class Metrics extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | Metrics';
+    document.title = 'xray | Configuration | Metrics';
   }
 
   onRefresh() {

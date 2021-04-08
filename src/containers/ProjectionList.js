@@ -21,7 +21,7 @@ class ProjectionList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Projection';
+    document.title = 'xray | Projection';
     this.onRefresh();
   }
 

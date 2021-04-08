@@ -32,7 +32,7 @@ class FileList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | File';
+    document.title = 'xray | File';
     this.onRefresh();
   }
 

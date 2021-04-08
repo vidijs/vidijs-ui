@@ -25,7 +25,7 @@ class UserList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | User';
+    document.title = 'xray | User';
   }
 
   onRefresh() {

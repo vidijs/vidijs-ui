@@ -20,7 +20,7 @@ class ResourceTypeList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Resource';
+    document.title = 'xray | Resource';
     this.onRefresh();
   }
 

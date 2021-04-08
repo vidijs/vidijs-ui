@@ -21,7 +21,7 @@ class DocumentMetadata extends React.PureComponent {
 
   componentDidMount() {
     const { documentMetadataName } = this.props;
-    document.title = `vidi.js | Document | ${documentMetadataName}`;
+    document.title = `xray | Document | ${documentMetadataName}`;
     this.onRefresh();
   }
 
