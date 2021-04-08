@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import HelpIcon from '@material-ui/icons/HelpOutline';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import { withModalNoRouter } from '../hoc/withModal';
 import { withSnackbarNoRouter } from '../hoc/withSnackbar';
@@ -23,6 +24,7 @@ const INIT_DIALOG = 'INIT_DIALOG';
 const HELP_DIALOG = 'HELP_DIALOG';
 
 const { REACT_APP_VERSION } = process.env;
+const theme = (outerTheme) => createMuiTheme({ ...outerTheme, palette: { type: 'light' } });
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -114,7 +116,7 @@ class Login extends React.PureComponent {
     };
     const { status } = selfTestDocument || {};
     return (
-      <>
+      <ThemeProvider theme={theme}>
         <Grid container>
           <Grid item sm={4}>
             <Card elevation={0} square style={{ height: '100vh' }}>
@@ -208,8 +210,9 @@ class Login extends React.PureComponent {
         />
         <LoginHelpDialog
           dialogName={HELP_DIALOG}
+          baseUrl={baseUrl}
         />
-      </>
+      </ThemeProvider>
     );
   }
 }

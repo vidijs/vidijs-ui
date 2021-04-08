@@ -24,7 +24,7 @@ const hoverStyle = (theme) => ({
   onHover: {
     minHeight: '32px',
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
   default: {
@@ -349,6 +349,7 @@ function TextGrid({
   onClick,
   disableOnClick = true,
   noWrap = false,
+  noWrapTitle = true,
   hideCode = false,
   initialHideCode = true,
   to,
@@ -381,7 +382,7 @@ function TextGrid({
                   variant="subtitle2"
                   color="textSecondary"
                   onClick={onTextClick}
-                  noWrap
+                  noWrap={noWrapTitle}
                 >
                   {titleStartCase ? startCase(title) : title}
                 </Typography>
@@ -393,7 +394,7 @@ function TextGrid({
               )}
             </Grid>
           )}
-        {isCodeHidden === false && (
+        {(hideCode === false || isCodeHidden === false) && (
           <CodeMirror
             value={value || ''}
             onClick={onTextClick}
@@ -428,7 +429,7 @@ function TextGrid({
                   variant="subtitle2"
                   color="textSecondary"
                   onClick={onTextClick}
-                  noWrap
+                  noWrap={noWrapTitle}
                 >
                   {titleStartCase ? startCase(title) : title}
                 </Typography>
@@ -440,7 +441,7 @@ function TextGrid({
               )}
             </Grid>
           )}
-        {isCodeHidden === false && (
+        {(hideCode === false || isCodeHidden === false) && (
           <CodeMirror
             value={formatJSON(value) || ''}
             onClick={onTextClick}
@@ -476,7 +477,7 @@ function TextGrid({
                 variant="subtitle2"
                 color="textSecondary"
                 onClick={onTextClick}
-                noWrap
+                noWrap={noWrapTitle}
               >
                 {titleStartCase ? startCase(title) : title}
               </Typography>
@@ -488,7 +489,7 @@ function TextGrid({
             )}
           </Grid>
         )}
-        {isCodeHidden === false && (
+        {(hideCode === false || isCodeHidden === false) && (
           <CodeMirror
             value={formatXML(value) || ''}
             onClick={onTextClick}
@@ -553,7 +554,7 @@ function TextGrid({
           color="textSecondary"
           variant="subtitle2"
           onClick={onTextClick}
-          noWrap
+          noWrap={noWrapTitle}
           {...titleTypographyProps}
         >
           {titleStartCase ? startCase(title) : title}

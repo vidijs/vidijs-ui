@@ -15,7 +15,7 @@ const hoverStyle = (theme) => ({
     paddingTop: '10px',
     paddingBottom: '10px',
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
   noHover: {

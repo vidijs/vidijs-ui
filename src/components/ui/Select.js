@@ -5,6 +5,8 @@ import Select from 'react-select';
 import { change } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
 
+import { fontFamily } from './Theme';
+
 // https://gist.github.com/leocristofani/98312e61807db8f32e720c9f97a186e5
 
 const stylesOverride = {
@@ -14,7 +16,7 @@ const stylesOverride = {
   container: (base, state) => ({
     ...base,
     color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'inherit',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   control: (base, state) => ({
     ...base,
@@ -25,7 +27,7 @@ const stylesOverride = {
     borderColor: 'rgba(0, 0, 0, 0.42)',
     color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'rgba(0, 0, 0, 0.87)',
     marginTop: (!state.hasValue) && '6px',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   dropdownIndicator: (base) => ({
     ...base,
@@ -37,8 +39,9 @@ const stylesOverride = {
   groupHeading: (base) => ({
     ...base,
   }),
-  indicatorsContainer: (base) => ({
+  indicatorsContainer: (base, state) => ({
     ...base,
+    visibility: state.isDisabled ? 'hidden' : undefined,
   }),
   indicatorSeparator: (base) => ({
     ...base,
@@ -47,7 +50,8 @@ const stylesOverride = {
   input: (base, state) => ({
     ...base,
     color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'inherit',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    visibility: state.isDisabled ? 'visible' : undefined,
+    fontFamily,
   }),
   loadingIndicator: (base) => ({
     ...base,
@@ -59,7 +63,7 @@ const stylesOverride = {
     ...base,
     borderRadius: '0px',
     zIndex: 1500,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   menuList: (base) => ({
     ...base,
@@ -72,7 +76,7 @@ const stylesOverride = {
   }),
   multiValueLabel: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   multiValueRemove: (base) => ({
     ...base,
@@ -92,18 +96,18 @@ const stylesOverride = {
   placeholder: (base) => ({
     ...base,
     marginLeft: '0px',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
     fontSize: '16px',
     lineHeight: 1,
     padding: 0,
   }),
   singleValue: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   valueContainer: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
     padding: '2px 0px 2px 0px',
   }),
 };

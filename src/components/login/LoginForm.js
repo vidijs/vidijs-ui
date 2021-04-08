@@ -18,6 +18,9 @@ const headers = () => (
       component={TextField}
       fullWidth
       validate={[hasTokenOrValue]}
+      variant="outlined"
+      margin="dense"
+      size="small"
     />
     <Field
       name="password"
@@ -26,6 +29,8 @@ const headers = () => (
       component={TextField}
       fullWidth
       validate={[hasTokenOrValue]}
+      variant="outlined"
+      margin="dense"
     />
   </>
 );
@@ -54,13 +59,16 @@ function LoginForm({
       {error && <Typography color="error">{error}</Typography>}
       <Field
         name="baseUrl"
-        label="Vidspine Server"
+        label="VidiCore Server"
         component={TextField}
         required
         onBlur={(event, baseUrl) => onTestUrl(baseUrl)}
         fullWidth
         autoFocus
         validate={[required]}
+        variant="outlined"
+        margin="dense"
+        useStartCase={false}
       />
       <FormSection
         name="headers"

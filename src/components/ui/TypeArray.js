@@ -8,7 +8,7 @@ import withErrorBoundary from '../../hoc/withErrorBoundary';
 const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
 });

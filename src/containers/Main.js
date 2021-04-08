@@ -1,5 +1,4 @@
 import React from 'react';
-import grey from '@material-ui/core/colors/grey';
 import { Route } from 'react-router-dom';
 import { compose } from 'redux';
 import { withModalNoRouter } from '../hoc/withModal';
@@ -131,7 +130,6 @@ function Main({
       />
       <main
         style={{
-          backgroundColor: grey[200],
           marginLeft: '10px',
           marginRight: '10px',
           marginTop: 48,

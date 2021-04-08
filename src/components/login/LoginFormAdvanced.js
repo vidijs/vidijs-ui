@@ -12,12 +12,16 @@ const headers = () => (
       label="Token"
       component={TextField}
       fullWidth
+      variant="outlined"
+      margin="dense"
     />
     <Field
       name="runAs"
       label="Login As User"
       component={TextField}
       fullWidth
+      variant="outlined"
+      margin="dense"
     />
   </>
 );
@@ -30,6 +34,8 @@ const queryParams = () => (
       component={TextField}
       helperText="Seconds"
       fullWidth
+      variant="outlined"
+      margin="dense"
     />
   </>
 );

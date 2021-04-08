@@ -76,6 +76,7 @@ class LoadingProgress extends React.PureComponent {
             colorPrimary: classes.colorPrimary,
             barColorPrimary: classes.barColorPrimary,
           }}
+          value={100}
         />
       </div>
     );

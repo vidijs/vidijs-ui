@@ -64,7 +64,7 @@ function ServiceListServiceCard({
 const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[100],
+      backgroundColor: theme.palette.action.hover,
     },
   },
 });

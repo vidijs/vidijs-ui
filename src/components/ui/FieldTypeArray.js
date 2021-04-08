@@ -14,7 +14,7 @@ import TextButton from './TextButton';
 const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
   noHover: {
