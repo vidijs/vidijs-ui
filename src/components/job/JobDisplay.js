@@ -94,12 +94,14 @@ const DataSection = ({ value = {} }) => (
   <TypeArray
     arrayTitle="Data"
     value={value.data}
+    arrayKey="key"
     component={({ value: v }) => (
       <TextGrid
         title={v.key}
         value={v.value}
         titleStartCase={false}
         variant={getJobDataVariant(v.key)}
+        hideCode
       />
     )}
     hideNoValue

@@ -1,5 +1,6 @@
 export default function JobMetadataVariant(key) {
   if (key.startsWith('transcodeShapeDocument')) return 'xml';
+  if (key.endsWith('transcodePreset')) return 'xml';
   switch (key) {
     case 'item':
       return 'itemId';

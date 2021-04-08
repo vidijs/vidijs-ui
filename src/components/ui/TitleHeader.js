@@ -12,8 +12,10 @@ import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteForever from '@material-ui/icons/DeleteForever';
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
-import ExternalIdLink from '../externalid/ExternalIdLink';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
+import ExternalIdLink from '../externalid/ExternalIdLink';
 import withUI from '../../hoc/withUI';
 import CodeModal from './CodeModal';
 
@@ -30,6 +32,9 @@ function TitleHeader({
   entityId,
   entityType,
   onRefresh,
+  autoRefresh,
+  onChangeAutoRefresh,
+  autoRefreshLabel = 'Background Refresh',
   helpTo,
   codeModal,
   onOpen: openModal,
@@ -134,6 +139,12 @@ function TitleHeader({
       </Tooltip>
     );
   }
+  const autoRefreshSwitch = onChangeAutoRefresh && (
+    <FormControlLabel
+      control={<Switch checked={autoRefresh} onChange={onChangeAutoRefresh} />}
+      label={autoRefreshLabel}
+    />
+  );
   const refeshAction = onRefresh && (
     <Tooltip title="Refresh">
       <IconButton onClick={onRefresh}>
@@ -200,6 +211,7 @@ function TitleHeader({
             justify="space-between"
             alignItems="center"
           >
+            {autoRefreshSwitch}
             {openRemove}
             {openHelp}
             {openAddAccess}

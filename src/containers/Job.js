@@ -23,8 +23,10 @@ class Job extends React.PureComponent {
     this.onRefreshError = this.onRefreshError.bind(this);
     this.onAutoRefresh = this.onAutoRefresh.bind(this);
     this.onFetch = this.onFetch.bind(this);
+    this.onChangeAutoRefresh = this.onChangeAutoRefresh.bind(this);
     this.state = {
       jobDocument: undefined,
+      autoRefresh: true,
     };
   }
 
@@ -41,6 +43,7 @@ class Job extends React.PureComponent {
       this.onFetch(jobId);
       clearInterval(this.timer);
       this.timer = setInterval(() => this.onAutoRefresh(), 2500);
+      this.setState({ autoRefresh: true });
       document.title = `vidi.js | Job | ${jobId}`;
     }
   }
@@ -61,11 +64,13 @@ class Job extends React.PureComponent {
     if (status === undefined) {
       clearInterval(this.timer);
       this.timer = undefined;
+      this.setState({ autoRefresh: false });
       return;
     }
     if (this.timer && (!RUNNING_STATES.includes(status))) {
       clearInterval(this.timer);
       this.timer = undefined;
+      this.setState({ autoRefresh: false });
       return;
     }
     this.onRefresh();
@@ -88,14 +93,28 @@ class Job extends React.PureComponent {
     openSnackBar({ messageContent, messageColor: 'secondary' });
   }
 
+  onChangeAutoRefresh() {
+    const { autoRefresh: prevAutoRefresh } = this.state;
+    const autoRefresh = !prevAutoRefresh;
+    this.setState({ autoRefresh });
+    if (autoRefresh === true && this.timer === undefined) {
+      this.timer = setInterval(() => this.onAutoRefresh(), 2500);
+    } else if (autoRefresh === false && this.timer !== undefined) {
+      clearInterval(this.timer);
+      this.timer = undefined;
+    }
+  }
+
   render() {
-    const { jobDocument } = this.state;
+    const { jobDocument, autoRefresh } = this.state;
     const { jobId, history } = this.props;
     return (
       <>
         <JobTitle
           title={jobId}
           onRefresh={this.onRefresh}
+          autoRefresh={autoRefresh}
+          onChangeAutoRefresh={this.onChangeAutoRefresh}
           code={jobDocument}
           priorityDialog={JOB_PRIORITY_DIALOG}
           duplicateDialog={JOB_DUPLICATE_DIALOG}
