@@ -57,6 +57,71 @@ const AspectRatioType = ({ value = {} }) => (
   </>
 );
 
+const ScalingType = ({ value = {} }) => (
+  <>
+    <TextGrid
+      title="width"
+      value={value.width}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="height"
+      value={value.height}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="top"
+      value={value.top}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="bottom"
+      value={value.bottom}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="left"
+      value={value.left}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="right"
+      value={value.right}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="padColor"
+      value={value.padColor}
+      hover
+      hideNoValue
+    />
+    <TextGrid
+      title="rotate"
+      value={value.rotate}
+      hover
+      hideNoValue
+    />
+    <TypeSection
+      title="pixelAspectRatio"
+      value={value.pixelAspectRatio}
+      component={AspectRatioType}
+      hideNoValue
+    />
+    <TypeSection
+      title="targetDAR"
+      value={value.targetDAR}
+      component={AspectRatioType}
+      hideNoValue
+    />
+  </>
+);
+
 const KeyValuePairType = ({ value = {} }) => (
   <>
     <TextGrid
@@ -419,6 +484,12 @@ export const VideoTranscodePresetType = ({ value = {} }) => (
       title="resolution"
       component={ResolutionType}
       value={value.resolution}
+    />
+    <TypeSection
+      hideNoValue
+      title="scaling"
+      component={ScalingType}
+      value={value.scaling}
     />
     <TypeSection
       hideNoValue
