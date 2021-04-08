@@ -16,7 +16,7 @@ function TableRow({
   return (
     <MUITableRow
       onClick={onClick}
-      style={{ cursor: 'pointer' }}
+      style={{ cursor: onClick ? 'pointer' : 'auto' }}
       {...props}
     />
   );

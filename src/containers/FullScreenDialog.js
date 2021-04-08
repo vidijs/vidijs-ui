@@ -120,6 +120,7 @@ function FullScreenDialog({
     { value: '/configuration/ftp-pool/', label: 'FTP Pool' },
     { value: '/scheduled-request/', label: 'Scheduled Requests' },
     { value: '/stitch/', label: 'Stitch' },
+    { value: '/deletion-lock/', label: 'Deletion Locks' },
   ];
   const ListLink = ({ to, primary }) => (
     <ListItem button to={to} component={Link} onClick={onClose}>
@@ -270,6 +271,7 @@ function FullScreenDialog({
               <ListLink to="/error/" primary="Error Log" />
               <ListLink to="/transfer/" primary="Import Transfers" />
               <ListLink to="/scheduled-request/" primary="Scheduled Requests" />
+              <ListLink to="/deletion-lock/" primary="Deletion Locks" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>

@@ -81,7 +81,7 @@ class WizardForm extends React.PureComponent {
     this.onGetValues = this.onGetValues.bind(this);
     this.onChangeTab = this.onChangeTab.bind(this);
     this.state = {
-      activeStep: 0,
+      activeStep: props.initialStep || 0,
       jsonDocument: undefined,
       xmlDocument: undefined,
       tabValue: XML_TAB,
@@ -142,6 +142,7 @@ class WizardForm extends React.PureComponent {
       isJSONFormDirty,
       isXMLFormDirty,
       onCancel,
+      initialStep,
       ...formProps
     } = this.props;
     const {

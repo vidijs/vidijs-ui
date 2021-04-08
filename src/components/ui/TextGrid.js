@@ -44,6 +44,7 @@ function SetValueComponent({
   variant,
   capitalize,
   classes,
+  to,
   ...typographyProps
 }) {
   let valueComponent = null;
@@ -89,6 +90,13 @@ function SetValueComponent({
       valueComponent = (
         <StyledTypography>
           {fromNow(value)}
+        </StyledTypography>
+      );
+      break;
+    case 'timestring':
+      valueComponent = (
+        <StyledTypography>
+          {value ? moment(value).toString() : ''}
         </StyledTypography>
       );
       break;
@@ -187,6 +195,13 @@ function SetValueComponent({
       valueComponent = (
         <StyledTypography>
           {bytesToSize(value)}
+        </StyledTypography>
+      );
+      break;
+    case 'link':
+      valueComponent = (
+        <StyledTypography>
+          {to ? <UnstyledLink to={to}>{value}</UnstyledLink> : value}
         </StyledTypography>
       );
       break;
@@ -336,6 +351,7 @@ function TextGrid({
   noWrap = false,
   hideCode = false,
   initialHideCode = true,
+  to,
 }) {
   const [isCodeHidden, setIsCodeHidden] = React.useState(initialHideCode);
   const toggleCode = () => setIsCodeHidden((prevState) => !prevState);
@@ -521,6 +537,7 @@ function TextGrid({
     onClick: onTextClick,
     classes,
     noWrap,
+    to,
     ...valueTypographyProps,
   });
   return (

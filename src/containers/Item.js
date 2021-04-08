@@ -20,6 +20,7 @@ import ItemBulkyMetadataList from './item/ItemBulkyMetadataList';
 import AccessControl from './AccessControl';
 import AccessControlMerged from './AccessControlMerged';
 import StorageRule from './StorageRule';
+import DeletionLockList from './DeletionLockList';
 
 import ItemTitle from '../components/item/ItemTitle';
 import ItemDelete from '../components/item/ItemDelete';
@@ -48,6 +49,7 @@ const ACCESS_TAB = 'ACCESS_TAB';
 const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
 const BULKYMETADATA_TAB = 'BULKYMETADATA_TAB';
+const DELETIONLOCK_TAB = 'DELETIONLOCK_TAB';
 
 const ITEM_REMOVE_DIALOG = 'ITEM_REMOVE_DIALOG';
 const ITEM_TRANSCODE_DIALOG = 'ITEM_TRANSCODE_DIALOG';
@@ -75,6 +77,7 @@ const TAB_TITLE = [
   { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
   { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
   { tab: BULKYMETADATA_TAB, listText: 'Bulky Metadata', component: ItemBulkyMetadataList },
+  { tab: DELETIONLOCK_TAB, listText: 'Deletion Locks', component: DeletionLockList },
 ];
 
 const listComponent = ({ onChangeTab, tabValue }) => (

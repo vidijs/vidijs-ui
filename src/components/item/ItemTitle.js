@@ -1,6 +1,8 @@
 import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import PlaylistAdd from '@material-ui/icons/PlaylistAdd';
 import ArrowForwardIos from '@material-ui/icons/ArrowForwardIos';
 import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom';
@@ -48,6 +50,8 @@ function ItemTitle({
   addToCollectionModal,
   startJobModal,
   title,
+  createModal,
+  createTooltip = 'New',
   ...props
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl') || '';
@@ -68,40 +72,49 @@ function ItemTitle({
       entityType="item"
       removeModal={removeModal}
       actionComponent={(
-        <Menu>
-          <MenuItem>
-            <UnstyledLink to={`/import?tab=IMPORTCOMPONENT_TAB&itemId=${itemId}`}>
-              <Typography>Import Component</Typography>
-            </UnstyledLink>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: addToCollectionModal })}>
-            <Typography>Add To Collection</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: relationModal })}>
-            <Typography>Add Relation</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: startJobModal })}>
-            <Typography>Start Job</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: transcodeModal })}>
-            <Typography>Transcode</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: thumbnailModal })}>
-            <Typography>Create Thumbnail</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: posterModal })}>
-            <Typography>Create Poster</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: exportModal })}>
-            <Typography>Export</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: exportImpModal })}>
-            <Typography>Export IMF Package</Typography>
-          </MenuItem>
-          <MenuItem onClick={() => onOpen({ modalName: removeModal })}>
-            <Typography color="secondary">Delete</Typography>
-          </MenuItem>
-        </Menu>
+        <>
+          {createModal && (
+          <Tooltip title={createTooltip}>
+            <IconButton onClick={() => onOpen({ modalName: createModal })}>
+              <PlaylistAdd />
+            </IconButton>
+          </Tooltip>
+          )}
+          <Menu>
+            <MenuItem>
+              <UnstyledLink to={`/import?tab=IMPORTCOMPONENT_TAB&itemId=${itemId}`}>
+                <Typography>Import Component</Typography>
+              </UnstyledLink>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: addToCollectionModal })}>
+              <Typography>Add To Collection</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: relationModal })}>
+              <Typography>Add Relation</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: startJobModal })}>
+              <Typography>Start Job</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: transcodeModal })}>
+              <Typography>Transcode</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: thumbnailModal })}>
+              <Typography>Create Thumbnail</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: posterModal })}>
+              <Typography>Create Poster</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: exportModal })}>
+              <Typography>Export</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: exportImpModal })}>
+              <Typography>Export IMF Package</Typography>
+            </MenuItem>
+            <MenuItem onClick={() => onOpen({ modalName: removeModal })}>
+              <Typography color="secondary">Delete</Typography>
+            </MenuItem>
+          </Menu>
+        </>
       )}
       {...props}
     />
