@@ -1,7 +1,8 @@
 import React from 'react';
 import CardContent from '@material-ui/core/CardContent';
+import Card from '@material-ui/core/Card';
 
-import SquareCard from '../ui/SquareCard';
+import CardList from '../ui/CardList';
 import {
   JobBasicDisplay,
   JobCurrentDisplay,
@@ -9,40 +10,38 @@ import {
   JobStepDisplay,
 } from './JobDisplay';
 
-export default function JobCard({
-  ...props
-}) {
+export default function JobCard({ ...props }) {
   if (props.jobDocument === undefined) { return null; }
   return (
-    <>
-      <SquareCard>
+    <CardList>
+      <Card>
         <CardContent>
           <JobBasicDisplay
             {...props}
           />
         </CardContent>
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <CardContent>
           <JobCurrentDisplay
             {...props}
           />
         </CardContent>
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <CardContent>
           <JobDataDisplay
             {...props}
           />
         </CardContent>
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <CardContent>
           <JobStepDisplay
             {...props}
           />
         </CardContent>
-      </SquareCard>
-    </>
+      </Card>
+    </CardList>
   );
 }

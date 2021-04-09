@@ -4,6 +4,7 @@ import {
   reset,
   change,
   destroy,
+  initialize,
 } from 'redux-form';
 
 const mapDispatchToProps = {
@@ -11,6 +12,7 @@ const mapDispatchToProps = {
   resetForm: reset,
   changeForm: change,
   destroyForm: destroy,
+  initializeForm: initialize,
 };
 
 const withFormActions = (WrappedComponent) => connect(

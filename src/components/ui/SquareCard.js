@@ -1,3 +1,3 @@
-import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 
-export default Paper;
+export default Card;

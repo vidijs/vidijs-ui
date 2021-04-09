@@ -20,6 +20,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { withModalNoRouter } from '../hoc/withModal';
 import NavSelect from '../components/ui/NavSelect';
+import routes from '../const/routes';
 
 const styles = (theme) => ({
   appBar: {
@@ -42,13 +43,6 @@ function FullScreenDialog({
   open,
   onClose,
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
-  const itemParams = new URLSearchParams({
-    content: 'metadata,thumbnail',
-    baseURI: `${baseUrl}/APInoauth/`,
-    terse: true,
-    'noauth-url': true,
-  });
   const ListLink = ({ to, primary }) => (
     <ListItem button to={to} component={Link} onClick={onClose}>
       <ListItemText secondary={primary} />
@@ -107,7 +101,7 @@ function FullScreenDialog({
           <Grid item {...breakPoints}>
             <ListGroup subheader="Search">
               <ListLink to="/search/" primary="Items & Collections" />
-              <ListLink to={`/item/?${itemParams.toString()}`} primary="Items" />
+              <ListLink to={routes.itemList()} primary="Items" />
               <ListLink to="/collection/" primary="Collections" />
               <ListLink to="/shape/" primary="Shapes" />
               <ListLink to="/library/" primary="Libraries" />

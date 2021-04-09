@@ -11,6 +11,7 @@ import TitleHeader from '../ui/TitleHeader';
 import Menu, { MenuItem } from '../ui/Menu';
 import UnstyledLink from '../ui/UnstyledLink';
 import { withModalNoRouter } from '../../hoc/withModal';
+import routes from '../../const/routes';
 
 export const ItemHeading = ({ itemId }) => (
   <Grid container alignItems="center">
@@ -28,7 +29,7 @@ export const ItemHeading = ({ itemId }) => (
       <Typography
         variant="h5"
         component={Link}
-        to={`/item/${itemId}/`}
+        to={routes.itemList({ itemId })}
         style={{ textDecoration: 'none' }}
       >
         {itemId}
@@ -54,17 +55,10 @@ function ItemTitle({
   createTooltip = 'New',
   ...props
 }) {
-  const baseUrl = localStorage.getItem('vsBaseUrl') || '';
-  const itemParams = new URLSearchParams({
-    content: 'metadata,thumbnail',
-    baseURI: `${baseUrl}/APInoauth/`,
-    terse: true,
-    'noauth-url': true,
-  });
   return (
     <TitleHeader
       grandParentTitle="Item"
-      grandParentTo={`/item/?${itemParams.toString()}`}
+      grandParentTo={routes.itemList()}
       parentTitle={itemId}
       title={title}
       helpTo="/ref/item/item.html"

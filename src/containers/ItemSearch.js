@@ -55,7 +55,7 @@ class ItemSearch extends React.PureComponent {
 
   componentDidMount() {
     document.title = 'xray | Item';
-    this.onRefresh();
+    setTimeout(this.onRefresh, 10); // wait for form to initialize
   }
 
   onRefresh() {

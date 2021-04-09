@@ -24,8 +24,8 @@ import getCookie from '../utils/getCookie';
 
 const styles = (theme) => ({
   root: {
-    backgroundColor: 'rgb(36, 41, 46)',
-    color: 'rgb(255, 255, 255)',
+    backgroundColor: { light: 'rgb(36, 41, 46)', dark: 'rgb(22, 27, 34)' }[theme.palette.type],
+    color: { light: 'rgb(255, 255, 255)', dark: 'rgb(240, 246, 252)' }[theme.palette.type],
     zIndex: theme.zIndex.drawer + 1,
   },
 });

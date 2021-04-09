@@ -1,19 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import routes from '../../const/routes';
 import { WrappedSelect } from './Select';
-
-const itemParams = new URLSearchParams({
-  content: 'metadata,thumbnail',
-  terse: true,
-  'noauth-url': true,
-});
 
 const linkOptions = [
   { value: '/new-job/', label: 'New Job' },
   { value: '/job', label: 'Job List' },
   { value: '/jobtype/', label: 'Job Types' },
   { value: '/search/', label: 'Search Items & Collections' },
-  { value: `/item/?${itemParams.toString()}`, label: 'Search Items' },
+  { value: routes.itemList(), label: 'Search Items' },
   { value: '/collection/', label: 'Search Collections' },
   { value: '/shape/', label: 'Search Shapes' },
   { value: '/search/field-group/', label: 'Search Field Groups' },
