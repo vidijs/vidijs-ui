@@ -48,6 +48,7 @@ function UserPassword({
           onSubmitFail={onSubmitFail}
           onCancel={onClose}
           userName={userName}
+          initialValues={{ queryParams: { type: 'raw' } }}
         />
       </DialogContent>
       <Divider />

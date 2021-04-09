@@ -35,6 +35,7 @@ function UserWizard({
           onSubmitSuccess={onSubmitSuccess}
           onSubmitFail={onSubmitFail}
           onCancel={onClose}
+          initialValues={{ queryParams: { passwordType: 'raw' } }}
         />
       </DialogContent>
     </Dialog>
