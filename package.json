@@ -1,12 +1,12 @@
 {
   "name": "vidijs",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@vidispine/vdt-api": "^0.13.0",
-    "classnames": "^2.3.1",
+    "clsx": "^1.1.1",
     "codemirror": "^5.60.0",
     "history": "^5.0.0",
     "immutability-helper": "^3.1.1",

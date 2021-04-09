@@ -1,5 +1,5 @@
 import React from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -68,12 +68,12 @@ class DrawerContainer extends React.PureComponent {
       <div style={{ display: 'flex' }}>
         <Drawer
           variant="permanent"
-          className={classNames(classes.drawer, {
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
           })}
           classes={{
-            paper: classNames(classes.paper, {
+            paper: clsx(classes.paper, {
               [classes.drawerOpen]: open,
               [classes.drawerClose]: !open,
             }),
