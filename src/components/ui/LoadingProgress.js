@@ -4,14 +4,14 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { withStyles } from '@material-ui/core/styles';
 import { utils as api } from '@vidispine/vdt-api';
 
-const styles = {
+const styles = ({ palette }) => ({
   barColorPrimary: {
-    backgroundColor: '#007aff',
+    backgroundColor: { light: 'rgb(3, 102, 214)', dark: 'rgb(88, 166, 255)' }[palette.type],
   },
   colorPrimary: {
     backgroundColor: '#005d9f',
   },
-};
+});
 
 class LoadingProgress extends React.PureComponent {
   constructor(props) {

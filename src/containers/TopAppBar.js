@@ -2,7 +2,6 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -25,8 +24,8 @@ import getCookie from '../utils/getCookie';
 
 const styles = (theme) => ({
   root: {
-    backgroundColor: grey[900],
-    color: grey[100],
+    backgroundColor: 'rgb(36, 41, 46)',
+    color: 'rgb(255, 255, 255)',
     zIndex: theme.zIndex.drawer + 1,
   },
 });
