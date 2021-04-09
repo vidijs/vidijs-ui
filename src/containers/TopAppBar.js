@@ -6,6 +6,7 @@ import grey from '@material-ui/core/colors/grey';
 import { withStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Tooltip from '@material-ui/core/Tooltip';
+import Hidden from '@material-ui/core/Hidden';
 
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -19,6 +20,7 @@ import Menu, { MenuItem } from '../components/ui/Menu';
 import UnstyledLink from '../components/ui/UnstyledLink';
 import LoadingProgress from '../components/ui/LoadingProgress';
 import { useChangeTheme } from '../components/ui/Theme';
+import NavSelect from '../components/ui/NavSelect';
 import getCookie from '../utils/getCookie';
 
 const styles = (theme) => ({
@@ -63,9 +65,14 @@ function TopAppBar({
         <IconButton onClick={toggleHistory} color="inherit">
           <HistoryIcon />
         </IconButton>
-        <Typography variant="subtitle2" color="inherit" style={{ flex: 1 }}>
+        <Typography variant="subtitle2" color="inherit">
           {baseUrl}
         </Typography>
+        <Hidden xsDown>
+          <div style={{ flex: 1, paddingLeft: 16, paddingRight: 16 }}>
+            <NavSelect variant="outlined" />
+          </div>
+        </Hidden>
         {{
           light: (
             <Tooltip title="Light Theme">
