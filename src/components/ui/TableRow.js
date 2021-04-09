@@ -1,16 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import MUITableRow from '@material-ui/core/TableRow';
-import withDivComponent from '../../hoc/withDivComponent';
 
-function TableRow({
-  history,
-  to,
-  staticContext,
-  match,
-  location,
-  ...props
-}) {
+export default function TableRow({ to, ...props }) {
+  const history = useHistory();
   const { onClick: defaultOnClick } = props;
   const onClick = to ? () => history.push(to) : defaultOnClick;
   return (
@@ -21,5 +14,3 @@ function TableRow({
     />
   );
 }
-
-export default withDivComponent(withRouter(TableRow));

@@ -1,8 +1,6 @@
 import React from 'react';
 import MUITableCell from '@material-ui/core/TableCell';
 
-import withDivComponent from '../../hoc/withDivComponent';
-
 function TableCell({
   disableOnClick,
   onClick,
@@ -17,4 +15,4 @@ function TableCell({
   );
 }
 
-export default withDivComponent(TableCell);
+export default TableCell;

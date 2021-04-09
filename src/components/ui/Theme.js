@@ -51,8 +51,39 @@ export default function ThemeProvider({ children }) {
         MuiTextField: {
           InputLabelProps: { shrink: true },
         },
+        MuiPaper: {
+          square: true,
+          elevation: 0,
+        },
+        MuiTable: {
+          component: 'div',
+        },
+        MuiTableBody: {
+          component: 'div',
+        },
+        MuiTableCell: {
+          component: 'div',
+        },
+        MuiTableFooter: {
+          component: 'div',
+        },
+        MuiTableHead: {
+          component: 'div',
+        },
+        MuiTablePagination: {
+          component: 'div',
+        },
+        MuiTableRow: {
+          component: 'div',
+        },
       },
-      palette: { type: paletteType },
+      palette: {
+        type: paletteType,
+        background: {
+          default: { light: 'rgb(246, 248, 250)', dark: 'rgb(9, 12, 16)' }[paletteType],
+          paper: { light: 'rgb(255, 255, 255)', dark: 'rgb(13, 17, 23)' }[paletteType],
+        },
+      },
       typography: { fontFamily },
     }),
     [paletteType],
