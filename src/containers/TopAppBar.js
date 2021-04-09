@@ -69,8 +69,13 @@ function TopAppBar({
           {baseUrl}
         </Typography>
         <Hidden xsDown>
-          <div style={{ flex: 1, paddingLeft: 16, paddingRight: 16 }}>
-            <NavSelect variant="outlined" />
+          <div style={{
+            flex: 1, justifyContent: 'center', alignItems: 'center', display: 'flex',
+          }}
+          >
+            <div style={{ maxWidth: 540, width: '100%' }}>
+              <NavSelect variant="outlined" />
+            </div>
           </div>
         </Hidden>
         {{
