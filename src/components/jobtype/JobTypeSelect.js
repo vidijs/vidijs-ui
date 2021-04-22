@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { taskdefinition as api } from '@vidijs/vidijs-api';
+import { taskdefinition as api } from '@vidispine/vdt-api';
 import Select from '../ui/Select';
 
 export const loadJobTypeOptions = (inputValue) => new Promise((resolve, reject) => {

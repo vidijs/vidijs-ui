@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { notification as api } from '@vidijs/vidijs-api';
+import { notification as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const notificationId = props.notificationId || form.notificationId;

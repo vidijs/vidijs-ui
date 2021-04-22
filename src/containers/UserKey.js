@@ -1,5 +1,5 @@
 import React from 'react';
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 
 import TitleHeader from '../components/ui/TitleHeader';
 import UserKeyCard from '../components/user/UserKeyCard';
@@ -24,14 +24,14 @@ class UserKey extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { userName } = this.props;
-    document.title = `vidi.js | User | ${userName} | Keys`;
+    document.title = `xray | User | ${userName} | Keys`;
   }
 
   UNSAFE_componentWillReceiveProps({ userName }) {
     const { userName: prevUserName } = this.props;
     if (prevUserName !== userName) {
       this.onFetch(userName);
-      document.title = `vidi.js | User | ${userName} | Keys`;
+      document.title = `xray | User | ${userName} | Keys`;
     }
   }
 

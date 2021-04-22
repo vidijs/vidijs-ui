@@ -4,12 +4,12 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import update from 'immutability-helper';
-import { version as versionApi } from '@vidijs/vidijs-api';
+import { version as versionApi } from '@vidispine/vdt-api';
 
 import LicenseForm from '../components/version/LicenseForm';
 import { VersionLicenseInfoDisplay } from '../components/version/VersionDisplay';
@@ -82,7 +82,7 @@ function Wizard({
     }
   };
   React.useEffect(onRefreshVersion, []);
-  React.useEffect(() => { document.title = 'vidi.js | Wizard'; }, []);
+  React.useEffect(() => { document.title = 'xray | Wizard'; }, []);
 
   const onBack = () => {
     if (activeStep !== 0) setActiveStep(activeStep - 1);
@@ -133,7 +133,7 @@ function Wizard({
             form={EDIT_USER_PASSWORD_FORM}
           />
 
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button
               onClick={onNext}
             >
@@ -152,7 +152,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -171,7 +171,7 @@ function Wizard({
             onSubmitSuccess={() => onSubmitSuccess({ stepName: EDIT_LICENSE_FORM, messageContent: 'License Updated' })}
             onSubmitFail={() => onSubmitFail({ stepName: EDIT_LICENSE_FORM, messageContent: 'Error Updating License', canRetry: true })}
           />
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -193,7 +193,7 @@ function Wizard({
                 Upload
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -215,7 +215,7 @@ function Wizard({
             onSubmitSuccess={() => onSubmitSuccess({ stepName: EDIT_STORAGE_DETAILS_FORM, messageContent: 'Storage Added' })}
             onSubmitFail={() => onSubmitFail({ stepName: EDIT_STORAGE_DETAILS_FORM, messageContent: 'Error Adding Storage' })}
           />
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -237,7 +237,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -251,7 +251,7 @@ function Wizard({
             onSubmitSuccess={() => onSubmitSuccess({ stepName: EDIT_TRANSCODER_RESOURCE_FORM, messageContent: 'Transcoder Added' })}
             onSubmitFail={() => onSubmitFail({ stepName: EDIT_TRANSCODER_RESOURCE_FORM, messageContent: 'Error Adding Transcoder' })}
           />
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -273,7 +273,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -287,7 +287,7 @@ function Wizard({
             onSubmitSuccess={() => onSubmitSuccess({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Thumbnail Store Added' })}
             onSubmitFail={() => onSubmitFail({ stepName: EDIT_THUMBNAIL_RESOURCE_FORM, messageContent: 'Error Adding Thumbnail Store' })}
           />
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -309,7 +309,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -328,7 +328,7 @@ function Wizard({
             enableReinitialize
           />
 
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -350,7 +350,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -366,7 +366,7 @@ function Wizard({
             enableReinitialize
           />
 
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -388,7 +388,7 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
@@ -399,7 +399,7 @@ function Wizard({
             onSubmitSuccess={() => onSubmitSuccess({ stepName: EDIT_SHAPETAG_PRESET_FORM, messageContent: 'Shape Tags Created' })}
             onSubmitFail={() => onSubmitFail({ stepName: EDIT_SHAPETAG_PRESET_FORM, messageContent: 'Error Creating Shape Tags' })}
           />
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -421,14 +421,14 @@ function Wizard({
                 Save
               </Button>
             )}
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
       <Step>
         <StepLabel>Complete</StepLabel>
         <StepContent>
           All steps complete.
-          <ExpansionPanelActions>
+          <AccordionActions>
             <Button onClick={onBack}>
               Back
             </Button>
@@ -440,7 +440,7 @@ function Wizard({
             >
               Self Test
             </Button>
-          </ExpansionPanelActions>
+          </AccordionActions>
         </StepContent>
       </Step>
     </Stepper>

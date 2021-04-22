@@ -4,41 +4,35 @@ import Async from 'react-select/async';
 import Select from 'react-select';
 import { change } from 'redux-form';
 import Typography from '@material-ui/core/Typography';
+import { useTheme, withTheme } from '@material-ui/core/styles';
 
-// https://gist.github.com/leocristofani/98312e61807db8f32e720c9f97a186e5
+import { fontFamily } from './Theme';
 
 const stylesOverride = {
-  clearIndicator: (base) => ({
-    ...base,
-  }),
   container: (base, state) => ({
     ...base,
-    color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'inherit',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    color: state.isDisabled ? state.selectProps.palette.text.disabled : 'inherit',
+    fontFamily,
   }),
   control: (base, state) => ({
     ...base,
-    background: 'inherit',
+    backgroundColor: state.selectProps.palette.selected,
     borderRadius: '0',
-    borderWidth: '0 0 1px 0',
+    borderWidth: state.selectProps.variant === 'outlined' ? '1px 1px 1px 1px' : '0 0 1px 0',
     boxShadow: 'none',
-    borderColor: 'rgba(0, 0, 0, 0.42)',
-    color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'rgba(0, 0, 0, 0.87)',
+    borderColor: state.selectProps.palette.divider,
+    color: state.isDisabled ? state.selectProps.palette.text.disabled : 'inherit',
     marginTop: (!state.hasValue) && '6px',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
   }),
   dropdownIndicator: (base) => ({
     ...base,
     padding: '2px',
   }),
-  group: (base) => ({
+  indicatorsContainer: (base, state) => ({
     ...base,
-  }),
-  groupHeading: (base) => ({
-    ...base,
-  }),
-  indicatorsContainer: (base) => ({
-    ...base,
+    color: 'inherit',
+    visibility: state.isDisabled ? 'hidden' : undefined,
   }),
   indicatorSeparator: (base) => ({
     ...base,
@@ -46,65 +40,44 @@ const stylesOverride = {
   }),
   input: (base, state) => ({
     ...base,
-    color: state.isDisabled ? 'rgba(0, 0, 0, 0.54)' : 'inherit',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    color: state.isDisabled ? state.selectProps.palette.text.disabled : 'inherit',
+    visibility: state.isDisabled ? 'visible' : undefined,
+    fontFamily,
   }),
-  loadingIndicator: (base) => ({
+  menu: (base, state) => ({
     ...base,
-  }),
-  loadingMessage: (base) => ({
-    ...base,
-  }),
-  menu: (base) => ({
-    ...base,
+    backgroundColor: state.selectProps.palette.background.paper,
     borderRadius: '0px',
     zIndex: 1500,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-  }),
-  menuList: (base) => ({
-    ...base,
-  }),
-  menuPortal: (base) => ({
-    ...base,
-  }),
-  multiValue: (base) => ({
-    ...base,
+    fontFamily,
   }),
   multiValueLabel: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-  }),
-  multiValueRemove: (base) => ({
-    ...base,
-  }),
-  noOptionsMessage: (base) => ({
-    ...base,
+    fontFamily,
   }),
   option: (base, state) => ({
     ...base,
-    color: 'rgba(0, 0, 0, 0.87)',
+    color: state.selectProps.palette.text.primary,
     backgroundColor: state.isFocused // eslint-disable-line no-nested-ternary
-      ? 'rgba(0, 0, 0, 0.08)'
+      ? state.selectProps.palette.action.focus
       : state.isSelected
-        ? 'rgba(0, 0, 0, 0.14)'
-        : 'inherit',
+        ? state.selectProps.palette.action.focus.selected
+        : state.selectProps.palette.action.focus.hover,
   }),
   placeholder: (base) => ({
     ...base,
-    marginLeft: '0px',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily,
     fontSize: '16px',
     lineHeight: 1,
-    padding: 0,
   }),
   singleValue: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    color: 'inherit',
+    fontFamily,
   }),
   valueContainer: (base) => ({
     ...base,
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-    padding: '2px 0px 2px 0px',
+    fontFamily,
   }),
 };
 
@@ -113,6 +86,7 @@ export default function WrappedAsyncSelect({
   meta,
   ...props
 }) {
+  const { palette } = useTheme();
   const { value } = input;
   const {
     optionLabelKey = 'label',
@@ -136,11 +110,24 @@ export default function WrappedAsyncSelect({
       getOptionLabel={(option) => option[optionLabelKey]}
       getOptionValue={(option) => option[optionValueKey]}
       value={value ? value[optionValueKey] : ''}
+      palette={palette}
+      theme={(selectTheme) => ({
+        ...selectTheme,
+        borderRadius: 0,
+        spacing: {
+          ...selectTheme.spacing,
+          menuGutter: 0,
+        },
+        colors: {
+          ...selectTheme.colors,
+          primary: palette.text.primary,
+        },
+      })}
     />
   );
 }
 
-export class StatefulAsyncSelect extends React.Component {
+class UnThemedStatefulAsyncSelec extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -220,8 +207,10 @@ export class StatefulAsyncSelect extends React.Component {
     const {
       input,
       meta,
+      theme,
       ...props
     } = this.props;
+    const { palette } = theme;
     const {
       optionLabelKey = 'label',
       optionValueKey = 'value',
@@ -261,23 +250,52 @@ export class StatefulAsyncSelect extends React.Component {
           onBlur={() => true}
           onFocus={() => true}
           isDisabled={isDisabled}
+          palette={palette}
+          theme={(selectTheme) => ({
+            ...selectTheme,
+            borderRadius: 0,
+            spacing: {
+              ...selectTheme.spacing,
+              menuGutter: 0,
+            },
+            colors: {
+              ...selectTheme.colors,
+              primary: theme.palette.text.primary,
+            },
+          })}
         />
       </>
     );
   }
 }
 
+export const StatefulAsyncSelect = withTheme(UnThemedStatefulAsyncSelec);
+
 export function WrappedSelect({
   input,
   meta,
   ...props
 }) {
+  const { palette } = useTheme();
   return (
     <Select
       {...input}
       {...props}
+      palette={palette}
       styles={stylesOverride}
       placeholder={props.label}
+      theme={(selectTheme) => ({
+        ...selectTheme,
+        borderRadius: 0,
+        spacing: {
+          ...selectTheme.spacing,
+          menuGutter: 0,
+        },
+        colors: {
+          ...selectTheme.colors,
+          primary: palette.text.primary,
+        },
+      })}
     />
   );
 }

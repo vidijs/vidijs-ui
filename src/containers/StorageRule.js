@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { storagerule as api } from '@vidijs/vidijs-api';
+import { storagerule as api } from '@vidispine/vdt-api';
 import StorageRuleListCard from '../components/storagerule/StorageRuleListCard';
 import StorageRuleEntityDialog from '../components/storagerule/StorageRuleEntityDialog';
 

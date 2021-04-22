@@ -1,5 +1,5 @@
 import React from 'react';
-import { item as api } from '@vidijs/vidijs-api';
+import { item as api } from '@vidispine/vdt-api';
 import ItemMetadataListCard from '../../components/item/ItemMetadataListCard';
 import ItemMetadataDisplayParams from '../../components/item/ItemMetadataDisplayParams';
 
@@ -24,7 +24,7 @@ class ItemMetadata extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

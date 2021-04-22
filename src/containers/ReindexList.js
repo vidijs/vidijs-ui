@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { reindex as api } from '@vidijs/vidijs-api';
+import { reindex as api } from '@vidispine/vdt-api';
 import ReindexCard from '../components/reindex/ReindexCard';
 
 import TitleHeader from '../components/ui/TitleHeader';
@@ -32,7 +32,7 @@ class ReindexList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Reindex';
+    document.title = 'xray | Reindex';
     this.timer = setInterval(() => this.onAutoRefresh(), 2500);
     this.onRefresh();
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { fieldgroup as api } from '@vidijs/vidijs-api';
+import { fieldgroup as api } from '@vidispine/vdt-api';
 
 import FieldGroupTitle from '../components/fieldgroup/FieldGroupTitle';
 import FieldGroupCard from '../components/fieldgroup/FieldGroupCard';
@@ -23,7 +23,7 @@ class FieldGroup extends React.PureComponent {
 
   componentDidMount() {
     const { groupName } = this.props;
-    document.title = `vidi.js | Field Group | ${groupName}`;
+    document.title = `xray | Field Group | ${groupName}`;
     this.onRefresh();
   }
 
@@ -31,7 +31,7 @@ class FieldGroup extends React.PureComponent {
     const { groupName: prevGroupName } = this.props;
     if (prevGroupName !== groupName) {
       this.onFetch(groupName);
-      document.title = `vidi.js | Field Group | ${groupName}`;
+      document.title = `xray | Field Group | ${groupName}`;
     }
   }
 

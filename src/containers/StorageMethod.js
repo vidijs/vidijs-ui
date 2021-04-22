@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { storage as api } from '@vidijs/vidijs-api';
+import { storage as api } from '@vidispine/vdt-api';
 import StorageMethodTitle from '../components/storage/StorageMethodTitle';
 import StorageMethodCard from '../components/storage/StorageMethodCard';
 import StorageMethodRemove from '../components/storage/StorageMethodRemove';
@@ -23,7 +23,7 @@ class StorageMethod extends React.PureComponent {
 
   componentDidMount() {
     const { storageId, storageMethodId } = this.props;
-    document.title = `vidi.js | Storage | ${storageId} | Method | ${storageMethodId}`;
+    document.title = `xray | Storage | ${storageId} | Method | ${storageMethodId}`;
     this.onRefresh();
   }
 

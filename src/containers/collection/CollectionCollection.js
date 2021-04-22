@@ -1,5 +1,5 @@
 import React from 'react';
-import { collection as api } from '@vidijs/vidijs-api';
+import { collection as api } from '@vidispine/vdt-api';
 import MetadataCollectionTable from '../../components/collection/MetadataCollectionTable';
 
 import withSnackbar from '../../hoc/withSnackbar';
@@ -26,7 +26,7 @@ class CollectionCollection extends React.PureComponent {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
-      document.title = `vidi.js | Collection | ${collectionId}`;
+      document.title = `xray | Collection | ${collectionId}`;
     }
   }
 

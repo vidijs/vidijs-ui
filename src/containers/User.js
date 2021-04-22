@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 import UserTitle from '../components/user/UserTitle';
 import UserCard from '../components/user/UserCard';
 import UserGroupCard from '../components/user/UserGroupCard';
@@ -32,14 +32,14 @@ class User extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { userName } = this.props;
-    document.title = `vidi.js | User | ${userName}`;
+    document.title = `xray | User | ${userName}`;
   }
 
   UNSAFE_componentWillReceiveProps({ userName }) {
     const { userName: prevUserName } = this.props;
     if (prevUserName !== userName) {
       this.onFetch(userName);
-      document.title = `vidi.js | User | ${userName}`;
+      document.title = `xray | User | ${userName}`;
     }
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { notification as api } from '@vidijs/vidijs-api';
+import { notification as api } from '@vidispine/vdt-api';
 import NotificationCard from '../components/notification/NotificationCard';
 import NotificationRemove from '../components/notification/NotificationRemove';
 import capitalizeString from '../utils/capitalizeString';
@@ -23,7 +23,7 @@ class Notification extends React.PureComponent {
 
   componentDidMount() {
     const { entityType, notificationId } = this.props;
-    document.title = `vidi.js | Notification ${capitalizeString(entityType)} | ${notificationId}`;
+    document.title = `xray | Notification ${capitalizeString(entityType)} | ${notificationId}`;
     this.onRefresh();
   }
 

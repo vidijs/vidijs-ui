@@ -74,6 +74,75 @@ const AspectRatioType = () => (
   </>
 );
 
+const ScalingType = () => (
+  <>
+    <Field
+      name="width"
+      label="width"
+      component={TextField}
+      fullWidth
+      type="number"
+    />
+    <Field
+      name="height"
+      label="height"
+      component={TextField}
+      type="number"
+      fullWidth
+    />
+    <Field
+      name="top"
+      label="top"
+      component={TextField}
+      type="number"
+      fullWidth
+    />
+    <Field
+      name="bottom"
+      label="bottom"
+      component={TextField}
+      type="number"
+      fullWidth
+    />
+    <Field
+      name="left"
+      label="left"
+      component={TextField}
+      type="number"
+      fullWidth
+    />
+    <Field
+      name="right"
+      label="right"
+      component={TextField}
+      type="number"
+      fullWidth
+    />
+    <Field
+      name="padColor"
+      label="padColor"
+      component={TextField}
+      fullWidth
+    />
+    <Field
+      name="rotate"
+      label="rotate"
+      component={TextField}
+      fullWidth
+    />
+    <FormSection
+      name="pixelAspectRatio"
+      label="pixelAspectRatio"
+      component={AspectRatioType}
+    />
+    <FormSection
+      name="targetDAR"
+      label="targetDAR"
+      component={AspectRatioType}
+    />
+  </>
+);
+
 const KeyValuePairType = () => (
   <>
     <Field
@@ -452,6 +521,11 @@ const VideoTranscodePresetType = () => (
       name="resolution"
       label="resolution"
       component={ResolutionType}
+    />
+    <FormSection
+      name="scaling"
+      label="scaling"
+      component={ScalingType}
     />
     <FormSection
       name="displayWidth"

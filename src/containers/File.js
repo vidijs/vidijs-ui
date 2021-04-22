@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { file as api } from '@vidijs/vidijs-api';
+import { file as api } from '@vidispine/vdt-api';
 import FileTitle from '../components/file/FileTitle';
 import FileCard from '../components/file/FileCard';
 import FileDelete from '../components/file/FileDelete';
@@ -36,14 +36,14 @@ class File extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { fileId } = this.props;
-    document.title = `vidi.js | File | ${fileId}`;
+    document.title = `xray | File | ${fileId}`;
   }
 
   UNSAFE_componentWillReceiveProps({ fileId }) {
     const { fileId: prevFileId } = this.props;
     if (prevFileId !== fileId) {
       this.onFetch(fileId);
-      document.title = `vidi.js | File | ${fileId}`;
+      document.title = `xray | File | ${fileId}`;
     }
   }
 

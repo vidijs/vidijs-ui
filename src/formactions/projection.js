@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { projection as api } from '@vidijs/vidijs-api';
+import { projection as api } from '@vidispine/vdt-api';
 
 export function onUpdateOutgoing(form, dispatch, props) {
   const { projectionId } = props;

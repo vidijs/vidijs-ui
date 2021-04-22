@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { externalid as api } from '@vidijs/vidijs-api';
+import { externalid as api } from '@vidispine/vdt-api';
 import ExternalIdTitle from '../components/externalid/ExternalIdTitle';
 import ExternalIdCard from '../components/externalid/ExternalIdCard';
 import ExternalIdDialog from '../components/externalid/ExternalIdDialog';
@@ -23,7 +23,7 @@ class ExternalId extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | External ID';
+    document.title = 'xray | External ID';
   }
 
   onRefresh() {

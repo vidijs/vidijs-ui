@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import Typography from '@material-ui/core/Typography';
 
-import { collection as api } from '@vidijs/vidijs-api';
+import { collection as api } from '@vidispine/vdt-api';
 import CollectionContentParams from '../../components/collection/CollectionContentParams';
 import CollectionContentTable from '../../components/collection/CollectionContentTable';
 import CollectionMetadataEditor from '../../components/collection/CollectionMetadataEditor';
@@ -39,7 +39,7 @@ class CollectionContent extends React.PureComponent {
     const { collectionId: prevCollectionId } = this.props;
     if (prevCollectionId !== collectionId) {
       this.onFetch(collectionId);
-      document.title = `vidi.js | Collection | ${collectionId}`;
+      document.title = `xray | Collection | ${collectionId}`;
     }
   }
 

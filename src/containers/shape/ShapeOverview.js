@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape as api } from '@vidijs/vidijs-api';
+import { shape as api } from '@vidispine/vdt-api';
 
 import withSnackbar from '../../hoc/withSnackbar';
 import ShapeParams from '../../components/shape/ShapeParams';
@@ -24,7 +24,7 @@ class ShapeOverview extends React.PureComponent {
     const { shapeId: prevItemId } = this.props;
     if (prevItemId !== shapeId) {
       this.onFetch(itemId, shapeId);
-      document.title = `vidi.js | Shape | ${shapeId}`;
+      document.title = `xray | Shape | ${shapeId}`;
     }
   }
 

@@ -7,7 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { connect } from 'react-redux';
 import { submit } from 'redux-form';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import Divider from '@material-ui/core/Divider';
 
 import ResourceForm from './ResourceForm';
@@ -96,7 +96,7 @@ class ResourceEditor extends React.PureComponent {
           && (
           <>
             <Divider />
-            <ExpansionPanelActions>
+            <AccordionActions>
               <Button
                 size="small"
                 onClick={this.toggleEdit}
@@ -110,7 +110,7 @@ class ResourceEditor extends React.PureComponent {
               >
                 Save
               </Button>
-            </ExpansionPanelActions>
+            </AccordionActions>
           </>
           )}
       </>

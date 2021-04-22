@@ -11,6 +11,7 @@ import CollectionCollection from './collection/CollectionCollection';
 import AccessControl from './AccessControl';
 import AccessControlMerged from './AccessControlMerged';
 import StorageRule from './StorageRule';
+import DeletionLockList from './DeletionLockList';
 
 import TitleHeader from '../components/ui/TitleHeader';
 import CollectionRemove from '../components/collection/CollectionRemove';
@@ -24,6 +25,7 @@ const COLLECTION_CONTENT_TAB = 'COLLECTION_CONTENT_TAB';
 const ACCESS_TAB = 'ACCESS_TAB';
 const ACCESSMERGED_TAB = 'ACCESSMERGED_TAB';
 const STORAGERULE_TAB = 'STORAGERULE_TAB';
+const DELETIONLOCK_TAB = 'DELETIONLOCK_TAB';
 const COLLECTION_REMOVE_DIALOG = 'COLLECTION_REMOVE_DIALOG';
 const COLLECTION_ACCESSCONTROL_ADD_DIALOG = 'COLLECTION_ACCESSCONTROL_ADD_DIALOG';
 
@@ -34,6 +36,7 @@ const TAB_TITLE = [
   { tab: ACCESS_TAB, listText: 'Direct Access', component: AccessControl },
   { tab: ACCESSMERGED_TAB, listText: 'Merged Access', component: AccessControlMerged },
   { tab: STORAGERULE_TAB, listText: 'Storage Rules', component: StorageRule },
+  { tab: DELETIONLOCK_TAB, listText: 'Deletion Locks', component: DeletionLockList },
 ];
 
 const listComponent = ({ onChangeTab, tabValue }) => (
@@ -54,7 +57,7 @@ const listComponent = ({ onChangeTab, tabValue }) => (
 class Collection extends React.PureComponent {
   componentDidMount() {
     const { collectionId } = this.props;
-    document.title = `vidi.js | Collection | ${collectionId}`;
+    document.title = `xray | Collection | ${collectionId}`;
   }
 
   render() {

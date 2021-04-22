@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import ReactJson from 'react-json-view';
-import { utils as api } from '@vidijs/vidijs-api';
+import { utils as api } from '@vidispine/vdt-api';
 
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';

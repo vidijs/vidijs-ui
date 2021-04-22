@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { errorlog as api } from '@vidijs/vidijs-api';
+import { errorlog as api } from '@vidispine/vdt-api';
 import ErrorLogTitle from '../components/errorlog/ErrorLogTitle';
 import ErrorLogCard from '../components/errorlog/ErrorLogCard';
 import withSnackbar from '../hoc/withSnackbar';
@@ -16,7 +16,7 @@ class ErrorLog extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Error Log';
+    document.title = 'xray | Error Log';
     this.onRefresh();
   }
 

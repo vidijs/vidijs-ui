@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { selftest as api } from '@vidijs/vidijs-api';
+import { selftest as api } from '@vidispine/vdt-api';
 
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -10,6 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import HelpIcon from '@material-ui/icons/HelpOutline';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import { withModalNoRouter } from '../hoc/withModal';
 import { withSnackbarNoRouter } from '../hoc/withSnackbar';
@@ -22,11 +23,8 @@ import GitHubIcon from '../components/ui/GitHubIcon';
 const INIT_DIALOG = 'INIT_DIALOG';
 const HELP_DIALOG = 'HELP_DIALOG';
 
-const {
-  REACT_APP_UNSPLASH_DISABLE,
-  REACT_APP_UNSPLASH_URL = 'https://source.unsplash.com/collection/8534454/800x600/daily',
-  REACT_APP_VERSION,
-} = process.env;
+const { REACT_APP_VERSION } = process.env;
+const theme = (outerTheme) => createMuiTheme({ ...outerTheme, palette: { type: 'light' } });
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -43,7 +41,7 @@ class Login extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js';
+    document.title = 'xray';
     const { baseUrl } = this.props;
     if (baseUrl) {
       this.onRefresh();
@@ -116,8 +114,9 @@ class Login extends React.PureComponent {
       queryParams: { autoRefresh: true, seconds: 604800 },
       baseUrl,
     };
+    const { status } = selfTestDocument || {};
     return (
-      <>
+      <ThemeProvider theme={theme}>
         <Grid container>
           <Grid item sm={4}>
             <Card elevation={0} square style={{ height: '100vh' }}>
@@ -137,6 +136,7 @@ class Login extends React.PureComponent {
                     initialValues={initialValues}
                     onSuccess={this.onSuccess}
                     onTestUrl={this.onTestUrl}
+                    status={status}
                   />
                 </Grid>
               </Grid>
@@ -161,7 +161,7 @@ class Login extends React.PureComponent {
                       rel="noopener noreferrer"
                       style={{ marginRight: 5 }}
                     >
-                      vidijs-ui
+                      xray
                     </Link>
                     <Typography
                       variant="body2"
@@ -193,11 +193,8 @@ class Login extends React.PureComponent {
           <Grid
             item
             sm={8}
-            style={REACT_APP_UNSPLASH_DISABLE ? {
-              background: 'linear-gradient(to bottom right, #C33764, #1D2671)',
-            } : {
-              backgroundImage: `url("${REACT_APP_UNSPLASH_URL}")`,
-              backgroundSize: 'cover',
+            style={{
+              background: 'linear-gradient(-45deg,#b0c800,#0068a9 0,#0068a9 33%,#002749 100%,#b0c800 0)',
             }}
             container
             direction="column"
@@ -213,8 +210,9 @@ class Login extends React.PureComponent {
         />
         <LoginHelpDialog
           dialogName={HELP_DIALOG}
+          baseUrl={baseUrl}
         />
-      </>
+      </ThemeProvider>
     );
   }
 }

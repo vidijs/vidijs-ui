@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import LogReportCard from '../../components/configuration/logreport/LogReportCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
@@ -18,7 +18,7 @@ class LogReport extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | Log Report';
+    document.title = 'xray | Configuration | Log Report';
   }
 
   onRefresh() {

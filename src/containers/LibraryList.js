@@ -25,7 +25,7 @@ class LibraryList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Library';
+    document.title = 'xray | Library';
     this.onRefresh();
   }
 

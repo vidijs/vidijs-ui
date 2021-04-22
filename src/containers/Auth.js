@@ -1,6 +1,6 @@
 import React from 'react';
 import { withCookies } from 'react-cookie';
-import { utils as api } from '@vidijs/vidijs-api';
+import { utils as api } from '@vidispine/vdt-api';
 
 import {
   AUTH_TOKEN,

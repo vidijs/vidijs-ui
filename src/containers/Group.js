@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { group as api } from '@vidijs/vidijs-api';
+import { group as api } from '@vidispine/vdt-api';
 import GroupTitle from '../components/group/GroupTitle';
 import GroupCard from '../components/group/GroupCard';
 import GroupChildCard from '../components/group/GroupChildCard';
@@ -27,14 +27,14 @@ class Group extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { groupName } = this.props;
-    document.title = `vidi.js | Group | ${groupName}`;
+    document.title = `xray | Group | ${groupName}`;
   }
 
   UNSAFE_componentWillReceiveProps({ groupName }) {
     const { groupName: prevGroupName } = this.props;
     if (prevGroupName !== groupName) {
       this.onFetch(groupName);
-      document.title = `vidi.js | Group | ${groupName}`;
+      document.title = `xray | Group | ${groupName}`;
     }
   }
 

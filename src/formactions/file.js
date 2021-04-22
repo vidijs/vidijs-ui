@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { file as api } from '@vidijs/vidijs-api';
+import { file as api } from '@vidispine/vdt-api';
 
 export function onUpdateFileState(form, dispatch, props) {
   const fileId = props.fileId || form.fileId;

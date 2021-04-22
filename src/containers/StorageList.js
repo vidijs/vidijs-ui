@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { storage as api } from '@vidijs/vidijs-api';
+import { storage as api } from '@vidispine/vdt-api';
 import StorageListTitle from '../components/storage/StorageListTitle';
 import StorageListCard from '../components/storage/StorageListCard';
 import StorageDialog from '../components/storage/StorageDialog';
@@ -22,7 +22,7 @@ class StorageList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Storage';
+    document.title = 'xray | Storage';
     this.onRefresh();
   }
 

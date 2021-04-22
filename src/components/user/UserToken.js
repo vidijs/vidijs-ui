@@ -74,7 +74,7 @@ function UserToken({
                 onSubmitSuccess={onSubmitSuccess}
                 onSubmitFail={onSubmitFail}
                 onCancel={onClose}
-                userName={userName}
+                runAs={userName}
               />
             </DialogContent>
             <Divider />

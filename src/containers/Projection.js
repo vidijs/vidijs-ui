@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { projection as api } from '@vidijs/vidijs-api';
+import { projection as api } from '@vidispine/vdt-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import ProjectionCard from '../components/projection/ProjectionCard';
 import ProjectionRemove from '../components/projection/ProjectionRemove';
@@ -25,7 +25,7 @@ class Projection extends React.PureComponent {
 
   componentDidMount() {
     const { projectionId } = this.props;
-    document.title = `vidi.js | Projection | ${projectionId}`;
+    document.title = `xray | Projection | ${projectionId}`;
     this.onRefresh();
   }
 

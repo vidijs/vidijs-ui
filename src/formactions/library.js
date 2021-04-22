@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { library as api } from '@vidijs/vidijs-api';
+import { library as api } from '@vidispine/vdt-api';
 
 export function onCreate(form) {
   const { queryParams, itemListDocument } = form;

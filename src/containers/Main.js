@@ -1,5 +1,4 @@
 import React from 'react';
-import grey from '@material-ui/core/colors/grey';
 import { Route } from 'react-router-dom';
 import { compose } from 'redux';
 import { withModalNoRouter } from '../hoc/withModal';
@@ -90,6 +89,8 @@ import ImportImp from './ImportImp';
 import UserKey from './UserKey';
 import ScheduledRequestList from './ScheduledRequestList';
 import Stitch from './Stitch';
+import DeletionLockList from './DeletionLockList';
+import DeletionLock from './DeletionLock';
 
 import TopAppBar from './TopAppBar';
 import FullScreenDialog from './FullScreenDialog';
@@ -129,7 +130,6 @@ function Main({
       />
       <main
         style={{
-          backgroundColor: grey[200],
           marginLeft: '10px',
           marginRight: '10px',
           marginTop: 48,
@@ -220,6 +220,8 @@ function Main({
         <Route exact path="/transfer/" component={Transfer} />
         <Route exact path="/scheduled-request/" component={ScheduledRequestList} />
         <Route exact path="/stitch/" component={Stitch} />
+        <Route exact path="/deletion-lock/" component={DeletionLockList} />
+        <Route exact path="/deletion-lock/:lockId/" component={DeletionLock} />
         <Route exact path="/external-id/:entityType/:entityId" component={ExternalId} />
         <Route exact path="/external-id/:entityType/:entitySubType/:entityId" component={ExternalId} />
       </main>

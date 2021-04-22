@@ -1,4 +1,4 @@
-import { utils as api } from '@vidijs/vidijs-api';
+import { utils as api } from '@vidispine/vdt-api';
 
 export function browserLogin({
   token,
@@ -8,7 +8,7 @@ export function browserLogin({
 }) {
   localStorage.setItem('vsUserToken', token);
   localStorage.setItem('vsBaseUrl', baseUrl);
-  api.clientLogin({ baseUrl, token });
+  api.login({ baseURL: baseUrl, token });
   if (runAs) {
     localStorage.setItem('vsUsername', runAs);
     localStorage.setItem('vsRunAs', runAs);

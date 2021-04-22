@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import startCase from 'lodash.startcase';
 
-import { resource as api } from '@vidijs/vidijs-api';
+import { resource as api } from '@vidispine/vdt-api';
 import ResourceTitle from '../components/resource/ResourceTitle';
 import ResourceCard from '../components/resource/ResourceCard';
 import ResourceRemove from '../components/resource/ResourceRemove';
@@ -24,7 +24,7 @@ class Resource extends React.PureComponent {
 
   componentDidMount() {
     const { resourceType, resourceId } = this.props;
-    document.title = `vidi.js | Resource | ${startCase(resourceType)} | ${resourceId}`;
+    document.title = `xray | Resource | ${startCase(resourceType)} | ${resourceId}`;
     this.onRefresh();
   }
 

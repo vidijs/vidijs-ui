@@ -1,5 +1,5 @@
 import { SubmissionError } from 'redux-form';
-import { auditlog as api } from '@vidijs/vidijs-api';
+import { auditlog as api } from '@vidispine/vdt-api';
 
 import * as actions from '../actions';
 
@@ -16,7 +16,7 @@ export function onSubmit(form, dispatch, props) {
     sort: orderDirection,
     ...form,
   };
-  return api.listAuditLog({ queryParams })
+  return api.listAuditLog({ path: '/API/log/', queryParams }) // path broken in vdt-api@0.13.0
     .then((response) => response.data)
     .then((auditLogDocument) => ({ auditLogDocument }))
     .catch((error) => {

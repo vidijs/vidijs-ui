@@ -42,7 +42,7 @@ function StorageListStorageCard(props) {
 const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[100],
+      backgroundColor: theme.palette.action.hover,
     },
   },
 });

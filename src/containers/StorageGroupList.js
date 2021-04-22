@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { storagegroup as api } from '@vidijs/vidijs-api';
+import { storagegroup as api } from '@vidispine/vdt-api';
 import StorageGroupListTitle from '../components/storagegroup/StorageGroupListTitle';
 import StorageGroupListCard from '../components/storagegroup/StorageGroupListCard';
 import StorageGroupDialog from '../components/storagegroup/StorageGroupDialog';
@@ -22,7 +22,7 @@ class StorageGroupList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Storage Group';
+    document.title = 'xray | Storage Group';
     this.onRefresh();
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { fieldgroup as api } from '@vidijs/vidijs-api';
+import { fieldgroup as api } from '@vidispine/vdt-api';
 import Select from '../ui/Select';
 
 export const loadFieldGroupOptions = (inputValue) => new Promise((resolve, reject) => {

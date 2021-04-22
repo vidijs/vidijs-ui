@@ -1,5 +1,3 @@
-import MUITable from '@material-ui/core/Table';
+import Table from '@material-ui/core/Table';
 
-import withDivComponent from '../../hoc/withDivComponent';
-
-export default withDivComponent(MUITable);
+export default Table;

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { metadata as api } from '@vidijs/vidijs-api';
+import { metadata as api } from '@vidispine/vdt-api';
 import * as actions from '../actions';
 
 export function onUpdateSimpleMetadataSubmit(form, dispatch, props) {

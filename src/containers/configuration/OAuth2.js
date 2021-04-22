@@ -1,5 +1,5 @@
 import React from 'react';
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 
 import AuthCard from '../../components/configuration/auth/AuthCard';
 import AuthRemove from '../../components/configuration/auth/AuthRemove';
@@ -21,7 +21,7 @@ class OAuth2 extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | OAuth2';
+    document.title = 'xray | Configuration | OAuth2';
   }
 
   onRefresh() {

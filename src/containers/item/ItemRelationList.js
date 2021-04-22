@@ -1,6 +1,6 @@
 import React from 'react';
 import { compose } from 'redux';
-import { item as itemApi } from '@vidijs/vidijs-api';
+import { item as itemApi } from '@vidispine/vdt-api';
 
 import ItemRelationListParams, { ITEM_RELATION_LIST_PARAMS_FORM } from '../../components/item/ItemRelationListParams';
 import ItemRelationListDisplay from '../../components/item/ItemRelationList';
@@ -33,7 +33,7 @@ class ItemRelation extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onRefresh(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

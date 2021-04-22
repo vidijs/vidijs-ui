@@ -5,7 +5,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import startCase from 'lodash.startcase';
 
-import { resource as api } from '@vidijs/vidijs-api';
+import { resource as api } from '@vidispine/vdt-api';
 
 export default function ResourceRemove({
   closeModal,

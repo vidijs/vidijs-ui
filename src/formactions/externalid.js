@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { externalid as api } from '@vidijs/vidijs-api';
+import { externalid as api } from '@vidispine/vdt-api';
 
 export function onUpdateNamespace(form, dispatch, props) {
   const { externalIdentifierNamespaceDocument } = form;

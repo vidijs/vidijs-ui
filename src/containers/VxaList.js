@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { vxa as api } from '@vidijs/vidijs-api';
+import { vxa as api } from '@vidispine/vdt-api';
 import VxaListCard from '../components/vxa/VxaListCard';
 import VxaDialog from '../components/vxa/VxaDialog';
 import VxaConfigurationDialog from '../components/vxa/VxaConfigurationDialog';
@@ -24,7 +24,7 @@ class VxaList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Agent';
+    document.title = 'xray | Agent';
   }
 
   onRefresh() {

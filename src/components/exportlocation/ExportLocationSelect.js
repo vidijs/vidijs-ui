@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { exportlocation as api } from '@vidijs/vidijs-api';
+import { exportlocation as api } from '@vidispine/vdt-api';
 import Select from '../ui/Select';
 
 export const loadExportLocationOptions = (inputValue) => new Promise((resolve, reject) => {

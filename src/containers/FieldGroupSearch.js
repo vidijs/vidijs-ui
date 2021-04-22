@@ -48,7 +48,7 @@ class FieldGroupSearch extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Field Group';
+    document.title = 'xray | Field Group';
     this.onRefresh();
   }
 

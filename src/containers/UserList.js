@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { user as api } from '@vidijs/vidijs-api';
+import { user as api } from '@vidispine/vdt-api';
 import UserListTitle from '../components/user/UserListTitle';
 import UserListCard from '../components/user/UserListCard';
 import UserWizard from '../components/user/UserWizard';
@@ -25,7 +25,7 @@ class UserList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | User';
+    document.title = 'xray | User';
   }
 
   onRefresh() {

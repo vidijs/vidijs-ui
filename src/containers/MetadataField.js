@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { metadatafield as api } from '@vidijs/vidijs-api';
+import { metadatafield as api } from '@vidispine/vdt-api';
 
 import MetadataFieldTitle from '../components/metadatafield/MetadataFieldTitle';
 import MetadataFieldCard from '../components/metadatafield/MetadataFieldCard';
@@ -22,7 +22,7 @@ class MetadataField extends React.PureComponent {
 
   componentDidMount() {
     const { fieldName } = this.props;
-    document.title = `vidi.js | Metadata Field | ${fieldName}`;
+    document.title = `xray | Metadata Field | ${fieldName}`;
     this.onRefresh();
   }
 

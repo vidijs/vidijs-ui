@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { transfer as api } from '@vidijs/vidijs-api';
+import { transfer as api } from '@vidispine/vdt-api';
 
 export function onUpdateTransferPriority(form, dispatch, props) {
   const transferId = props.transferId || form.transferId;

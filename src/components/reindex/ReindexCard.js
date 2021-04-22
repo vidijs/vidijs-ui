@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
-import { reindex as api } from '@vidijs/vidijs-api';
+import { reindex as api } from '@vidispine/vdt-api';
 import SquareCard from '../ui/SquareCard';
 import ReindexDisplay from './ReindexDisplay';
 import ReindexStatus from './ReindexStatus';

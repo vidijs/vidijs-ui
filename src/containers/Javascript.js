@@ -11,7 +11,7 @@ export default class Javascript extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Javascript Test';
+    document.title = 'xray | Javascript Test';
   }
 
   render() {

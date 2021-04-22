@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { vxa as api } from '@vidijs/vidijs-api';
+import { vxa as api } from '@vidispine/vdt-api';
 import VxaTitle from '../components/vxa/VxaTitle';
 import VxaCard from '../components/vxa/VxaCard';
 import VxaRemove from '../components/vxa/VxaRemove';
@@ -22,7 +22,7 @@ class Vxa extends React.PureComponent {
   componentDidMount() {
     this.onRefresh();
     const { vxaUuid } = this.props;
-    document.title = `vidi.js | Agent | ${vxaUuid}`;
+    document.title = `xray | Agent | ${vxaUuid}`;
   }
 
   onRefresh() {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import CorsCard from '../../components/configuration/cors/CorsCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
@@ -18,7 +18,7 @@ class Cors extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | CORS';
+    document.title = 'xray | Configuration | CORS';
   }
 
   onRefresh() {

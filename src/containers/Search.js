@@ -48,7 +48,7 @@ class Search extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Search';
+    document.title = 'xray | Search';
     this.onRefresh();
   }
 

@@ -4,7 +4,7 @@ import ImportRawWizard, { EDIT_IMPORTRAW_FORM } from '../../components/import/Im
 
 class ImportRaw extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Upload';
+    document.title = 'xray | Import | Upload';
   }
 
   componentWillUnmount() {

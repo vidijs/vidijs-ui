@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { documentmetadata as api } from '@vidijs/vidijs-api';
+import { documentmetadata as api } from '@vidispine/vdt-api';
 import TitleHeader from '../components/ui/TitleHeader';
 import DocumentMetadataListCard from '../components/documentmetadata/DocumentMetadataListCard';
 import DocumentMetadataCreate from '../components/documentmetadata/DocumentMetadataCreate';
@@ -26,7 +26,7 @@ class DocumentMetadataList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Document';
+    document.title = 'xray | Document';
     this.onRefresh();
   }
 

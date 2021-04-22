@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { service as api } from '@vidijs/vidijs-api';
+import { service as api } from '@vidispine/vdt-api';
 import ServiceTitle from '../components/service/ServiceTitle';
 import ServiceListCard from '../components/service/ServiceListCard';
 
@@ -17,7 +17,7 @@ class Service extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Service';
+    document.title = 'xray | Service';
   }
 
   onRefresh() {

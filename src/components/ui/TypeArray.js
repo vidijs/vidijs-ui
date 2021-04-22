@@ -8,7 +8,7 @@ import withErrorBoundary from '../../hoc/withErrorBoundary';
 const hoverStyle = (theme) => ({
   onHover: {
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
 });
@@ -35,6 +35,7 @@ const TypeArray = ({
   dense = false,
   hideNoValue = false,
   titleStartCase = true,
+  arrayKey,
 }) => {
   if (hideNoValue && value === undefined) { return null; }
   if (hideNoValue && value.length === 0) { return null; }
@@ -51,7 +52,7 @@ const TypeArray = ({
         <div
           className={hover ? classes.onHover : undefined}
           style={dense ? undefined : style.marginLeft}
-          key={index} // eslint-disable-line react/no-array-index-key
+          key={arrayKey ? thisValue[arrayKey] : index}
         >
           { (title && !titleKey)
           && (

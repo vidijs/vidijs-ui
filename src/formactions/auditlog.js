@@ -1,10 +1,11 @@
 import { SubmissionError } from 'redux-form';
 
-import { auditlog as api } from '@vidijs/vidijs-api';
+import { auditlog as api } from '@vidispine/vdt-api';
 
 export function onAuditList(form) {
   const { queryParams } = form;
   return api.listAuditLog({
+    path: '/API/log/', // path broken in vdt-api@0.13.0
     queryParams,
   })
     .catch((error) => {

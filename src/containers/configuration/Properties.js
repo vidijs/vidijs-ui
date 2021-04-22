@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import PropertiesCard from '../../components/configuration/properties/PropertiesCard';
 import PropertiesDialog from '../../components/configuration/properties/PropertiesDialog';
 
@@ -19,7 +19,7 @@ class Properties extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Configuration Properties';
+    document.title = 'xray | Configuration Properties';
     this.onRefresh();
   }
 

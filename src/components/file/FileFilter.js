@@ -3,12 +3,12 @@ import { compose } from 'redux';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 
 import * as formActions from '../../formactions/file';
 import FileFilterForm from './FileFilterForm';
@@ -44,13 +44,13 @@ function FileFilter({
     },
   };
   return (
-    <ExpansionPanel>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="subtitle2" color="textSecondary">
           File List Options
         </Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      </AccordionSummary>
+      <AccordionDetails>
         <FileFilterForm
           form={form}
           onSubmit={formActions.onFileList}
@@ -60,9 +60,9 @@ function FileFilter({
           destroyOnUnmount={false}
           initialValues={initialValues}
         />
-      </ExpansionPanelDetails>
+      </AccordionDetails>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(form)}
@@ -76,8 +76,8 @@ function FileFilter({
         >
           Filter
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

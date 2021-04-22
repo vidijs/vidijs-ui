@@ -1,5 +1,7 @@
 export default function JobMetadataVariant(key) {
   if (key.startsWith('transcodeShapeDocument')) return 'xml';
+  if (key.startsWith('assetMapShapeDocument')) return 'xml';
+  if (key.endsWith('transcodePreset')) return 'xml';
   switch (key) {
     case 'item':
       return 'itemId';
@@ -34,6 +36,12 @@ export default function JobMetadataVariant(key) {
     case 'metadata':
       return 'xml';
     case 'importCompositionPlaylists':
+      return 'xml';
+    case 'shapeListDocument':
+      return 'xml';
+    case 'importAssetMap':
+      return 'xml';
+    case 'importPackingList':
       return 'xml';
     case 'originalShapeIdsStruct':
       return 'json';

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { taskdefinition as api } from '@vidijs/vidijs-api';
+import { taskdefinition as api } from '@vidispine/vdt-api';
 
 export function onCreate(form) {
   const { taskDefinitionDocument } = form;

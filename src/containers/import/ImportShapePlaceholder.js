@@ -4,7 +4,7 @@ import ImportShapePlaceholderWizard, { EDIT_IMPORTSHAPEPLACEHOLDER_FORM } from '
 
 class ImportShapePlaceholder extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Shape Placeholder';
+    document.title = 'xray | Import | Shape Placeholder';
   }
 
   componentWillUnmount() {

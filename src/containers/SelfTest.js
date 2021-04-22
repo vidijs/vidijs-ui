@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { selftest as api } from '@vidijs/vidijs-api';
+import { selftest as api } from '@vidispine/vdt-api';
 import SelfTestTitle from '../components/selftest/SelfTestTitle';
 import SelfTestListCard from '../components/selftest/SelfTestListCard';
 
@@ -18,7 +18,7 @@ class SelfTest extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Self Test';
+    document.title = 'xray | Self Test';
   }
 
   onRefresh() {

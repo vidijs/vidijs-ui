@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { autoimport as api } from '@vidijs/vidijs-api';
+import { autoimport as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { autoImportRuleDocument } = form;

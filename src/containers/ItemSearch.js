@@ -54,8 +54,8 @@ class ItemSearch extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Item';
-    this.onRefresh();
+    document.title = 'xray | Item';
+    setTimeout(this.onRefresh, 10); // wait for form to initialize
   }
 
   onRefresh() {

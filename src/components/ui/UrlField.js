@@ -10,6 +10,17 @@ import encodeUrl from '../../utils/encodeUrl';
 import decodeUrl from '../../utils/decodeUrl';
 import * as scheme from '../../const/UrlScheme';
 
+const URIComponentTextField = ({ onChange, value, ...props }) => (
+  <TextField
+    value={decodeURIComponent(value)}
+    onChange={({ target: { value: newValue, ...target }, ...event }) => onChange({
+      ...event,
+      target: { ...target, value: encodeURIComponent(newValue) },
+    })}
+    {...props}
+  />
+);
+
 class DynamicSelect extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -104,13 +115,13 @@ const S3Form = ({
       onBlur={onPathBlur('path', onChange('path'))}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Access Key"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Secret Key"
       value={value.password || ''}
       onChange={onChange('password')}
@@ -193,6 +204,7 @@ const S3Form = ({
       onChange={onChange('queryParams.ssl')}
       label="Use SSL"
     >
+      <MenuItem value="" />
       <MenuItem value="true">True</MenuItem>
       <MenuItem value="false">False</MenuItem>
     </TextField>
@@ -216,13 +228,13 @@ const Ds3Form = ({
       onChange={onChange('path')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Access Key"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Secret Key"
       value={value.password || ''}
       onChange={onChange('password')}
@@ -273,7 +285,7 @@ const AzureForm = ({
       onChange={onChange('path')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Access Key"
       value={value.username || ''}
       onChange={onChange('username')}
@@ -293,7 +305,7 @@ const GsForm = ({
       onChange={onChange('host')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Access Key"
       value={value.username || ''}
       onChange={onChange('username')}
@@ -325,13 +337,13 @@ const VidinetForm = ({
       onChange={onChange('host')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Access Key"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Secret Key"
       value={value.password || ''}
       onChange={onChange('password')}
@@ -358,13 +370,13 @@ const FtpForm = ({
       onChange={onChange('path')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Username"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Password"
       value={value.password || ''}
       onChange={onChange('password')}
@@ -391,13 +403,13 @@ const SftpForm = ({
       onChange={onChange('path')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Username"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="Password"
       value={value.password || ''}
       onChange={onChange('password')}
@@ -434,13 +446,13 @@ const HttpForm = ({
     { showHttpCreds
       && (
       <>
-        <TextField
+        <URIComponentTextField
           label="URL Username"
           value={value.username || ''}
           onChange={onChange('username')}
           fullWidth
         />
-        <TextField
+        <URIComponentTextField
           label="URL Password"
           value={value.password || ''}
           onChange={onChange('password')}
@@ -479,13 +491,13 @@ const HttpsForm = ({
     { showHttpCreds
       && (
       <>
-        <TextField
+        <URIComponentTextField
           label="URL Username"
           value={value.username || ''}
           onChange={onChange('username')}
           fullWidth
         />
-        <TextField
+        <URIComponentTextField
           label="URL Password"
           value={value.password || ''}
           onChange={onChange('password')}
@@ -514,13 +526,13 @@ const OmmsForm = ({
       onChange={onChange('path')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="User ID"
       value={value.username || ''}
       onChange={onChange('username')}
       fullWidth
     />
-    <TextField
+    <URIComponentTextField
       label="User Key"
       value={value.password || ''}
       onChange={onChange('password')}

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { vsimport as api } from '@vidijs/vidijs-api';
+import { vsimport as api } from '@vidispine/vdt-api';
 
 export function onImportUri(form) {
   const { queryParams, metadataDocument } = form;

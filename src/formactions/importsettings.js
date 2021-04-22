@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { importsettings as api } from '@vidijs/vidijs-api';
+import { importsettings as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
   const { settingsId } = props;

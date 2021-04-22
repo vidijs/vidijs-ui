@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { job as api } from '@vidijs/vidijs-api';
+import { job as api } from '@vidispine/vdt-api';
 import JobListCard from '../../components/job/JobListCard';
 import withSnackbar from '../../hoc/withSnackbar';
 
@@ -34,7 +34,7 @@ class ItemJob extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

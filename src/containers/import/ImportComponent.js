@@ -4,7 +4,7 @@ import withFormActions from '../../hoc/withFormActions';
 
 class ImportComponent extends React.PureComponent {
   componentDidMount() {
-    document.title = 'vidi.js | Import | Component';
+    document.title = 'xray | Import | Component';
   }
 
   componentWillUnmount() {

@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { storagegroup as api } from '@vidijs/vidijs-api';
+import { storagegroup as api } from '@vidispine/vdt-api';
 
 export default function StorageGroupRemove({
   closeModal,

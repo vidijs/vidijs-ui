@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { access as api } from '@vidijs/vidijs-api';
+import { access as api } from '@vidispine/vdt-api';
 
 import AccessControlList from '../components/access/AccessControlList';
 import AccessControlRemove from '../components/access/AccessControlRemove';

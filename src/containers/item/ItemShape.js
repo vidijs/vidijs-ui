@@ -1,5 +1,5 @@
 import React from 'react';
-import { shape as api } from '@vidijs/vidijs-api';
+import { shape as api } from '@vidispine/vdt-api';
 import UriListCard from '../../components/ui/UriListCard';
 import ShapeListParams from '../../components/shape/ShapeListParams';
 
@@ -24,7 +24,7 @@ class ItemShape extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

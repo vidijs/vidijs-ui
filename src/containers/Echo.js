@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { submit, SubmissionError } from 'redux-form';
 
-import { debug as api } from '@vidijs/vidijs-api';
+import { debug as api } from '@vidispine/vdt-api';
 import EchoCard from '../components/debug/EchoCard';
 import { openSnackBar } from '../actions/ui';
 
@@ -13,7 +13,7 @@ class Echo extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | XML Echo';
+    document.title = 'xray | XML Echo';
   }
 
   onSubmit(form) {

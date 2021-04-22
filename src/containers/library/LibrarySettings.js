@@ -1,5 +1,5 @@
 import React from 'react';
-import { library as api } from '@vidijs/vidijs-api';
+import { library as api } from '@vidispine/vdt-api';
 import LibrarySettingsCard from '../../components/library/LibrarySettingsCard';
 
 import withSnackbar from '../../hoc/withSnackbar';
@@ -23,7 +23,7 @@ class LibrarySettings extends React.PureComponent {
     const { libraryId: prevLibraryId } = this.props;
     if (prevLibraryId !== libraryId) {
       this.onFetch(libraryId);
-      document.title = `vidi.js | Library | ${libraryId}`;
+      document.title = `xray | Library | ${libraryId}`;
     }
   }
 

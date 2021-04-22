@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { license as api } from '@vidijs/vidijs-api';
+import { license as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form) {
   const { license } = form;

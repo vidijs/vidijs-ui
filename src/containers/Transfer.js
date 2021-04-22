@@ -18,7 +18,7 @@ class Transfer extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Transfers';
+    document.title = 'xray | Transfers';
     this.onRefresh();
   }
 

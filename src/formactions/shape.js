@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { shape as api } from '@vidijs/vidijs-api';
+import { shape as api } from '@vidispine/vdt-api';
 
 export function onCreateShapeEssenceImport(form, dispatch, props) {
   const { queryParams } = form;

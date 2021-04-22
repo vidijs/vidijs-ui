@@ -1,9 +1,9 @@
-import { utils as api } from '@vidijs/vidijs-api';
+import { utils as api } from '@vidispine/vdt-api';
 
 export function browserLogout() {
   localStorage.removeItem('vsUserToken');
   localStorage.removeItem('vsRunAs');
-  api.clientLogout();
+  api.logout();
   delete api.defaultClient.defaults.headers.RunAs;
 }
 

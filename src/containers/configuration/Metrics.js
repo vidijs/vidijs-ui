@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import MetricsCard from '../../components/configuration/metrics/MetricsCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
@@ -18,7 +18,7 @@ class Metrics extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | Metrics';
+    document.title = 'xray | Configuration | Metrics';
   }
 
   onRefresh() {

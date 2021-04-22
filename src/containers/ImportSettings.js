@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { importsettings as api } from '@vidijs/vidijs-api';
+import { importsettings as api } from '@vidispine/vdt-api';
 import ImportSettingsTitle from '../components/importsettings/ImportSettingsTitle';
 import ImportSettingsCard from '../components/importsettings/ImportSettingsCard';
 import ImportSettingsRemove from '../components/importsettings/ImportSettingsRemove';
@@ -24,7 +24,7 @@ class ImportSettings extends React.PureComponent {
 
   componentDidMount() {
     const { settingsId } = this.props;
-    document.title = `vidi.js | Import Settings | ${settingsId}`;
+    document.title = `xray | Import Settings | ${settingsId}`;
     this.onRefresh();
   }
 

@@ -4,12 +4,12 @@ import { compose } from 'redux';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionActions from '@material-ui/core/AccordionActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import ExpansionPanel from '../ui/ExpansionPanel';
+import Accordion from '../ui/Accordion';
 import ItemContentParamsForm from './ItemContentParamsForm';
 import withFormActions from '../../hoc/withFormActions';
 import withSnackbar from '../../hoc/withSnackbar';
@@ -36,13 +36,13 @@ function ItemContentParams({
     if (onFail) { onFail(error, dispatch, props); }
   };
   return (
-    <ExpansionPanel defaultExpanded>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+    <Accordion defaultExpanded>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="subtitle2" color="textSecondary">
           Item Display Options
         </Typography>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
+      </AccordionSummary>
+      <AccordionDetails>
         <ItemContentParamsForm
           form={ITEM_PARAMS_FORM}
           onSubmit={formActions.onGet}
@@ -51,9 +51,9 @@ function ItemContentParams({
           itemId={itemId}
           {...formProps}
         />
-      </ExpansionPanelDetails>
+      </AccordionDetails>
       <Divider />
-      <ExpansionPanelActions>
+      <AccordionActions>
         <Button
           size="small"
           onClick={() => resetForm(ITEM_PARAMS_FORM)}
@@ -67,8 +67,8 @@ function ItemContentParams({
         >
           Update
         </Button>
-      </ExpansionPanelActions>
-    </ExpansionPanel>
+      </AccordionActions>
+    </Accordion>
   );
 }
 

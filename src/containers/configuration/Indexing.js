@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { configuration as api } from '@vidijs/vidijs-api';
+import { configuration as api } from '@vidispine/vdt-api';
 import IndexingCard from '../../components/configuration/indexing/IndexingCard';
 
 import TitleHeader from '../../components/ui/TitleHeader';
@@ -18,7 +18,7 @@ class Indexing extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Configuration | Indexing';
+    document.title = 'xray | Configuration | Indexing';
   }
 
   onRefresh() {

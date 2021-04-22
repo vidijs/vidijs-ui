@@ -20,6 +20,7 @@ class JobList extends React.PureComponent {
     this.onChangePage = this.onChangePage.bind(this);
     this.onChangeRowsPerPage = this.onChangeRowsPerPage.bind(this);
     this.onChangeOrder = this.onChangeOrder.bind(this);
+    this.onChangeAutoRefresh = this.onChangeAutoRefresh.bind(this);
     this.state = {
       jobListDocument: undefined,
       count: undefined,
@@ -27,17 +28,30 @@ class JobList extends React.PureComponent {
       rowsPerPage: undefined,
       orderBy: undefined,
       orderDirection: undefined,
+      autoRefresh: false,
     };
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Job';
+    document.title = 'xray | Job';
     this.onRefresh();
   }
 
   onRefresh() {
     const { submitForm } = this.props;
     submitForm(JOB_FILTER_FORM);
+  }
+
+  onChangeAutoRefresh() {
+    const { autoRefresh: prevAutoRefresh } = this.state;
+    const autoRefresh = !prevAutoRefresh;
+    this.setState({ autoRefresh });
+    if (autoRefresh === true && this.timer === undefined) {
+      this.timer = setInterval(() => this.onRefresh(), 2500);
+    } else if (autoRefresh === false && this.timer !== undefined) {
+      clearInterval(this.timer);
+      this.timer = undefined;
+    }
   }
 
   onSuccess(response) {
@@ -103,6 +117,7 @@ class JobList extends React.PureComponent {
       rowsPerPage,
       orderBy,
       orderDirection,
+      autoRefresh,
     } = this.state;
     const { history } = this.props;
     return (
@@ -114,6 +129,8 @@ class JobList extends React.PureComponent {
           code={jobListDocument}
           codeModal="JobListDocument"
           createModal={JOB_CREATE_DIALOG}
+          autoRefresh={autoRefresh}
+          onChangeAutoRefresh={this.onChangeAutoRefresh}
         />
         <JobFilter
           form={JOB_FILTER_FORM}

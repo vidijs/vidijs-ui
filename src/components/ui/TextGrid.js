@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
 import startCase from 'lodash.startcase';
@@ -23,7 +24,7 @@ const hoverStyle = (theme) => ({
   onHover: {
     minHeight: '32px',
     '&:hover': {
-      backgroundColor: theme.palette.grey[200],
+      backgroundColor: theme.palette.action.hover,
     },
   },
   default: {
@@ -43,6 +44,7 @@ function SetValueComponent({
   variant,
   capitalize,
   classes,
+  to,
   ...typographyProps
 }) {
   let valueComponent = null;
@@ -88,6 +90,13 @@ function SetValueComponent({
       valueComponent = (
         <StyledTypography>
           {fromNow(value)}
+        </StyledTypography>
+      );
+      break;
+    case 'timestring':
+      valueComponent = (
+        <StyledTypography>
+          {value ? moment(value).toString() : ''}
         </StyledTypography>
       );
       break;
@@ -186,6 +195,13 @@ function SetValueComponent({
       valueComponent = (
         <StyledTypography>
           {bytesToSize(value)}
+        </StyledTypography>
+      );
+      break;
+    case 'link':
+      valueComponent = (
+        <StyledTypography>
+          {to ? <UnstyledLink to={to}>{value}</UnstyledLink> : value}
         </StyledTypography>
       );
       break;
@@ -333,7 +349,13 @@ function TextGrid({
   onClick,
   disableOnClick = true,
   noWrap = false,
+  noWrapTitle = true,
+  hideCode = false,
+  initialHideCode = true,
+  to,
 }) {
+  const [isCodeHidden, setIsCodeHidden] = React.useState(initialHideCode);
+  const toggleCode = () => setIsCodeHidden((prevState) => !prevState);
   const onTextClick = disableOnClick ? (event) => event.stopPropagation() : onClick;
   if (hideNoValue) {
     if (value === undefined) {
@@ -347,27 +369,46 @@ function TextGrid({
     return (
       <div>
         {title !== undefined
-        && (
-        <Typography
-          variant="subtitle2"
-          onClick={onTextClick}
-        >
-          {titleStartCase ? startCase(title) : title}
-        </Typography>
+          && (
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              className={hover ? classes.onHover : classes.default}
+              wrap="nowrap"
+            >
+              <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  onClick={onTextClick}
+                  noWrap={noWrapTitle}
+                >
+                  {titleStartCase ? startCase(title) : title}
+                </Typography>
+              </Grid>
+              {hideCode === true && (
+                <Button onClick={toggleCode} size="small" variant="outlined">
+                  {`${isCodeHidden ? 'Show' : 'Hide'} ${titleStartCase ? startCase(title) : title}`}
+                </Button>
+              )}
+            </Grid>
+          )}
+        {(hideCode === false || isCodeHidden === false) && (
+          <CodeMirror
+            value={value || ''}
+            onClick={onTextClick}
+            options={{
+              readOnly: true,
+              theme: 'material',
+              lineWrapping: true,
+              lineNumbers: true,
+              foldGutter: true,
+              gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+              ...codeProps,
+            }}
+          />
         )}
-        <CodeMirror
-          value={value || ''}
-          onClick={onTextClick}
-          options={{
-            readOnly: true,
-            theme: 'material',
-            lineWrapping: true,
-            lineNumbers: true,
-            foldGutter: true,
-            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-            ...codeProps,
-          }}
-        />
       </div>
     );
   }
@@ -375,28 +416,47 @@ function TextGrid({
     return (
       <div>
         {title !== undefined
-        && (
-        <Typography
-          variant="subtitle2"
-          onClick={onTextClick}
-        >
-          {titleStartCase ? startCase(title) : title}
-        </Typography>
+          && (
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              className={hover ? classes.onHover : classes.default}
+              wrap="nowrap"
+            >
+              <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  onClick={onTextClick}
+                  noWrap={noWrapTitle}
+                >
+                  {titleStartCase ? startCase(title) : title}
+                </Typography>
+              </Grid>
+              {hideCode === true && (
+                <Button onClick={toggleCode} size="small" variant="outlined">
+                  {`${isCodeHidden ? 'Show' : 'Hide'} ${titleStartCase ? startCase(title) : title}`}
+                </Button>
+              )}
+            </Grid>
+          )}
+        {(hideCode === false || isCodeHidden === false) && (
+          <CodeMirror
+            value={formatJSON(value) || ''}
+            onClick={onTextClick}
+            options={{
+              readOnly: true,
+              theme: 'material',
+              mode: 'application/json',
+              lineWrapping: true,
+              lineNumbers: true,
+              foldGutter: true,
+              gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+              ...codeProps,
+            }}
+          />
         )}
-        <CodeMirror
-          value={formatJSON(value) || ''}
-          onClick={onTextClick}
-          options={{
-            readOnly: true,
-            theme: 'material',
-            mode: 'application/json',
-            lineWrapping: true,
-            lineNumbers: true,
-            foldGutter: true,
-            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-            ...codeProps,
-          }}
-        />
       </div>
     );
   }
@@ -405,27 +465,46 @@ function TextGrid({
       <div>
         {title !== undefined
         && (
-        <Typography
-          variant="subtitle2"
-          onClick={onTextClick}
-        >
-          {titleStartCase ? startCase(title) : title}
-        </Typography>
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            className={hover ? classes.onHover : classes.default}
+            wrap="nowrap"
+          >
+            <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
+              <Typography
+                variant="subtitle2"
+                color="textSecondary"
+                onClick={onTextClick}
+                noWrap={noWrapTitle}
+              >
+                {titleStartCase ? startCase(title) : title}
+              </Typography>
+            </Grid>
+            {hideCode === true && (
+              <Button onClick={toggleCode} size="small" variant="outlined">
+                {`${isCodeHidden ? 'Show' : 'Hide'} ${titleStartCase ? startCase(title) : title}`}
+              </Button>
+            )}
+          </Grid>
         )}
-        <CodeMirror
-          value={formatXML(value) || ''}
-          onClick={onTextClick}
-          options={{
-            readOnly: true,
-            theme: 'material',
-            mode: 'xml',
-            lineWrapping: true,
-            lineNumbers: true,
-            foldGutter: true,
-            gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
-            ...codeProps,
-          }}
-        />
+        {(hideCode === false || isCodeHidden === false) && (
+          <CodeMirror
+            value={formatXML(value) || ''}
+            onClick={onTextClick}
+            options={{
+              readOnly: true,
+              theme: 'material',
+              mode: 'xml',
+              lineWrapping: true,
+              lineNumbers: true,
+              foldGutter: true,
+              gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+              ...codeProps,
+            }}
+          />
+        )}
       </div>
     );
   }
@@ -459,6 +538,7 @@ function TextGrid({
     onClick: onTextClick,
     classes,
     noWrap,
+    to,
     ...valueTypographyProps,
   });
   return (
@@ -474,7 +554,7 @@ function TextGrid({
           color="textSecondary"
           variant="subtitle2"
           onClick={onTextClick}
-          noWrap
+          noWrap={noWrapTitle}
           {...titleTypographyProps}
         >
           {titleStartCase ? startCase(title) : title}

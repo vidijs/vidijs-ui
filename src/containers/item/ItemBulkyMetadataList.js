@@ -1,5 +1,5 @@
 import React from 'react';
-import { bulkymetadata as BulkyMetadataApi } from '@vidijs/vidijs-api';
+import { bulkymetadata as BulkyMetadataApi } from '@vidispine/vdt-api';
 
 import UriListCard from '../../components/ui/UriListCard';
 import withSnackbar from '../../hoc/withSnackbar';
@@ -23,7 +23,7 @@ class ItemBulkyMetadataList extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

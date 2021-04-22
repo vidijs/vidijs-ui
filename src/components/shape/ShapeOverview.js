@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CardList from '../ui/CardList';
 import ShapeCard from './ShapeCard';
 import ShapeContainerComponentCard from './ShapeContainerComponentCard';
 import ShapeVideoComponentList from './ShapeVideoComponentList';
@@ -12,7 +13,7 @@ import ShapeMetadataCard from './ShapeMetadataCard';
 export default function ShapeOverview({ shapeDocument = {} }) {
   if (shapeDocument === undefined) { return null; }
   return (
-    <>
+    <CardList>
       <ShapeCard
         shapeDocument={shapeDocument}
       />
@@ -37,6 +38,6 @@ export default function ShapeOverview({ shapeDocument = {} }) {
       <ShapeMetadataCard
         shapeDocument={shapeDocument}
       />
-    </>
+    </CardList>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { storage as api } from '@vidijs/vidijs-api';
+import { storage as api } from '@vidispine/vdt-api';
 import Select from '../ui/Select';
 
 export const loadStorageGroupOptions = (inputValue) => new Promise((resolve, reject) => {

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { item as api } from '@vidijs/vidijs-api';
+import { item as api } from '@vidispine/vdt-api';
 
 export function onCreateExport(form, dispatch, props) {
   const { queryParams } = form;

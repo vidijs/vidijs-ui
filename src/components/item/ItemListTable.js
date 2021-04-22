@@ -52,7 +52,7 @@ export const ItemTypeRow = ({
         <TableCell
           key={fieldName}
         >
-          {itemType.terse[fieldName] && itemType.terse[fieldName].value}
+          {(itemType.terse[fieldName] && itemType.terse[fieldName].length > 0) && itemType.terse[fieldName].map(({ value }) => value).join(', ')}
         </TableCell>
       ))
     )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { taskgroup as api } from '@vidijs/vidijs-api';
+import { taskgroup as api } from '@vidispine/vdt-api';
 import TaskGroupListTitle from '../components/taskgroup/TaskGroupListTitle';
 import TaskGroupListCard from '../components/taskgroup/TaskGroupListCard';
 import TaskGroupDialog from '../components/taskgroup/TaskGroupDialog';
@@ -22,7 +22,7 @@ class TaskGroupList extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Task Group';
+    document.title = 'xray | Task Group';
     this.onRefresh();
   }
 

@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { storagerule as api } from '@vidijs/vidijs-api';
+import { storagerule as api } from '@vidispine/vdt-api';
 
 export function onUpdateEntityTag(form, dispatch, props) {
   const { storageRuleDocument } = form;

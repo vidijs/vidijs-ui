@@ -1,6 +1,6 @@
 import { SubmissionError } from 'redux-form';
 
-import { collection as api } from '@vidijs/vidijs-api';
+import { collection as api } from '@vidispine/vdt-api';
 
 export function onUpdateMetadata(form, dispatch, props) {
   const { metadataDocument = {}, matrixParams = [], queryParams } = form;

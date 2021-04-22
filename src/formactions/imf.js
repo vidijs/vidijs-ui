@@ -3,7 +3,7 @@ import { SubmissionError } from 'redux-form';
 import {
   vsimport as importApi,
   file as fileApi,
-} from '@vidijs/vidijs-api';
+} from '@vidispine/vdt-api';
 
 export function onImportImpUrl(form) {
   const { queryParams, metadataDocument } = form;

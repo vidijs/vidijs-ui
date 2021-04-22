@@ -1,5 +1,5 @@
 import React from 'react';
-import { item as api } from '@vidijs/vidijs-api';
+import { item as api } from '@vidispine/vdt-api';
 import ItemThumbnailGrid from '../../components/item/ItemThumbnailGrid';
 
 import withSnackbar from '../../hoc/withSnackbar';
@@ -23,7 +23,7 @@ class ItemThumbnail extends React.PureComponent {
     const { itemId: prevItemId } = this.props;
     if (prevItemId !== itemId) {
       this.onFetch(itemId);
-      document.title = `vidi.js | Item | ${itemId}`;
+      document.title = `xray | Item | ${itemId}`;
     }
   }
 

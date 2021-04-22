@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { exportlocation as api } from '@vidijs/vidijs-api';
+import { exportlocation as api } from '@vidispine/vdt-api';
 import ExportLocationListCard from '../components/exportlocation/ExportLocationListCard';
 import ExportLocationDialog from '../components/exportlocation/ExportLocationDialog';
 import ExportLocationListTitle from '../components/exportlocation/ExportLocationListTitle';
@@ -20,7 +20,7 @@ class ExportLocationList extends React.PureComponent {
 
   componentDidMount() {
     this.onRefresh();
-    document.title = 'vidi.js | Export Location';
+    document.title = 'xray | Export Location';
   }
 
   onRefresh() {

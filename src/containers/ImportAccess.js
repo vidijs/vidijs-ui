@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { access as api } from '@vidijs/vidijs-api';
+import { access as api } from '@vidispine/vdt-api';
 import ImportAccessTitle from '../components/importaccess/ImportAccessTitle';
 import ImportAccessCard from '../components/importaccess/ImportAccessCard';
 import ImportAccessRemove from '../components/importaccess/ImportAccessRemove';
@@ -28,7 +28,7 @@ class ImportSettings extends React.PureComponent {
 
   componentDidMount() {
     const { userName } = this.props;
-    document.title = `vidi.js | User | ${userName} | Import Access`;
+    document.title = `xray | User | ${userName} | Import Access`;
     this.onRefresh();
   }
 

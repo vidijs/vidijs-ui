@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { version as api } from '@vidijs/vidijs-api';
+import { version as api } from '@vidispine/vdt-api';
 import VersionCard from '../components/version/VersionCard';
 import VersionDialog from '../components/version/VersionDialog';
 import VersionTitle from '../components/version/VersionTitle';
@@ -18,7 +18,7 @@ class Version extends React.PureComponent {
   }
 
   componentDidMount() {
-    document.title = 'vidi.js | Version';
+    document.title = 'xray | Version';
     this.onRefresh();
   }
 

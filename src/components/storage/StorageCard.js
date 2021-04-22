@@ -1,61 +1,58 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
 
-import SquareCard from '../ui/SquareCard';
+import CardList from '../ui/CardList';
 import StorageEditor from './StorageEditor';
+import StorageMetadataEditor from './StorageMetadataEditor';
 import StorageMethodList from './StorageMethodList';
 import {
   StorageBasicForm,
-  StorageMetadataForm,
   StorageAdvancedForm,
   StorageScriptForm,
 } from './StorageForm';
 import {
   StorageBasicDisplay,
   StorageAdvancedDisplay,
-  StorageMetadataDisplay,
   StorageScriptDisplay,
 } from './StorageDisplay';
 
 export default function StorageCard(props) {
   return (
-    <>
-      <SquareCard>
+    <CardList>
+      <Card>
         <StorageEditor
           title="Settings"
           formComponent={StorageBasicForm}
           displayComponent={StorageBasicDisplay}
           {...props}
         />
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <StorageMethodList
           {...props}
         />
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <StorageEditor
           title="Advanced"
           formComponent={StorageAdvancedForm}
           displayComponent={StorageAdvancedDisplay}
           {...props}
         />
-      </SquareCard>
-      <SquareCard>
-        <StorageEditor
-          title="Metadata"
-          formComponent={StorageMetadataForm}
-          displayComponent={StorageMetadataDisplay}
+      </Card>
+      <Card>
+        <StorageMetadataEditor
           {...props}
         />
-      </SquareCard>
-      <SquareCard>
+      </Card>
+      <Card>
         <StorageEditor
           title="Scripts"
           formComponent={StorageScriptForm}
           displayComponent={StorageScriptDisplay}
           {...props}
         />
-      </SquareCard>
-    </>
+      </Card>
+    </CardList>
   );
 }
