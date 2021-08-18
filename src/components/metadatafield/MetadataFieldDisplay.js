@@ -198,6 +198,10 @@ export function MetadataFieldType({
               value={v.value}
             />
             <TextGrid
+              title="parent"
+              value={v.parent}
+            />
+            <TextGrid
               title="validationGroup"
               value={v.validationGroup}
             />

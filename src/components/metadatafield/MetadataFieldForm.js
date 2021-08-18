@@ -192,6 +192,12 @@ const MetadataFieldConstraintType = () => (
       fullWidth
     />
     <Field
+      name="parent"
+      label="parent"
+      component={TextField}
+      fullWidth
+    />
+    <Field
       name="validationGroup"
       label="validationGroup"
       component={TextField}
