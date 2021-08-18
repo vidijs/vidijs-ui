@@ -460,6 +460,54 @@ function TextGrid({
       </div>
     );
   }
+  if (variant === 'application/ld+json') {
+    return (
+      <div>
+        {title !== undefined
+          && (
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              className={hover ? classes.onHover : classes.default}
+              wrap="nowrap"
+            >
+              <Grid xl={1} lg={2} md={3} sm={4} xs={6} {...titleGridProps} item>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  onClick={onTextClick}
+                  noWrap={noWrapTitle}
+                >
+                  {titleStartCase ? startCase(title) : title}
+                </Typography>
+              </Grid>
+              {hideCode === true && (
+                <Button onClick={toggleCode} size="small" variant="outlined">
+                  {`${isCodeHidden ? 'Show' : 'Hide'} ${titleStartCase ? startCase(title) : title}`}
+                </Button>
+              )}
+            </Grid>
+          )}
+        {(hideCode === false || isCodeHidden === false) && (
+          <CodeMirror
+            value={value || ''}
+            onClick={onTextClick}
+            options={{
+              readOnly: true,
+              theme: 'material',
+              mode: 'application/ld+json',
+              lineWrapping: true,
+              lineNumbers: true,
+              foldGutter: true,
+              gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+              ...codeProps,
+            }}
+          />
+        )}
+      </div>
+    );
+  }
   if (variant === 'xml' || variant === 'application/xml') {
     return (
       <div>

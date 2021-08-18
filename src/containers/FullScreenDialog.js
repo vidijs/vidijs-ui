@@ -164,6 +164,7 @@ function FullScreenDialog({
               <ListLink to="/field-group/" primary="Field Groups" />
               <ListLink to="/document/" primary="Document" />
               <ListLink to="/projection/" primary="Projection" />
+              <ListLink to="/metadata-dataset/" primary="Datasets" />
             </ListGroup>
           </Grid>
           <Grid item {...breakPoints}>

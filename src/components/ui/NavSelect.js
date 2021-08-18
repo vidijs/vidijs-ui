@@ -35,6 +35,7 @@ const linkOptions = [
   { value: '/user/', label: 'Users' },
   { value: '/group/', label: 'Groups' },
   { value: '/metadata-field/', label: 'Metadata Fields' },
+  { value: '/metadata-dataset/', label: 'Metadata Datasets' },
   { value: '/field-group/', label: 'Metadata Field Groups' },
   { value: '/debug/echo/', label: 'XML Echo' },
   { value: '/javascript/test/', label: 'Javascript Test' },

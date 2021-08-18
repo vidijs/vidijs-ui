@@ -91,6 +91,8 @@ import ScheduledRequestList from './ScheduledRequestList';
 import Stitch from './Stitch';
 import DeletionLockList from './DeletionLockList';
 import DeletionLock from './DeletionLock';
+import MetadataDatasetList from './MetadataDatasetList';
+import MetadataDataset from './MetadataDataset';
 
 import TopAppBar from './TopAppBar';
 import FullScreenDialog from './FullScreenDialog';
@@ -224,6 +226,8 @@ function Main({
         <Route exact path="/deletion-lock/:lockId/" component={DeletionLock} />
         <Route exact path="/external-id/:entityType/:entityId" component={ExternalId} />
         <Route exact path="/external-id/:entityType/:entitySubType/:entityId" component={ExternalId} />
+        <Route exact path="/metadata-dataset/" component={MetadataDatasetList} />
+        <Route exact path="/metadata-dataset/:datasetId/" component={MetadataDataset} />
       </main>
       <LeftSnackbar />
     </div>

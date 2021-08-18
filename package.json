@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@vidispine/vdt-api": "^0.13.0",
+    "@vidispine/vdt-api": "^0.14.0",
     "clsx": "^1.1.1",
     "codemirror": "^5.60.0",
     "history": "^5.0.0",

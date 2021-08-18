@@ -2417,10 +2417,10 @@
     "@typescript-eslint/types" "4.21.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vidispine/vdt-api@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@vidispine/vdt-api/-/vdt-api-0.13.0.tgz#29b41ff5ca54cf74f5707afd2633b41c4f279e47"
-  integrity sha512-ljfZ2jWDksO/zrercz0MH5Wsyg+pjkTcPfV9F625j1UuGJHLdG/XjSEwC3ZRDRUTGaP3NpKhAGvat7HVT8Yqeg==
+"@vidispine/vdt-api@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@vidispine/vdt-api/-/vdt-api-0.14.0.tgz#432fa68fc38ef2343f84cb5b754c1f2e68c79b50"
+  integrity sha512-k/HvjcEaMWVaV6RimXcNZ2+IAl8Q7Dz/kwtTHmQXrpHnQwYdY6MPcdnaIc17ptW9rc4YBXqnBYCxgIjZ0hPvsw==
   dependencies:
     axios "~0.21.x"
 
