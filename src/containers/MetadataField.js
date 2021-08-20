@@ -1,12 +1,38 @@
 import React from 'react';
+import List from '@material-ui/core/List';
+import { compose } from 'redux';
 
-import { metadatafield as api } from '@vidispine/vdt-api';
-
+import withTabs from '../hoc/withTabs';
 import MetadataFieldTitle from '../components/metadatafield/MetadataFieldTitle';
-import MetadataFieldCard from '../components/metadatafield/MetadataFieldCard';
 import MetadataFieldRemove from '../components/metadatafield/MetadataFieldRemove';
 import withSnackbar from '../hoc/withSnackbar';
-import SimpleMetadataCard from '../components/ui/SimpleMetadataCard';
+import DrawerContainer from '../components/ui/DrawerContainer';
+import DrawerListItem from '../components/ui/DrawerListItem';
+import MetadataFieldOverview from './metadatafield/MetadataFieldOverview';
+import MetadataFieldAllowedValues from './metadatafield/MetadataFieldAllowedValues';
+
+const METADATAFIELD_OVERVIEW_TAB = 'METADATAFIELD_OVERVIEW_TAB';
+const METADATAFIELD_ALLOWEDVALUES_TAB = 'METADATAFIELD_ALLOWEDVALUES_TAB';
+
+const TAB_TITLE = [
+  { tab: METADATAFIELD_OVERVIEW_TAB, listText: 'Overview', component: MetadataFieldOverview },
+  { tab: METADATAFIELD_ALLOWEDVALUES_TAB, listText: 'Allowed Values', component: MetadataFieldAllowedValues },
+];
+
+const listComponent = ({ onChangeTab, tabValue }) => (
+  <List>
+    {TAB_TITLE.map(({ tab, listText }) => (
+      <DrawerListItem
+        key={listText}
+        listText={listText}
+        listItemProps={{
+          onClick: () => onChangeTab(null, tab),
+          selected: tabValue === tab || undefined,
+        }}
+      />
+    ))}
+  </List>
+);
 
 const METADATAFIELD_REMOVE_MODAL = 'METADATAFIELD_REMOVE_MODAL';
 
@@ -14,9 +40,9 @@ class MetadataField extends React.PureComponent {
   constructor(props) {
     super(props);
     this.onRefresh = this.onRefresh.bind(this);
+    this.setOnRefresh = this.setOnRefresh.bind(this);
     this.state = {
-      simpleMetadataDocument: undefined,
-      metadataFieldDocument: undefined,
+      onRefresh: undefined,
     };
   }
 
@@ -27,49 +53,41 @@ class MetadataField extends React.PureComponent {
   }
 
   onRefresh() {
-    const { openSnackBar, fieldName } = this.props;
-    try {
-      api.getMetadataField({ fieldName, queryParams: { includeValues: true } })
-        .then((response) => this.setState({ metadataFieldDocument: response.data }));
-      api.getSimpleMetadata({ fieldName })
-        .then((response) => this.setState({ simpleMetadataDocument: response.data }));
-    } catch (error) {
-      const messageContent = 'Error Getting Metadata Field';
-      openSnackBar({ messageContent, messageColor: 'secondary' });
-    }
+    const { onRefresh } = this.state;
+    if (onRefresh) { onRefresh(); }
+  }
+
+  setOnRefresh(onRefresh) {
+    this.setState({ onRefresh });
   }
 
   render() {
     const {
       fieldName,
+      onChangeTab,
+      tabValue,
     } = this.props;
-    const { simpleMetadataDocument = {}, metadataFieldDocument } = this.state;
-    const { field: simpleMetadataList = [] } = simpleMetadataDocument;
-    return (
+    const tabInfo = TAB_TITLE.find((thisTab) => thisTab.tab === tabValue) || TAB_TITLE[0];
+    const { listText, component: mainComponent } = tabInfo;
+    const titleComponent = (props) => (
+      <MetadataFieldTitle
+        removeModal={METADATAFIELD_REMOVE_MODAL}
+        fieldName={fieldName}
+        title={listText}
+        {...props}
+      />
+    ); return (
       <>
-        <MetadataFieldTitle
-          removeModal={METADATAFIELD_REMOVE_MODAL}
-          onRefresh={this.onRefresh}
+        <DrawerContainer
+          onChangeTab={onChangeTab}
+          tabValue={tabValue}
           fieldName={fieldName}
-          code={metadataFieldDocument}
-          codeModal="MetadataFieldDocument"
+          mainComponent={mainComponent}
+          listComponent={listComponent}
+          defaultOpen
+          titleComponent={titleComponent}
+          setOnRefresh={this.setOnRefresh}
         />
-        {metadataFieldDocument
-        && (
-        <MetadataFieldCard
-          metadataFieldDocument={metadataFieldDocument}
-          onRefresh={this.onRefresh}
-        />
-        )}
-        {simpleMetadataList
-        && (
-        <SimpleMetadataCard
-          simpleMetadataList={simpleMetadataList}
-          onSuccess={this.onRefresh}
-          entityType="metadata-field"
-          entityId={fieldName}
-        />
-        )}
         <MetadataFieldRemove
           dialogName={METADATAFIELD_REMOVE_MODAL}
           fieldName={fieldName}
@@ -79,4 +97,4 @@ class MetadataField extends React.PureComponent {
   }
 }
 
-export default withSnackbar(MetadataField);
+export default compose(withTabs(METADATAFIELD_OVERVIEW_TAB), withSnackbar)(MetadataField);

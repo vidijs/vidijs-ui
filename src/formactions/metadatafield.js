@@ -1,5 +1,4 @@
 import { SubmissionError } from 'redux-form';
-
 import { metadatafield as api } from '@vidispine/vdt-api';
 
 export function onUpdate(form, dispatch, props) {
@@ -18,5 +17,19 @@ export function onUpdate(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
-
-export default onUpdate;
+export function onGetAllowedValues(form, dispatch, props) {
+  const { metadataFieldValueConstraintListDocument } = form;
+  const fieldName = props.fieldName || form.fieldName;
+  return api.getMetadataFieldAllowedValues({
+    fieldName,
+    metadataFieldValueConstraintListDocument,
+  })
+    .then((response) => ({ constraintValueListDocument: response.data }))
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

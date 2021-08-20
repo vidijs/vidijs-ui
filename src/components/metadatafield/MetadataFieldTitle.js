@@ -5,9 +5,9 @@ import TitleHeader from '../ui/TitleHeader';
 export default function MetadataFieldTitle(props) {
   return (
     <TitleHeader
-      parentTitle="Metadata Field"
-      parentTo="/metadata-field/"
-      title={props.fieldName}
+      grandParentTitle="Metadata Field"
+      grandParentTo="/metadata-field/"
+      parentTitle={props.fieldName}
       helpTo="/ref/metadata/field.html"
       entityId={props.fieldName}
       entityType="metadata-field"
