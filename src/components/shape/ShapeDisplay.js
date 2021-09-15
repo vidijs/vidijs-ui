@@ -30,13 +30,16 @@ export const SimpleMetadataType = ({ value = {} }) => (
   />
 );
 
-const ComponentType = ({ value = {}, title = 'Component', ...props }) => (
+const ComponentType = ({
+  value = {}, title = 'Component', hideMetadata = true, ...props
+}) => (
   <>
     <TextGrid
       title={`${title} ID`}
       value={value.id}
       {...props}
     />
+    {!hideMetadata && (
     <TypeSection
       title={`${title} Metadata`}
       value={value.metadata}
@@ -44,6 +47,8 @@ const ComponentType = ({ value = {}, title = 'Component', ...props }) => (
       dense
       {...props}
     />
+    )}
+
     <FileTypeTable
       title={`${title} Files`}
       value={value.file}

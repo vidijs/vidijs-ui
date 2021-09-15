@@ -5,10 +5,13 @@ import CardContent from '@material-ui/core/CardContent';
 
 import { BinaryComponentType } from './ShapeDisplay';
 import SquareCard from '../ui/SquareCard';
+import ShapeComponentMetadataEditor from './ShapeComponentMetadataEditor';
 
-export default function ShapeBinaryComponentCard({ binaryComponent = {} }) {
+export default function ShapeBinaryComponentCard({
+  binaryComponent = {}, itemId, shapeId, onRefresh,
+}) {
   if (binaryComponent === undefined) { return null; }
-  const { id: binaryComponentId } = binaryComponent;
+  const { id: binaryComponentId, metadata } = binaryComponent;
   return (
     <SquareCard>
       <CardHeader
@@ -18,6 +21,14 @@ export default function ShapeBinaryComponentCard({ binaryComponent = {} }) {
       <CardContent>
         <BinaryComponentType
           value={binaryComponent}
+        />
+        <ShapeComponentMetadataEditor
+          title="Binary Component Metadata"
+          metadata={metadata}
+          onRefresh={onRefresh}
+          itemId={itemId}
+          shapeId={shapeId}
+          componentId={binaryComponentId}
         />
       </CardContent>
     </SquareCard>

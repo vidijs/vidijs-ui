@@ -28,7 +28,7 @@ export function SimpleMetadataFieldRemove({
           container
           direction="row"
           wrap="nowrap"
-          spacing={16}
+          spacing={4}
         >
           <Grid item sm={5}>
             <Field
@@ -97,7 +97,7 @@ export function SimpleMetadataFieldArray({
           container
           direction="row"
           wrap="nowrap"
-          spacing={16}
+          spacing={4}
         >
           <Grid item sm={5}>
             <Field
