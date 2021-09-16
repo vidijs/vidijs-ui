@@ -54,6 +54,11 @@ function FileTitle({
                 <Typography color="inherit">Import To Component</Typography>
               </MenuItem>
             </UnstyledLink>
+            <UnstyledLink to={`/import?tab=IMPORTSIDECAR_TAB&fileId=${fileId}`}>
+              <MenuItem>
+                <Typography color="inherit">Import As Sidecar</Typography>
+              </MenuItem>
+            </UnstyledLink>
             <MenuItem onClick={() => onOpen({ modalName: moveModal })}>
               <Typography color="inherit">Copy/Move File</Typography>
             </MenuItem>

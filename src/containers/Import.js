@@ -11,6 +11,7 @@ import ImportShapePlaceholder from './import/ImportShapePlaceholder';
 import ImportShape from './import/ImportShape';
 import ImportCollection from './import/ImportCollection';
 import ImportShapeEssence from './import/ImportShapeEssence';
+import ImportSidecar from './import/ImportSidecar';
 import DrawerContainer from '../components/ui/DrawerContainer';
 import DrawerListItem from '../components/ui/DrawerListItem';
 
@@ -23,6 +24,7 @@ const IMPORTSHAPEPLACEHOLDER_TAB = 'IMPORTSHAPEPLACEHOLDER_TAB';
 const IMPORTSHAPE_TAB = 'IMPORTSHAPE_TAB';
 const IMPORTCOLLECTION_TAB = 'IMPORTCOLLECTION_TAB';
 const IMPORTSHAPEESSENCE_TAB = 'IMPORTSHAPEESSENCE_TAB';
+const IMPORTSIDECAR_TAB = 'IMPORTSIDECAR_TAB';
 
 const TAB_TITLE = [
   { tab: IMPORTURI_TAB, listText: 'URI', component: ImportUri },
@@ -34,6 +36,7 @@ const TAB_TITLE = [
   { tab: IMPORTSHAPE_TAB, listText: 'Shape', component: ImportShape },
   { tab: IMPORTCOLLECTION_TAB, listText: 'Collection', component: ImportCollection },
   { tab: IMPORTSHAPEESSENCE_TAB, listText: 'Essence', component: ImportShapeEssence },
+  { tab: IMPORTSIDECAR_TAB, listText: 'Sidecar', component: ImportSidecar },
 ];
 
 const listComponent = ({ onChangeTab, tabValue }) => (
