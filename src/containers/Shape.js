@@ -13,6 +13,7 @@ import ShapeTitle from '../components/shape/ShapeTitle';
 import ShapeDelete from '../components/shape/ShapeDelete';
 import ShapeTranscode from '../components/shape/ShapeTranscode';
 import ShapeAnalyze from '../components/shape/ShapeAnalyze';
+import ShapeAddComponent from '../components/shape/ShapeAddComponent';
 import ShapeAddTag from '../components/shape/ShapeAddTag';
 import ShapeRemoveTag from '../components/shape/ShapeRemoveTag';
 import DrawerContainer from '../components/ui/DrawerContainer';
@@ -23,6 +24,7 @@ const SHAPE_TRANSCODE_DIALOG = 'SHAPE_TRANSCODE_DIALOG';
 const SHAPE_ANALYZE_DIALOG = 'SHAPE_ANALYZE_DIALOG';
 const SHAPE_ADD_TAG_DIALOG = 'SHAPE_ADD_TAG_DIALOG';
 const SHAPE_REMOVE_TAG_DIALOG = 'SHAPE_REMOVE_TAG_DIALOG';
+const SHAPE_ADD_COMPONENT_DIALOG = 'SHAPE_ADD_COMPONENT_DIALOG';
 
 const shapeOverviewLink = ({ itemId = ':itemId', shapeId = ':shapeId' } = {}) => `/item/${itemId}/shape/${shapeId}/`;
 const shapeBulkyListLink = (props) => `${shapeOverviewLink(props)}bulky-metadata/`;
@@ -116,6 +118,7 @@ class Shape extends React.PureComponent {
         analyzeTagModal={SHAPE_ANALYZE_DIALOG}
         addTagModal={SHAPE_ADD_TAG_DIALOG}
         removeTagModal={SHAPE_REMOVE_TAG_DIALOG}
+        addComponentModal={SHAPE_ADD_COMPONENT_DIALOG}
         {...props}
       />
     );
@@ -144,6 +147,12 @@ class Shape extends React.PureComponent {
         />
         <ShapeAnalyze
           dialogName={SHAPE_ANALYZE_DIALOG}
+          onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
+          itemId={itemId}
+          shapeId={shapeId}
+        />
+        <ShapeAddComponent
+          dialogName={SHAPE_ADD_COMPONENT_DIALOG}
           onSuccess={(response) => history.push(`/job/${response.data.jobId}/`)}
           itemId={itemId}
           shapeId={shapeId}
