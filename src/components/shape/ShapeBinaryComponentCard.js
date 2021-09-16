@@ -16,7 +16,7 @@ export default function ShapeBinaryComponentCard({
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subtitle1">{`Binary Component - ${binaryComponentId}`}</Typography>}
+        title={binaryComponentId ? <Typography variant="subtitle1">{`Binary Component - ${binaryComponentId}`}</Typography> : undefined}
       />
       <CardContent>
         <BinaryComponentType

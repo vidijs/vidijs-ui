@@ -28,18 +28,25 @@ function FileTitle({
   removeEntityModal,
   pathModal,
   overwriteModal,
+  analyzeModal,
+  fileDocument,
   ...props
 }) {
   return (
     <TitleHeader
       helpTo="/ref/storage/file.html"
-      title={fileId}
-      parentTitle="File"
-      parentTo="/file/"
+      parentTitle={fileId}
+      grandParentTitle="File"
+      grandParentTo="/file/"
       iconList={(
         <>
-          <FileStatus fileDocument={props.code} />
-          <FileDownload fileDocument={props.code} />
+          {fileDocument && (
+            <>
+              <FileStatus fileDocument={fileDocument} />
+              <FileDownload fileDocument={fileDocument} />
+            </>
+          )}
+
           <Menu>
             <MenuItem onClick={() => onOpen({ modalName: stateModal })}>
               <Typography color="inherit">Change State</Typography>
@@ -59,6 +66,9 @@ function FileTitle({
                 <Typography color="inherit">Import As Sidecar</Typography>
               </MenuItem>
             </UnstyledLink>
+            <MenuItem onClick={() => onOpen({ modalName: analyzeModal })}>
+              <Typography color="inherit">Shape Deduction</Typography>
+            </MenuItem>
             <MenuItem onClick={() => onOpen({ modalName: moveModal })}>
               <Typography color="inherit">Copy/Move File</Typography>
             </MenuItem>

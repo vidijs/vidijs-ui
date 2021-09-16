@@ -48,7 +48,6 @@ const ComponentType = ({
       {...props}
     />
     )}
-
     <FileTypeTable
       title={`${title} Files`}
       value={value.file}
