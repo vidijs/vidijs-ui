@@ -13,7 +13,7 @@ export default function ShapeSubtitleComponentCard({ subtitleComponent = {} }) {
     <SquareCard>
       <CardHeader
         disableTypography
-        title={<Typography variant="subtitle1">{`Subtitle Component - ${subtitleComponentId}`}</Typography>}
+        title={subtitleComponentId ? <Typography variant="subtitle1">{`Subtitle Component - ${subtitleComponentId}`}</Typography> : undefined}
       />
       <CardContent>
         <SubtitleComponentType

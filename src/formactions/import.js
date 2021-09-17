@@ -79,3 +79,19 @@ export function onImportComponent(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onImportSidecar(form, dispatch, props) {
+  const { queryParams } = form;
+  const itemId = props.itemId || form.itemId;
+  return api.createImportItemSidecar({
+    itemId,
+    queryParams,
+  })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

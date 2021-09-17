@@ -5,10 +5,13 @@ import CardContent from '@material-ui/core/CardContent';
 
 import { ShapeSection } from './ShapeDisplay';
 import SquareCard from '../ui/SquareCard';
+import SimpleMetadataEditor from '../ui/SimpleMetadataEditor';
 
-export default function ShapeCard({ shapeDocument = {} }) {
+export default function ShapeCard({
+  shapeDocument = {}, itemId, shapeId, onRefresh,
+}) {
   if (shapeDocument === undefined) { return null; }
-  const { id: shapeId } = shapeDocument;
+  const { metadata } = shapeDocument;
   return (
     <SquareCard>
       <CardHeader
@@ -18,6 +21,14 @@ export default function ShapeCard({ shapeDocument = {} }) {
       <CardContent>
         <ShapeSection
           value={shapeDocument}
+        />
+        <SimpleMetadataEditor
+          simpleMetadataDocument={metadata}
+          title="Shape Metadata"
+          titleProps={{ variant: 'subtitle2' }}
+          onSuccess={onRefresh}
+          entityType="item"
+          entityId={`${itemId}/shape/${shapeId}`}
         />
       </CardContent>
     </SquareCard>

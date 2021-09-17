@@ -150,3 +150,19 @@ export function onFileImportAssetMap(form, dispatch, props) {
       throw new SubmissionError({ _error: errorMessage });
     });
 }
+
+export function onFileAnalyze(form, dispatch, props) {
+  const { queryParams } = form;
+  const fileId = props.fileId || form.fileId;
+  return api.analyzeFile({
+    fileId,
+    queryParams,
+  })
+    .catch((error) => {
+      let errorMessage = error.message;
+      if (error.response) {
+        errorMessage = JSON.stringify(error.response.data, (k, v) => (v === null ? undefined : v));
+      }
+      throw new SubmissionError({ _error: errorMessage });
+    });
+}

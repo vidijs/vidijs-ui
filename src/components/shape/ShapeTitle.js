@@ -52,6 +52,7 @@ function ShapeTitle({
   addTagModal,
   removeTagModal,
   analyzeTagModal,
+  addComponentModal,
   ...props
 }) {
   const baseUrl = localStorage.getItem('vsBaseUrl') || '';
@@ -75,6 +76,9 @@ function ShapeTitle({
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: analyzeTagModal })}>
             <Typography>Analyze</Typography>
+          </MenuItem>
+          <MenuItem onClick={() => onOpen({ modalName: addComponentModal })}>
+            <Typography>Add Component</Typography>
           </MenuItem>
           <MenuItem onClick={() => onOpen({ modalName: addTagModal })}>
             <Typography>Add Tag</Typography>

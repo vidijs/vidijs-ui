@@ -80,6 +80,11 @@ function ItemTitle({
                 <Typography>Import Component</Typography>
               </UnstyledLink>
             </MenuItem>
+            <UnstyledLink to={`/import?tab=IMPORTSIDECAR_TAB&itemId=${itemId}`}>
+              <MenuItem>
+                <Typography color="inherit">Import Sidecar</Typography>
+              </MenuItem>
+            </UnstyledLink>
             <MenuItem onClick={() => onOpen({ modalName: addToCollectionModal })}>
               <Typography>Add To Collection</Typography>
             </MenuItem>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShapeBinaryComponentCard from './ShapeBinaryComponentCard';
 
-export default function ShapeBinaryComponentList({ shapeDocument = {} }) {
+export default function ShapeBinaryComponentList({ shapeDocument = {}, ...props }) {
   const { binaryComponent: binaryComponentList } = shapeDocument;
   if (binaryComponentList === undefined || !Array.isArray(binaryComponentList)) { return null; }
   return (
@@ -10,6 +10,7 @@ export default function ShapeBinaryComponentList({ shapeDocument = {} }) {
       <ShapeBinaryComponentCard
         key={binaryComponent.id}
         binaryComponent={binaryComponent}
+        {...props}
       />
     ))
   );

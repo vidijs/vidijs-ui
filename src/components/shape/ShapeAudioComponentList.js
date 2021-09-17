@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShapeAudioComponentCard from './ShapeAudioComponentCard';
 
-export default function ShapeAudioComponentList({ shapeDocument = {} }) {
+export default function ShapeAudioComponentList({ shapeDocument = {}, ...props }) {
   const { audioComponent: audioComponentList } = shapeDocument;
   if (audioComponentList === undefined || !Array.isArray(audioComponentList)) { return null; }
   return (
@@ -10,6 +10,7 @@ export default function ShapeAudioComponentList({ shapeDocument = {} }) {
       <ShapeAudioComponentCard
         key={audioComponent.id}
         audioComponent={audioComponent}
+        {...props}
       />
     ))
   );

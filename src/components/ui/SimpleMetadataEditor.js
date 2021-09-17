@@ -38,6 +38,8 @@ class SimpleMetadataEditor extends React.PureComponent {
       entityType,
       entityId,
       onSuccess,
+      title = 'Metadata',
+      titleProps = {},
     } = this.props;
     const {
       isEditing,
@@ -60,7 +62,7 @@ class SimpleMetadataEditor extends React.PureComponent {
     return (
       <>
         <CardHeader
-          title={<Typography variant="subtitle1">Metadata</Typography>}
+          title={<Typography variant="subtitle1" {...titleProps}>{title}</Typography>}
           disableTypography
           action={(
             <Grid container direction="row-reverse" alignItems="center">

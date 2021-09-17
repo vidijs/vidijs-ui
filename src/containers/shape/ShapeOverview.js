@@ -80,6 +80,9 @@ class ShapeOverview extends React.PureComponent {
         {shapeDocument && (
           <ShapeOverviewComponent
             shapeDocument={shapeDocument}
+            shapeId={shapeId}
+            itemId={itemId}
+            onRefresh={this.onRefresh}
           />
         )}
       </>

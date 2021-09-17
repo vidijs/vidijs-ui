@@ -2,7 +2,7 @@ import React from 'react';
 
 import ShapeDescriptorComponentCard from './ShapeDescriptorComponentCard';
 
-export default function ShapeDescriptorComponentList({ shapeDocument = {} }) {
+export default function ShapeDescriptorComponentList({ shapeDocument = {}, ...props }) {
   const { descriptorComponent: descriptorComponentList } = shapeDocument;
   if (descriptorComponentList === undefined || !Array.isArray(descriptorComponentList)) {
     return null;
@@ -12,6 +12,7 @@ export default function ShapeDescriptorComponentList({ shapeDocument = {} }) {
       <ShapeDescriptorComponentCard
         key={descriptorComponent.id}
         descriptorComponent={descriptorComponent}
+        {...props}
       />
     ))
   );
