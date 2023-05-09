@@ -1,3 +1,5 @@
+# !!! THIS PROJECT HAS BEEN MOVED TO [vidispine/admin-tool](https://github.com/vidispine/admin-tool) !!!
+
 # VidiJS
 
 VidiJS showcases Vidispine API features within a simple user interface.  The application runs in a web browser and communicates directly with the API without the need for any middleware.  It works out of the box with any Vidispine API server, including Vidispine as a Service, without the need for any configuration.
